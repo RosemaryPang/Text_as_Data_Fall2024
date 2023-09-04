@@ -3,12 +3,12 @@ project:
   output-dir: docs
 
 website:
-  title: "Tutorials"
+  title: "DACSS758 Text as Data Fall 2023"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - Tutorial1.qmd
 
 format:
   html:

@@ -1,11 +1,12 @@
 ---
-title: "Tutorials"
+title: "Welcome Page"
+
 ---
 
-This is a Quarto website.
+Welcome to DACSS758 Text as Data. All classroom material, including recordings, slides, tutorials, and assignment descriptions, will be posted in [Google Classroom](https://classroom.google.com/u/0/w/NjIwNDIxNzAyNjg2/t/all). Be sure you are logged into your UMass Google account.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This tutorial website contains the R code and output of weekly tutorials. 
 
-```{r}
-1 + 1
-```
+<font size='5'><b> Weekly Tutorials </b></font>
+
+[Week 1 Introduction]()

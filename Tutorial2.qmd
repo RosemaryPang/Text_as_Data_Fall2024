@@ -344,3 +344,47 @@ print(sensesummary)
 ```
 
 Why are there NINE tokens in text1 (The book title)? (hint: find the answer using tokens function)
+
+
+## Reading all files in a directory
+
+```{r}
+# list.files(): to list all files in a directory
+# returns a character vector containing the names of the files in the specified directory
+# syntax: list.files(path, pattern, all.files, full.names)
+
+list.files(path="~/Documents/R Practice/Quarto/TAD23/HarryPotter", pattern = NULL,
+           all.files = FALSE, full.names = FALSE)
+
+
+list.files(path = "~/Documents/R Practice/Quarto/TAD23/HarryPotter", pattern = ".pdf", all.files = TRUE, full.names=TRUE)
+```
+
+```{r}
+require(pdftools)
+library(quanteda)
+# create a list of the files in the designated directory
+file_list <- list.files(path = "~/Documents/R Practice/Quarto/TAD23/HarryPotter", pattern = ".pdf", full.names = TRUE)
+
+file_list
+
+test <- lapply(file_list, pdf_text) # pdf_text: extracting text
+
+test[1]
+
+length(test)
+
+library(purrr)
+lapply(test, length)
+map(test, length)
+#shows the pages of each file
+
+library(tm)
+test.corpus <- Corpus(URISource(file_list),
+                      readerControl = list(reader = readPDF))
+
+test.corpus # tm corpus
+
+test.corpus.quanteda <- corpus(test.corpus)
+summary(test.corpus.quanteda)
+```

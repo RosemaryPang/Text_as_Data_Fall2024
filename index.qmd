@@ -1,6 +1,5 @@
 ---
 title: "Welcome Page"
-
 ---
 
 Welcome to DACSS758 Text as Data. All classroom material, including recordings, slides, tutorials, and assignment descriptions, will be posted in [Google Classroom](https://classroom.google.com/u/0/w/NjIwNDIxNzAyNjg2/t/all). Be sure you are logged into your UMass Google account.

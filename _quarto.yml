@@ -10,6 +10,7 @@ website:
         text: Home
       - Tutorial1.qmd
       - Tutorial2.qmd
+      - Tutorial3.qmd
 
 format:
   html:

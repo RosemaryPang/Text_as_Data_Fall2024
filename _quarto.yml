@@ -11,6 +11,8 @@ website:
       - Tutorial1.qmd
       - Tutorial2.qmd
       - Tutorial3.qmd
+      - Tutorial4.qmd
+
 
 format:
   html:

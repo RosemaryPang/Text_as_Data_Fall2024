@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Tutorial_4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DACSS758 Text as Data Fall 2023</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial1.html" rel="" target="">
+ <span class="menu-text">Tutorial 1 Introduction to R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial2.html" rel="" target="">
+ <span class="menu-text">Tutorial 2 Text as Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial3.html" rel="" target="">
+ <span class="menu-text">Tutorial 3 Web Scraping in R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Tutorial4.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Tutorial 4 Natural Language Processing</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#annotators-udpipe-spacy-and-corenlp" id="toc-annotators-udpipe-spacy-and-corenlp" class="nav-link active" data-scroll-target="#annotators-udpipe-spacy-and-corenlp">Annotators: udpipe, spacy, and CoreNLP</a></li>
+  <li><a href="#nlp-in-r-with-cleannlp" id="toc-nlp-in-r-with-cleannlp" class="nav-link" data-scroll-target="#nlp-in-r-with-cleannlp">NLP in R with <code>cleanNLP</code></a></li>
+  <li><a href="#annotation-cnlp_annotate" id="toc-annotation-cnlp_annotate" class="nav-link" data-scroll-target="#annotation-cnlp_annotate">Annotation: <code>cnlp_annotate()</code></a></li>
+  <li><a href="#part-of-speech-tagging" id="toc-part-of-speech-tagging" class="nav-link" data-scroll-target="#part-of-speech-tagging">Part of Speech Tagging</a></li>
+  <li><a href="#dependency-relations" id="toc-dependency-relations" class="nav-link" data-scroll-target="#dependency-relations">Dependency Relations</a></li>
+  <li><a href="#string-operations" id="toc-string-operations" class="nav-link" data-scroll-target="#string-operations">String Operations</a>
+  <ul class="collapse">
+  <li><a href="#whats-in-a-string" id="toc-whats-in-a-string" class="nav-link" data-scroll-target="#whats-in-a-string">What’s in a string?</a></li>
+  <li><a href="#combining-strings" id="toc-combining-strings" class="nav-link" data-scroll-target="#combining-strings">Combining strings</a></li>
+  <li><a href="#substrings" id="toc-substrings" class="nav-link" data-scroll-target="#substrings">Substrings</a></li>
+  <li><a href="#pattern-searches" id="toc-pattern-searches" class="nav-link" data-scroll-target="#pattern-searches">Pattern searches</a></li>
+  </ul></li>
+  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions">Regular Expressions</a>
+  <ul class="collapse">
+  <li><a href="#classes-and-quantifiers" id="toc-classes-and-quantifiers" class="nav-link" data-scroll-target="#classes-and-quantifiers">Classes and quantifiers</a></li>
+  <li><a href="#extracting-data" id="toc-extracting-data" class="nav-link" data-scroll-target="#extracting-data">Extracting data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tutorial 4 Natural Language Processing</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In this tutorial, we’ll learn about doing standard natural language processing (NLP) tasks in R, and will be introduced to regular expressions. After completing this notebook, you should be familar with:</p>
+<ol type="1">
+<li><p>Annotators: udpipe, spacy, and CoreNLP</p></li>
+<li><p>NLP in R with <code>cleanNLP</code></p></li>
+<li><p>Annotation: <code>cnlp_annotate()</code></p></li>
+<li><p>Part of Speech Tagging</p></li>
+<li><p>Dependency Relations</p></li>
+<li><p>String Operations</p></li>
+<li><p>Regular Expressions</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cleanNLP)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.2     ✔ purrr   1.0.1
+✔ tibble  3.2.1     ✔ dplyr   1.1.1
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package version: 3.3.1
+Unicode version: 14.0
+ICU version: 70.1
+Parallel computing: 4 of 4 threads used.
+See https://quanteda.io for tutorials and examples.</code></pre>
+</div>
+</div>
+<section id="annotators-udpipe-spacy-and-corenlp" class="level1">
+<h1>Annotators: udpipe, spacy, and CoreNLP</h1>
+<p>The standard-bearer for NLP work is Stanford’s CoreNLP suite (<a href="https://stanfordnlp.github.io/CoreNLP/">available here</a>). Historically, that work was available in Java, with really ineffective ports to other programming languages. Fortunately, the past few years have seen major progress in making the suite more accessible in both Python and R. We’re going to leverage the best package with the best port to R — <code>cleanNLP</code> — for our NLP tasks.</p>
+<p>Stanford’s CoreNLP, though, is just one of many NLP annotation tools available with <code>cleanNLP</code>. There are two important points to highlight related to this. First, in addition to CoreNLP, <code>cleanNLP</code> can leverage spacy, a high-powered Python library; spacy is (much) faster than CoreNLP, but with some cost in classification accuracy. Second, both CoreNLP and spacy require a Python installation on your machine. Because of that, we can’t run the CoreNLP or spacy code on Colab (it’s a long story). We will be able to use the universal dependencies pipe (udpipe), so that’s what we’ll do here.</p>
+<p>More generally, though, you’ll want to have the capacity provided by CoreNLP or spacy available for your projects on your personal machine. Therefore, you need to install Python. I recommend installing Anaconda Python (available here). Once you’ve done that, you’ll need to install the cleanNLP module within Python.</p>
+</section>
+<section id="nlp-in-r-with-cleannlp" class="level1">
+<h1>NLP in R with <code>cleanNLP</code></h1>
+<p>To get started, you’ll need to initialize the NLP backend. We’ll be using the udpipe backend, which comes installed with the cleanNLP package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cnlp_init_udpipe</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We have our NLP backend initialized and ready to roll. We’ll be using the U.S. Presidential Inaugural Address corpus, which comes pre-loaded with quanteda. The corpus is already in your workspace (since it is pre-loaded) as data_corpus_inaugural; it features speeches from 1789 to the present, with document variables indicating the year (Year) of the speech, the last name of the president (President), and their political party (Party).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the corpus as a character vector (which works with cleanNLP) rather than a corpus object, which does not.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">as.character</span>(data_corpus_inaugural)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To give you an idea of what these look like, here's Biden's speech</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>text[<span class="fu">length</span>(text)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     2021-Biden 
+"Chief Justice Roberts, Vice President Harris, Speaker Pelosi, Leader Schumer, Leader McConnell, Vice President Pence, distinguished guests, and my fellow Americans.\n\nThis is America's day.\n\nThis is democracy's day.\n\nA day of history and hope.\n\nOf renewal and resolve.\n\nThrough a crucible for the ages America has been tested anew and America has risen to the challenge.\n\nToday, we celebrate the triumph not of a candidate, but of a cause, the cause of democracy.\n\nThe will of the people has been heard and the will of the people has been heeded.\n\nWe have learned again that democracy is precious.\n\nDemocracy is fragile.\n\nAnd at this hour, my friends, democracy has prevailed.\n\nSo now, on this hallowed ground where just days ago violence sought to shake this Capitol's very foundation, we come together as one nation, under God, indivisible, to carry out the peaceful transfer of power as we have for more than two centuries.\n\nWe look ahead in our uniquely American way – restless, bold, optimistic – and set our sights on the nation we know we can be and we must be.\n\nI thank my predecessors of both parties for their presence here.\n\nI thank them from the bottom of my heart.\n\nYou know the resilience of our Constitution and the strength of our nation.\n\nAs does President Carter, who I spoke to last night but who cannot be with us today, but whom we salute for his lifetime of service.\n\nI have just taken the sacred oath each of these patriots took — an oath first sworn by George Washington.\n\nBut the American story depends not on any one of us, not on some of us, but on all of us.\n\nOn \"We the People\" who seek a more perfect Union.\n\nThis is a great nation and we are a good people.\n\nOver the centuries through storm and strife, in peace and in war, we have come so far. But we still have far to go.\n\nWe will press forward with speed and urgency, for we have much to do in this winter of peril and possibility.\n\nMuch to repair.\n\nMuch to restore.\n\nMuch to heal.\n\nMuch to build.\n\nAnd much to gain.\n\nFew periods in our nation's history have been more challenging or difficult than the one we're in now.\n\nA once-in-a-century virus silently stalks the country.\n\nIt's taken as many lives in one year as America lost in all of World War II.\n\nMillions of jobs have been lost.\n\nHundreds of thousands of businesses closed.\n\nA cry for racial justice some 400 years in the making moves us. The dream of justice for all will be deferred no longer.\n\nA cry for survival comes from the planet itself. A cry that can't be any more desperate or any more clear.\n\nAnd now, a rise in political extremism, white supremacy, domestic terrorism that we must confront and we will defeat.\n\nTo overcome these challenges – to restore the soul and to secure the future of America – requires more than words.\n\nIt requires that most elusive of things in a democracy:\n\nUnity.\n\nUnity.\n\nIn another January in Washington, on New Year's Day 1863, Abraham Lincoln signed the Emancipation Proclamation.\n\nWhen he put pen to paper, the President said, \"If my name ever goes down into history it will be for this act and my whole soul is in it.\"\n\nMy whole soul is in it.\n\nToday, on this January day, my whole soul is in this:\n\nBringing America together.\n\nUniting our people.\n\nAnd uniting our nation.\n\nI ask every American to join me in this cause.\n\nUniting to fight the common foes we face:\n\nAnger, resentment, hatred.\n\nExtremism, lawlessness, violence.\n\nDisease, joblessness, hopelessness.\n\nWith unity we can do great things. Important things.\n\nWe can right wrongs.\n\nWe can put people to work in good jobs.\n\nWe can teach our children in safe schools.\n\nWe can overcome this deadly virus.\n\nWe can reward work, rebuild the middle class, and make health care\n\nsecure for all.\n\nWe can deliver racial justice.\n\nWe can make America, once again, the leading force for good in the world.\n\nI know speaking of unity can sound to some like a foolish fantasy.\n\nI know the forces that divide us are deep and they are real.\n\nBut I also know they are not new.\n\nOur history has been a constant struggle between the American ideal that we are all created equal and the harsh, ugly reality that racism, nativism, fear, and demonization have long torn us apart.\n\nThe battle is perennial.\n\nVictory is never assured.\n\nThrough the Civil War, the Great Depression, World War, 9/11, through struggle, sacrifice, and setbacks, our \"better angels\" have always prevailed.\n\nIn each of these moments, enough of us came together to carry all of us forward.\n\nAnd, we can do so now.\n\nHistory, faith, and reason show the way, the way of unity.\n\nWe can see each other not as adversaries but as neighbors.\n\nWe can treat each other with dignity and respect.\n\nWe can join forces, stop the shouting, and lower the temperature.\n\nFor without unity, there is no peace, only bitterness and fury.\n\nNo progress, only exhausting outrage.\n\nNo nation, only a state of chaos.\n\nThis is our historic moment of crisis and challenge, and unity is the path forward.\n\nAnd, we must meet this moment as the United States of America.\n\nIf we do that, I guarantee you, we will not fail.\n\nWe have never, ever, ever failed in America when we have acted together.\n\nAnd so today, at this time and in this place, let us start afresh.\n\nAll of us.\n\nLet us listen to one another.\n\nHear one another.\n\nSee one another.\n\nShow respect to one another.\n\nPolitics need not be a raging fire destroying everything in its path.\n\nEvery disagreement doesn't have to be a cause for total war.\n\nAnd, we must reject a culture in which facts themselves are manipulated and even manufactured.\n\nMy fellow Americans, we have to be different than this.\n\nAmerica has to be better than this.\n\nAnd, I believe America is better than this.\n\nJust look around.\n\nHere we stand, in the shadow of a Capitol dome that was completed amid the Civil War, when the Union itself hung in the balance.\n\nYet we endured and we prevailed.\n\nHere we stand looking out to the great Mall where Dr. King spoke of his dream.\n\nHere we stand, where 108 years ago at another inaugural, thousands of protestors tried to block brave women from marching for the right to vote.\n\nToday, we mark the swearing-in of the first woman in American history elected to national office – Vice President Kamala Harris.\n\nDon't tell me things can't change.\n\nHere we stand across the Potomac from Arlington National Cemetery, where heroes who gave the last full measure of devotion rest in eternal peace.\n\nAnd here we stand, just days after a riotous mob thought they could use violence to silence the will of the people, to stop the work of our democracy, and to drive us from this sacred ground.\n\nThat did not happen.\n\nIt will never happen.\n\nNot today.\n\nNot tomorrow.\n\nNot ever.\n\nTo all those who supported our campaign I am humbled by the faith you have placed in us.\n\nTo all those who did not support us, let me say this: Hear me out as we move forward. Take a measure of me and my heart.\n\nAnd if you still disagree, so be it.\n\nThat's democracy. That's America. The right to dissent peaceably, within the guardrails of our Republic, is perhaps our nation's greatest strength.\n\nYet hear me clearly: Disagreement must not lead to disunion.\n\nAnd I pledge this to you: I will be a President for all Americans.\n\nI will fight as hard for those who did not support me as for those who did.\n\nMany centuries ago, Saint Augustine, a saint of my church, wrote that a people was a multitude defined by the common objects of their love.\n\nWhat are the common objects we love that define us as Americans?\n\nI think I know.\n\nOpportunity.\n\nSecurity.\n\nLiberty.\n\nDignity.\n\nRespect.\n\nHonor.\n\nAnd, yes, the truth.\n\nRecent weeks and months have taught us a painful lesson.\n\nThere is truth and there are lies.\n\nLies told for power and for profit.\n\nAnd each of us has a duty and responsibility, as citizens, as Americans, and especially as leaders – leaders who have pledged to honor our Constitution and protect our nation — to defend the truth and to defeat the lies.\n\nI understand that many Americans view the future with some fear and trepidation.\n\nI understand they worry about their jobs, about taking care of their families, about what comes next.\n\nI get it.\n\nBut the answer is not to turn inward, to retreat into competing factions, distrusting those who don't look like you do, or worship the way you do, or don't get their news from the same sources you do.\n\nWe must end this uncivil war that pits red against blue, rural versus urban, conservative versus liberal.\n\nWe can do this if we open our souls instead of hardening our hearts.\n\nIf we show a little tolerance and humility.\n\nIf we're willing to stand in the other person's shoes just for a moment.\n\nBecause here is the thing about life: There is no accounting for what fate will deal you.\n\nThere are some days when we need a hand.\n\nThere are other days when we're called on to lend one.\n\nThat is how we must be with one another.\n\nAnd, if we are this way, our country will be stronger, more prosperous, more ready for the future.\n\nMy fellow Americans, in the work ahead of us, we will need each other.\n\nWe will need all our strength to persevere through this dark winter.\n\nWe are entering what may well be the toughest and deadliest period of the virus.\n\nWe must set aside the politics and finally face this pandemic as one nation.\n\nI promise you this: as the Bible says weeping may endure for a night but joy cometh in the morning.\n\nWe will get through this, together\n\nThe world is watching today.\n\nSo here is my message to those beyond our borders: America has been tested and we have come out stronger for it.\n\nWe will repair our alliances and engage with the world once again.\n\nNot to meet yesterday's challenges, but today's and tomorrow's.\n\nWe will lead not merely by the example of our power but by the power of our example.\n\nWe will be a strong and trusted partner for peace, progress, and security.\n\nWe have been through so much in this nation.\n\nAnd, in my first act as President, I would like to ask you to join me in a moment of silent prayer to remember all those we lost this past year to the pandemic.\n\nTo those 400,000 fellow Americans – mothers and fathers, husbands and wives, sons and daughters, friends, neighbors, and co-workers.\n\nWe will honor them by becoming the people and nation we know we can and should be.\n\nLet us say a silent prayer for those who lost their lives, for those they left behind, and for our country.\n\nAmen.\n\nThis is a time of testing.\n\nWe face an attack on democracy and on truth.\n\nA raging virus.\n\nGrowing inequity.\n\nThe sting of systemic racism.\n\nA climate in crisis.\n\nAmerica's role in the world.\n\nAny one of these would be enough to challenge us in profound ways.\n\nBut the fact is we face them all at once, presenting this nation with the gravest of responsibilities.\n\nNow we must step up.\n\nAll of us.\n\nIt is a time for boldness, for there is so much to do.\n\nAnd, this is certain.\n\nWe will be judged, you and I, for how we resolve the cascading crises of our era.\n\nWill we rise to the occasion?\n\nWill we master this rare and difficult hour?\n\nWill we meet our obligations and pass along a new and better world for our children?\n\nI believe we must and I believe we will.\n\nAnd when we do, we will write the next chapter in the American story.\n\nIt's a story that might sound something like a song that means a lot to me.\n\nIt's called \"American Anthem\" and there is one verse stands out for me:\n\n\"The work and prayers\n\nof centuries have brought us to this day\n\nWhat shall be our legacy?\n\nWhat will our children say?…\n\nLet me know in my heart\n\nWhen my days are through\n\nAmerica\n\nAmerica\n\nI gave my best to you.\"\n\nLet us add our own work and prayers to the unfolding story of our nation.\n\nIf we do this then when our days are through our children and our children's children will say of us they gave their best.\n\nThey did their duty.\n\nThey healed a broken land.\n\nMy fellow Americans, I close today where I began, with a sacred oath.\n\nBefore God and all of you I give you my word.\n\nI will always level with you.\n\nI will defend the Constitution.\n\nI will defend our democracy.\n\nI will defend America.\n\nI will give my all in your service thinking not of power, but of possibilities.\n\nNot of personal interest, but of the public good.\n\nAnd together, we shall write an American story of hope, not fear.\n\nOf unity, not division.\n\nOf light, not darkness.\n\nAn American story of decency and dignity.\n\nOf love and of healing.\n\nOf greatness and of goodness.\n\nMay this be the story that guides us.\n\nThe story that inspires us.\n\nThe story that tells ages yet to come that we answered the call of history.\n\nWe met the moment.\n\nThat democracy and hope, truth and justice, did not die on our watch but thrived.\n\nThat our America secured liberty at home and stood once again as a beacon to the world.\n\nThat is what we owe our forebearers, one another, and generations to follow.\n\nSo, with purpose and resolve we turn to the tasks of our time.\n\nSustained by faith.\n\nDriven by conviction.\n\nAnd, devoted to one another and to this country we love with all our hearts.\n\nMay God bless America and may God protect our troops.\n\nThank you, America." </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull out the data we want</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>myData <span class="ot">&lt;-</span> <span class="fu">docvars</span>(data_corpus_inaugural)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(myData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year  President FirstName                 Party
+1 1789 Washington    George                  none
+2 1793 Washington    George                  none
+3 1797      Adams      John            Federalist
+4 1801  Jefferson    Thomas Democratic-Republican
+5 1805  Jefferson    Thomas Democratic-Republican
+6 1809    Madison     James Democratic-Republican</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(myData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Year President FirstName      Party
+54 2001      Bush George W. Republican
+55 2005      Bush George W. Republican
+56 2009     Obama    Barack Democratic
+57 2013     Obama    Barack Democratic
+58 2017     Trump Donald J. Republican
+59 2021     Biden Joseph R. Democratic</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now add the text to our data frame for running the annotation tool; column must be named `text`</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>myData<span class="sc">$</span>text <span class="ot">&lt;-</span> text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The steps we take in the above get the data ready for use with the NLP package <code>cleanNLP</code>. This is, unfortunately, a common theme in R and other open-source programming languages. The ability for users to contribute their own packages means we have an enormous amount of flexibility and progress happens fast, but the trade off is that the different packages don’t always play well with one another. As you get more familiar with working in R, getting used to moving between the preferred formats of different packages becomes easier.</p>
+<p>With that said, those simple steps above are all we need to do to get our texts ready for annotation with <code>cleanNLP</code>, which takes a vector of file names, a character vector with one document in each element, or a data frame as input. If we have a corpus — as we often do — we can convert it to a character vector as above and be ready to annotate.</p>
+</section>
+<section id="annotation-cnlp_annotate" class="level1">
+<h1>Annotation: <code>cnlp_annotate()</code></h1>
+<p>So, let’s annotate. The next line is going to take a few minutes so it’s a good chance to go take care of making that pot of coffee you forgot to make before starting this up.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>annotated <span class="ot">&lt;-</span> <span class="fu">cnlp_annotate</span>(myData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Processed document 10 of 59
+Processed document 20 of 59
+Processed document 30 of 59
+Processed document 40 of 59
+Processed document 50 of 59</code></pre>
+</div>
+</div>
+<p>The output for each of the backends is going to look a little bit different, though the general structure will be consistent. Here we can start seeing what our udpipe annotation looks like. The first thing to note is that it is a very particular type of object with two fields: token and document. Both are dataframes; token is a dataframe featuring the annotations from the text, while document is a dataframe featuring just the unique document IDs. We’ll primarily be interested in the former.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(annotated<span class="sc">$</span>token)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+  doc_id   sid tid   token    token_with_ws lemma   upos  xpos  feats tid_source
+   &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     
+1      1     1 1     Fellow   "Fellow"      fellow  ADJ   JJ    Degr… 3         
+2      1     1 2     -        "-"           -       PUNCT HYPH  &lt;NA&gt;  3         
+3      1     1 3     Citizens "Citizens "   citizen NOUN  NNS   Numb… 0         
+4      1     1 4     of       "of "         of      ADP   IN    &lt;NA&gt;  6         
+5      1     1 5     the      "the "        the     DET   DT    Defi… 6         
+6      1     1 6     Senate   "Senate "     Senate  PROPN NNP   Numb… 3         
+# ℹ 1 more variable: relation &lt;chr&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(annotated<span class="sc">$</span>token)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+  doc_id   sid tid   token   token_with_ws lemma   upos  xpos  feats  tid_source
+   &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     
+1     59   230 11    .       ".\n\n"       .       PUNCT .     &lt;NA&gt;   3         
+2     59   231 1     Thank   "Thank "      thank   VERB  VBP   Mood=… 0         
+3     59   231 2     you     "you"         you     PRON  PRP   Case=… 1         
+4     59   231 3     ,       ", "          ,       PUNCT ,     &lt;NA&gt;   1         
+5     59   232 1     America "America"     America PROPN NNP   Numbe… 0         
+6     59   232 2     .       "."           .       PUNCT .     &lt;NA&gt;   1         
+# ℹ 1 more variable: relation &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>If we wanted, we could create a single database from both of these using <code>doc_id</code> variable present in both. This is particularly helpful for downstream analyses we might want to do that would analyze — say — patterns over time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>annoData <span class="ot">&lt;-</span> <span class="fu">left_join</span>(annotated<span class="sc">$</span>document, annotated<span class="sc">$</span>token, <span class="at">by =</span> <span class="st">"doc_id"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(annoData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year  President FirstName Party doc_id sid tid    token token_with_ws   lemma
+1 1789 Washington    George  none      1   1   1   Fellow        Fellow  fellow
+2 1789 Washington    George  none      1   1   2        -             -       -
+3 1789 Washington    George  none      1   1   3 Citizens     Citizens  citizen
+4 1789 Washington    George  none      1   1   4       of           of       of
+5 1789 Washington    George  none      1   1   5      the          the      the
+6 1789 Washington    George  none      1   1   6   Senate       Senate   Senate
+   upos xpos                     feats tid_source relation
+1   ADJ   JJ                Degree=Pos          3     amod
+2 PUNCT HYPH                      &lt;NA&gt;          3    punct
+3  NOUN  NNS               Number=Plur          0     root
+4   ADP   IN                      &lt;NA&gt;          6     case
+5   DET   DT Definite=Def|PronType=Art          6      det
+6 PROPN  NNP               Number=Sing          3     nmod</code></pre>
+</div>
+</div>
+<p>Let’s discuss what this new annotated data set provides. First, note that speeches are now organized at the token level. Three variables help us to index this new level: doc_id, the number of the document in the corpus; sid, the number of the sentence within the document; and tid, the number of the token within the sentence. At a really basic level then, we can now figure out the number of sentences within each document, and the average length (in tokens) of those sentences. Here’s the former.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot length of documents (in sentences) over time</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>annoData <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Sentences =</span> <span class="fu">max</span>(sid)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, Sentences)) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial4_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This is interesting and potentially useful information. Length is incredibly simple to estimate and has been used as a proxy in published research for, among other things, the <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2307352">complexity of public policies like the Affordable Care Act</a> and, in the case of judicial opinions, <a href="https://houstonlawreview.org/article/4873-an-empirical-analysis-of-the-length-of-u-s-supreme-court-opinions">a host of legal characteristics of interest (dicta, law clerk influence, etc.)</a>. Length is also often connected with readability statistics, which we will come to in later sections of the course.</p>
+<p>That said, the real prize of the annotations are the details related to each individual token. The next three columns (token, token_with_ws, and lemma) all relate directly to the actual characters of the token. Take, as an example, “Citizens” (third row). The token is “Citizens”, while the lemma is a headword for a group of related words; here, “citizen” is the lemma of “Citizens” as it is the non-plural version of the token. To get an idea of how else lemmatization changes the tokens, here’s a comparison of the first 40 tokens in the dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="fu">head</span>(annoData<span class="sc">$</span>token,<span class="dv">40</span>), <span class="fu">head</span>(annoData<span class="sc">$</span>lemma,<span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]              [,2]             
+ [1,] "Fellow"          "fellow"         
+ [2,] "-"               "-"              
+ [3,] "Citizens"        "citizen"        
+ [4,] "of"              "of"             
+ [5,] "the"             "the"            
+ [6,] "Senate"          "Senate"         
+ [7,] "and"             "and"            
+ [8,] "of"              "of"             
+ [9,] "the"             "the"            
+[10,] "House"           "House"          
+[11,] "of"              "of"             
+[12,] "Representatives" "Representatives"
+[13,] ":"               ":"              
+[14,] "Among"           "among"          
+[15,] "the"             "the"            
+[16,] "vicissitudes"    "vicissitude"    
+[17,] "incident"        "incident"       
+[18,] "to"              "to"             
+[19,] "life"            "life"           
+[20,] "no"              "no"             
+[21,] "event"           "event"          
+[22,] "could"           "could"          
+[23,] "have"            "have"           
+[24,] "filled"          "fill"           
+[25,] "me"              "I"              
+[26,] "with"            "with"           
+[27,] "greater"         "greater"        
+[28,] "anxieties"       "anxiety"        
+[29,] "than"            "than"           
+[30,] "that"            "that"           
+[31,] "of"              "of"             
+[32,] "which"           "which"          
+[33,] "the"             "the"            
+[34,] "notification"    "notification"   
+[35,] "was"             "be"             
+[36,] "transmitted"     "transmit"       
+[37,] "by"              "by"             
+[38,] "your"            "you"            
+[39,] "order"           "order"          
+[40,] ","               ","              </code></pre>
+</div>
+</div>
+<p>Lemmatization can be particularly useful as a pre-processing step in some analyses; topic modeling immediately comes to mind. The general reason is that references to different forms of the same underlying token (say, “transmit”, “transmitted”, “transmits”) all connote one related concept but are going to be treated as entirely distinct tokens if we were to say just look for the most frequent tokens in the corpus or in a speech. We’ll come back to this later this semester when we discuss stemming and other related pre-processing considerations.</p>
+</section>
+<section id="part-of-speech-tagging" class="level1">
+<h1>Part of Speech Tagging</h1>
+<p>Now we are into the heart of the annotations. Let’s highlight a chunk of the data to use as illustrations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First tokens from Trump's speech</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(annoData[<span class="fu">which</span>(annoData<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2017</span>),<span class="dv">9</span><span class="sc">:</span><span class="dv">15</span>],<span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       token_with_ws     lemma  upos xpos                            feats
+147953        Chief      Chief PROPN  NNP                      Number=Sing
+147954      Justice    Justice PROPN  NNP                      Number=Sing
+147955       Roberts   Roberts PROPN  NNP                      Number=Sing
+147956            ,          , PUNCT    ,                             &lt;NA&gt;
+147957    President  President PROPN  NNP                      Number=Sing
+147958        Carter    Carter PROPN  NNP                      Number=Sing
+147959            ,          , PUNCT    ,                             &lt;NA&gt;
+147960    President  President PROPN  NNP                      Number=Sing
+147961       Clinton   Clinton PROPN  NNP                      Number=Sing
+147962            ,          , PUNCT    ,                             &lt;NA&gt;
+147963    President  President PROPN  NNP                      Number=Sing
+147964          Bush      Bush PROPN  NNP                      Number=Sing
+147965            ,          , PUNCT    ,                             &lt;NA&gt;
+147966    President  President PROPN  NNP                      Number=Sing
+147967         Obama     Obama PROPN  NNP                      Number=Sing
+147968            ,          , PUNCT    ,                             &lt;NA&gt;
+147969       fellow     fellow   ADJ   JJ                       Degree=Pos
+147970     Americans Americans PROPN NNPS                      Number=Plur
+147971            ,          , PUNCT    ,                             &lt;NA&gt;
+147972          and        and CCONJ   CC                             &lt;NA&gt;
+147973       people     people  NOUN  NNS                      Number=Plur
+147974           of         of   ADP   IN                             &lt;NA&gt;
+147975          the        the   DET   DT        Definite=Def|PronType=Art
+147976         world     world  NOUN   NN                      Number=Sing
+147977            :          : PUNCT    :                             &lt;NA&gt;
+147978        thank      thank  VERB  VBP Mood=Ind|Tense=Pres|VerbForm=Fin
+147979           you       you  PRON  PRP   Case=Acc|Person=2|PronType=Prs
+147980         .\n\n         . PUNCT    .                             &lt;NA&gt;
+       tid_source  relation
+147953          2  compound
+147954          0      root
+147955          2      flat
+147956          2     punct
+147957          2      conj
+147958          5      flat
+147959          8     punct
+147960          2      conj
+147961          8      flat
+147962         11     punct
+147963          2      conj
+147964         11      flat
+147965         14     punct
+147966          2      conj
+147967         14      flat
+147968         18     punct
+147969         18      amod
+147970          2      conj
+147971         21     punct
+147972         21        cc
+147973          2      conj
+147974         24      case
+147975         24       det
+147976         21      nmod
+147977          2     punct
+147978          2 parataxis
+147979         26       obj
+147980          2     punct</code></pre>
+</div>
+</div>
+<p>Next, <em>upos</em> stands for the universal part of speech tag while <em>xpos</em> stands for the treebank-specific part of speech. You can find descriptions of each <em>upos</em> classification tag <a href="https://universaldependencies.org/u/pos/index.html">here</a>. Knowing the parts of speech, we could — at a really basic level — just look to see what nouns are most frequently used in presidential addresses overall, and in the most recent era (i.e., post 2000).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>annoData <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Party <span class="sc">==</span> <span class="st">"Republican"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">&gt;</span> <span class="dv">1980</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">"NOUN"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(lemma) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="at">n=</span><span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Selecting by count</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   lemma      count
+   &lt;chr&gt;      &lt;int&gt;
+ 1 freedom       61
+ 2 nation        53
+ 3 people        51
+ 4 world         51
+ 5 time          48
+ 6 government    47
+ 7 country       36
+ 8 day           34
+ 9 citizen       33
+10 life          30</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>annoData <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Party <span class="sc">==</span> <span class="st">"Democratic"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">&gt;</span> <span class="dv">1980</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">"NOUN"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(lemma) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="at">n=</span><span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Selecting by count</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 2
+   lemma      count
+   &lt;chr&gt;      &lt;int&gt;
+ 1 nation        57
+ 2 world         51
+ 3 people        50
+ 4 time          41
+ 5 today         37
+ 6 century       27
+ 7 child         26
+ 8 life          24
+ 9 government    22
+10 day           21
+11 democracy     21
+12 generation    21</code></pre>
+</div>
+</div>
+<p>You can further distinguish parts of speech using the feats field, which references more specific “features” related to the parts of speech. More information on the features can be found <a href="https://universaldependencies.org/u/feat/index.html">here</a>.</p>
+</section>
+<section id="dependency-relations" class="level1">
+<h1>Dependency Relations</h1>
+<p>Finally, the relationships between tokens are captured in dependency relations, which are reflected by syntactic annotations through <code>tid_source</code> and <code>relation</code>. The goal of dependency relations is to form a generalizable structure of language that works across languages (thus, universal dependencies). If we want to capture meaning from many different texts in different languages (with all of the different customs of those particular languages), we would first want to have some generalizable structure about how words in languages fit together.</p>
+<p>Consider a sentence like: <code>The child chased the dog down the hall.</code> The underlying idea behind dependency relations is to focus primarily on content words; in the above, that would be “child”, “chased”, “dog”, and “hall”. We can start to see how knowing <em>just</em> those four words gets us a long way to understanding what might be happening; if we can add in some sort of structure (say, that “child” is the nominal subject [nsubj], or the do-er of the action, and “dog” is the object [obj], or the receiver of the action) then we can recognize that a child chased a dog (rather than the much-less-cute reverse).</p>
+<p>The full list of dependency relations and their abbreviations can be found <a href="https://universaldependencies.org/u/dep/">here</a>.</p>
+<p>What can we do with dependency relations? At the simplest level, they can be features that we rely on for classification. For that matter, everything we’ve covered in this tutorial could be a feature. We’ll cover classifiers later this semester and will be able to explore this avenue a bit more then.</p>
+<p>We could also, however, be more directly interested in using the dependency relations to study particular choices over word usage in texts. As an example, consider unique phrasings from President Trump’s 2017 speech and President Biden’s 2021 speech (for more on the approach here, see the <code>cleanNLP</code> documentation <a href="https://statsmaths.github.io/cleanNLP/state-of-union.html">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'magrittr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    set_names</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:tidyr':
+
+    extract</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trump 2017</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>annoData <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    annotated<span class="sc">$</span>token,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"doc_id"</span><span class="ot">=</span><span class="st">"doc_id"</span>, <span class="st">"sid"</span><span class="ot">=</span><span class="st">"sid"</span>, <span class="st">"tid"</span><span class="ot">=</span><span class="st">"tid_source"</span>),</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffix=</span><span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_source"</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2017</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(relation <span class="sc">==</span> <span class="st">"obj"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">doc_id =</span> doc_id, <span class="at">start =</span> token, <span class="at">word =</span> token_source) <span class="sc">%&gt;%</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(word_frequency, <span class="at">by=</span><span class="st">"word"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(frequency <span class="sc">&lt;</span> <span class="fl">0.005</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(doc_id, start, word) <span class="sc">%$%</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">"%s =&gt; %s"</span>, start, word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "transfer =&gt; orderly"      "schools =&gt; neighborhoods"
+ [3] "mothers =&gt; trapped"       "mothers =&gt; flush"        
+ [5] "industry =&gt; expense"      "industry =&gt; subsidized"  
+ [7] "trillions =&gt; trillions"   "friendship =&gt; goodwill"  
+ [9] "energies =&gt; tomorrow"     "blood =&gt; patriots"       
+[11] "freedoms =&gt; glorious"    </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Biden 2021</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>annoData <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    annotated<span class="sc">$</span>token,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"doc_id"</span><span class="ot">=</span><span class="st">"doc_id"</span>, <span class="st">"sid"</span><span class="ot">=</span><span class="st">"sid"</span>, <span class="st">"tid"</span><span class="ot">=</span><span class="st">"tid_source"</span>),</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffix=</span><span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_source"</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2021</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(relation <span class="sc">==</span> <span class="st">"obj"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">doc_id =</span> doc_id, <span class="at">start =</span> token, <span class="at">word =</span> token_source) <span class="sc">%&gt;%</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(word_frequency, <span class="at">by=</span><span class="st">"word"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(frequency <span class="sc">&lt;</span> <span class="fl">0.005</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(doc_id, start, word) <span class="sc">%$%</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">"%s =&gt; %s"</span>, start, word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "transfer =&gt; peaceful"   "resilience =&gt; strength" "President =&gt; spoke"    
+ [4] "salute =&gt; lifetime"     "oath =&gt; sacred"         "oath =&gt; sworn"         
+ [7] "virus =&gt; deadly"        "justice =&gt; racial"      "culture =&gt; manipulated"
+[10] "women =&gt; brave"         "work =&gt; democracy"      "campaign =&gt; humbled"   
+[13] "lesson =&gt; painful"      "war =&gt; uncivil"         "war =&gt; pits"           
+[16] "tolerance =&gt; humility"  "what =&gt; toughest"       "alliances =&gt; engage"   
+[19] "prayer =&gt; silent"       "attack =&gt; democracy"    "crises =&gt; cascading"   
+[22] "crises =&gt; era"          "work =&gt; prayers"       </code></pre>
+</div>
+</div>
+</section>
+<section id="string-operations" class="level1">
+<h1>String Operations</h1>
+<p>To this point, we’ve worked on getting our text into R, getting some basic statistics out, and annotating that text. One thing we have skipped past is a really foundational tool in programming, regular expressions. The idea here is to create a pattern of text that we can search for. To see what we can do with regular expressions, let’s start playing with them.</p>
+<p>We are going to use the stringr library, which is associated with the tidyverse. To be clear, a lot of what we do could be done in base R, but the language for the base R functions (grep(),gsub()`, etc.) can be far less intuitive.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="whats-in-a-string" class="level2">
+<h2 class="anchored" data-anchor-id="whats-in-a-string">What’s in a string?</h2>
+<p>Let’s look at some simpler data first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sentences)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 720</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sentences)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The birch canoe slid on the smooth planks." 
+[2] "Glue the sheet to the dark blue background."
+[3] "It's easy to tell the depth of a well."     
+[4] "These days a chicken leg is a rare dish."   
+[5] "Rice is often served in round bowls."       
+[6] "The juice of lemons makes fine punch."      </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">'It</span><span class="sc">\'</span><span class="st">s easy to tell the depth of a well.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you can see, <code>sentences</code> contains 720 short and simple sentences. We’ll use these to illustrate regular expressions. A first thing to note is the string. See that \? That’s an escape, and tells R to ignore the single quote. Why is this important? Well, notice what demarcates each sentence that’s being printed. That’s right, single quotes! So the \ let’s R know that the element is not yet complete. That doesn’t mean the \ is always there though. If you want to see the “printed” version of the sentence, you can use writeLines()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="fu">head</span>(sentences))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The birch canoe slid on the smooth planks.
+Glue the sheet to the dark blue background.
+It's easy to tell the depth of a well.
+These days a chicken leg is a rare dish.
+Rice is often served in round bowls.
+The juice of lemons makes fine punch.</code></pre>
+</div>
+</div>
+<p>There are lots of other special characters that may require escapes in R if you are doing regular expression matching. That can be particularly challenging because of the special meanings of those special characters — like the single quote — leads to particular operations. As an example, the single period . in a regular expression is a <em>wild card</em> for character matching, and will match any character but a newline. Therefore, if you include the . in a regular expression without escaping it, you’ll end up matching just about everything. The cheat sheet posted to the course website gives more details on these special characters.</p>
+</section>
+<section id="combining-strings" class="level2">
+<h2 class="anchored" data-anchor-id="combining-strings">Combining strings</h2>
+<p>Now that we have our strings, let’s do some basic operations. We can combine two strings using the str_c command in stringr. For instance, if we wanted to combine the first two sentences from sentences, we could.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(sentences[<span class="dv">1</span>], sentences[<span class="dv">2</span>], <span class="at">sep =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The birch canoe slid on the smooth planks. Glue the sheet to the dark blue background."</code></pre>
+</div>
+</div>
+<p>This also works if we have two separate string vectors that we’d like to combine. Imagine if we split <code>sentences</code> in half; we could combine the two halves! This is often really helpful if you have a couple of character / string variables in your dataset / metadata that you’d like to combine into a single indicator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>sentencesA <span class="ot">&lt;-</span> sentences[<span class="dv">1</span><span class="sc">:</span><span class="dv">360</span>]</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>sentencesB <span class="ot">&lt;-</span> sentences[<span class="dv">361</span><span class="sc">:</span><span class="dv">720</span>]</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">str_c</span>(sentencesA, sentencesB, <span class="at">sep =</span> <span class="st">" "</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The birch canoe slid on the smooth planks. Feed the white mouse some flower seeds."     
+[2] "Glue the sheet to the dark blue background. The thaw came early and freed the stream."  
+[3] "It's easy to tell the depth of a well. He took the lead and kept it the whole distance."
+[4] "These days a chicken leg is a rare dish. The key you designed will fit the lock."       
+[5] "Rice is often served in round bowls. Plead to the council to free the poor thief."      
+[6] "The juice of lemons makes fine punch. Better hash is made of rare beef."                </code></pre>
+</div>
+</div>
+<p>You can also combine all of the strings in one vector into a single observation using the <code>collapse</code> option.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">str_c</span>(<span class="fu">head</span>(sentences), <span class="at">collapse =</span> <span class="st">" "</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that the string in collapse is up to you but is what will be pasted </span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># between the elements in the new string. So here's a version with a new line</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># which gets specified by \n</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="fu">head</span>(sentences), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The birch canoe slid on the smooth planks.\nGlue the sheet to the dark blue background.\nIt's easy to tell the depth of a well.\nThese days a chicken leg is a rare dish.\nRice is often served in round bowls.\nThe juice of lemons makes fine punch."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and here's what that looks like with writeLines() then</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="fu">str_c</span>(<span class="fu">head</span>(sentences), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The birch canoe slid on the smooth planks.
+Glue the sheet to the dark blue background.
+It's easy to tell the depth of a well.
+These days a chicken leg is a rare dish.
+Rice is often served in round bowls.
+The juice of lemons makes fine punch.</code></pre>
+</div>
+</div>
+<p>You can also do the opposite, splitting a string into two by using <code>str_split()</code> and identifying a common splitting indicator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create combined string</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>combined_string <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="fu">head</span>(sentences), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>combined_string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The birch canoe slid on the smooth planks.\nGlue the sheet to the dark blue background.\nIt's easy to tell the depth of a well.\nThese days a chicken leg is a rare dish.\nRice is often served in round bowls.\nThe juice of lemons makes fine punch."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create split string; simplify = TRUE returns a matrix (rather than a list)</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>split_string <span class="ot">&lt;-</span> <span class="fu">str_split</span>(combined_string, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>split_string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]                                        
+[1,] "The birch canoe slid on the smooth planks."
+     [,2]                                         
+[1,] "Glue the sheet to the dark blue background."
+     [,3]                                    
+[1,] "It's easy to tell the depth of a well."
+     [,4]                                      
+[1,] "These days a chicken leg is a rare dish."
+     [,5]                                  
+[1,] "Rice is often served in round bowls."
+     [,6]                                   
+[1,] "The juice of lemons makes fine punch."</code></pre>
+</div>
+</div>
+</section>
+<section id="substrings" class="level2">
+<h2 class="anchored" data-anchor-id="substrings">Substrings</h2>
+<p>Occassionally, we need to pull out parts of strings. For instance, maybe we just want the first few letters of each string. In those instances, we can use <code>str_sub()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example string this actually makes some sense for</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>month.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "January"   "February"  "March"     "April"     "May"       "June"     
+ [7] "July"      "August"    "September" "October"   "November"  "December" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># substring the first three letters</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>short_months <span class="ot">&lt;-</span> <span class="fu">str_sub</span>(month.name, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>short_months</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"</code></pre>
+</div>
+</div>
+<p>You can also use <code>str_sub()</code> to change a string through replacement of specific characters. Here we’ll replace the first few letters of every month with “Cat”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>year_of_cat <span class="ot">&lt;-</span> month.name</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(year_of_cat, <span class="dv">1</span>, <span class="dv">2</span>) <span class="ot">&lt;-</span> <span class="st">"Cat"</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>year_of_cat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Catnuary"   "Catbruary"  "Catrch"     "Catril"     "Caty"      
+ [6] "Catne"      "Catly"      "Catgust"    "Catptember" "Cattober"  
+[11] "Catvember"  "Catcember" </code></pre>
+</div>
+</div>
+</section>
+<section id="pattern-searches" class="level2">
+<h2 class="anchored" data-anchor-id="pattern-searches">Pattern searches</h2>
+<p>Where regular expressions really kick in isn’t with these sorts of operations though. It’s in searching for specific patterns. Let’s start illustrating by looking at one type of pattern: a word! To illustrate these pattern searches, we’ll use another set of words, a vector of names of fruit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>fruit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "apple"             "apricot"           "avocado"          
+ [4] "banana"            "bell pepper"       "bilberry"         
+ [7] "blackberry"        "blackcurrant"      "blood orange"     
+[10] "blueberry"         "boysenberry"       "breadfruit"       
+[13] "canary melon"      "cantaloupe"        "cherimoya"        
+[16] "cherry"            "chili pepper"      "clementine"       
+[19] "cloudberry"        "coconut"           "cranberry"        
+[22] "cucumber"          "currant"           "damson"           
+[25] "date"              "dragonfruit"       "durian"           
+[28] "eggplant"          "elderberry"        "feijoa"           
+[31] "fig"               "goji berry"        "gooseberry"       
+[34] "grape"             "grapefruit"        "guava"            
+[37] "honeydew"          "huckleberry"       "jackfruit"        
+[40] "jambul"            "jujube"            "kiwi fruit"       
+[43] "kumquat"           "lemon"             "lime"             
+[46] "loquat"            "lychee"            "mandarine"        
+[49] "mango"             "mulberry"          "nectarine"        
+[52] "nut"               "olive"             "orange"           
+[55] "pamelo"            "papaya"            "passionfruit"     
+[58] "peach"             "pear"              "persimmon"        
+[61] "physalis"          "pineapple"         "plum"             
+[64] "pomegranate"       "pomelo"            "purple mangosteen"
+[67] "quince"            "raisin"            "rambutan"         
+[70] "raspberry"         "redcurrant"        "rock melon"       
+[73] "salal berry"       "satsuma"           "star fruit"       
+[76] "strawberry"        "tamarillo"         "tangerine"        
+[79] "ugli fruit"        "watermelon"       </code></pre>
+</div>
+</div>
+<p>We can look to see which include the string berry in their name in a whole lot of different ways.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># which elements in the vector have berry in the name</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">str_which</span>(fruit, <span class="st">"berry"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># does the fruit contain the string `berry`</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(fruit, <span class="st">"berry"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE
+[13] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE
+[25] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
+[37] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[49] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+[73]  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># name the fruits that contain the string `berry`</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_subset</span>(fruit, <span class="st">"berry"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "bilberry"    "blackberry"  "blueberry"   "boysenberry" "cloudberry" 
+ [6] "cranberry"   "elderberry"  "goji berry"  "gooseberry"  "huckleberry"
+[11] "mulberry"    "raspberry"   "salal berry" "strawberry" </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="regular-expressions" class="level1">
+<h1>Regular Expressions</h1>
+<p>Now we can try to generalize beyond the simple word case to broader patterns. These can capture more complex phenomena, which are often what we need when we are doing work with text-as-data.</p>
+<p>To illustrate, we’ll go back to the sentences data from earlier. Now let’s look for any sentences that contain “hog”, “bog”, “log”, or “dog”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note that the spaces are important within the quotes below. what happens if you remove them? Why?</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_subset</span>(sentences, <span class="st">' [hbd]og '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The hog crawled under the high fence."     
+[2] "The kitten chased the dog down the street."
+[3] "Tend the sheep while the dog wanders."     </code></pre>
+</div>
+</div>
+<p>We can also negate the letters we’re using above by using ^, looking for any words that do not start with h, b, d, or l but that do end with -og. Or we can use - to look across a range of characters</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">str_subset</span>(sentences, <span class="st">'[^hbdl]og'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look for anything between b and l</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_subset</span>(sentences, <span class="st">' [b-l]ot '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "The wide road shimmered in the hot sun."  
+ [2] "Move the vat over the hot fire."          
+ [3] "The harder he tried the less he got done."
+ [4] "The just claim got the right verdict."    
+ [5] "A shower of dirt fell from the hot pipes."
+ [6] "The large house had hot water taps."      
+ [7] "The lake sparkled in the red hot sun."    
+ [8] "It takes a lot of help to finish these."  
+ [9] "Serve the hot rum to the tired heroes."   
+[10] "Twist the valve and release hot steam."   
+[11] "Breakfast buns are fine with a hot drink."
+[12] "The beetle droned in the hot June sun."   </code></pre>
+</div>
+</div>
+<section id="classes-and-quantifiers" class="level2">
+<h2 class="anchored" data-anchor-id="classes-and-quantifiers">Classes and quantifiers</h2>
+<p>There are also a series of escaped characters that have special meanings. These let you match, for example, any alphanumeric character (), any space (), or any number (. These become really helpful when combined with quantifiers, which indicate the number of occurrences of the character. On this, * indicates zero or more of the character, and + indicates one more of the character.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create some strings</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>tutone <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jenny Jenny, who can I turn to?"</span>, <span class="st">"867-5309"</span>)</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="co"># match any number string of more than one number</span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(tutone, <span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+character(0)
+
+[[2]]
+[1] "867"  "5309"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match any alphanumeric string of 0 or more</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(tutone, <span class="st">"</span><span class="sc">\\</span><span class="st">w*"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+ [1] "Jenny" ""      "Jenny" ""      ""      "who"   ""      "can"   ""     
+[10] "I"     ""      "turn"  ""      "to"    ""      ""     
+
+[[2]]
+[1] "867"  ""     "5309" ""    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match any number string of more than three numbers; note the comma</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(tutone, <span class="st">"</span><span class="sc">\\</span><span class="st">d{4,}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+character(0)
+
+[[2]]
+[1] "5309"</code></pre>
+</div>
+</div>
+</section>
+<section id="extracting-data" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-data">Extracting data</h2>
+<p>Where regular expressions start to get really powerful for us is in automating the extraction of information from rich digital text. Consider an example where we want to identify mentions of courts from inaugural addresses. We can leverage regular expressions to do just that:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(text, <span class="st">" [C|c]ourt[s]*|[J|j]udicia[</span><span class="sc">\\</span><span class="st">w]+ "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]        
+ [1,] NA          
+ [2,] NA          
+ [3,] NA          
+ [4,] NA          
+ [5,] NA          
+ [6,] NA          
+ [7,] " court"    
+ [8,] NA          
+ [9,] NA          
+[10,] "judiciary "
+[11,] NA          
+[12,] NA          
+[13,] "judicial " 
+[14,] "judiciary "
+[15,] NA          
+[16,] "judicial " 
+[17,] NA          
+[18,] "judicial " 
+[19,] " Court"    
+[20,] NA          
+[21,] NA          
+[22,] NA          
+[23,] NA          
+[24,] " court"    
+[25,] NA          
+[26,] "judicial " 
+[27,] " courts"   
+[28,] " courts"   
+[29,] NA          
+[30,] NA          
+[31,] " courts"   
+[32,] NA          
+[33,] NA          
+[34,] " court"    
+[35,] " Court"    
+[36,] "judicial " 
+[37,] " court"    
+[38,] NA          
+[39,] NA          
+[40,] NA          
+[41,] NA          
+[42,] NA          
+[43,] NA          
+[44,] NA          
+[45,] NA          
+[46,] NA          
+[47,] NA          
+[48,] NA          
+[49,] NA          
+[50,] NA          
+[51,] NA          
+[52,] NA          
+[53,] NA          
+[54,] NA          
+[55,] NA          
+[56,] NA          
+[57,] NA          
+[58,] NA          
+[59,] NA          </code></pre>
+</div>
+</div>
+<p>While that isn’t necessarily the most useful, consider if you were looking instead for something like the authors of each text, where the author was featured in a consistent format at the start of each text. While you could go through by hand and code each of those, it is much more straightforward to do this with regular expressions. As you start working with your corpus — and particularly if you are in any way thinking of coding something by hand from the corpus — take some time to think and to chat with me about whether it’s something we can do with regular expressions.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

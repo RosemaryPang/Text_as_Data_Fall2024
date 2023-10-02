@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Tutorial_5</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DACSS758 Text as Data Fall 2023</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial1.html" rel="" target="">
+ <span class="menu-text">Tutorial 1 Introduction to R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial2.html" rel="" target="">
+ <span class="menu-text">Tutorial 2 Text as Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial3.html" rel="" target="">
+ <span class="menu-text">Tutorial 3 Web Scraping in R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial4.html" rel="" target="">
+ <span class="menu-text">Tutorial 4 Natural Language Processing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Tutorial5.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Tutorial 5 Preprocessing</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap-tokenization" id="toc-recap-tokenization" class="nav-link active" data-scroll-target="#recap-tokenization">Recap: Tokenization</a></li>
+  <li><a href="#stopword-lists" id="toc-stopword-lists" class="nav-link" data-scroll-target="#stopword-lists">Stopword lists</a>
+  <ul class="collapse">
+  <li><a href="#quanteda-package" id="toc-quanteda-package" class="nav-link" data-scroll-target="#quanteda-package">Quanteda package</a></li>
+  <li><a href="#tidytext-package" id="toc-tidytext-package" class="nav-link" data-scroll-target="#tidytext-package">Tidytext package</a></li>
+  </ul></li>
+  <li><a href="#stemming" id="toc-stemming" class="nav-link" data-scroll-target="#stemming">Stemming</a></li>
+  <li><a href="#pretext" id="toc-pretext" class="nav-link" data-scroll-target="#pretext">preText</a></li>
+  <li><a href="#n-grams-and-phrasemachine" id="toc-n-grams-and-phrasemachine" class="nav-link" data-scroll-target="#n-grams-and-phrasemachine">N-grams and <code>phrasemachine</code></a></li>
+  <li><a href="#readability" id="toc-readability" class="nav-link" data-scroll-target="#readability">Readability</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tutorial 5 Preprocessing</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This is our fifth tutorial for running R. In this tutorial, we’ll learn about text pre-processing. Text data is often messy and noisy, and careful preprocessing can soften the edges for downstream analyses.</p>
+<p>By the end of this notebook, you should be familiar with the following:</p>
+<ol type="1">
+<li><p>Stopword lists</p></li>
+<li><p>Stemming</p></li>
+<li><p>preText</p></li>
+<li><p>N-grams and <code>phrasemachine</code></p></li>
+<li><p>Readability</p></li>
+</ol>
+<section id="recap-tokenization" class="level1">
+<h1>Recap: Tokenization</h1>
+<p>This week, we’ll return to looking at the Harry Potter series. We’ll first install and load the packages for today’s notebook.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: usethis</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(harrypotter)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2
+──</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ ggplot2 3.4.2     ✔ purrr   1.0.1
+✔ tibble  3.2.1     ✔ dplyr   1.1.1
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::arrange()   masks plyr::arrange()
+✖ purrr::compact()   masks plyr::compact()
+✖ dplyr::count()     masks plyr::count()
+✖ dplyr::desc()      masks plyr::desc()
+✖ dplyr::failwith()  masks plyr::failwith()
+✖ dplyr::filter()    masks stats::filter()
+✖ dplyr::id()        masks plyr::id()
+✖ dplyr::lag()       masks stats::lag()
+✖ dplyr::mutate()    masks plyr::mutate()
+✖ dplyr::rename()    masks plyr::rename()
+✖ dplyr::summarise() masks plyr::summarise()
+✖ dplyr::summarize() masks plyr::summarize()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package version: 3.3.1
+Unicode version: 14.0
+ICU version: 70.1
+Parallel computing: 4 of 4 threads used.
+See https://quanteda.io for tutorials and examples.</code></pre>
+</div>
+</div>
+<p>As a reminder, we have seven books — each stored as a character vector where each chapter is an element in that vector — now available in our workspace. These are:</p>
+<ol type="1">
+<li><p><code>philosophers_stone</code>: Harry Potter and the Philosophers Stone (1997)</p></li>
+<li><p><code>chamber_of_secrets</code>: Harry Potter and the Chamber of Secrets (1998)</p></li>
+<li><p><code>prisoner_of_azkaban</code>: Harry Potter and the Prisoner of Azkaban (1999)</p></li>
+<li><p><code>goblet_of_fire</code>: Harry Potter and the Goblet of Fire (2000)</p></li>
+<li><p><code>order_of_the_phoenix</code>: Harry Potter and the Order of the Phoenix</p></li>
+<li><p><code>half_blood_prince</code>: Harry Potter and the Half-Blood Prince (2005)</p></li>
+<li><p><code>deathly_hallows</code>: Harry Potter and the Deathly Hallows (2007)</p></li>
+</ol>
+<p>As you’ll recall, we want to convert these to corpus objects that are easier to work with.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(philosophers_stone)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(philosophers_stone_corpus) </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 17 documents, showing 17 documents:
+
+   Text Types Tokens Sentences
+  text1  1274   5643       349
+  text2  1067   4128       237
+  text3  1226   4630       297
+  text4  1199   4759       321
+  text5  1822   8371       563
+  text6  1568   7949       566
+  text7  1379   5445       351
+  text8  1096   3594       198
+  text9  1428   6130       410
+ text10  1294   5207       334
+ text11  1114   4152       276
+ text12  1511   6729       447
+ text13  1079   3929       261
+ text14  1113   4354       308
+ text15  1386   6437       459
+ text16  1582   8277       591
+ text17  1491   7101       506</code></pre>
+</div>
+</div>
+<p>We then add indicators for books and chapters, and create the metadata. This will be useful later when we add all the books together into a single corpus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>book <span class="ot">&lt;-</span> <span class="st">"Philosopher's Stone"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a chapter indicator</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(philosophers_stone_summary<span class="sc">$</span>Text, <span class="st">"[0-9]+"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add the metadata</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(philosophers_stone_corpus) <span class="ot">&lt;-</span> philosophers_stone_summary</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 17 documents, showing 17 documents:
+
+   Text Types Tokens Sentences                book chapter
+  text1  1274   5643       349 Philosopher's Stone       1
+  text2  1067   4128       237 Philosopher's Stone       2
+  text3  1226   4630       297 Philosopher's Stone       3
+  text4  1199   4759       321 Philosopher's Stone       4
+  text5  1822   8371       563 Philosopher's Stone       5
+  text6  1568   7949       566 Philosopher's Stone       6
+  text7  1379   5445       351 Philosopher's Stone       7
+  text8  1096   3594       198 Philosopher's Stone       8
+  text9  1428   6130       410 Philosopher's Stone       9
+ text10  1294   5207       334 Philosopher's Stone      10
+ text11  1114   4152       276 Philosopher's Stone      11
+ text12  1511   6729       447 Philosopher's Stone      12
+ text13  1079   3929       261 Philosopher's Stone      13
+ text14  1113   4354       308 Philosopher's Stone      14
+ text15  1386   6437       459 Philosopher's Stone      15
+ text16  1582   8277       591 Philosopher's Stone      16
+ text17  1491   7101       506 Philosopher's Stone      17</code></pre>
+</div>
+</div>
+<p>Next, we move to tokenization. The default breaks on white space.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 17 documents and 6 docvars.
+text1 :
+ [1] "THE"     "BOY"     "WHO"     "LIVED"   "Mr"      "."       "and"    
+ [8] "Mrs"     "."       "Dursley" ","       "of"     
+[ ... and 5,631 more ]
+
+text2 :
+ [1] "THE"       "VANISHING" "GLASS"     "Nearly"    "ten"       "years"    
+ [7] "had"       "passed"    "since"     "the"       "Dursleys"  "had"      
+[ ... and 4,116 more ]
+
+text3 :
+ [1] "THE"         "LETTERS"     "FROM"        "NO"          "ONE"        
+ [6] "The"         "escape"      "of"          "the"         "Brazilian"  
+[11] "boa"         "constrictor"
+[ ... and 4,618 more ]
+
+text4 :
+ [1] "THE"     "KEEPER"  "OF"      "THE"     "KEYS"    "BOOM"    "."      
+ [8] "They"    "knocked" "again"   "."       "Dudley" 
+[ ... and 4,747 more ]
+
+text5 :
+ [1] "DIAGON"   "ALLEY"    "Harry"    "woke"     "early"    "the"     
+ [7] "next"     "morning"  "."        "Although" "he"       "could"   
+[ ... and 8,359 more ]
+
+text6 :
+ [1] "THE"            "JOURNEY"        "FROM"           "PLATFORM"      
+ [5] "NINE"           "AND"            "THREE-QUARTERS" "Harry's"       
+ [9] "last"           "month"          "with"           "the"           
+[ ... and 7,937 more ]
+
+[ reached max_ndoc ... 11 more documents ]</code></pre>
+</div>
+</div>
+<p>You’ll recall that — in Week 2 — we covered a couple of options from here about what we can do next with our texts. A few dynamics are quickly evident from the text above: punctuation and numbers are still present. Those are straightforward to remove when you tokenize.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also drop punctuation</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_punct =</span> T)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 17 documents and 6 docvars.
+text1 :
+ [1] "THE"     "BOY"     "WHO"     "LIVED"   "Mr"      "and"     "Mrs"    
+ [8] "Dursley" "of"      "number"  "four"    "Privet" 
+[ ... and 4,626 more ]
+
+text2 :
+ [1] "THE"       "VANISHING" "GLASS"     "Nearly"    "ten"       "years"    
+ [7] "had"       "passed"    "since"     "the"       "Dursleys"  "had"      
+[ ... and 3,456 more ]
+
+text3 :
+ [1] "THE"         "LETTERS"     "FROM"        "NO"          "ONE"        
+ [6] "The"         "escape"      "of"          "the"         "Brazilian"  
+[11] "boa"         "constrictor"
+[ ... and 3,856 more ]
+
+text4 :
+ [1] "THE"     "KEEPER"  "OF"      "THE"     "KEYS"    "BOOM"    "They"   
+ [8] "knocked" "again"   "Dudley"  "jerked"  "awake"  
+[ ... and 3,738 more ]
+
+text5 :
+ [1] "DIAGON"   "ALLEY"    "Harry"    "woke"     "early"    "the"     
+ [7] "next"     "morning"  "Although" "he"       "could"    "tell"    
+[ ... and 6,619 more ]
+
+text6 :
+ [1] "THE"            "JOURNEY"        "FROM"           "PLATFORM"      
+ [5] "NINE"           "AND"            "THREE-QUARTERS" "Harry's"       
+ [9] "last"           "month"          "with"           "the"           
+[ ... and 6,330 more ]
+
+[ reached max_ndoc ... 11 more documents ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as numbers</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_punct =</span> T,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_numbers =</span> T)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 17 documents and 6 docvars.
+text1 :
+ [1] "THE"     "BOY"     "WHO"     "LIVED"   "Mr"      "and"     "Mrs"    
+ [8] "Dursley" "of"      "number"  "four"    "Privet" 
+[ ... and 4,626 more ]
+
+text2 :
+ [1] "THE"       "VANISHING" "GLASS"     "Nearly"    "ten"       "years"    
+ [7] "had"       "passed"    "since"     "the"       "Dursleys"  "had"      
+[ ... and 3,456 more ]
+
+text3 :
+ [1] "THE"         "LETTERS"     "FROM"        "NO"          "ONE"        
+ [6] "The"         "escape"      "of"          "the"         "Brazilian"  
+[11] "boa"         "constrictor"
+[ ... and 3,853 more ]
+
+text4 :
+ [1] "THE"     "KEEPER"  "OF"      "THE"     "KEYS"    "BOOM"    "They"   
+ [8] "knocked" "again"   "Dudley"  "jerked"  "awake"  
+[ ... and 3,735 more ]
+
+text5 :
+ [1] "DIAGON"   "ALLEY"    "Harry"    "woke"     "early"    "the"     
+ [7] "next"     "morning"  "Although" "he"       "could"    "tell"    
+[ ... and 6,610 more ]
+
+text6 :
+ [1] "THE"            "JOURNEY"        "FROM"           "PLATFORM"      
+ [5] "NINE"           "AND"            "THREE-QUARTERS" "Harry's"       
+ [9] "last"           "month"          "with"           "the"           
+[ ... and 6,329 more ]
+
+[ reached max_ndoc ... 11 more documents ]</code></pre>
+</div>
+</div>
+<p>Often capitalization is not something that we want to retain. Here, we’ll change everything to lower case. Note that, though I have not run into any instance of someone actually doing this, you could also convert to all upper-case tokens by <code>tokens_toupper()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens_tolower</span>(philosophers_stone_tokens)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 17 documents and 6 docvars.
+text1 :
+ [1] "the"     "boy"     "who"     "lived"   "mr"      "and"     "mrs"    
+ [8] "dursley" "of"      "number"  "four"    "privet" 
+[ ... and 4,626 more ]
+
+text2 :
+ [1] "the"       "vanishing" "glass"     "nearly"    "ten"       "years"    
+ [7] "had"       "passed"    "since"     "the"       "dursleys"  "had"      
+[ ... and 3,456 more ]
+
+text3 :
+ [1] "the"         "letters"     "from"        "no"          "one"        
+ [6] "the"         "escape"      "of"          "the"         "brazilian"  
+[11] "boa"         "constrictor"
+[ ... and 3,853 more ]
+
+text4 :
+ [1] "the"     "keeper"  "of"      "the"     "keys"    "boom"    "they"   
+ [8] "knocked" "again"   "dudley"  "jerked"  "awake"  
+[ ... and 3,735 more ]
+
+text5 :
+ [1] "diagon"   "alley"    "harry"    "woke"     "early"    "the"     
+ [7] "next"     "morning"  "although" "he"       "could"    "tell"    
+[ ... and 6,610 more ]
+
+text6 :
+ [1] "the"            "journey"        "from"           "platform"      
+ [5] "nine"           "and"            "three-quarters" "harry's"       
+ [9] "last"           "month"          "with"           "the"           
+[ ... and 6,329 more ]
+
+[ reached max_ndoc ... 11 more documents ]</code></pre>
+</div>
+</div>
+</section>
+<section id="stopword-lists" class="level1">
+<h1>Stopword lists</h1>
+<p>Depending on your research project, many of the words above may be of limited interest. Consider “the”; it’s unlikely to ever be of much interest in understanding the thematic content of a set of texts. Often we just want to remove these sorts of function words that contribute so little substantive meanings. Most commonly, these are referred to as stopwords.</p>
+<section id="quanteda-package" class="level2">
+<h2 class="anchored" data-anchor-id="quanteda-package">Quanteda package</h2>
+<p>With quanteda, we can remove stopwords using any of few pre-defined lists that come shipped with the package. Here, we can print that list out first, then remove the tokens:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">print</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "i"          "me"         "my"         "myself"     "we"        
+  [6] "our"        "ours"       "ourselves"  "you"        "your"      
+ [11] "yours"      "yourself"   "yourselves" "he"         "him"       
+ [16] "his"        "himself"    "she"        "her"        "hers"      
+ [21] "herself"    "it"         "its"        "itself"     "they"      
+ [26] "them"       "their"      "theirs"     "themselves" "what"      
+ [31] "which"      "who"        "whom"       "this"       "that"      
+ [36] "these"      "those"      "am"         "is"         "are"       
+ [41] "was"        "were"       "be"         "been"       "being"     
+ [46] "have"       "has"        "had"        "having"     "do"        
+ [51] "does"       "did"        "doing"      "would"      "should"    
+ [56] "could"      "ought"      "i'm"        "you're"     "he's"      
+ [61] "she's"      "it's"       "we're"      "they're"    "i've"      
+ [66] "you've"     "we've"      "they've"    "i'd"        "you'd"     
+ [71] "he'd"       "she'd"      "we'd"       "they'd"     "i'll"      
+ [76] "you'll"     "he'll"      "she'll"     "we'll"      "they'll"   
+ [81] "isn't"      "aren't"     "wasn't"     "weren't"    "hasn't"    
+ [86] "haven't"    "hadn't"     "doesn't"    "don't"      "didn't"    
+ [91] "won't"      "wouldn't"   "shan't"     "shouldn't"  "can't"     
+ [96] "cannot"     "couldn't"   "mustn't"    "let's"      "that's"    
+[101] "who's"      "what's"     "here's"     "there's"    "when's"    
+[106] "where's"    "why's"      "how's"      "a"          "an"        
+[111] "the"        "and"        "but"        "if"         "or"        
+[116] "because"    "as"         "until"      "while"      "of"        
+[121] "at"         "by"         "for"        "with"       "about"     
+[126] "against"    "between"    "into"       "through"    "during"    
+[131] "before"     "after"      "above"      "below"      "to"        
+[136] "from"       "up"         "down"       "in"         "out"       
+[141] "on"         "off"        "over"       "under"      "again"     
+[146] "further"    "then"       "once"       "here"       "there"     
+[151] "when"       "where"      "why"        "how"        "all"       
+[156] "any"        "both"       "each"       "few"        "more"      
+[161] "most"       "other"      "some"       "such"       "no"        
+[166] "nor"        "not"        "only"       "own"        "same"      
+[171] "so"         "than"       "too"        "very"       "will"      </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 175</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Available for other languages as well</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">stopwords</span>(<span class="st">"zh"</span>, <span class="at">source=</span><span class="st">"misc"</span>),<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "按"     "按照"   "俺"     "们"     "阿"     "别"     "别人"   "别处"  
+ [9] "是"     "别的"   "别管"   "说"     "不"     "不仅"   "不但"   "不光"  
+[17] "不单"   "不只"   "不外乎" "不如"   "不妨"   "不尽"   "然"     "不得"  
+[25] "不怕"   "不惟"   "不成"   "不拘"   "料"     "不是"   "不比"   "不然"  
+[33] "特"     "不独"   "不管"   "不至于" "若"     "不论"   "不过"   "不问"  
+[41] "比"     "方"     "比如"   "及"     "本身"   "本着"   "本地"   "本人"  
+[49] "本"     "巴巴"  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove stopwords from our tokens object</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens1 <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(philosophers_stone_tokens, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(philosophers_stone_tokens1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 17 documents and 6 docvars.
+text1 :
+ [1] "boy"       "lived"     "mr"        "mrs"       "dursley"   "number"   
+ [7] "four"      "privet"    "drive"     "proud"     "say"       "perfectly"
+[ ... and 2,350 more ]
+
+text2 :
+ [1] "vanishing" "glass"     "nearly"    "ten"       "years"     "passed"   
+ [7] "since"     "dursleys"  "woken"     "find"      "nephew"    "front"    
+[ ... and 1,806 more ]
+
+text3 :
+ [1] "letters"      "one"          "escape"       "brazilian"    "boa"         
+ [6] "constrictor"  "earned"       "harry"        "longest-ever" "punishment"  
+[11] "time"         "allowed"     
+[ ... and 2,085 more ]
+
+text4 :
+ [1] "keeper"   "keys"     "boom"     "knocked"  "dudley"   "jerked"  
+ [7] "awake"    "cannon"   "said"     "stupidly" "crash"    "behind"  
+[ ... and 2,033 more ]
+
+text5 :
+ [1] "diagon"   "alley"    "harry"    "woke"     "early"    "next"    
+ [7] "morning"  "although" "tell"     "daylight" "kept"     "eyes"    
+[ ... and 3,765 more ]
+
+text6 :
+ [1] "journey"        "platform"       "nine"           "three-quarters"
+ [5] "harry's"        "last"           "month"          "dursleys"      
+ [9] "fun"            "true"           "dudley"         "now"           
+[ ... and 3,340 more ]
+
+[ reached max_ndoc ... 11 more documents ]</code></pre>
+</div>
+</div>
+</section>
+<section id="tidytext-package" class="level2">
+<h2 class="anchored" data-anchor-id="tidytext-package">Tidytext package</h2>
+<p>In addition to quanteda, there are other packages containing different lists of stopwords, for example, <code>tidytext</code>. Tidytext provides various lexicons for English stop words. Sources of the stopwords are: snowball, SMART, or onix.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tidytextstopwords <span class="ot">&lt;-</span> tidytext<span class="sc">::</span>stop_words</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(tidytextstopwords)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#OR</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>tidytext<span class="sc">::</span><span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"smart"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 571 × 2
+   word        lexicon
+   &lt;chr&gt;       &lt;chr&gt;  
+ 1 a           smart  
+ 2 a's         smart  
+ 3 able        smart  
+ 4 about       smart  
+ 5 above       smart  
+ 6 according   smart  
+ 7 accordingly smart  
+ 8 across      smart  
+ 9 actually    smart  
+10 after       smart  
+# ℹ 561 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>tidytext<span class="sc">::</span><span class="fu">get_stopwords</span>(<span class="at">language =</span> <span class="st">"de"</span>) <span class="co"># change language</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 231 × 2
+   word  lexicon 
+   &lt;chr&gt; &lt;chr&gt;   
+ 1 aber  snowball
+ 2 alle  snowball
+ 3 allem snowball
+ 4 allen snowball
+ 5 aller snowball
+ 6 alles snowball
+ 7 als   snowball
+ 8 also  snowball
+ 9 am    snowball
+10 an    snowball
+# ℹ 221 more rows</code></pre>
+</div>
+</div>
+<p>Remove stop words using tidytext stopwords. And we see find the number of tokens after removing stopwords is different as we use different packages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>tidystop <span class="ot">&lt;-</span> <span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"smart"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens2 <span class="ot">&lt;-</span>     <span class="fu">tokens_select</span>(philosophers_stone_tokens, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> tidystop<span class="sc">$</span>word,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(philosophers_stone_tokens2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 17 documents and 6 docvars.
+text1 :
+ [1] "boy"       "lived"     "mr"        "mrs"       "dursley"   "number"   
+ [7] "privet"    "drive"     "proud"     "perfectly" "normal"    "people"   
+[ ... and 1,832 more ]
+
+text2 :
+ [1] "vanishing" "glass"     "ten"       "years"     "passed"    "dursleys" 
+ [7] "woken"     "find"      "nephew"    "front"     "step"      "privet"   
+[ ... and 1,433 more ]
+
+text3 :
+ [1] "letters"      "escape"       "brazilian"    "boa"          "constrictor" 
+ [6] "earned"       "harry"        "longest-ever" "punishment"   "time"        
+[11] "allowed"      "cupboard"    
+[ ... and 1,686 more ]
+
+text4 :
+ [1] "keeper"   "keys"     "boom"     "knocked"  "dudley"   "jerked"  
+ [7] "awake"    "cannon"   "stupidly" "crash"    "uncle"    "vernon"  
+[ ... and 1,592 more ]
+
+text5 :
+ [1] "diagon"   "alley"    "harry"    "woke"     "early"    "morning" 
+ [7] "daylight" "eyes"     "shut"     "tight"    "dream"    "told"    
+[ ... and 2,940 more ]
+
+text6 :
+ [1] "journey"        "platform"       "three-quarters" "harry's"       
+ [5] "month"          "dursleys"       "fun"            "true"          
+ [9] "dudley"         "scared"         "harry"          "stay"          
+[ ... and 2,481 more ]
+
+[ reached max_ndoc ... 11 more documents ]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="stemming" class="level1">
+<h1>Stemming</h1>
+<p>Now, we turn to stemming. Of the pre-processing options, stemming is perhaps the most controversial. The underlying idea is to collapse multiple tokens that are of the same general form into a single token (the word stem). For example, consider “tackle”, which could take a multitude of different forms: “tackle”, “tackling”, “tackled”, or “tackles”. Without stemming, each of these is treated as a unique token. That’s potentially undesirable, particularly when the central concept (or stem) is likely to be the real point of substantive interest. Therefore, we can stem the tokens in our vocabulary, yielding a new set of tokens. In the above example, this would yield “tackl”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we use the tokens after removing stopwords using quanteda</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens_wordstem</span>(philosophers_stone_tokens1)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 17 documents and 6 docvars.
+text1 :
+ [1] "boy"     "live"    "mr"      "mrs"     "dursley" "number"  "four"   
+ [8] "privet"  "drive"   "proud"   "say"     "perfect"
+[ ... and 2,350 more ]
+
+text2 :
+ [1] "vanish"  "glass"   "near"    "ten"     "year"    "pass"    "sinc"   
+ [8] "dursley" "woken"   "find"    "nephew"  "front"  
+[ ... and 1,806 more ]
+
+text3 :
+ [1] "letter"      "one"         "escap"       "brazilian"   "boa"        
+ [6] "constrictor" "earn"        "harri"       "longest-ev"  "punish"     
+[11] "time"        "allow"      
+[ ... and 2,085 more ]
+
+text4 :
+ [1] "keeper" "key"    "boom"   "knock"  "dudley" "jerk"   "awak"   "cannon"
+ [9] "said"   "stupid" "crash"  "behind"
+[ ... and 2,033 more ]
+
+text5 :
+ [1] "diagon"   "alley"    "harri"    "woke"     "earli"    "next"    
+ [7] "morn"     "although" "tell"     "daylight" "kept"     "eye"     
+[ ... and 3,765 more ]
+
+text6 :
+ [1] "journey"     "platform"    "nine"        "three-quart" "harri"      
+ [6] "last"        "month"       "dursley"     "fun"         "true"       
+[11] "dudley"      "now"        
+[ ... and 3,340 more ]
+
+[ reached max_ndoc ... 11 more documents ]</code></pre>
+</div>
+</div>
+<p>##Stemming Vs. Lemmatization</p>
+<p>Stemming is a process that stems or removes last few characters from a word, this often leads to incorrect meanings and spelling (such as the “tackl” we saw earlier). In contrast, Lemmatization considers the context and converts the word to its meaningful base form, which is called Lemma.</p>
+<p>Now let’s experience the difference:</p>
+<p>We have an example sentence. Then we preprocess that data: tokenization, remove punctuation and stop words.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="st">"This location does not have good service. When through drive-through and they forgot our drinks and our sides. While they were preparing what they forgot, we could see another girl who had her back to us and it was obvious that she was on the phone. ANy other KFC would be better."</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>example_ready <span class="ot">&lt;-</span> <span class="fu">tokens</span>(example,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">remove_punct=</span>T)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>example_ready <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(example_ready,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern=</span><span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">select =</span> <span class="st">"remove"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we compare stemming and lemmatization. Note that we can also lemmatize tokens using <code>cleanNLP</code> package. Please check Tutorial 4 for more details.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stemming</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>stemming <span class="ot">&lt;-</span> <span class="fu">tokens_wordstem</span>(example_ready)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(stemming)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "locat"         "good"          "servic"        "drive-through"
+ [5] "forgot"        "drink"         "side"          "prepar"       
+ [9] "forgot"        "see"           "anoth"         "girl"         
+[13] "back"          "us"            "obvious"       "phone"        
+[17] "KFC"           "better"       </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lemmatization</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>lemmitized <span class="ot">&lt;-</span> <span class="fu">tokens_replace</span>(example_ready,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">pattern =</span> lexicon<span class="sc">::</span> hash_lemmas<span class="sc">$</span>token,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">replacement =</span> lexicon<span class="sc">::</span> hash_lemmas<span class="sc">$</span>lemma)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(lemmitized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "location"      "good"          "service"       "drive-through"
+ [5] "forget"        "drink"         "side"          "prepare"      
+ [9] "forget"        "see"           "another"       "girl"         
+[13] "back"          "us"            "obvious"       "phone"        
+[17] "KFC"           "good"         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What's lexicon package's hash_lemmas?</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lexicon<span class="sc">::</span>hash_lemmas,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              token         lemma
+  1:         'cause       because
+  2:             'd         would
+  3:            'em          them
+  4:            'll          will
+  5:             'm            be
+  6:            'n'           and
+  7:           'til         until
+  8:            've          have
+  9:        a-bombs        a-bomb
+ 10:      aardvarks      aardvark
+ 11:          abaci        abacus
+ 12:       abacuses        abacus
+ 13:       abalones       abalone
+ 14:      abandoned       abandon
+ 15:     abandoning       abandon
+ 16:       abandons       abandon
+ 17:         abased         abase
+ 18:         abases         abase
+ 19:        abashed         abash
+ 20:        abashes         abash
+ 21:       abashing         abash
+ 22:        abasing         abase
+ 23:         abated         abate
+ 24:     abatements     abatement
+ 25:         abates         abate
+ 26:        abating         abate
+ 27:      abattoirs      abattoir
+ 28:       abbesses        abbess
+ 29:         abbeys         abbey
+ 30:         abbots         abbot
+ 31:    abbreviated    abbreviate
+ 32:    abbreviates    abbreviate
+ 33:   abbreviating    abbreviate
+ 34:  abbreviations  abbreviation
+ 35:       abcesses        abcess
+ 36:      abdicated      abdicate
+ 37:      abdicates      abdicate
+ 38:     abdicating      abdicate
+ 39:    abdications    abdication
+ 40:       abdomens       abdomen
+ 41:       abdomina       abdomen
+ 42:     abdominals     abdominal
+ 43:       abducted        abduct
+ 44:      abducting        abduct
+ 45:     abductions     abduction
+ 46:      abductors      abductor
+ 47:        abducts        abduct
+ 48:    aberrations    aberration
+ 49:          abets          abet
+ 50:        abetted          abet
+ 51:       abetting          abet
+ 52:       abhorred         abhor
+ 53:      abhorring         abhor
+ 54:         abhors         abhor
+ 55:         abided         abide
+ 56:         abides         abide
+ 57:        abiding         abide
+ 58:      abilities       ability
+ 59:       abjected        abject
+ 60:      abjecters      abjecter
+ 61:      abjecting        abject
+ 62:        abjects        abject
+ 63:        abjured        abjure
+ 64:        abjures        abjure
+ 65:       abjuring        abjure
+ 66:        ablated        ablate
+ 67:        ablates        ablate
+ 68:       ablating        ablate
+ 69:      ablations      ablation
+ 70:          abler          able
+ 71:         ablest          able
+ 72:      ablutions      ablution
+ 73:  abnormalities   abnormality
+ 74:          abode         abide
+ 75:         abodes         abode
+ 76:      abolished       abolish
+ 77:      abolishes       abolish
+ 78:     abolishing       abolish
+ 79:  abolitionists  abolitionist
+ 80:     abolitions     abolition
+ 81:     abominated     abominate
+ 82:     abominates     abominate
+ 83:    abominating     abominate
+ 84:   abominations   abomination
+ 85:    aboriginals    aboriginal
+ 86:     aborigines     aborigine
+ 87:        aborted         abort
+ 88: abortifacients abortifacient
+ 89:       aborting         abort
+ 90:   abortionists   abortionist
+ 91:      abortions      abortion
+ 92:         aborts         abort
+ 93:       abounded        abound
+ 94:      abounding        abound
+ 95:        abounds        abound
+ 96:    about-faces    about-face
+ 97:    about-turns    about-turn
+ 98:        abraded        abrade
+ 99:        abrades        abrade
+100:       abrading        abrade
+              token         lemma</code></pre>
+</div>
+</div>
+<p>##What to do?</p>
+<p>Clearly, you have a multitude of options for pre-processing texts. The choice, then, for what to do becomes complicated. Should you remove stop words? Numbers? Punctuation? Capitalization? Should you stem? What combination and why? Anyone who has done work in the area has faced scrutiny — warranted or not — from reviewers questioning the pre-processing choices.</p>
+<p>At the most basic level, the answer to this should be theoretically driven. Consider the research question and whether each of the varied pre-processing steps would make sense for that research question. Are you missing something if you remove capitalization or punctuation? Are there different versions of the same term that might be meaningful for your analysis? It’s most important to be able to defend the choices on the merits.</p>
+<p>Of course, you also have the ability to simply, in an appendix, include versions of analyses that carry out the analysis while employing the pre-processing steps highlighted by the reviewer. Especially if your code is well-written and the computational time required for the analysis is low, this may be another useful response.</p>
+</section>
+<section id="pretext" class="level1">
+<h1>preText</h1>
+<p>A final way of approaching this is more systematic, and is proposed by <a href="https://www.mjdenny.com/">Matt Denny</a> — a former UMass (and Penn State University) student! — and Art Spirling in their <a href="https://www.cambridge.org/core/journals/political-analysis/article/abs/text-preprocessing-for-unsupervised-learning-why-it-matters-when-it-misleads-and-what-to-do-about-it/AA7D4DE0AA6AB208502515AE3EC6989E">paper</a>. They’ve written an R package to execute the recommendations from their paper, which you can download directly from github. Note that there are a ton of dependencies associated with the package. You can see a vignette describing the use of <code>preText</code> <a href="http://www.mjdenny.com/getting_started_with_preText.html">here</a>.</p>
+<p>Install the package first</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("matthewjdenny/preText")</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(preText)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>preText: Diagnostics to Assess the Effects of Text Preprocessing Decisions
+Version 0.7.2 created on 2021-07-25.
+copyright (c) 2021, Matthew J. Denny, Georgetown University
+                    Arthur Spirling, NYU
+Type vignette('getting_started_with_preText') to get started.
+Development website: https://github.com/matthewjdenny/preText</code></pre>
+</div>
+</div>
+<p>We use the U.S. presidential inaugural speeches from Quanteda example data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> data_corpus_inaugural</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use first 10 documents for example</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>documents <span class="ot">&lt;-</span> corp[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># take a look at the document names</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">names</span>(documents))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "1789-Washington" "1793-Washington" "1797-Adams"      "1801-Jefferson" 
+ [5] "1805-Jefferson"  "1809-Madison"    "1813-Madison"    "1817-Monroe"    
+ [9] "1821-Monroe"     "1825-Adams"     </code></pre>
+</div>
+</div>
+<p>Having loaded in some data, we can now make use of the <code>factorial_preprocessing()</code> function, which will preprocess the data 64 or 128 different ways (depending on whether n-grams are included). In this example, we are going to preprocess the documents all 128 different ways. This should take between 5 and 10 minutes on most modern laptops. Longer documents and larger numbers of documents will significantly increase run time and memory usage.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>preprocessed_documents <span class="ot">&lt;-</span> <span class="fu">factorial_preprocessing</span>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    documents,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_ngrams =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">infrequent_term_threshold =</span> <span class="fl">0.2</span>,</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Preprocessing 10 documents 128 different ways...</code></pre>
+</div>
+</div>
+<p>This function will output a list object with three fields. The first of these is <code>$choices</code>, a data.frame containing indicators for each of the preprocessing steps used. The second is <code>$dfm_list</code>, which is a list with 64 or 128 entries, each of which contains a <code>quanteda::dfm</code> object preprocessed according to the specification in the corresponding row in <code>choices</code>. Each DFM in this list will be labeled to match the row names in choices, but you can also access these labels from the <code>$labels</code> field. We can look at the first few rows of <code>choices</code> below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(preprocessed_documents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "choices"  "dfm_list" "labels"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(preprocessed_documents<span class="sc">$</span>choices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              removePunctuation removeNumbers lowercase stem removeStopwords
+P-N-L-S-W-I-3              TRUE          TRUE      TRUE TRUE            TRUE
+N-L-S-W-I-3               FALSE          TRUE      TRUE TRUE            TRUE
+P-L-S-W-I-3                TRUE         FALSE      TRUE TRUE            TRUE
+L-S-W-I-3                 FALSE         FALSE      TRUE TRUE            TRUE
+P-N-S-W-I-3                TRUE          TRUE     FALSE TRUE            TRUE
+N-S-W-I-3                 FALSE          TRUE     FALSE TRUE            TRUE
+              infrequent_terms use_ngrams
+P-N-L-S-W-I-3             TRUE       TRUE
+N-L-S-W-I-3               TRUE       TRUE
+P-L-S-W-I-3               TRUE       TRUE
+L-S-W-I-3                 TRUE       TRUE
+P-N-S-W-I-3               TRUE       TRUE
+N-S-W-I-3                 TRUE       TRUE</code></pre>
+</div>
+</div>
+<p>Now that we have our preprocessed documents, we can perform the preText procedure on the factorial preprocessed corpus using the <code>preText()</code> function. It will be useful now to give a name to our data set using the <code>dataset_name</code> argument, as this will show up in some of the plots we generate with the output.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>preText_results <span class="ot">&lt;-</span> <span class="fu">preText</span>(</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    preprocessed_documents,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">dataset_name =</span> <span class="st">"Inaugural Speeches"</span>,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">distance_method =</span> <span class="st">"cosine"</span>,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">num_comparisons =</span> <span class="dv">20</span>,</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generating document distances...
+Generating preText Scores...
+Generating regression results..
+The R^2 for this model is: 0.6000916 
+Regression results (negative coefficients imply less risk):
+                 Variable Coefficient    SE
+1               Intercept       0.112 0.005
+2      Remove Punctuation       0.018 0.004
+3          Remove Numbers       0.002 0.004
+4               Lowercase       0.000 0.004
+5                Stemming      -0.002 0.004
+6        Remove Stopwords      -0.036 0.004
+7 Remove Infrequent Terms      -0.008 0.004
+8              Use NGrams      -0.027 0.004
+Complete in: 11.339 seconds...</code></pre>
+</div>
+</div>
+<p>The <code>preText()</code> function returns a list of result with four fields:</p>
+<ol type="1">
+<li><p><code>$preText_scores</code>: A data.frame containing preText scores and preprocessing step labels for each preprocessing step as columns. Note that there is no preText score for the case of no prepprocessing steps.</p></li>
+<li><p><code>$ranked_preText_scores</code>: A data.frame that is identical to $preText_scores except that it is ordered by the magnitude of the preText score</p></li>
+<li><p><code>$choices</code>: A data.frame containing binary indicators of which preprocessing steps were applied to factorial preprocessed DFM.</p></li>
+<li><p><code>$regression_results</code>: A data.frame containing regression results where indicators for each preprocessing decision are regressed on the preText score for that specification.</p></li>
+</ol>
+<p>We can now feed these results to two functions that will help us make better sense of them. <code>preText_score_plot()</code> creates a dot plot of scores for each preprocessing specification:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">preText_score_plot</span>(preText_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in ggplot2::geom_point(ggplot2::aes(x = Variable, y = Coefficient), :
+Ignoring unknown parameters: `linewidth`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial5_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Here, the least risky specifications have the lowest preText score and are displayed at the top of the plot. We can also see the conditional effects of each preprocessing step on the mean preText score for each specification that included that step. Here again, a negative coefficient indicates that a step tends to reduce the unusualness of the results, while a positive coefficient indicates that applying the step is likely to produce more unusual results for that corpus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">regression_coefficient_plot</span>(preText_results,</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">remove_intercept =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in ggplot2::geom_point(ggplot2::aes(y = Variable, x = Coefficient), :
+Ignoring unknown parameters: `linewidth`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial5_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In this particular toy example, we see that including n-grams and removing stop words tends to produce more “normal” results, while removing punctuation tends to produce more unusual results.</p>
+</section>
+<section id="n-grams-and-phrasemachine" class="level1">
+<h1>N-grams and <code>phrasemachine</code></h1>
+<p>Like mentioned in the lecture, curse of dimensionality means we get lots of meaningless bigrams, trigrams (e.g.&nbsp;“is”, “is of”, “is of the”). What if we want to find substantively meaningful n-grams? The solution is <code>phrasemachine</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("slanglab/phrasemachine/R/phrasemachine")</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phrasemachine)                      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>phrasemachine: Simple Phrase Extraction
+Version 1.2.0 created on 2017-05-29.
+copyright (c) 2016, Matthew J. Denny, Abram Handler, Brendan O'Connor.
+Type help('phrasemachine') or
+vignette('getting_started_with_phrasemachine') to get started.
+Development website: https://github.com/slanglab/phrasemachine</code></pre>
+</div>
+</div>
+<p>We load in the U.S. presidential inaugural speeches from Quanteda example data, and use the first 5 documents for example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">corpus</span>(quanteda<span class="sc">::</span>data_corpus_inaugural)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>documents <span class="ot">&lt;-</span> <span class="fu">as.character</span>(corp)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">names</span>(documents))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1789-Washington" "1793-Washington" "1797-Adams"      "1801-Jefferson" 
+[5] "1805-Jefferson" </code></pre>
+</div>
+</div>
+<p>Phrasemachine provides one main function: <code>phrasemachine()</code>, which takes as input a vector of strings (one string per document), or a <code>quanteda</code> corpus object. This function returns phrases extracted from the input documents in one of two forms. Find more information <a href="https://www.mjdenny.com/getting_started_with_phrasemachine.html">here</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>phrases <span class="ot">&lt;-</span> <span class="fu">phrasemachine</span>(documents,</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">minimum_ngram_length =</span> <span class="dv">2</span>,</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">maximum_ngram_length =</span> <span class="dv">8</span>,</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">return_phrase_vectors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">return_tag_sequences =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Currently tagging document 1 of 5 
+Currently tagging document 2 of 5 
+Currently tagging document 3 of 5 
+Currently tagging document 4 of 5 
+Currently tagging document 5 of 5 
+Extracting phrases from document 1 of 5 
+Extracting phrases from document 2 of 5 
+Extracting phrases from document 3 of 5 
+Extracting phrases from document 4 of 5 
+Extracting phrases from document 5 of 5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at some example phrases</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(phrases[[<span class="dv">1</span>]]<span class="sc">$</span>phrases[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Fellow-Citizens_of_the_Senate" "House_of_Representatives"     
+ [3] "vicissitudes_incident"         "vicissitudes_incident_to_life"
+ [5] "incident_to_life"              "greater_anxieties"            
+ [7] "14th_day"                      "14th_day_of_the_present_month"
+ [9] "day_of_the_present_month"      "present_month"                </code></pre>
+</div>
+</div>
+</section>
+<section id="readability" class="level1">
+<h1>Readability</h1>
+<p>While we’ve covered some pre-processing above, we’re going to take a detour now before we head into representing texts next week. One form of analysis that can occassionally be interesting, though with limitations, is the readability of a text. The general idea here is that some forms of composition are easier to understand, while others may take more scrutiny. Interestingly, most of these are based on transformations around some basic aspects of text: the length of words or sentences, for instance.</p>
+<p>There are loads of actual measures for readability; fortunately, nearly all are included with the quanteda. For the full list, check out the reference page <a href="https://quanteda.io/reference/textstat_readability.html">here</a>. Here, we’ll play around and check out the readability of Philosopher’s Stone by chapter, to see how the book progresses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate readability</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>readability <span class="ot">&lt;-</span> <span class="fu">textstat_readability</span>(philosophers_stone_corpus, </span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measure =</span> <span class="fu">c</span>(<span class="st">"Flesch.Kincaid"</span>)) </span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add in a chapter number</span></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>readability<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(readability))</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the dataset</span></span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(readability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  document Flesch.Kincaid chapter
+1    text1       5.681909       1
+2    text2       6.127471       2
+3    text3       5.545426       3
+4    text4       4.466180       4
+5    text5       5.066278       5
+6    text6       4.148612       6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot results</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(readability, <span class="fu">aes</span>(<span class="at">x =</span> chapter, <span class="at">y =</span> Flesch.Kincaid)) <span class="sc">+</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial5_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>That’s interesting, but as I noted, we have lots of options. Lets take a look at a couple of others.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>readability <span class="ot">&lt;-</span> <span class="fu">textstat_readability</span>(philosophers_stone_corpus, </span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measure =</span> <span class="fu">c</span>(<span class="st">"Flesch.Kincaid"</span>, <span class="st">"FOG"</span>, <span class="st">"Coleman.Liau.grade"</span>)) </span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add in a chapter number</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>readability<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(readability))</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the dataset</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(readability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  document Flesch.Kincaid      FOG Coleman.Liau.grade chapter
+1    text1       5.681909 7.824466           7.463970       1
+2    text2       6.127471 7.835226           7.498145       2
+3    text3       5.545426 7.143473           7.450994       3
+4    text4       4.466180 6.451429           6.035503       4
+5    text5       5.066278 6.785200           7.323824       5
+6    text6       4.148612 6.209827           6.379894       6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot results</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(readability, <span class="fu">aes</span>(<span class="at">x =</span> chapter)) <span class="sc">+</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Flesch.Kincaid), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> FOG), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Coleman.Liau.grade), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> </span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Tutorial5_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The shapes are all pretty close. Let’s look at some correlations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(readability<span class="sc">$</span>Flesch.Kincaid, readability<span class="sc">$</span>FOG, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9339215</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(readability<span class="sc">$</span>Coleman.Liau.grade, readability<span class="sc">$</span>FOG, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8295903</code></pre>
+</div>
+</div>
+<p>This is a little bit of the story and is pretty straightforward. Remember how all of these are just “magic number” transformations of the same underlying measures (syllables, word counts, sentence length, etc.)? Because of that, they are generally really highly correlated. That’s a good thing.</p>
+<p>So what’s the downside? Well, I can’t do any better to explain the problem than Mark Liberman’s Language Log post <a href="https://languagelog.ldc.upenn.edu/nll/?p=21847">here</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

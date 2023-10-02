@@ -12,6 +12,7 @@ website:
       - Tutorial2.qmd
       - Tutorial3.qmd
       - Tutorial4.qmd
+      - Tutorial5.qmd
 
 
 format:

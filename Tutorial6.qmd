@@ -1,0 +1,209 @@
+---
+title: "Tutorial 6 Text Representation I"
+pagetitle: Tutorial_6
+---
+
+In this tutorial, we'll learn about **representing texts**. This week, we'll continue looking at the Harry Potter series. We'll first install and load the packages for today's notebook.
+
+```{r}
+library(devtools)
+#devtools::install_github("bradleyboehmke/harrypotter")
+library(harrypotter)
+library(tidytext)
+library(plyr)
+library(tidyverse)
+library(quanteda)
+library(quanteda.textplots)
+```
+
+As a reminder, we have seven books --- each stored as a character vector where each chapter is an element in that vector --- now available in our workspace. These are:
+
+-   `philosophers_stone`: Harry Potter and the Philosophers Stone (1997)
+-   `chamber_of_secrets`: Harry Potter and the Chamber of Secrets (1998)
+-   `prisoner_of_azkaban`: Harry Potter and the Prisoner of Azkaban (1999)
+-   `goblet_of_fire`: Harry Potter and the Goblet of Fire (2000)
+-   `order_of_the_phoenix`: Harry Potter and the Order of the Phoenix
+-   `half_blood_price`: Harry Potter and the Half-Blood Prince (2005)
+-   `deathly_hallows`: Harry Potter and the Deathly Hallows (2007)
+
+As you'll recall, we want to convert these to corpus objects that are easier to work with.
+
+```{r}
+philosophers_stone_corpus <- corpus(philosophers_stone)
+philosophers_stone_summary <- summary(philosophers_stone_corpus) 
+philosophers_stone_summary
+```
+
+```{r}
+# add an indicator for the book; this will be useful later when we add all the books together into a single corpus
+philosophers_stone_summary$book <- "Philosopher's Stone"
+
+# create a chapter indicator
+philosophers_stone_summary$chapter <- as.numeric(str_extract(philosophers_stone_summary$Text, "[0-9]+"))
+
+# add the metadata
+docvars(philosophers_stone_corpus) <- philosophers_stone_summary
+```
+
+# Document-Feature Matrix
+
+A common first-step in text analysis is converting texts from their written format ("The dog runs down the hall.") to a numerical representation of that language. The basic approach for representing a sentence is the *document-feature matrix*, sometimes also call the *document-term matrix*. Here, we are creating a matrix where the rows indicate documents, the columns indicate words, and the value of each cell in the matrix is the count of the word (column) for the document (row).
+
+We can use quanteda's `dfm` command to generate the document-feature matrix directly from the corpus object.
+
+```{r}
+# create the dfm
+philosophers_stone_dfm <- dfm(tokens(philosophers_stone_corpus))
+
+# find out a quick summary of the dfm
+philosophers_stone_dfm
+```
+
+The summary of the document-feature matrix provides a few interesting notes for us. We have the number of documents (17 chapters) and the number of features (6,161). We also get a note about sparsity. This refers to the number of 0 entries in our matrix; here, 80.18% of our matrix is 0. The high sparsity of text data is a well-recognized trait and something we will regularly return to.
+
+Below the summary statement, we can see the first few rows and columns of our document-feature matrix. The first entry in the matrix, for instance, indicates that "the" appears 204 times in the first chapter (text1) of "The Philosopher's Stone". This reminds us that we did not preprocess our corpus. Fortunately, the `dfm()` function explicitly includes the ability to preprocess when you are creating your matrix. Indeed, that's why the text is lower-cased above; the function defaults to removing capitalization. We can be a bit more heavy-handed with our preprocessing as follows.
+
+```{r}
+# create the dfm
+philosophers_stone_dfm <- tokens(philosophers_stone_corpus,
+                                    remove_punct = TRUE,
+                                    remove_numbers = TRUE) %>%
+                           dfm(tolower=TRUE) %>%
+                           dfm_remove(stopwords('english'))
+# find out a quick summary of the dfm
+philosophers_stone_dfm
+```
+
+# Working with DFMs
+
+Once we have our document-feature matrix, and have made some preprocessing decisions, we can turn to thinking about what we can learn with this new representation. Let's start with some basics. It's really easy to see the most frequent terms (features) now.
+
+```{r}
+topfeatures(philosophers_stone_dfm, 20)
+```
+
+Perhaps you'd also like to know something like which words were only used within a particular text. We can look, for instance, at the final chapter to see what words were uniquely used there.
+
+```{r}
+final_chapter_words <- as.vector(colSums(philosophers_stone_dfm) == philosophers_stone_dfm["text17",])
+colnames(philosophers_stone_dfm)[final_chapter_words]
+```
+
+# Word clouds
+
+We started out earlier this semester by making those fancy little word clouds. We haven't done much of that since, as we've been busy getting our hands on data, getting it into R, and thinking about some of the more NLP-centric types of approaches one might take. Now that we're moving to representing texts, though, we can quickly return to word clouds.
+
+The general idea here is that the size of the word corresponds to the frequency of the term in the corpus. That is, we are characterizing the most frequent terms in a corpus. Importantly, that means the axes don't really mean anything in these clouds, nor does the orientation of the term. For that reason, though these are pretty, they aren't terribly useful.
+
+```{r}
+# programs often work with random initializations, yielding different outcomes.
+# we can set a standard starting point though to ensure the same output.
+set.seed(1234)
+
+# draw the wordcloud
+textplot_wordcloud(philosophers_stone_dfm, min_count = 50, random_order = FALSE)
+```
+
+One way to get a *bit* more utility is to use the comparison option within the function to plot a comparison of wordclouds across two different documents. Here's an example.
+
+```{r}
+# narrow to first and last chapters
+smallDfm <- philosophers_stone_dfm[c(1,17),]
+
+# draw the wordcloud
+textplot_wordcloud(smallDfm, comparison = TRUE, min_count = 10, random_order = FALSE)
+```
+
+# Zipf's Law
+
+Now that our data are nicely formatted, we can also look at one of the statistical regularities that characterizes language, *Zipf's Law*. Word frequencies are distributed according to Zipf's law. What does that mean? Let's take a look at the distribution of word frequencies.
+
+```{r}
+# first, we need to create a word frequency variable and the rankings
+word_counts <- as.data.frame(sort(colSums(philosophers_stone_dfm),dec=T))
+colnames(word_counts) <- c("Frequency")
+word_counts$Rank <- c(1:ncol(philosophers_stone_dfm))
+head(word_counts)
+```
+
+```{r}
+# now we can plot this
+ggplot(word_counts, mapping = aes(x = Rank, y = Frequency)) + 
+  geom_point() +
+  labs(title = "Zipf's Law", x = "Rank", y = "Frequency") + 
+  theme_bw()
+```
+
+# Updating our DFMs
+
+Having seen what we are working with here, we might start to think that our matrix still contains too many uninformative or very rare terms. We can trim our DFM in two different ways related to feature frequencies using `dfm_trim()`.
+
+```{r}
+# trim based on the overall frequency (i.e., the word counts)
+smaller_dfm <- dfm_trim(philosophers_stone_dfm, min_termfreq = 10)
+
+# trim based on the proportion of documents that the feature appears in; here, the feature needs to appear in more than 10% of documents (chapters)
+smaller_dfm <- dfm_trim(smaller_dfm, min_docfreq = 0.1, docfreq_type = "prop")
+
+smaller_dfm
+```
+
+```{r}
+textplot_wordcloud(smaller_dfm, min_count = 50,
+                   random_order = FALSE)
+```
+
+Note that our sparsity is now significantly decreased. We can also do this in the opposite direction as a way of avoiding features that appear frequently in our corpus and thus are perhaps more uninformative in the particular setting but that would not be caught by a standard stop-word list. As an example, we may want to drop the feature "harry" from the analysis of Harry Potter books, since every.single.reference. to Harry increases that count.
+
+```{r}
+smaller_dfm2 <- dfm_trim(philosophers_stone_dfm, max_termfreq = 250)
+smaller_dfm2 <- dfm_trim(smaller_dfm2, max_docfreq = .5, docfreq_type = "prop")
+
+smaller_dfm2
+
+# when you are doing the quiz, you might want to leverage this chunk of code 
+as.vector(smaller_dfm2[,which(colnames(smaller_dfm2) == "voldemort")])
+
+```
+
+```{r}
+textplot_wordcloud(smaller_dfm2, min_count = 20,
+                   random_order = FALSE)
+```
+
+# Feature Co-occurrence matrix
+
+Representing text-as-data as a document-feature matrix allows us to learn both about document-level characteristics and about corpus-level characteristics. However, it tells us less about how words within the corpus relate to one another. For this, we can turn to the feature co-occurrence matrix. The idea here is to construct a matrix that --- instead of presenting the times a word appears within a document --- presents the \*number of times word{a} appears in the same document as word{b}. As before creating the feature co-occurrence matrix is straight-forward.
+
+```{r}
+# let's create a nicer dfm by limiting to words that appear frequently and are in more than 30% of chapters
+smaller_dfm3 <- dfm_trim(philosophers_stone_dfm, min_termfreq = 10)
+smaller_dfm3 <- dfm_trim(smaller_dfm3, min_docfreq = .3, docfreq_type = "prop")
+
+# create fcm from dfm
+smaller_fcm <- fcm(smaller_dfm3)
+
+# check the dimensions (i.e., the number of rows and the number of columnns) of the matrix we created
+dim(smaller_fcm)
+```
+
+Notice that the number of rows and columns are the same; that's because they are each the vocabulary, with the entry being the number of times the row word and column word co-occur (with the diagonal elements undefined). Later on this semester, we'll leverage these word co-occurrence matrices to estimate word embedding models.
+
+For now, let's use what we've got to try to learn a bit more about what features co-occur, and how, within our book. To do, we'll visualize a semantic network using `textplot_network()`.
+
+```{r}
+# pull the top features
+myFeatures <- names(topfeatures(smaller_fcm, 30))
+
+# retain only those top features as part of our matrix
+even_smaller_fcm <- fcm_select(smaller_fcm, pattern = myFeatures, selection = "keep")
+
+# check dimensions
+dim(even_smaller_fcm)
+
+# compute size weight for vertices in network
+size <- log(colSums(even_smaller_fcm))
+
+# create plot
+textplot_network(even_smaller_fcm, vertex_size = size / max(size) * 3)
+```

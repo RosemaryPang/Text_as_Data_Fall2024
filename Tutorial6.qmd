@@ -207,3 +207,27 @@ size <- log(colSums(even_smaller_fcm))
 # create plot
 textplot_network(even_smaller_fcm, vertex_size = size / max(size) * 3)
 ```
+
+The graph above is build on dfm, so it does not show which words are closer in a sentence. If we make fcm using the original documents, and set up a window, then we can have more information abot which words are more likely to appear together. 
+
+```{r}
+book1_token <- tokens(philosophers_stone_corpus,
+                    remove_punct = TRUE,
+                    remove_numbers = TRUE)
+
+book1_token <- tokens_select(book1_token,
+                     pattern = stopwords("en"),
+                     selection = "remove")
+try_fcm <- fcm(book1_token,context = "window", window=2)
+
+try_fcm
+
+book1_Features <- names(topfeatures(try_fcm, 50))
+
+book1_small_fcm <- fcm_select(try_fcm, pattern = myFeatures, selection = "keep")
+
+textplot_network(book1_small_fcm, vertex_size = 2)
+```
+
+
+We observe in the graph that "Uncle Vernon", and "Professor McGonagall" often appear together. Of course, Harry, Ron, and Hermione also appear together. 

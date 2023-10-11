@@ -551,7 +551,7 @@ docs    lived mrs dursley number privet drive proud perfectly normal thank
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>size <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">colSums</span>(even_smaller_fcm))</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(even_smaller_fcm, <span class="at">vertex_size =</span> size <span class="sc">/</span> <span class="fu">max</span>(size) <span class="sc">*</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(even_smaller_fcm, <span class="at">vertex_size =</span> size<span class="sc">/</span> <span class="fu">max</span>(size) <span class="sc">*</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Tutorial6_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -565,9 +565,10 @@ docs    lived mrs dursley number privet drive proud perfectly normal thank
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>book1_token <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(book1_token,</span>
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
 <span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>try_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(book1_token,<span class="at">context =</span> <span class="st">"window"</span>, <span class="at">window=</span><span class="dv">2</span>)</span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>try_fcm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>try_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(book1_token,<span class="at">context =</span> <span class="st">"window"</span>, <span class="at">window=</span><span class="dv">2</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>try_fcm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Feature co-occurrence matrix of: 6,667 by 6,667 features.
          features
@@ -584,9 +585,9 @@ features  BOY LIVED Mr Mrs Dursley number four Privet Drive proud
   proud     0     0  0   0       0      0    0      0     0     0
 [ reached max_feat ... 6,657 more features, reached max_nfeat ... 6,657 more features ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>book1_Features <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(try_fcm, <span class="dv">50</span>))</span>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>book1_Features <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(try_fcm, <span class="dv">30</span>))</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>book1_small_fcm <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(try_fcm, <span class="at">pattern =</span> myFeatures, <span class="at">selection =</span> <span class="st">"keep"</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>book1_small_fcm <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(try_fcm, <span class="at">pattern =</span> book1_Features, <span class="at">selection =</span> <span class="st">"keep"</span>)</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(book1_small_fcm, <span class="at">vertex_size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">

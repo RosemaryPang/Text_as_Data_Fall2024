@@ -1,0 +1,271 @@
+---
+title: "Tutorial7_WordEmbeddings/Text Representation II"
+pagetitle: Tutorial_7
+---
+
+# Word Embeddings
+
+Word embeddings are a type of word representation that allows words with similar meaning to have a similar representation. They are a tool for identifying similarities between words in a corpus by using some form of model to predict the co-occurrence of words within a small chunk of text.
+
+We'll be using the [text2vec](http://text2vec.org/index.html) package. `text2vec` was one of the first implementations of word embeddings functionality in R, and is designed to run fast, relatively speaking. Still, it's important to remember that our computational complexity is amping up here, so don't expect immediate results.
+
+# GloVe
+
+Stanford University's [Global Vectors for Word Representation (GloVe)](https://nlp.stanford.edu/projects/glove/) is an approach to estimating a distributional representation of a word. GloVe is based, essentially, on factorizing a huge term co-occurrence matrix.
+
+The distributional representation of words means that each term is represented as a distribution over some number of dimensions (say, 3 dimensions, where the values are 0.6, 0.3, and 0.1). This stands in stark contrast to the work we've done to this point, which has effectively encoded each word as being effectively just present (1) or not (0).
+
+Perhaps unsurprisingly, the distributional representation better captures semantic meaning than the one-hot encoding. This opens up a world of possibilities for us as researchers. Indeed, this has been a major leap forward for research in Text-as-Data.
+
+As an example, we can see how similar one word is to other words by measuring the distance between their distributions. Even more interestingly, we can capture really specific phenomena from text with some simple arithmetic based on word distributions. Consider the following canonical example:
+
+::: callout-note
+> king - man + woman = queen
+:::
+
+Ponder this equation for a moment. From the vector representation of **king**, we subtract the vector representation of **man**. Then, we add the vector representation of **woman**. The end result of that should be a vector that is very similar to the vector representation of **queen**.
+
+In what follows, we'll work through some examples to see how well this works. I want to caution, though, that the models we are training here are probably too small for us to have too much confidence in the trained models. Nevertheless, you'll see that even with this small set we'll recover really interesting dynamics.
+
+# Front-end Matters
+
+First, let's install and load the `text2vec` package:
+
+```{r}
+#Installing text2vec package (might take a while)
+#install.packages('text2vec')
+library(text2vec)
+```
+
+# PoKi Dataset
+
+We'll be using [PoKi](https://github.com/whipson/PoKi-Poems-by-Kids), a corpus of poems written by children and teenagers from grades 1 to 12.
+
+One thing to flag right off the bat is the really interesting dynamics related to who is writing these posts. We need to keep in mind that the children writing these texts are going to use less formal writing and more imaginative stories. Given this, we'll focus on analogies that are more appropriate for this context; here, we'll aim to create word embeddings that can recreate these two equations:
+
+> **cat - meow + bark = dog**
+
+> **mom - girl + boy = dad**
+
+By the end, we should hopefully be able to recreate these by creating and fitting our GloVe models. But first, let's perform the necessary pre-processing steps before creating our embedding models.
+
+Let's download and read in the data:
+
+```{r}
+# Create file
+temp <- tempfile()
+
+# Downloads and unzip file
+download.file("https://raw.githubusercontent.com/whipson/PoKi-Poems-by-Kids/master/poki.csv", temp)
+```
+
+```{r}
+# Reads in downloaded file
+poem <- read.csv(temp)
+
+# First ten rows
+head(poem, 10)
+```
+
+```{r}
+# Checks dimensions
+dim(poem)
+```
+
+We want the poems themselves, so we'll use the column `text` for tokenization.
+
+# Tokenization and Vectorization
+
+The process for `text2vec` is different than the standard process we'd been following. To that end, we'll follow the same process as we will do for LDA later, creating a tokenized iterator and vectorized vocabulary first. This time, there's no need to lowercase our words since the downloaded dataset is already lowercased.
+
+Let's tokenize the data:
+
+```{r}
+# Tokenization
+tokens <- word_tokenizer(poem$text)
+
+# First five rows tokenized
+head(tokens, 5)
+```
+
+Create an iterator object:
+
+```{r}
+# Create iterator object
+it <- itoken(tokens, progressbar = FALSE)
+```
+
+Build the vocabulary:
+
+```{r}
+# Build vocabulary
+vocab <- create_vocabulary(it)
+
+# Vocabulary
+vocab
+```
+
+```{r}
+# Check dimensions
+dim(vocab)
+```
+
+And prune and vectorize it. We'll keep the terms that occur at least 5 times.
+
+```{r}
+# Prune vocabulary
+vocab <- prune_vocabulary(vocab, term_count_min = 5)
+
+# Check dimensions
+dim(vocab)
+
+# Vectorize
+vectorizer <- vocab_vectorizer(vocab)
+```
+
+As we can see, pruning our vocabulary deleted over 40 thousand words. I want to reiterate that this is a *very small* corpus from the perspective of traditional word embedding models. When we are working with word representations trained with these smaller corpora, we should be really cautious in our approach.
+
+Moving on, we can create out term-co-occurence matrix (TCM). We can achieve different results by experimenting with the `skip_grams_window` and other parameters. The definition of whether two words occur together is arbitrary, so we definitely want to play around with the parameters to see the different results.
+
+```{r}
+# use window of 5 for context words
+tcm <- create_tcm(it, vectorizer, skip_grams_window = 5L)
+```
+
+# Creating and fitting the GloVe model
+
+Now we have a TCM matrix and can factorize it via the GloVe algorithm. We will use the method `$new` to `GlobalVectors` to create our GloVe model. [Here](https://www.rdocumentation.org/packages/text2vec/versions/0.5.0/topics/GlobalVectors) is documentation for related functions and methods.
+
+```{r}
+# Creating new GloVe model
+glove <- GlobalVectors$new(rank = 50, x_max = 10)
+
+# Checking GloVe methods
+glove
+```
+
+You'll be able to access the public methods. We can fit our modelusing `$fit_transform` to our `glove` variable. This may take several minutes to fit.
+
+```{r}
+# Fitting model
+wv_main <- glove$fit_transform(tcm, n_iter= 10, 
+                               convergence_tol = 0.01,
+                               n_threads = 8)
+```
+
+```{r}
+# Checking dimensions
+dim(wv_main)
+```
+
+Note that model learns two sets of word vectors--**target** and **context**. We can think of our word of interest as the target in this environment, and all the other words as the context inside the window. For both, word vectors are learned.
+
+```{r}
+wv_context <- glove$components
+dim(wv_context)
+```
+
+While both of word-vectors matrices can be used as result, the creators recommends to average or take a sum of main and context vector:
+
+```{r}
+word_vectors <- wv_main + t(wv_context)
+```
+
+Here's a preview of the word vector matrix:
+
+```{r}
+dim(word_vectors)
+
+word_vectors[1:6,1:6]
+```
+
+# Cosine Similarity
+## School example
+Now we can begin to play. Similarly to standard correlation, we can look at comparing two vectors using **cosine similarity**. Let's see what is similar with 'school':
+
+```{r}
+# Word vector for school
+school <- word_vectors["school", , drop = FALSE]
+
+# Cosine similarity
+school_cos_sim <- sim2(x = word_vectors, y = school, 
+                       method = "cosine", norm = "l2")
+
+head(sort(school_cos_sim[,1], decreasing = TRUE), 10)
+```
+
+Obviously, school is the most similar to school. Bawed on the poems that the children wrote, we can also see words like 'work', 'fun', and 'class' as most similar to 'school.'
+
+## Pet example
+
+Let's try our pet example:
+
+```{r}
+# cat - meow + bark should equal dog
+dog <- word_vectors["cat", , drop = FALSE] - 
+  word_vectors["meow", , drop = FALSE] +
+  word_vectors["bark", , drop = FALSE]
+
+# Calculates pairwise similarities between the rows of two matrices
+dog_cos_sim <- sim2(x = word_vectors, y = dog,
+                    method = "cosine", norm = "l2")
+
+# Top five predictions
+head(sort(dog_cos_sim[,1], decreasing = TRUE), 5)
+```
+
+Success - Our predicted result was correct! We get 'dog' as the highest predicted result after the one we used (cat). We can think of this scenario as cats say meow and dogs say bark.
+
+## Parent example
+
+Let's move on to the parent example:
+
+```{r}
+# mom - girl + boy should equal dad
+dad <- word_vectors["mom", , drop = FALSE] -
+  word_vectors["girl", , drop = FALSE] +
+  word_vectors["boy", , drop = FALSE]
+
+# Calculates pairwise similarities between the rows of two matrices
+dad_cos_sim <- sim2(x = word_vectors, y = dad,
+                    method = "cosine", norm = "l2")
+
+# Top five predictions
+head(sort(dad_cos_sim[,1], decreasing = TRUE), 5)
+```
+
+'Dad' wasn't a top result. Finally, let's try the infamous king and queen example.
+
+## King and queen example
+
+```{r}
+# king - man + woman should equal queen
+queen <- word_vectors["king", , drop = FALSE] -
+  word_vectors["man", , drop = FALSE] +
+  word_vectors["woman", , drop = FALSE]
+
+# Calculate pairwise similarities
+queen_cos_sim = sim2(x = word_vectors, y = queen, method = "cosine", norm = "l2")
+
+# Top five predictions
+head(sort(queen_cos_sim[,1], decreasing = TRUE), 5)
+```
+
+Unfortunately, we did not get queen as a top result. Let's try changing **man** and **woman** to **boy** and **girl** to account for the kid's writing.
+
+```{r}
+# king - boy + girl should equal queen
+queen <- word_vectors["king", , drop = FALSE] -
+  word_vectors["boy", , drop = FALSE] +
+  word_vectors["girl", , drop = FALSE]
+
+# Calculate pairwise similarities
+queen_cos_sim = sim2(x = word_vectors, y = queen, method = "cosine", norm = "l2")
+
+# Top five predictions
+head(sort(queen_cos_sim[,1], decreasing = TRUE), 5)
+```
+
+It worked!
+
+**As we can see through, outcomes are highly dependent on the data and settings you select, so bear in mind the context when trying this out.**

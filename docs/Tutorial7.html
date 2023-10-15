@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Tutorial_7</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DACSS758 Text as Data Fall 2023</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial1.html" rel="" target="">
+ <span class="menu-text">Tutorial 1 Introduction to R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial2.html" rel="" target="">
+ <span class="menu-text">Tutorial 2 Text as Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial3.html" rel="" target="">
+ <span class="menu-text">Tutorial 3 Web Scraping in R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial4.html" rel="" target="">
+ <span class="menu-text">Tutorial 4 Natural Language Processing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial5.html" rel="" target="">
+ <span class="menu-text">Tutorial 5 Preprocessing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial6.html" rel="" target="">
+ <span class="menu-text">Tutorial 6 Text Representation I</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Tutorial7.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Tutorial7_WordEmbeddings/Text Representation II</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#word-embeddings" id="toc-word-embeddings" class="nav-link active" data-scroll-target="#word-embeddings">Word Embeddings</a></li>
+  <li><a href="#glove" id="toc-glove" class="nav-link" data-scroll-target="#glove">GloVe</a></li>
+  <li><a href="#front-end-matters" id="toc-front-end-matters" class="nav-link" data-scroll-target="#front-end-matters">Front-end Matters</a></li>
+  <li><a href="#poki-dataset" id="toc-poki-dataset" class="nav-link" data-scroll-target="#poki-dataset">PoKi Dataset</a></li>
+  <li><a href="#tokenization-and-vectorization" id="toc-tokenization-and-vectorization" class="nav-link" data-scroll-target="#tokenization-and-vectorization">Tokenization and Vectorization</a></li>
+  <li><a href="#creating-and-fitting-the-glove-model" id="toc-creating-and-fitting-the-glove-model" class="nav-link" data-scroll-target="#creating-and-fitting-the-glove-model">Creating and fitting the GloVe model</a></li>
+  <li><a href="#cosine-similarity" id="toc-cosine-similarity" class="nav-link" data-scroll-target="#cosine-similarity">Cosine Similarity</a>
+  <ul class="collapse">
+  <li><a href="#school-example" id="toc-school-example" class="nav-link" data-scroll-target="#school-example">School example</a></li>
+  <li><a href="#pet-example" id="toc-pet-example" class="nav-link" data-scroll-target="#pet-example">Pet example</a></li>
+  <li><a href="#parent-example" id="toc-parent-example" class="nav-link" data-scroll-target="#parent-example">Parent example</a></li>
+  <li><a href="#king-and-queen-example" id="toc-king-and-queen-example" class="nav-link" data-scroll-target="#king-and-queen-example">King and queen example</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tutorial7_WordEmbeddings/Text Representation II</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="word-embeddings" class="level1">
+<h1>Word Embeddings</h1>
+<p>Word embeddings are a type of word representation that allows words with similar meaning to have a similar representation. They are a tool for identifying similarities between words in a corpus by using some form of model to predict the co-occurrence of words within a small chunk of text.</p>
+<p>We’ll be using the <a href="http://text2vec.org/index.html">text2vec</a> package. <code>text2vec</code> was one of the first implementations of word embeddings functionality in R, and is designed to run fast, relatively speaking. Still, it’s important to remember that our computational complexity is amping up here, so don’t expect immediate results.</p>
+</section>
+<section id="glove" class="level1">
+<h1>GloVe</h1>
+<p>Stanford University’s <a href="https://nlp.stanford.edu/projects/glove/">Global Vectors for Word Representation (GloVe)</a> is an approach to estimating a distributional representation of a word. GloVe is based, essentially, on factorizing a huge term co-occurrence matrix.</p>
+<p>The distributional representation of words means that each term is represented as a distribution over some number of dimensions (say, 3 dimensions, where the values are 0.6, 0.3, and 0.1). This stands in stark contrast to the work we’ve done to this point, which has effectively encoded each word as being effectively just present (1) or not (0).</p>
+<p>Perhaps unsurprisingly, the distributional representation better captures semantic meaning than the one-hot encoding. This opens up a world of possibilities for us as researchers. Indeed, this has been a major leap forward for research in Text-as-Data.</p>
+<p>As an example, we can see how similar one word is to other words by measuring the distance between their distributions. Even more interestingly, we can capture really specific phenomena from text with some simple arithmetic based on word distributions. Consider the following canonical example:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p>king - man + woman = queen</p>
+</blockquote>
+</div>
+</div>
+<p>Ponder this equation for a moment. From the vector representation of <strong>king</strong>, we subtract the vector representation of <strong>man</strong>. Then, we add the vector representation of <strong>woman</strong>. The end result of that should be a vector that is very similar to the vector representation of <strong>queen</strong>.</p>
+<p>In what follows, we’ll work through some examples to see how well this works. I want to caution, though, that the models we are training here are probably too small for us to have too much confidence in the trained models. Nevertheless, you’ll see that even with this small set we’ll recover really interesting dynamics.</p>
+</section>
+<section id="front-end-matters" class="level1">
+<h1>Front-end Matters</h1>
+<p>First, let’s install and load the <code>text2vec</code> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Installing text2vec package (might take a while)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages('text2vec')</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(text2vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="poki-dataset" class="level1">
+<h1>PoKi Dataset</h1>
+<p>We’ll be using <a href="https://github.com/whipson/PoKi-Poems-by-Kids">PoKi</a>, a corpus of poems written by children and teenagers from grades 1 to 12.</p>
+<p>One thing to flag right off the bat is the really interesting dynamics related to who is writing these posts. We need to keep in mind that the children writing these texts are going to use less formal writing and more imaginative stories. Given this, we’ll focus on analogies that are more appropriate for this context; here, we’ll aim to create word embeddings that can recreate these two equations:</p>
+<blockquote class="blockquote">
+<p><strong>cat - meow + bark = dog</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>mom - girl + boy = dad</strong></p>
+</blockquote>
+<p>By the end, we should hopefully be able to recreate these by creating and fitting our GloVe models. But first, let’s perform the necessary pre-processing steps before creating our embedding models.</p>
+<p>Let’s download and read in the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create file</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Downloads and unzip file</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://raw.githubusercontent.com/whipson/PoKi-Poems-by-Kids/master/poki.csv"</span>, temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reads in downloaded file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>poem <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(temp)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># First ten rows</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(poem, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       id                            title       author grade
+1  104987                   I Love The Zoo                  1
+2   67185                The scary forest.                  1
+3  103555                 A Hike At School 1st grade-wh     1
+4  112483                         Computer            a     1
+5   74516                            Angel          aab     1
+6  114693         Nature Nature and Nature       aadhya     1
+7   46453                             Jack      aaliyah     1
+8   57397         When I awoke one morning        aanna     1
+9   77201 My Blue Berries and  My Cherries      aarathi     1
+10  40520                      A snowy day          ab.     1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            text
+1                                                                                                                                                                                                                                                                                                                                                                                                                                                                  roses are red,  violets are blue.   i love the zoo.   do you?
+2                                                                                                                                                                                                                                                                                                                                                                                                                                         the forest is really haunted.  i believe it to be so.  but then we are going camping. 
+3                                                                                                                                                                                            i took a hike at school today  and this is what i saw     bouncing balls      girls chatting against the walls     kids climbing on monkey bars     i even saw some teachers' cars     the wind was blowing my hair in my face     i saw a mud puddle,  but just a trace all of these things i noticed just now on my little hike. 
+4                                                                                                                                                                                                                                                                                                                                                                                                                       you  can  do  what  you  want  you  can play a  game    you can do many things,   you can read and write
+5                                                                                                                                                                                                                                                                                                                                                              angel oh angle you spin like a top angel oh angel you will never stop can't you feel the air  as it blows through your hair angel oh angel itisto bad your a mop!
+6  look at the sun, what a beautiful day.  under the trees, we can run and play.  beauty of nature, we love to see,  from tiny insect to exotic tree.  it is a place to sit and think,  nature and human share the deepest link.  nature has ocean, which is in motion.  nature has tree, nature has river.  if we destroy the nature we would never be free.  our nature keeps us alive,  we must protect it, for society to thrive.  we spoil the nature, we spoil the future.  go along with nature, for your better future. 
+7                                                                                                                                                                                                                                                                                                                                                                                                                                                     dog  playful,  energetic running,  jumping,  tackling my is my friend jack
+8                                                                                                                                                                                       when i awoke one morning,  a dog was on my  head.  i asked ,  ''what are you doing there?' it looked at me and said  ''woof!'' ''wouldn't you like to be outside playing?''said the man ''i'm staying here and playing here. '' said the dog he played all night and day. he came inside his new house and played inside a wet wet day. 
+9                                                                                                                                                                                                                                                                                                                                                                                  i went to my blue berry tree they were no blue berries found i went to another tree to get some more free but found none but cherries round. 
+10                                                                                                                                                                                                                                                                                                                      one snowy day the children went outside to play in the snow.  they threw snowballs,  went sledding and made a snowman.  afterwards they went inside to drink warm hot chocolate.  it was a fun snowy day
+   char
+1    62
+2    87
+3   324
+4   106
+5   164
+6   491
+7    74
+8   325
+9   143
+10  199</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checks dimensions</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(poem)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 61508     6</code></pre>
+</div>
+</div>
+<p>We want the poems themselves, so we’ll use the column <code>text</code> for tokenization.</p>
+</section>
+<section id="tokenization-and-vectorization" class="level1">
+<h1>Tokenization and Vectorization</h1>
+<p>The process for <code>text2vec</code> is different than the standard process we’d been following. To that end, we’ll follow the same process as we will do for LDA later, creating a tokenized iterator and vectorized vocabulary first. This time, there’s no need to lowercase our words since the downloaded dataset is already lowercased.</p>
+<p>Let’s tokenize the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenization</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tokens <span class="ot">&lt;-</span> <span class="fu">word_tokenizer</span>(poem<span class="sc">$</span>text)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># First five rows tokenized</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tokens, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+ [1] "roses"   "are"     "red"     "violets" "are"     "blue"    "i"      
+ [8] "love"    "the"     "zoo"     "do"      "you"    
+
+[[2]]
+ [1] "the"     "forest"  "is"      "really"  "haunted" "i"       "believe"
+ [8] "it"      "to"      "be"      "so"      "but"     "then"    "we"     
+[15] "are"     "going"   "camping"
+
+[[3]]
+ [1] "i"        "took"     "a"        "hike"     "at"       "school"  
+ [7] "today"    "and"      "this"     "is"       "what"     "i"       
+[13] "saw"      "bouncing" "balls"    "girls"    "chatting" "against" 
+[19] "the"      "walls"    "kids"     "climbing" "on"       "monkey"  
+[25] "bars"     "i"        "even"     "saw"      "some"     "teachers"
+[31] "cars"     "the"      "wind"     "was"      "blowing"  "my"      
+[37] "hair"     "in"       "my"       "face"     "i"        "saw"     
+[43] "a"        "mud"      "puddle"   "but"      "just"     "a"       
+[49] "trace"    "all"      "of"       "these"    "things"   "i"       
+[55] "noticed"  "just"     "now"      "on"       "my"       "little"  
+[61] "hike"    
+
+[[4]]
+ [1] "you"    "can"    "do"     "what"   "you"    "want"   "you"    "can"   
+ [9] "play"   "a"      "game"   "you"    "can"    "do"     "many"   "things"
+[17] "you"    "can"    "read"   "and"    "write" 
+
+[[5]]
+ [1] "angel"   "oh"      "angle"   "you"     "spin"    "like"    "a"      
+ [8] "top"     "angel"   "oh"      "angel"   "you"     "will"    "never"  
+[15] "stop"    "can't"   "you"     "feel"    "the"     "air"     "as"     
+[22] "it"      "blows"   "through" "your"    "hair"    "angel"   "oh"     
+[29] "angel"   "itisto"  "bad"     "your"    "a"       "mop"    </code></pre>
+</div>
+</div>
+<p>Create an iterator object:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create iterator object</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>it <span class="ot">&lt;-</span> <span class="fu">itoken</span>(tokens, <span class="at">progressbar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Build the vocabulary:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build vocabulary</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>vocab <span class="ot">&lt;-</span> <span class="fu">create_vocabulary</span>(it)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Vocabulary</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>vocab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of docs: 61508 
+0 stopwords:  ... 
+ngram_min = 1; ngram_max = 1 
+Vocabulary: 
+          term term_count doc_count
+    1:    0000          1         1
+    2: 0000000          1         1
+    3: 0000001          1         1
+    4:   00a:m          1         1
+    5:    00he          1         1
+   ---                             
+56470:      to      69175     30347
+56471:     and      80863     34798
+56472:       a      92765     37607
+56473:     the     120677     37676
+56474:       i     124832     32777</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check dimensions</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(vocab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 56474     3</code></pre>
+</div>
+</div>
+<p>And prune and vectorize it. We’ll keep the terms that occur at least 5 times.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prune vocabulary</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>vocab <span class="ot">&lt;-</span> <span class="fu">prune_vocabulary</span>(vocab, <span class="at">term_count_min =</span> <span class="dv">5</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check dimensions</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(vocab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14267     3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectorize</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="ot">&lt;-</span> <span class="fu">vocab_vectorizer</span>(vocab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As we can see, pruning our vocabulary deleted over 40 thousand words. I want to reiterate that this is a <em>very small</em> corpus from the perspective of traditional word embedding models. When we are working with word representations trained with these smaller corpora, we should be really cautious in our approach.</p>
+<p>Moving on, we can create out term-co-occurence matrix (TCM). We can achieve different results by experimenting with the <code>skip_grams_window</code> and other parameters. The definition of whether two words occur together is arbitrary, so we definitely want to play around with the parameters to see the different results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use window of 5 for context words</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tcm <span class="ot">&lt;-</span> <span class="fu">create_tcm</span>(it, vectorizer, <span class="at">skip_grams_window =</span> 5L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-and-fitting-the-glove-model" class="level1">
+<h1>Creating and fitting the GloVe model</h1>
+<p>Now we have a TCM matrix and can factorize it via the GloVe algorithm. We will use the method <code>$new</code> to <code>GlobalVectors</code> to create our GloVe model. <a href="https://www.rdocumentation.org/packages/text2vec/versions/0.5.0/topics/GlobalVectors">Here</a> is documentation for related functions and methods.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating new GloVe model</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>glove <span class="ot">&lt;-</span> GlobalVectors<span class="sc">$</span><span class="fu">new</span>(<span class="at">rank =</span> <span class="dv">50</span>, <span class="at">x_max =</span> <span class="dv">10</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking GloVe methods</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>glove</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;GloVe&gt;
+  Public:
+    bias_i: NULL
+    bias_j: NULL
+    clone: function (deep = FALSE) 
+    components: NULL
+    fit_transform: function (x, n_iter = 10L, convergence_tol = -1, n_threads = getOption("rsparse_omp_threads", 
+    get_history: function () 
+    initialize: function (rank, x_max, learning_rate = 0.15, alpha = 0.75, lambda = 0, 
+    shuffle: FALSE
+  Private:
+    alpha: 0.75
+    b_i: NULL
+    b_j: NULL
+    cost_history: 
+    fitted: FALSE
+    glove_fitter: NULL
+    initial: NULL
+    lambda: 0
+    learning_rate: 0.15
+    rank: 50
+    w_i: NULL
+    w_j: NULL
+    x_max: 10</code></pre>
+</div>
+</div>
+<p>You’ll be able to access the public methods. We can fit our modelusing <code>$fit_transform</code> to our <code>glove</code> variable. This may take several minutes to fit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting model</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>wv_main <span class="ot">&lt;-</span> glove<span class="sc">$</span><span class="fu">fit_transform</span>(tcm, <span class="at">n_iter=</span> <span class="dv">10</span>, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">convergence_tol =</span> <span class="fl">0.01</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">n_threads =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>INFO  [13:25:28.736] epoch 1, loss 0.1916
+INFO  [13:25:32.383] epoch 2, loss 0.1290
+INFO  [13:25:36.013] epoch 3, loss 0.1118
+INFO  [13:25:39.640] epoch 4, loss 0.1011
+INFO  [13:25:43.302] epoch 5, loss 0.0937
+INFO  [13:25:46.900] epoch 6, loss 0.0883
+INFO  [13:25:50.459] epoch 7, loss 0.0843
+INFO  [13:25:54.229] epoch 8, loss 0.0811
+INFO  [13:25:57.833] epoch 9, loss 0.0785
+INFO  [13:26:01.516] epoch 10, loss 0.0764</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking dimensions</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(wv_main)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14267    50</code></pre>
+</div>
+</div>
+<p>Note that model learns two sets of word vectors–<strong>target</strong> and <strong>context</strong>. We can think of our word of interest as the target in this environment, and all the other words as the context inside the window. For both, word vectors are learned.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>wv_context <span class="ot">&lt;-</span> glove<span class="sc">$</span>components</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(wv_context)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]    50 14267</code></pre>
+</div>
+</div>
+<p>While both of word-vectors matrices can be used as result, the creators recommends to average or take a sum of main and context vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>word_vectors <span class="ot">&lt;-</span> wv_main <span class="sc">+</span> <span class="fu">t</span>(wv_context)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here’s a preview of the word vector matrix:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(word_vectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14267    50</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>word_vectors[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            [,1]        [,2]        [,3]        [,4]       [,5]        [,6]
+1837  0.04517645 -0.28666180  0.40401689  0.30614881  0.5127633 -0.56553552
+1841 -0.28710643 -0.48091927  0.74153012  0.17633699  0.4550122 -0.29851067
+1881 -0.13368742  0.36169375 -0.04082482  0.04540700 -0.3577053 -0.19733959
+2005 -0.77480473 -0.09591058 -0.31780528  0.49908921 -0.7781627  0.08876551
+36   -0.33893810  0.23180553  0.64480213  0.03419768 -0.2916895 -0.07991617
+38   -0.26858585 -0.48943996  0.63325512 -0.31352754  0.1633754 -0.12409298</code></pre>
+</div>
+</div>
+</section>
+<section id="cosine-similarity" class="level1">
+<h1>Cosine Similarity</h1>
+<section id="school-example" class="level2">
+<h2 class="anchored" data-anchor-id="school-example">School example</h2>
+<p>Now we can begin to play. Similarly to standard correlation, we can look at comparing two vectors using <strong>cosine similarity</strong>. Let’s see what is similar with ‘school’:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Word vector for school</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>school <span class="ot">&lt;-</span> word_vectors[<span class="st">"school"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cosine similarity</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>school_cos_sim <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> school, </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(school_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   school       fun      work      time       day      cool     today        go 
+1.0000000 0.6931877 0.6679507 0.6618867 0.6495852 0.6456139 0.6174673 0.6165279 
+       to       all 
+0.6117772 0.6101692 </code></pre>
+</div>
+</div>
+<p>Obviously, school is the most similar to school. Bawed on the poems that the children wrote, we can also see words like ‘work’, ‘fun’, and ‘class’ as most similar to ‘school.’</p>
+</section>
+<section id="pet-example" class="level2">
+<h2 class="anchored" data-anchor-id="pet-example">Pet example</h2>
+<p>Let’s try our pet example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cat - meow + bark should equal dog</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dog <span class="ot">&lt;-</span> word_vectors[<span class="st">"cat"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"meow"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"bark"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculates pairwise similarities between the rows of two matrices</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>dog_cos_sim <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> dog,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(dog_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      dog       cat       big     small       his 
+0.8087565 0.8026895 0.6945863 0.6699371 0.6476813 </code></pre>
+</div>
+</div>
+<p>Success - Our predicted result was correct! We get ‘dog’ as the highest predicted result after the one we used (cat). We can think of this scenario as cats say meow and dogs say bark.</p>
+</section>
+<section id="parent-example" class="level2">
+<h2 class="anchored" data-anchor-id="parent-example">Parent example</h2>
+<p>Let’s move on to the parent example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mom - girl + boy should equal dad</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>dad <span class="ot">&lt;-</span> word_vectors[<span class="st">"mom"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"girl"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"boy"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculates pairwise similarities between the rows of two matrices</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>dad_cos_sim <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> dad,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(dad_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mom       dad      says   brother      said 
+0.8479007 0.8065054 0.7150675 0.7076835 0.6855733 </code></pre>
+</div>
+</div>
+<p>‘Dad’ wasn’t a top result. Finally, let’s try the infamous king and queen example.</p>
+</section>
+<section id="king-and-queen-example" class="level2">
+<h2 class="anchored" data-anchor-id="king-and-queen-example">King and queen example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># king - man + woman should equal queen</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>queen <span class="ot">&lt;-</span> word_vectors[<span class="st">"king"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"man"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"woman"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pairwise similarities</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>queen_cos_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> queen, <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(queen_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     king      kong   natural  dinasaur    martin 
+0.7251078 0.6366864 0.6133684 0.5437246 0.5224198 </code></pre>
+</div>
+</div>
+<p>Unfortunately, we did not get queen as a top result. Let’s try changing <strong>man</strong> and <strong>woman</strong> to <strong>boy</strong> and <strong>girl</strong> to account for the kid’s writing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># king - boy + girl should equal queen</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>queen <span class="ot">&lt;-</span> word_vectors[<span class="st">"king"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"boy"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"girl"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pairwise similarities</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>queen_cos_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> queen, <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(queen_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     king     queen     child      girl  princess 
+0.8119764 0.5533746 0.5464525 0.5095002 0.5058019 </code></pre>
+</div>
+</div>
+<p>It worked!</p>
+<p><strong>As we can see through, outcomes are highly dependent on the data and settings you select, so bear in mind the context when trying this out.</strong></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

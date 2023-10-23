@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Tutorial_8</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DACSS758 Text as Data Fall 2023</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial1.html" rel="" target="">
+ <span class="menu-text">Tutorial 1 Introduction to R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial2.html" rel="" target="">
+ <span class="menu-text">Tutorial 2 Text as Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial3.html" rel="" target="">
+ <span class="menu-text">Tutorial 3 Web Scraping in R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial4.html" rel="" target="">
+ <span class="menu-text">Tutorial 4 Natural Language Processing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial5.html" rel="" target="">
+ <span class="menu-text">Tutorial 5 Preprocessing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial6.html" rel="" target="">
+ <span class="menu-text">Tutorial 6 Text Representation I</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial7.html" rel="" target="">
+ <span class="menu-text">Tutorial7_WordEmbeddings/Text Representation II</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Tutorial8.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Tutorial8_Dictionary/Sentiment Analysis</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#front-end-matters" id="toc-front-end-matters" class="nav-link active" data-scroll-target="#front-end-matters">Front-End Matters</a></li>
+  <li><a href="#dictionary-analysis" id="toc-dictionary-analysis" class="nav-link" data-scroll-target="#dictionary-analysis">Dictionary Analysis</a></li>
+  <li><a href="#using-dictionaries-with-dfms" id="toc-using-dictionaries-with-dfms" class="nav-link" data-scroll-target="#using-dictionaries-with-dfms">Using Dictionaries with DFMs</a></li>
+  <li><a href="#dictionary-comparison" id="toc-dictionary-comparison" class="nav-link" data-scroll-target="#dictionary-comparison">Dictionary Comparison</a></li>
+  <li><a href="#apply-dictionary-within-contexts" id="toc-apply-dictionary-within-contexts" class="nav-link" data-scroll-target="#apply-dictionary-within-contexts">Apply Dictionary within Contexts</a></li>
+  <li><a href="#write-your-own-dictionary" id="toc-write-your-own-dictionary" class="nav-link" data-scroll-target="#write-your-own-dictionary">Write your own dictionary</a></li>
+  <li><a href="#dictionaries-avaialbe-in-r" id="toc-dictionaries-avaialbe-in-r" class="nav-link" data-scroll-target="#dictionaries-avaialbe-in-r">Dictionaries avaialbe in R</a>
+  <ul class="collapse">
+  <li><a href="#tidytext-package" id="toc-tidytext-package" class="nav-link" data-scroll-target="#tidytext-package">Tidytext package</a>
+  <ul class="collapse">
+  <li><a href="#afinn" id="toc-afinn" class="nav-link" data-scroll-target="#afinn">afinn</a></li>
+  <li><a href="#loughran" id="toc-loughran" class="nav-link" data-scroll-target="#loughran">loughran</a></li>
+  <li><a href="#bing" id="toc-bing" class="nav-link" data-scroll-target="#bing">bing</a></li>
+  <li><a href="#nrc" id="toc-nrc" class="nav-link" data-scroll-target="#nrc">nrc</a></li>
+  </ul></li>
+  <li><a href="#quanteda-package" id="toc-quanteda-package" class="nav-link" data-scroll-target="#quanteda-package">Quanteda package</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tutorial8_Dictionary/Sentiment Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In this tutorial, we’ll learn about <strong>dictionary methods</strong>.</p>
+<section id="front-end-matters" class="level1">
+<h1>Front-End Matters</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textdata)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.2     ✔ purrr   1.0.1
+✔ tibble  3.2.1     ✔ dplyr   1.1.1
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::arrange()   masks plyr::arrange()
+✖ purrr::compact()   masks plyr::compact()
+✖ dplyr::count()     masks plyr::count()
+✖ dplyr::desc()      masks plyr::desc()
+✖ dplyr::failwith()  masks plyr::failwith()
+✖ dplyr::filter()    masks stats::filter()
+✖ dplyr::id()        masks plyr::id()
+✖ dplyr::lag()       masks stats::lag()
+✖ dplyr::mutate()    masks plyr::mutate()
+✖ dplyr::rename()    masks plyr::rename()
+✖ dplyr::summarise() masks plyr::summarise()
+✖ dplyr::summarize() masks plyr::summarize()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package version: 3.3.1
+Unicode version: 14.0
+ICU version: 70.1
+Parallel computing: 4 of 4 threads used.
+See https://quanteda.io for tutorials and examples.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textmodels)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This time, we’ll be making use of a package that’s available on GitHub. To install it, we need to load the <code>devtools</code> package. The package itself contains a host of different dictionaries publicly available dictionaries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(devtools)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("kbenoit/quanteda.dictionaries")</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.dictionaries)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#remotes::install_github("quanteda/quanteda.sentiment")</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.sentiment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'quanteda.sentiment'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:quanteda':
+
+    data_dictionary_LSD2015</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># large movie review database of 50,000 movie reviews</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://www.dropbox.com/s/sjdfmx8ggwfda5o/data_orpus_LMRD.rda?dl=1"</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this process is unnecessary, given 'data_corpus_LMRD' is a corpus object; but to make sure</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data_corpus_LMRD <span class="ot">&lt;-</span> <span class="fu">corpus</span>(data_corpus_LMRD)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check the text of document 1</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">convert</span>(data_corpus_LMRD[<span class="dv">1</span>],<span class="at">to=</span><span class="st">"data.frame"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            doc_id
+1 test/neg/0_2.txt
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  text
+1 Once again Mr. Costner has dragged out a movie for far longer than necessary. Aside from the terrific sea rescue sequences, of which there are very few I just did not care about any of the characters. Most of us have ghosts in the closet, and Costner's character are realized early on, and then forgotten until much later, by which time I did not care. The character we should really care about is a very cocky, overconfident Ashton Kutcher. The problem is he comes off as kid who thinks he's better than anyone else around him and shows no signs of a cluttered closet. His only obstacle appears to be winning over Costner. Finally when we are well past the half way point of this stinker, Costner tells us all about Kutcher's ghosts. We are told why Kutcher is driven to be the best with no prior inkling or foreshadowing. No magic here, it was all I could do to keep from turning it off an hour in.
+  docnumber rating  set polarity
+1         0      2 test      neg</code></pre>
+</div>
+</div>
+</section>
+<section id="dictionary-analysis" class="level1">
+<h1>Dictionary Analysis</h1>
+<p>The basic idea with a dictionary analysis is to identify a set of words that connect to a certain concept, and to count the frequency of that set of words within a document. The set of words is the dictionary; as you might quickly realize, a more appropriate name is probably theasurus.</p>
+<pre><code>liwcalike()</code></pre>
+<p>There are a couple of ways to do this. First, the <code>quanteda.dictionaries</code> package contains the <code>liwcalike()</code> function, which takes a corpus or character vector and carries out an analysis–based on a provide dictionary–that mimics the pay-to-play software LIWC (Linguistic Inquiry and Word Count). The LIWC software calculates the percentage of the document that reflects a host of different characteristics. We are going to focus on positive and negative language, but keep in mind that there are lots of other dimensions that could be of interest.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use liwcalike() to estimate sentiment using NRC dictionary</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>reviewSentiment_nrc <span class="ot">&lt;-</span> <span class="fu">liwcalike</span>(data_corpus_LMRD, data_dictionary_NRC)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(reviewSentiment_nrc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "docname"      "Segment"      "WPS"          "WC"           "Sixltr"      
+ [6] "Dic"          "anger"        "anticipation" "disgust"      "fear"        
+[11] "joy"          "negative"     "positive"     "sadness"      "surprise"    
+[16] "trust"        "AllPunc"      "Period"       "Comma"        "Colon"       
+[21] "SemiC"        "QMark"        "Exclam"       "Dash"         "Quote"       
+[26] "Apostro"      "Parenth"      "OtherP"      </code></pre>
+</div>
+</div>
+<p>Now let’s look at polarity. What are the most positive reviews?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reviewSentiment_nrc) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> positive)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Based on that, let’s look at those that are out in the right tail (i.e., which are greater than 15)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_corpus_LMRD[<span class="fu">which</span>(reviewSentiment_nrc<span class="sc">$</span>positive <span class="sc">&gt;</span> <span class="dv">15</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 26 documents and 4 docvars.
+test/neg/11213_3.txt :
+"I couldn't stop laughing, I caught this again on late night ..."
+
+test/neg/5147_1.txt :
+"Primary plot!Primary direction!Poor interpretation."
+
+test/pos/10115_8.txt :
+"Radio will have you laughing, crying, feeling. This story ba..."
+
+test/pos/1049_9.txt :
+"Add this little gem to your list of holiday regulars. It is ..."
+
+test/pos/11123_8.txt :
+"We enjoy a film like "Fame" because we imagine we are there ..."
+
+test/pos/1592_10.txt :
+"Morte a Venezia is one of my favorite movies. More than beau..."
+
+[ reached max_ndoc ... 20 more documents ]</code></pre>
+</div>
+</div>
+<p>Now how about the most negative?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reviewSentiment_nrc) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> negative)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data_corpus_LMRD[<span class="fu">which</span>(reviewSentiment_nrc<span class="sc">$</span>negative <span class="sc">&gt;</span> <span class="dv">15</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 14 documents and 4 docvars.
+test/neg/3718_1.txt :
+"This was truly horrible. Bad acting, bad writing, bad effect..."
+
+test/neg/3847_1.txt :
+"John Leguizamo must have been insane if he thinks this was a..."
+
+test/neg/819_1.txt :
+"it really is terrible, from start to finish you'll sit and w..."
+
+train/neg/11201_1.txt :
+"Horrible waste of time - bad acting, plot, directing. This i..."
+
+train/neg/11699_1.txt :
+"The plot of The Thinner is decidedly thin. And gross. An obe..."
+
+train/neg/11931_2.txt :
+"Olivier Gruner stars as Jacques a foreign exchange college s..."
+
+[ reached max_ndoc ... 8 more documents ]</code></pre>
+</div>
+</div>
+<p>Of course, you might be realizing that the proportions of positive and negative words used in isolation might be a poor indicator of overall sentiment. Instead, we want a score that incorporates both. The example directly above alludes to this problem, as the description of a horror movie makes it <em>look</em> negative, but in reality there are also a lot of positive words in there. So let’s correct for that and see what we’ve got.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>reviewSentiment_nrc<span class="sc">$</span>polarity <span class="ot">&lt;-</span> reviewSentiment_nrc<span class="sc">$</span>positive <span class="sc">-</span> reviewSentiment_nrc<span class="sc">$</span>negative</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reviewSentiment_nrc) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(polarity)) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data_corpus_LMRD[<span class="fu">which</span>(reviewSentiment_nrc<span class="sc">$</span>polarity <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">12</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 18 documents and 4 docvars.
+test/neg/1792_3.txt :
+"Aside from the horrendous acting and the ridiculous and ludi..."
+
+test/neg/3718_1.txt :
+"This was truly horrible. Bad acting, bad writing, bad effect..."
+
+test/neg/3850_1.txt :
+"This movie is pathetic in every way possible. Bad acting, ho..."
+
+test/neg/6263_2.txt :
+"Cheerleader Massacre was supposed to be the fourth installme..."
+
+test/neg/6850_2.txt :
+"Read the book, forget the movie!"
+
+test/neg/7458_1.txt :
+"Everything about this movie is bad. everything. Ridiculous 8..."
+
+[ reached max_ndoc ... 12 more documents ]</code></pre>
+</div>
+</div>
+<p>Ah. unfortunately the same problem persists. We’ll come back to this later.</p>
+</section>
+<section id="using-dictionaries-with-dfms" class="level1">
+<h1>Using Dictionaries with DFMs</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a full dfm for comparison</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>movieReviewDfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(data_corpus_LMRD,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">remove_symbols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">remove_url =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">split_hyphens =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">include_docvars =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(movieReviewDfm, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 10 documents, 146,601 features (99.91% sparse) and 4 docvars.
+                      features
+docs                   once again mr costner has dragged out a movie for
+  test/neg/0_2.txt        1     1  1       3   1       1   1 3     1   1
+  test/neg/10000_4.txt    0     0  0       0   2       0   0 4     0   3
+  test/neg/10001_1.txt    0     0  0       0   0       0   0 6     3   2
+  test/neg/10002_3.txt    0     0  0       0   0       0   1 8     5   2
+  test/neg/10003_3.txt    0     0  0       0   0       0   0 4     0   4
+  test/neg/10004_2.txt    0     0  0       0   1       0   0 3     0   0
+[ reached max_ndoc ... 4 more documents, reached max_nfeat ... 146,591 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(movieReviewDfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  50000 146601</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert corpus to dfm using the dictionary</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>movieReviewDfm_nrc <span class="ot">&lt;-</span> <span class="fu">tokens</span>(data_corpus_LMRD,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">remove_symbols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">remove_url =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">split_hyphens =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">include_docvars =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm_lookup</span>(data_dictionary_NRC)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(movieReviewDfm_nrc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50000    10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(movieReviewDfm_nrc, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 10 documents, 10 features (3.00% sparse) and 4 docvars.
+                      features
+docs                   anger anticipation disgust fear joy negative positive
+  test/neg/0_2.txt         1            4       2    3   3        3        4
+  test/neg/10000_4.txt     3            3       5    4   2       10       11
+  test/neg/10001_1.txt    10            7       7   13   2       17        8
+  test/neg/10002_3.txt     5            9       6    5   4       13       13
+  test/neg/10003_3.txt     3            8       5    4   8       13       20
+  test/neg/10004_2.txt     1            4       4    1   4        8        5
+                      features
+docs                   sadness surprise trust
+  test/neg/0_2.txt           5        3     3
+  test/neg/10000_4.txt       1        1     6
+  test/neg/10001_1.txt      11        0     5
+  test/neg/10002_3.txt       7        1     4
+  test/neg/10003_3.txt       6        4     7
+  test/neg/10004_2.txt       4        2     5
+[ reached max_ndoc ... 4 more documents ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(movieReviewDfm_nrc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dfm"
+attr(,"package")
+[1] "quanteda"</code></pre>
+</div>
+</div>
+<p>Note that these are <em>counts</em> now, rather than the percentage that we got from <code>liwcalike()</code>. Let’s convert that to a data frame that’s useful for downstream analysis, then create a polarity measure.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_nrc <span class="ot">&lt;-</span> <span class="fu">convert</span>(movieReviewDfm_nrc, <span class="at">to =</span> <span class="st">"data.frame"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_nrc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "doc_id"       "anger"        "anticipation" "disgust"      "fear"        
+ [6] "joy"          "negative"     "positive"     "sadness"      "surprise"    
+[11] "trust"       </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df_nrc<span class="sc">$</span>polarity <span class="ot">&lt;-</span> (df_nrc<span class="sc">$</span>positive <span class="sc">-</span> df_nrc<span class="sc">$</span>negative)<span class="sc">/</span>(df_nrc<span class="sc">$</span>positive <span class="sc">+</span> df_nrc<span class="sc">$</span>negative)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>df_nrc<span class="sc">$</span>polarity[(df_nrc<span class="sc">$</span>positive <span class="sc">+</span> df_nrc<span class="sc">$</span>negative) <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_nrc) <span class="sc">+</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x=</span>polarity)) <span class="sc">+</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="fu">head</span>(data_corpus_LMRD[<span class="fu">which</span>(df_nrc<span class="sc">$</span>polarity <span class="sc">==</span> <span class="dv">1</span>)]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>New York family is the last in their neighborhood to get a television set, which nearly ruins David Niven's marriage to Mitzi Gaynor. Bedroom comedy that rarely ventures into the bedroom(and nothing sexy happens there anyway). Gaynor as an actress has about as much range as an oven--she turns on, she turns off. Film's sole compensation is a supporting performance by perky Patty Duke, pre-"Miracle Worker", as Niven's daughter. She's delightful; "Happy Anniversary" is not. * from ****
+Aya! If you are looking for special effects that are 10-20 years before its time, this is it. The glowing lightning bolts, fireballs, etc. look like they came from a cheesy 70's sci-fi flick. And yes, Hercules really grows; he's not being pushed on a cart closer to the camera!
+First of all, I really can't understand how some people "enjoyed" this movie. It's the worst thing I have ever seen. Even the actors seem to be bored...and I think that says it all!
+
+However, I have to give my applause to the opening credits creators - that team seems to have a really good future. That's why I recommend the big studios to watch ONLY the opening credits, and one or two special effects sequences (if they're watched outside this movie, it almost looks like a good movie).
+
+Better luck (or judgment) next time for the producers of this, this... this "thing!".
+The movie is a happy lullaby, was made to make us sleep. And that´s what we do, as we dream about the top beautiful Natasha Henstridge. No screenplay, no deep characters, nothing special. So, let´s sleep.
+The first season was great - good mix of the job and the brother and friends at home. it was actually a pretty funny show.
+
+Now it shows up again and the brother and the two hot chicks are gone -- and the whole thing revolves around the airline company. Even the old man who runs the company has gone downhill - way too over the top, where before it was perfect.
+
+That and no more Sarah Mason - one of the best looking girls in Hollywood.
+
+This is what happens when you let some execs get their hands on a show. You can almost see the meeting "the old man is funny, lets focus on him, make him way over the top and make it all about the airline.. it'll be a nutty version of the office!" Anyhow, no hot chicks, no watch.
+I laughed at the movie! The script, the acting please don't we deserve better? But now the filming, some of the camera angles were interesting. I did enjoy the film, but it's not to be taken seriously though. I liked it. If it had a new cast and scriptwritter it would be better than all right. It's worth a look!</code></pre>
+</div>
+</div>
+<p>Well, that’s not good. Those are all pretty negative reviews but they are ranked as positive by our sentiment score. Let’s add some other dictionaries and compare.</p>
+</section>
+<section id="dictionary-comparison" class="level1">
+<h1>Dictionary Comparison</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert corpus to DFM using the General Inquirer dictionary</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>movieReviewDfm_geninq <span class="ot">&lt;-</span> movieReviewDfm <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm_lookup</span>(data_dictionary_geninqposneg)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(movieReviewDfm_geninq, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 6 documents, 2 features (0.00% sparse) and 4 docvars.
+                      features
+docs                   positive negative
+  test/neg/0_2.txt           12        7
+  test/neg/10000_4.txt       16        6
+  test/neg/10001_1.txt       11       15
+  test/neg/10002_3.txt       16       14
+  test/neg/10003_3.txt       18        8
+  test/neg/10004_2.txt       11        7</code></pre>
+</div>
+</div>
+<p>The <code>quanteda.dictionaries</code> package provides access to a host of different dictionaries, with a real diversity of dimensions supposedly captured through the dictionaries. For now, we’ll focus just on two of the packages that include <code>positive</code> and <code>negative</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create polarity measure for geninq</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>df_geninq <span class="ot">&lt;-</span> <span class="fu">convert</span>(movieReviewDfm_geninq, <span class="at">to =</span> <span class="st">"data.frame"</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>df_geninq<span class="sc">$</span>polarity <span class="ot">&lt;-</span> (df_geninq<span class="sc">$</span>positive <span class="sc">-</span> df_geninq<span class="sc">$</span>negative)<span class="sc">/</span>(df_geninq<span class="sc">$</span>positive <span class="sc">+</span> df_geninq<span class="sc">$</span>negative)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>df_geninq<span class="sc">$</span>polarity[<span class="fu">which</span>((df_geninq<span class="sc">$</span>positive <span class="sc">+</span> df_geninq<span class="sc">$</span>negative) <span class="sc">==</span> <span class="dv">0</span>)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at first few rows</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_geninq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                doc_id positive negative    polarity
+1     test/neg/0_2.txt       12        7  0.26315789
+2 test/neg/10000_4.txt       16        6  0.45454545
+3 test/neg/10001_1.txt       11       15 -0.15384615
+4 test/neg/10002_3.txt       16       14  0.06666667
+5 test/neg/10003_3.txt       18        8  0.38461538
+6 test/neg/10004_2.txt       11        7  0.22222222</code></pre>
+</div>
+</div>
+<p>Let’s combine all of these into a single dataframe in order to see how well they match up.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create unique names for each data frame</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df_nrc) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"nrc"</span>, <span class="fu">colnames</span>(df_nrc), <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df_geninq) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"geninq"</span>, <span class="fu">colnames</span>(df_geninq), <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># now let's compare our estimates</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>sent_df <span class="ot">&lt;-</span> <span class="fu">merge</span>(df_nrc, df_geninq, <span class="at">by.x =</span> <span class="st">"nrc_doc_id"</span>, <span class="at">by.y =</span> <span class="st">"geninq_doc_id"</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sent_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            nrc_doc_id nrc_anger nrc_anticipation nrc_disgust nrc_fear nrc_joy
+1     test/neg/0_2.txt         1                4           2        3       3
+2     test/neg/1_3.txt         5                3           2        8       3
+3    test/neg/10_3.txt        12               21          12       20      26
+4   test/neg/100_4.txt         2                6           3        4       4
+5  test/neg/1000_3.txt         6                8           1        8       6
+6 test/neg/10000_4.txt         3                3           5        4       2
+  nrc_negative nrc_positive nrc_sadness nrc_surprise nrc_trust nrc_polarity
+1            3            4           5            3         3   0.14285714
+2           11           10           5            3         3  -0.04761905
+3           40           53          33           15        31   0.13978495
+4            6           14           6            4         7   0.40000000
+5            8           13           8            7         7   0.23809524
+6           10           11           1            1         6   0.04761905
+  geninq_positive geninq_negative geninq_polarity
+1              12               7      0.26315789
+2               8               9     -0.05882353
+3              66              50      0.13793103
+4              14              14      0.00000000
+5              20              11      0.29032258
+6              16               6      0.45454545</code></pre>
+</div>
+</div>
+<p>Now that we have them all in a single dataframe, it’s straightforward to figure out a bit about how well our different measures of polarity agree across the different approaches.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(sent_df<span class="sc">$</span>nrc_polarity, sent_df<span class="sc">$</span>geninq_polarity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6400088</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot this out. You can update this to check the look of other combinations.</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sent_df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> nrc_polarity,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> geninq_polarity)) <span class="sc">+</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As the plots make clear, while the measures are strongly correlated, they are decidedly not identical to one another. We can observe really significant variance across each in the estimates of polarity. So which is the best? Well, we could depend on our actual classifications to try to understand that. Of course, for many of the settings where we’d really like to know sentiment (from tweets, or news articles, or speeches, and so on), we won’t know the true sentiment. In those cases, we could hand-code a random subset. If we’re doing that, though, why not just code some more and use it as a training set for a supervised learning approach?</p>
+<p>In all, for many of our research settings, we are limited in what we can learn from these sorts of dictionary approaches unless we do substantial validation of the estimates.</p>
+</section>
+<section id="apply-dictionary-within-contexts" class="level1">
+<h1>Apply Dictionary within Contexts</h1>
+<p>The approach we’ve taken so far largely leverages working with DFMs. However, we might care about <em>contextual</em> usage. So, for instance, how is New York City treated across the corpus of movie reviews when it is discussed? To see this, we’ll first limit our corpus to just New York City related tokens (<code>ny_words</code>) and the window they appear within.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenize corpus</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>tokens_LMRD <span class="ot">&lt;-</span> <span class="fu">tokens</span>(data_corpus_LMRD, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># what are the context (target) words or phrases</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>ny_words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"big apple"</span>, <span class="st">"new york"</span>, <span class="st">"nyc"</span>, <span class="st">"ny"</span>, <span class="st">"new york city"</span>, <span class="st">"brookyln"</span>, <span class="st">"bronx"</span>, <span class="st">"manhattan"</span>, <span class="st">"queens"</span>, <span class="st">"staten island"</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># retain only our tokens and their context</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>tokens_ny <span class="ot">&lt;-</span> <span class="fu">tokens_keep</span>(tokens_LMRD, <span class="at">pattern =</span> <span class="fu">phrase</span>(ny_words), <span class="at">window =</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we’ll pull out the positive and negative dictionaries and look for those within our token sets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>data_dictionary_LSD2015_pos_neg <span class="ot">&lt;-</span> data_dictionary_LSD2015[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>tokens_ny_lsd <span class="ot">&lt;-</span> <span class="fu">tokens_lookup</span>(tokens_ny,</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">dictionary =</span> data_dictionary_LSD2015_pos_neg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can convert this to a DFM then.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>dfm_ny <span class="ot">&lt;-</span> <span class="fu">dfm</span>(tokens_ny_lsd)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dfm_ny, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 10 documents, 2 features (85.00% sparse) and 4 docvars.
+                      features
+docs                   negative positive
+  test/neg/0_2.txt            0        0
+  test/neg/10000_4.txt        4        4
+  test/neg/10001_1.txt        0        0
+  test/neg/10002_3.txt        0        0
+  test/neg/10003_3.txt        0        0
+  test/neg/10004_2.txt        0        0
+[ reached max_ndoc ... 4 more documents ]</code></pre>
+</div>
+</div>
+<p>Ok. As you can see above we have some positive and negative words in one of our movie reviews, but many more did not feature any emotionally valence words. We’ll drop those from our analysis, then take a look at the distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to data frame</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>mat_ny <span class="ot">&lt;-</span> <span class="fu">convert</span>(dfm_ny, <span class="at">to =</span> <span class="st">"data.frame"</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># drop if both features are 0</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>mat_ny <span class="ot">&lt;-</span> mat_ny[<span class="sc">-</span><span class="fu">which</span>((mat_ny<span class="sc">$</span>negative <span class="sc">+</span> mat_ny<span class="sc">$</span>positive)<span class="sc">==</span><span class="dv">0</span>),]</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print a little summary info</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"We have "</span>,<span class="fu">nrow</span>(mat_ny),<span class="st">" reviews that mention positive or negative words in the context of New York City terms."</span>, <span class="at">sep=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "We have 1439 reviews that mention positive or negative words in the context of New York City terms."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create polarity scores</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>mat_ny<span class="sc">$</span>polarity <span class="ot">&lt;-</span> (mat_ny<span class="sc">$</span>positive <span class="sc">-</span> mat_ny<span class="sc">$</span>negative)<span class="sc">/</span>(mat_ny<span class="sc">$</span>positive <span class="sc">+</span> mat_ny<span class="sc">$</span>negative)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summary</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mat_ny<span class="sc">$</span>polarity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-1.0000 -0.2000  0.1111  0.1289  0.5000  1.0000 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mat_ny) <span class="sc">+</span> </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x=</span>polarity)) <span class="sc">+</span> </span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="write-your-own-dictionary" class="level1">
+<h1>Write your own dictionary</h1>
+<p>Sometimes you may find no existing dictionary can best capture what you want to study, so you want to write your own dictionary.</p>
+<p>For example, we want to define a dictionary for different aspects of a movie, say, writing, directing, acting, and music.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>my_dict <span class="ot">&lt;-</span> <span class="fu">dictionary</span>(<span class="fu">list</span>(<span class="at">writing=</span><span class="fu">c</span>(<span class="st">"writing"</span>,<span class="st">"writer"</span>,<span class="st">"story"</span>,<span class="st">"character"</span>),             </span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">directing=</span><span class="fu">c</span>(<span class="st">"directing"</span>,<span class="st">"director"</span>),</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">acting=</span><span class="fu">c</span>(<span class="st">"acting"</span>,<span class="st">"actor"</span>,<span class="st">"actress"</span>,<span class="st">"character"</span>),           </span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">music=</span><span class="fu">c</span>(<span class="st">"music"</span>,<span class="st">"sound"</span>,<span class="st">"sing"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can use the dictionary as with dfm:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>movieReviewDfm_mydict <span class="ot">&lt;-</span> movieReviewDfm <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm_lookup</span>(my_dict)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(movieReviewDfm_mydict, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 6 documents, 4 features (54.17% sparse) and 4 docvars.
+                      features
+docs                   writing directing acting music
+  test/neg/0_2.txt           2         0      2     0
+  test/neg/10000_4.txt       3         0      6     0
+  test/neg/10001_1.txt       2         0      3     0
+  test/neg/10002_3.txt       0         0      2     1
+  test/neg/10003_3.txt       1         0      1     0
+  test/neg/10004_2.txt       0         1      0     0</code></pre>
+</div>
+</div>
+<p>In addition to count frequency, we can also assign values/weights to words, to indicate how strongly positive/negative each word is.</p>
+<p>For example, we first construct a fake corpus</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'I am happy and kind of sad'</span>,<span class="st">'sad is sad, happy is good'</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>df_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(df)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>df_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(df_corpus,</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,  </span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">remove_symbols =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">dfm</span>()</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 2 documents, 9 features (38.89% sparse) and 0 docvars.
+       features
+docs    i am happy and kind of sad is good
+  text1 1  1     1   1    1  1   1  0    0
+  text2 0  0     1   0    0  0   2  2    1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#convert dfm to dataframe for further steps</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">convert</span>(df_dfm, <span class="at">to =</span> <span class="st">"data.frame"</span>)</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(df2,<span class="sc">!</span>doc_id,<span class="at">names_to=</span><span class="st">"word"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now construct your lexicon dictionary with values/weights</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>lexicon <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">word =</span><span class="fu">c</span>(<span class="st">'happy'</span>,<span class="st">'sad'</span>),<span class="at">scores=</span><span class="fu">c</span>(<span class="fl">1.3455</span>,<span class="sc">-</span><span class="fl">1.0552</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `data_frame()` was deprecated in tibble 1.1.0.
+ℹ Please use `tibble()` instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>lexicon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  word  scores
+  &lt;chr&gt;  &lt;dbl&gt;
+1 happy   1.35
+2 sad    -1.06</code></pre>
+</div>
+</div>
+<p>Now, we can merge lexicon and data to have the sum of the scores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">merge</span>(df3,lexicon,<span class="at">by=</span><span class="st">"word"</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="fu">cbind</span>(scores<span class="sc">*</span>value) <span class="sc">~</span> doc_id, <span class="at">data=</span>merged, sum)</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  doc_id      V1
+1  text1  0.2903
+2  text2 -0.7649</code></pre>
+</div>
+</div>
+</section>
+<section id="dictionaries-avaialbe-in-r" class="level1">
+<h1>Dictionaries avaialbe in R</h1>
+<section id="tidytext-package" class="level2">
+<h2 class="anchored" data-anchor-id="tidytext-package">Tidytext package</h2>
+<section id="afinn" class="level3">
+<h3 class="anchored" data-anchor-id="afinn">afinn</h3>
+<p>AFINN is a list of words rated for valence with an integer between -5 (negative) and 5 (positive). Each word is exclusively assigned to a value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>afinn_dict <span class="ot">&lt;-</span> <span class="fu">get_sentiments</span>(<span class="st">"afinn"</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>words <span class="ot">&lt;-</span> afinn_dict <span class="sc">%&gt;%</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(value) <span class="sc">%&gt;%</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">table</span>() </span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(words,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            value
+word         -5 -4 -3 -2 -1 0 1 2 3 4 5
+  abandon     0  0  0  1  0 0 0 0 0 0 0
+  abandoned   0  0  0  1  0 0 0 0 0 0 0
+  abandons    0  0  0  1  0 0 0 0 0 0 0
+  abducted    0  0  0  1  0 0 0 0 0 0 0
+  abduction   0  0  0  1  0 0 0 0 0 0 0
+  abductions  0  0  0  1  0 0 0 0 0 0 0
+  abhor       0  0  1  0  0 0 0 0 0 0 0
+  abhorred    0  0  1  0  0 0 0 0 0 0 0
+  abhorrent   0  0  1  0  0 0 0 0 0 0 0
+  abhors      0  0  1  0  0 0 0 0 0 0 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(afinn_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2477    2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(afinn_dict) <span class="sc">+</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x=</span>value), <span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_histogram(aes(x = value), stat = "count"): Ignoring unknown
+parameters: `binwidth`, `bins`, and `pad`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="loughran" class="level3">
+<h3 class="anchored" data-anchor-id="loughran">loughran</h3>
+<p>Loughran-McDonald sentiment lexicon is for use with financial documents. It labels words with six sentiments important in financial contexts: constraining, litigious, negative, positive, superfluous, and uncertainty. A word may belong to multiple sentiments.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>loughran_dict <span class="ot">&lt;-</span> <span class="fu">get_sentiments</span>(<span class="st">"loughran"</span>)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>words <span class="ot">&lt;-</span> loughran_dict <span class="sc">%&gt;%</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(sentiment) <span class="sc">%&gt;%</span></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">table</span>() </span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(words,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              sentiment
+word           constraining litigious negative positive superfluous uncertainty
+  abandon                 0         0        1        0           0           0
+  abandoned               0         0        1        0           0           0
+  abandoning              0         0        1        0           0           0
+  abandonment             0         0        1        0           0           0
+  abandonments            0         0        1        0           0           0
+  abandons                0         0        1        0           0           0
+  abdicated               0         0        1        0           0           0
+  abdicates               0         0        1        0           0           0
+  abdicating              0         0        1        0           0           0
+  abdication              0         0        1        0           0           0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(loughran_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4150    2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loughran_dict) <span class="sc">+</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x=</span>sentiment), <span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_histogram(aes(x = sentiment), stat = "count"): Ignoring unknown
+parameters: `binwidth`, `bins`, and `pad`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="bing" class="level3">
+<h3 class="anchored" data-anchor-id="bing">bing</h3>
+<p>English sentiment lexicon that categorizes words into a binary fashion, either positive or negative.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>bing_dict <span class="ot">&lt;-</span> <span class="fu">get_sentiments</span>(<span class="st">"bing"</span>)</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>words <span class="ot">&lt;-</span> bing_dict <span class="sc">%&gt;%</span></span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(sentiment) <span class="sc">%&gt;%</span></span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">table</span>() </span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(words,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             sentiment
+word          negative positive
+  2-faces            1        0
+  abnormal           1        0
+  abolish            1        0
+  abominable         1        0
+  abominably         1        0
+  abominate          1        0
+  abomination        1        0
+  abort              1        0
+  aborted            1        0
+  aborts             1        0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(bing_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6786    2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bing_dict) <span class="sc">+</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x=</span>sentiment), <span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_histogram(aes(x = sentiment), stat = "count"): Ignoring unknown
+parameters: `binwidth`, `bins`, and `pad`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="nrc" class="level3">
+<h3 class="anchored" data-anchor-id="nrc">nrc</h3>
+<p>Categorize words into eight emotions: anger, fear, anticipation, trust, surprise, sadness, joy, and disgust; and two sentiments: negative and positive. One word can belong to multiple categories.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>nrc_dict <span class="ot">&lt;-</span> <span class="fu">get_sentiments</span>(<span class="st">"nrc"</span>)</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>words <span class="ot">&lt;-</span> nrc_dict <span class="sc">%&gt;%</span></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(sentiment) <span class="sc">%&gt;%</span></span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">table</span>() </span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(words,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             sentiment
+word          anger anticipation disgust fear joy negative positive sadness
+  abacus          0            0       0    0   0        0        0       0
+  abandon         0            0       0    1   0        1        0       1
+  abandoned       1            0       0    1   0        1        0       1
+  abandonment     1            0       0    1   0        1        0       1
+  abba            0            0       0    0   0        0        1       0
+  abbot           0            0       0    0   0        0        0       0
+  abduction       0            0       0    1   0        1        0       1
+  aberrant        0            0       0    0   0        1        0       0
+  aberration      0            0       1    0   0        1        0       0
+  abhor           1            0       1    1   0        1        0       0
+             sentiment
+word          surprise trust
+  abacus             0     1
+  abandon            0     0
+  abandoned          0     0
+  abandonment        1     0
+  abba               0     0
+  abbot              0     1
+  abduction          1     0
+  aberrant           0     0
+  aberration         0     0
+  abhor              0     0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(nrc_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13872     2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nrc_dict) <span class="sc">+</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x=</span>sentiment), <span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_histogram(aes(x = sentiment), stat = "count"): Ignoring unknown
+parameters: `binwidth`, `bins`, and `pad`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Tutorial8_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="quanteda-package" class="level2">
+<h2 class="anchored" data-anchor-id="quanteda-package">Quanteda package</h2>
+<p>Dictionaries available under Quanteda: ANEW (Affective Norms for English Words), AFINN, LSD (Lexicoder Sentiment Dictionary), Loughran McDonald, etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data_dictionary_ANEW)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "pleasure"  "arousal"   "dominance"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data_dictionary_LoughranMcDonald)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "NEGATIVE"           "POSITIVE"           "UNCERTAINTY"       
+[4] "LITIGIOUS"          "CONSTRAINING"       "SUPERFLUOUS"       
+[7] "INTERESTING"        "MODAL WORDS STRONG" "MODAL WORDS WEAK"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data_dictionary_LSD2015)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "negative"     "positive"     "neg_positive" "neg_negative"</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

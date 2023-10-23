@@ -1,0 +1,416 @@
+---
+title: "Tutorial8_Dictionary/Sentiment Analysis"
+pagetitle: Tutorial_8
+---
+
+In this tutorial, we'll learn about **dictionary methods**.
+
+# Front-End Matters
+
+```{r}
+library(tidytext)
+library(plyr)
+library(textdata)
+library(tidyverse)
+library(quanteda)
+library(quanteda.textmodels)
+library(ggplot2)
+```
+
+This time, we'll be making use of a package that's available on GitHub. To install it, we need to load the `devtools` package. The package itself contains a host of different dictionaries publicly available dictionaries.
+
+```{r}
+#library(devtools)
+#devtools::install_github("kbenoit/quanteda.dictionaries")
+library(quanteda.dictionaries)
+
+#remotes::install_github("quanteda/quanteda.sentiment")
+library(quanteda.sentiment)
+
+```
+
+```{r}
+# large movie review database of 50,000 movie reviews
+load(url("https://www.dropbox.com/s/sjdfmx8ggwfda5o/data_orpus_LMRD.rda?dl=1"))
+
+# this process is unnecessary, given 'data_corpus_LMRD' is a corpus object; but to make sure
+data_corpus_LMRD <- corpus(data_corpus_LMRD)
+
+# check the text of document 1
+convert(data_corpus_LMRD[1],to="data.frame")
+```
+
+# Dictionary Analysis
+
+The basic idea with a dictionary analysis is to identify a set of words that connect to a certain concept, and to count the frequency of that set of words within a document. The set of words is the dictionary; as you might quickly realize, a more appropriate name is probably theasurus.
+
+```         
+liwcalike()
+```
+
+There are a couple of ways to do this. First, the `quanteda.dictionaries` package contains the `liwcalike()` function, which takes a corpus or character vector and carries out an analysis--based on a provide dictionary--that mimics the pay-to-play software LIWC (Linguistic Inquiry and Word Count). The LIWC software calculates the percentage of the document that reflects a host of different characteristics. We are going to focus on positive and negative language, but keep in mind that there are lots of other dimensions that could be of interest.
+
+```{r}
+# use liwcalike() to estimate sentiment using NRC dictionary
+reviewSentiment_nrc <- liwcalike(data_corpus_LMRD, data_dictionary_NRC)
+
+names(reviewSentiment_nrc)
+
+```
+
+Now let's look at polarity. What are the most positive reviews?
+
+```{r}
+ggplot(reviewSentiment_nrc) +
+  geom_histogram(aes(x = positive)) +
+  theme_bw()
+```
+
+Based on that, let's look at those that are out in the right tail (i.e., which are greater than 15)
+
+```{r}
+data_corpus_LMRD[which(reviewSentiment_nrc$positive > 15)]
+```
+
+Now how about the most negative?
+
+```{r}
+ggplot(reviewSentiment_nrc) +
+  geom_histogram(aes(x = negative)) +
+  theme_bw()
+```
+
+```{r}
+data_corpus_LMRD[which(reviewSentiment_nrc$negative > 15)]
+```
+
+Of course, you might be realizing that the proportions of positive and negative words used in isolation might be a poor indicator of overall sentiment. Instead, we want a score that incorporates both. The example directly above alludes to this problem, as the description of a horror movie makes it *look* negative, but in reality there are also a lot of positive words in there. So let's correct for that and see what we've got.
+
+```{r}
+reviewSentiment_nrc$polarity <- reviewSentiment_nrc$positive - reviewSentiment_nrc$negative
+
+ggplot(reviewSentiment_nrc) +
+  geom_histogram(aes(polarity)) +
+  theme_bw()
+```
+
+```{r}
+data_corpus_LMRD[which(reviewSentiment_nrc$polarity < -12)]
+```
+
+Ah. unfortunately the same problem persists. We'll come back to this later.
+
+# Using Dictionaries with DFMs
+
+```{r}
+# create a full dfm for comparison
+movieReviewDfm <- tokens(data_corpus_LMRD,
+                         remove_punct = TRUE,
+                         remove_symbols = TRUE,
+                         remove_numbers = TRUE,
+                         remove_url = TRUE,
+                         split_hyphens = FALSE,
+                         include_docvars = TRUE) %>%
+  tokens_tolower() %>%
+  dfm()
+
+head(movieReviewDfm, 10)
+dim(movieReviewDfm)
+
+# convert corpus to dfm using the dictionary
+movieReviewDfm_nrc <- tokens(data_corpus_LMRD,
+                         remove_punct = TRUE,
+                         remove_symbols = TRUE,
+                         remove_numbers = TRUE,
+                         remove_url = TRUE,
+                         split_hyphens = FALSE,
+                         include_docvars = TRUE) %>%
+  tokens_tolower() %>%
+  dfm() %>%
+  dfm_lookup(data_dictionary_NRC)
+  
+  
+dim(movieReviewDfm_nrc)
+head(movieReviewDfm_nrc, 10)
+class(movieReviewDfm_nrc)
+```
+
+Note that these are *counts* now, rather than the percentage that we got from `liwcalike()`. Let's convert that to a data frame that's useful for downstream analysis, then create a polarity measure.
+
+```{r}
+df_nrc <- convert(movieReviewDfm_nrc, to = "data.frame")
+names(df_nrc)
+
+df_nrc$polarity <- (df_nrc$positive - df_nrc$negative)/(df_nrc$positive + df_nrc$negative)
+
+df_nrc$polarity[(df_nrc$positive + df_nrc$negative) == 0] <- 0
+
+ggplot(df_nrc) +
+  geom_histogram(aes(x=polarity)) +
+  theme_bw()
+
+```
+
+```{r}
+writeLines(head(data_corpus_LMRD[which(df_nrc$polarity == 1)]))
+```
+
+Well, that's not good. Those are all pretty negative reviews but they are ranked as positive by our sentiment score. Let's add some other dictionaries and compare.
+
+# Dictionary Comparison
+
+```{r}
+# convert corpus to DFM using the General Inquirer dictionary
+movieReviewDfm_geninq <- movieReviewDfm %>%
+  dfm_lookup(data_dictionary_geninqposneg)
+
+head(movieReviewDfm_geninq, 6)
+
+```
+
+The `quanteda.dictionaries` package provides access to a host of different dictionaries, with a real diversity of dimensions supposedly captured through the dictionaries. For now, we'll focus just on two of the packages that include `positive` and `negative`.
+
+```{r}
+# create polarity measure for geninq
+df_geninq <- convert(movieReviewDfm_geninq, to = "data.frame")
+df_geninq$polarity <- (df_geninq$positive - df_geninq$negative)/(df_geninq$positive + df_geninq$negative)
+df_geninq$polarity[which((df_geninq$positive + df_geninq$negative) == 0)] <- 0
+
+# look at first few rows
+head(df_geninq)
+
+```
+
+Let's combine all of these into a single dataframe in order to see how well they match up.
+
+```{r}
+# create unique names for each data frame
+colnames(df_nrc) <- paste("nrc", colnames(df_nrc), sep = "_")
+colnames(df_geninq) <- paste("geninq", colnames(df_geninq), sep = "_")
+
+# now let's compare our estimates
+sent_df <- merge(df_nrc, df_geninq, by.x = "nrc_doc_id", by.y = "geninq_doc_id")
+
+head(sent_df)
+
+```
+
+Now that we have them all in a single dataframe, it's straightforward to figure out a bit about how well our different measures of polarity agree across the different approaches.
+
+```{r}
+cor(sent_df$nrc_polarity, sent_df$geninq_polarity)
+```
+
+```{r}
+# Plot this out. You can update this to check the look of other combinations.
+ggplot(sent_df, mapping = aes(x = nrc_polarity,
+                              y = geninq_polarity)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth() +
+  geom_abline(intercept = 0, slope = 1, color = "red") +
+  theme_bw()
+```
+
+As the plots make clear, while the measures are strongly correlated, they are decidedly not identical to one another. We can observe really significant variance across each in the estimates of polarity. So which is the best? Well, we could depend on our actual classifications to try to understand that. Of course, for many of the settings where we'd really like to know sentiment (from tweets, or news articles, or speeches, and so on), we won't know the true sentiment. In those cases, we could hand-code a random subset. If we're doing that, though, why not just code some more and use it as a training set for a supervised learning approach?
+
+In all, for many of our research settings, we are limited in what we can learn from these sorts of dictionary approaches unless we do substantial validation of the estimates.
+
+# Apply Dictionary within Contexts
+
+The approach we've taken so far largely leverages working with DFMs. However, we might care about *contextual* usage. So, for instance, how is New York City treated across the corpus of movie reviews when it is discussed? To see this, we'll first limit our corpus to just New York City related tokens (`ny_words`) and the window they appear within.
+
+```{r}
+# tokenize corpus
+tokens_LMRD <- tokens(data_corpus_LMRD, remove_punct = TRUE)
+
+# what are the context (target) words or phrases
+ny_words <- c("big apple", "new york", "nyc", "ny", "new york city", "brookyln", "bronx", "manhattan", "queens", "staten island")
+
+# retain only our tokens and their context
+tokens_ny <- tokens_keep(tokens_LMRD, pattern = phrase(ny_words), window = 40)
+```
+
+Next, we'll pull out the positive and negative dictionaries and look for those within our token sets.
+
+```{r}
+data_dictionary_LSD2015_pos_neg <- data_dictionary_LSD2015[1:2]
+
+tokens_ny_lsd <- tokens_lookup(tokens_ny,
+                               dictionary = data_dictionary_LSD2015_pos_neg)
+```
+
+We can convert this to a DFM then.
+
+```{r}
+dfm_ny <- dfm(tokens_ny_lsd)
+head(dfm_ny, 10)
+```
+
+Ok. As you can see above we have some positive and negative words in one of our movie reviews, but many more did not feature any emotionally valence words. We'll drop those from our analysis, then take a look at the distribution.
+
+```{r}
+# convert to data frame
+mat_ny <- convert(dfm_ny, to = "data.frame")
+
+# drop if both features are 0
+mat_ny <- mat_ny[-which((mat_ny$negative + mat_ny$positive)==0),]
+
+# print a little summary info
+paste("We have ",nrow(mat_ny)," reviews that mention positive or negative words in the context of New York City terms.", sep="")
+
+# create polarity scores
+mat_ny$polarity <- (mat_ny$positive - mat_ny$negative)/(mat_ny$positive + mat_ny$negative)
+
+# summary
+summary(mat_ny$polarity)
+
+# plot
+ggplot(mat_ny) + 
+  geom_histogram(aes(x=polarity)) + 
+  theme_bw()
+```
+
+# Write your own dictionary
+
+Sometimes you may find no existing dictionary can best capture what you want to study, so you want to write your own dictionary. 
+
+For example, we want to define a dictionary for different aspects of a movie, say, writing, directing, acting, and music. 
+
+```{r}
+my_dict <- dictionary(list(writing=c("writing","writer","story","character"),             
+              directing=c("directing","director"),
+              acting=c("acting","actor","actress","character"),           
+              music=c("music","sound","sing")))
+```
+
+We can use the dictionary as with dfm:
+```{r}
+movieReviewDfm_mydict <- movieReviewDfm %>%
+  dfm_lookup(my_dict)
+
+head(movieReviewDfm_mydict, 6)
+```
+
+In addition to count frequency, we can also assign values/weights to words, to indicate how strongly positive/negative each word is. 
+
+For example, we first construct a fake corpus
+
+```{r}
+df <- c('I am happy and kind of sad','sad is sad, happy is good')
+
+df_corpus <- corpus(df)
+df_dfm <- tokens(df_corpus,
+                    remove_punct = TRUE,  
+                    remove_symbols = TRUE) %>%
+                    tokens_tolower() %>%
+                    dfm()
+
+head(df_dfm)
+
+#convert dfm to dataframe for further steps
+df2 <- convert(df_dfm, to = "data.frame")
+
+df3 <- pivot_longer(df2,!doc_id,names_to="word")
+```
+
+Now construct your lexicon dictionary with values/weights
+```{r}
+lexicon <- data_frame(word =c('happy','sad'),scores=c(1.3455,-1.0552))
+
+lexicon
+```
+
+Now, we can merge lexicon and data to have the sum of the scores. 
+```{r}
+merged <- merge(df3,lexicon,by="word")
+
+score <- aggregate(cbind(scores*value) ~ doc_id, data=merged, sum)
+
+score
+```
+
+# Dictionaries avaialbe in R
+
+## Tidytext package
+### afinn 
+AFINN is a list of words rated for valence with an integer between -5 (negative) and 5 (positive). Each word is exclusively assigned to a value. 
+
+```{r}
+afinn_dict <- get_sentiments("afinn")
+
+words <- afinn_dict %>%
+ group_by(value) %>%
+ table() 
+
+head(words,10)
+
+dim(afinn_dict)
+
+ggplot(afinn_dict) +
+ geom_histogram(aes(x=value), stat = "count") +
+ theme_bw()
+```
+
+### loughran
+Loughran-McDonald sentiment lexicon is for use with financial documents. It labels words with six sentiments important in financial contexts: constraining, litigious, negative, positive, superfluous, and uncertainty. A word may belong to multiple sentiments. 
+
+```{r}
+loughran_dict <- get_sentiments("loughran")
+
+words <- loughran_dict %>%
+ group_by(sentiment) %>%
+ table() 
+
+head(words,10)
+
+dim(loughran_dict)
+
+ggplot(loughran_dict) +
+ geom_histogram(aes(x=sentiment), stat = "count") +
+ theme_bw()
+```
+### bing
+English sentiment lexicon that categorizes words into a binary fashion, either positive or negative.
+
+```{r}
+bing_dict <- get_sentiments("bing")
+
+words <- bing_dict %>%
+ group_by(sentiment) %>%
+ table() 
+
+head(words,10)
+
+dim(bing_dict)
+
+ggplot(bing_dict) +
+ geom_histogram(aes(x=sentiment), stat = "count") +
+ theme_bw()
+```
+### nrc
+Categorize words into eight emotions: anger, fear, anticipation, trust, surprise, sadness, joy, and disgust; and two sentiments: negative and positive. One word can belong to multiple categories. 
+
+```{r}
+nrc_dict <- get_sentiments("nrc")
+
+words <- nrc_dict %>%
+ group_by(sentiment) %>%
+ table() 
+
+head(words,10)
+
+dim(nrc_dict)
+
+ggplot(nrc_dict) +
+ geom_histogram(aes(x=sentiment), stat = "count") +
+ theme_bw()
+```
+
+## Quanteda package
+
+Dictionaries available under Quanteda: ANEW (Affective Norms for English Words), AFINN, LSD (Lexicoder Sentiment Dictionary), Loughran McDonald, etc.
+```{r}
+names(data_dictionary_ANEW)
+names(data_dictionary_LoughranMcDonald)
+names(data_dictionary_LSD2015)
+```

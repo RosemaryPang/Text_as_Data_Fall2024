@@ -367,7 +367,7 @@ pos 0.3886 0.1266 0.7371</code></pre>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a confusion matrix</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">docvars</span>(dfmTestMatched, <span class="st">"polarity"</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(polarity_NaiveBayes, <span class="at">newdata =</span> dfmTestMatched)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(actual, predicted)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted,actual)</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># now calculate a number of statistics related to the confusion matrix</span></span>
@@ -375,30 +375,30 @@ pos 0.3886 0.1266 0.7371</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
-      predicted
-actual  neg  pos
-   neg 4351  658
-   pos  714 4277
+         actual
+predicted  neg  pos
+      neg 4351  714
+      pos  658 4277
                                           
                Accuracy : 0.8628          
                  95% CI : (0.8559, 0.8695)
-    No Information Rate : 0.5065          
+    No Information Rate : 0.5009          
     P-Value [Acc &gt; NIR] : &lt;2e-16          
                                           
                   Kappa : 0.7256          
                                           
  Mcnemar's Test P-Value : 0.1376          
                                           
-            Sensitivity : 0.8590          
-            Specificity : 0.8667          
-         Pos Pred Value : 0.8686          
-         Neg Pred Value : 0.8569          
-              Precision : 0.8686          
-                 Recall : 0.8590          
+            Sensitivity : 0.8686          
+            Specificity : 0.8569          
+         Pos Pred Value : 0.8590          
+         Neg Pred Value : 0.8667          
+              Precision : 0.8590          
+                 Recall : 0.8686          
                      F1 : 0.8638          
-             Prevalence : 0.5065          
+             Prevalence : 0.5009          
          Detection Rate : 0.4351          
-   Detection Prevalence : 0.5009          
+   Detection Prevalence : 0.5065          
       Balanced Accuracy : 0.8628          
                                           
        'Positive' Class : neg             
@@ -538,38 +538,38 @@ See help("Deprecated")</code></pre>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a confusion matrix</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">docvars</span>(dfmTestMatchedSmall, <span class="st">"polarity"</span>)</span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(polarity_SVM, <span class="at">newdata =</span> dfmTestMatchedSmall)</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(actual, predicted)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted,actual)</span>
 <span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now calculate a number of statistics related to the confusion matrix</span></span>
 <span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
-      predicted
-actual  neg  pos
-   neg 3886 1123
-   pos  906 4085
+         actual
+predicted  neg  pos
+      neg 3886  906
+      pos 1123 4085
                                           
                Accuracy : 0.7971          
                  95% CI : (0.7891, 0.8049)
-    No Information Rate : 0.5208          
+    No Information Rate : 0.5009          
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
                   Kappa : 0.5942          
                                           
  Mcnemar's Test P-Value : 1.625e-06       
                                           
-            Sensitivity : 0.8109          
-            Specificity : 0.7844          
-         Pos Pred Value : 0.7758          
-         Neg Pred Value : 0.8185          
-              Precision : 0.7758          
-                 Recall : 0.8109          
+            Sensitivity : 0.7758          
+            Specificity : 0.8185          
+         Pos Pred Value : 0.8109          
+         Neg Pred Value : 0.7844          
+              Precision : 0.8109          
+                 Recall : 0.7758          
                      F1 : 0.7930          
-             Prevalence : 0.4792          
+             Prevalence : 0.5009          
          Detection Rate : 0.3886          
-   Detection Prevalence : 0.5009          
-      Balanced Accuracy : 0.7977          
+   Detection Prevalence : 0.4792          
+      Balanced Accuracy : 0.7971          
                                           
        'Positive' Class : neg             
                                           </code></pre>
@@ -676,36 +676,36 @@ Attaching package: 'randomForest'</code></pre>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># confusion matrix</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">docvars</span>(dfmTestMatchedSmall)<span class="sc">$</span>polarity)</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> polarity_RF<span class="sc">$</span>test[[<span class="st">'predicted'</span>]]</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(actual,predicted)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted,actual)</span>
 <span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode=</span><span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
-      predicted
-actual  neg  pos
-   neg 3997 1012
-   pos  703 4288
+         actual
+predicted  neg  pos
+      neg 3997  703
+      pos 1012 4288
                                          
                Accuracy : 0.8285         
                  95% CI : (0.821, 0.8358)
-    No Information Rate : 0.53           
+    No Information Rate : 0.5009         
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
                                          
                   Kappa : 0.657          
                                          
  Mcnemar's Test P-Value : 1.027e-13      
                                          
-            Sensitivity : 0.8504         
-            Specificity : 0.8091         
-         Pos Pred Value : 0.7980         
-         Neg Pred Value : 0.8591         
-              Precision : 0.7980         
-                 Recall : 0.8504         
+            Sensitivity : 0.7980         
+            Specificity : 0.8591         
+         Pos Pred Value : 0.8504         
+         Neg Pred Value : 0.8091         
+              Precision : 0.8504         
+                 Recall : 0.7980         
                      F1 : 0.8234         
-             Prevalence : 0.4700         
+             Prevalence : 0.5009         
          Detection Rate : 0.3997         
-   Detection Prevalence : 0.5009         
-      Balanced Accuracy : 0.8297         
+   Detection Prevalence : 0.4700         
+      Balanced Accuracy : 0.8286         
                                          
        'Positive' Class : neg            
                                          </code></pre>
@@ -736,36 +736,36 @@ actual  neg  pos
 <span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>predicted_class[num_predicted <span class="sc">&gt;</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"pos"</span></span>
 <span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create the confusion matrix</span></span>
-<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(actual, predicted_class)</span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted_class, actual)</span>
 <span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
-      predicted_class
-actual  neg  pos
-   neg 4216  793
-   pos  626 4365
+               actual
+predicted_class  neg  pos
+            neg 4216  626
+            pos  793 4365
                                           
                Accuracy : 0.8581          
                  95% CI : (0.8511, 0.8649)
-    No Information Rate : 0.5158          
+    No Information Rate : 0.5009          
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
                   Kappa : 0.7162          
                                           
  Mcnemar's Test P-Value : 1.049e-05       
                                           
-            Sensitivity : 0.8707          
-            Specificity : 0.8463          
-         Pos Pred Value : 0.8417          
-         Neg Pred Value : 0.8746          
-              Precision : 0.8417          
-                 Recall : 0.8707          
+            Sensitivity : 0.8417          
+            Specificity : 0.8746          
+         Pos Pred Value : 0.8707          
+         Neg Pred Value : 0.8463          
+              Precision : 0.8707          
+                 Recall : 0.8417          
                      F1 : 0.8560          
-             Prevalence : 0.4842          
+             Prevalence : 0.5009          
          Detection Rate : 0.4216          
-   Detection Prevalence : 0.5009          
-      Balanced Accuracy : 0.8585          
+   Detection Prevalence : 0.4842          
+      Balanced Accuracy : 0.8581          
                                           
        'Positive' Class : neg             
                                           </code></pre>
@@ -783,36 +783,36 @@ actual  neg  pos
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Naive Bayes</span></span>
 <span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>dfmHeldOutMatched <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfmHeldOut, <span class="at">features =</span> <span class="fu">featnames</span>(dfmTrain))</span>
 <span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>predicted.nb <span class="ot">&lt;-</span> <span class="fu">predict</span>(polarity_NaiveBayes, dfmHeldOutMatched)</span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(actual, predicted.nb)</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted.nb, actual)</span>
 <span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
-      predicted.nb
-actual  neg  pos
-   neg 5686  569
-   pos  443 3302
+            actual
+predicted.nb  neg  pos
+         neg 5686  443
+         pos  569 3302
                                           
                Accuracy : 0.8988          
                  95% CI : (0.8927, 0.9046)
-    No Information Rate : 0.6129          
+    No Information Rate : 0.6255          
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
                   Kappa : 0.7854          
                                           
  Mcnemar's Test P-Value : 8.518e-05       
                                           
-            Sensitivity : 0.9277          
-            Specificity : 0.8530          
-         Pos Pred Value : 0.9090          
-         Neg Pred Value : 0.8817          
-              Precision : 0.9090          
-                 Recall : 0.9277          
+            Sensitivity : 0.9090          
+            Specificity : 0.8817          
+         Pos Pred Value : 0.9277          
+         Neg Pred Value : 0.8530          
+              Precision : 0.9277          
+                 Recall : 0.9090          
                      F1 : 0.9183          
-             Prevalence : 0.6129          
+             Prevalence : 0.6255          
          Detection Rate : 0.5686          
-   Detection Prevalence : 0.6255          
-      Balanced Accuracy : 0.8904          
+   Detection Prevalence : 0.6129          
+      Balanced Accuracy : 0.8954          
                                           
        'Positive' Class : neg             
                                           </code></pre>

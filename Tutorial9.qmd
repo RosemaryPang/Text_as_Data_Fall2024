@@ -112,7 +112,7 @@ library(e1071)
 # create a confusion matrix
 actual <- docvars(dfmTestMatched, "polarity")
 predicted <- predict(polarity_NaiveBayes, newdata = dfmTestMatched)
-confusion <- table(actual, predicted)
+confusion <- table(predicted,actual)
 
 
 # now calculate a number of statistics related to the confusion matrix
@@ -202,7 +202,7 @@ dfmTestMatchedSmall <- dfm_match(dfmTest, features = featnames(dfmTrainSmall))
 # create a confusion matrix
 actual <- docvars(dfmTestMatchedSmall, "polarity")
 predicted <- predict(polarity_SVM, newdata = dfmTestMatchedSmall)
-confusion <- table(actual, predicted)
+confusion <- table(predicted,actual)
 
 # now calculate a number of statistics related to the confusion matrix
 confusionMatrix(confusion, mode = "everything")
@@ -249,7 +249,7 @@ polarity_RF <- randomForest(dfmTrainSmallRf,
 # confusion matrix
 actual <- as.factor(docvars(dfmTestMatchedSmall)$polarity)
 predicted <- polarity_RF$test[['predicted']]
-confusion <- table(actual,predicted)
+confusion <- table(predicted,actual)
 confusionMatrix(confusion, mode="everything")
 ```
 
@@ -280,7 +280,7 @@ num_predicted <- 1 * (predict(polarity_NaiveBayes, newdata = dfmTestMatched) == 
 predicted_class[num_predicted > 1] <- "pos"
 
 # create the confusion matrix
-confusion <- table(actual, predicted_class)
+confusion <- table(predicted_class, actual)
 confusionMatrix(confusion, mode = "everything")
 
 
@@ -298,7 +298,7 @@ actual <- docvars(dfmHeldOut)$polarity
 # Naive Bayes
 dfmHeldOutMatched <- dfm_match(dfmHeldOut, features = featnames(dfmTrain))
 predicted.nb <- predict(polarity_NaiveBayes, dfmHeldOutMatched)
-confusion <- table(actual, predicted.nb)
+confusion <- table(predicted.nb, actual)
 confusionMatrix(confusion, mode = "everything")
 ```
 It also shows a high accuracy!

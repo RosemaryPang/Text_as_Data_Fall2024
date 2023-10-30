@@ -23,3 +23,5 @@ This tutorial website contains the R code and output of weekly tutorials.
 [Week 7 Text Representation II](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial7.html)
 
 [Week 8 Dictionary/ Sentiment Analysis](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial8.html)
+
+[Week 9 Supervised Learning](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial9.html)

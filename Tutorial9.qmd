@@ -1,0 +1,304 @@
+---
+title: "Tutorial9_Supervised Learning"
+pagetitle: Tutorial_9
+---
+
+In this notebook, we'll learn about **supervised learning models**.
+
+# Front-end matters
+
+Let's load up our packages. There's one change from prior tutorials here: we're adding in `quanteda.textmodels`. Note that this isn't strictly necessary; many of the models we'll think about actually work with other packages or the quanteda code is based on those other packages. But we *know* by using `quanteda.textmodels` package that the data and the models are going to place nice together.
+
+```{r}
+#install.packages("tidytext")
+#install.packages("plyr")
+#install.packages("tidyverse")
+#install.packages("quanteda")
+#install.packages("quanteda.textmodels")
+
+# load libraries
+library(tidytext)
+library(plyr)
+library(tidyverse)
+library(quanteda)
+library(quanteda.textmodels)
+```
+
+```{r}
+#library(devtools)
+#devtools::install_github("kbenoit/quanteda.dictionaries") 
+library(quanteda.dictionaries)
+```
+
+# `caret`
+We are also going to add the `caret` library for supervised learning models. `caret` offers a one-stop shop for a host of machine learning models, as well as some nice functionality for creating, fitting, and debugging supervised learning models. The latter part is particularly helpful for us today as we explore these models and how well they are performing.
+
+```{r}
+#install.packages("caret")
+library(caret)
+```
+
+Finally, we'll follow up on last week's session by working with the Maas et al. (2011) movie review data, which includes 50,000 movie reviews. You can learn more about the dataset [here](https://ai.stanford.edu/~amaas/data/sentiment/).
+
+```{r}
+# large movie review database of 50,000 movie reviews
+load(url("https://www.dropbox.com/s/sjdfmx8ggwfda5o/data_corpus_LMRD.rda?dl=1"))
+```
+
+As a quick reminder, we have movie reviews, a `polarity` rating for each (positive or negative), and a `rating` (1 to 10) stored as metadata. Here's what the metadata looks like. We are going to focus on polarity.
+
+```{r}
+summary(docvars(data_corpus_LMRD))
+```
+
+# Training & Testing Data
+For supervised learning models, the critical first step is splitting our data into testing and training sets. We're going to go one step further and also create an "invisible" held-out set that we can come back to at the end to evaluate the conclusions we draw from training and testing our models.
+
+The big thing to remember as you set about doing this is to ensure you set the random seed. Otherwise, you won't be able to replicate the random splits of the data that you are about to create.
+
+````{r}
+# set seed
+set.seed(12345)
+
+# create id variable in corpus metadata
+docvars(data_corpus_LMRD, "id") <- 1:ndoc(data_corpus_LMRD)
+
+# create training set (60% of data) and initial test set
+N <- ndoc(data_corpus_LMRD)
+trainIndex <- sample(1:N, .6 * N)
+testIndex <- c(1:N)[-trainIndex]
+
+# split test set in half (so 20% of data are test, 20% of data are held-out)
+N <- length(testIndex)
+heldOutIndex <- sample(1:N, .5 * N)
+testIndex <- testIndex[-heldOutIndex]
+
+# now apply indices to create subsets and dfms
+dfmTrain <- corpus_subset(data_corpus_LMRD, id %in% trainIndex) %>%
+  tokens() %>%
+  dfm()
+
+dfmTest <- corpus_subset(data_corpus_LMRD, id %in% testIndex) %>%
+  tokens() %>% dfm()
+
+dfmHeldOut <- corpus_subset(data_corpus_LMRD, id %in% heldOutIndex) %>% tokens() %>% dfm()
+```
+
+
+# Naïve Bayes
+
+Once nice feature of `quanteda` is that a host of the workhorse supervised learning (and, as we'll see, text scaling) models come pre-packaged with the download and work directly with the document-feature matrices we are creating. Because of that, we can turn quickly into supervised learning once our data are all set. We'll start with a Naive Bayes model.
+
+
+```{r}
+polarity_NaiveBayes <- textmodel_nb(dfmTrain, docvars(dfmTrain, "polarity"), distribution = "Bernoulli")
+summary(polarity_NaiveBayes)
+```
+
+Now we want to know how well the trained classifier performed. To do so, we need to retain only the words in our testing data that also appear in the training data. To do that, we can use the `dfm_match()` function from quanteda, which only retains terms that appear in both corpora.
+
+```{r}
+dfmTestMatched <- dfm_match(dfmTest, features = featnames(dfmTrain))
+```
+
+Now let's apply our model to the testing data and see how well it performs.
+```{r}
+# install.packages("e1071")
+library(e1071)
+```
+
+
+```{r}
+# create a confusion matrix
+actual <- docvars(dfmTestMatched, "polarity")
+predicted <- predict(polarity_NaiveBayes, newdata = dfmTestMatched)
+confusion <- table(actual, predicted)
+
+
+# now calculate a number of statistics related to the confusion matrix
+confusionMatrix(confusion, mode = "everything")
+```
+This is pretty good. We've got pretty balanced data in our testing subset, so accuracy is a pretty strong indicator for how well we are doing. Here, we're at 86%, with a 95% confidence interval of 85.6 to 86.9%.
+
+Let's look more closely at these predictions. Above we pulled just the classification (positive or negative) but we can also look at the *probability* of classification.
+
+```{r}
+predicted_prob <- predict(polarity_NaiveBayes, newdata = dfmTestMatched,
+                         type = "probability")
+head(predicted_prob)
+summary(predicted_prob)
+```
+You might be able to notice that the classifier is *really* confident most of the time. In fact, it might be too confident. Let's look at some of the classified examples.
+
+```{r}
+# The most positive review
+mostPos <- sort.list(predicted_prob[,1], dec = F)[1]
+texts(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mostPos]
+```
+
+That's definitely positive, but the **most** positive? I mean, they end with a 8.5/10. Why is it getting bumped up so high? Well, notice how long it is. If you have positive words used many times, then it increases the confidence of the Naive Bayes classifier. Let's see if that's true in the other direction too.
+
+```{r}
+# the most negative review
+mostNeg <- sort.list(predicted_prob[,1], dec = T)[1]
+texts(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mostNeg]
+```
+
+Holy toledo, that is a bad review. It's pretty long as well, which again makes clear that the more words we have the more evidence the classifier has to put something in one (or the other) bin. That's good, but perhaps we should also have a lot of confidence if the review just had three words: "Terrible, Horrible, Bad." Anyhow, as a final inspection, let's look at where the model is confused.
+
+```{r}
+# mixed in tone
+mixed <- sort.list(abs(predicted_prob[,1] - .5), dec = F)[1]
+predicted_prob[mixed,]
+texts(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mixed]
+```
+
+This is a great example of how these models can struggle. A lot of the words here relate to the dark content of the film, but could as easily be used to describe a bad film. Likewise, descriptions of the director literally mix positive and negative elements (a lousy director doing good work). But while we can read this and see clearly that this relates to content, the classifier can't make that distinction.
+
+Finally, let's look at a review the classifier got very wrong.
+
+
+```{r}
+# find a review with high confidence
+veryPos <- sort.list(predicted_prob[1:2500, 1], dec = F)[1]
+predicted_prob[veryPos,]
+texts(corpus_subset(data_corpus_LMRD, id %in% testIndex))[veryPos]
+```
+
+Ah, brutal. Long, with all of the concomitant problems, and then a mix of descriptions about things the person really liked and criticism.
+
+# Support Vector Machines
+Let's try out a different approach. Support Vector Machines (or SVMs) offers a more robust approach. However, it's also much more computationally expensive. To make it tractable, we're going to shrink the size of our training set down to a much smaller set.
+
+```{r}
+# set seed
+set.seed(919919)
+
+# sample smaller set of training data
+newTrainIndex <- trainIndex[sample(1:length(trainIndex), 2000)]
+
+# create small DFM
+dfmTrainSmall <- corpus_subset(data_corpus_LMRD, id %in% newTrainIndex) %>%
+  tokens(remove_punct = TRUE) %>%
+  tokens_select(pattern = stopwords("en"), selection = "remove") %>%
+  dfm()
+
+# trim the dfm down to frequent terms
+dfmTrainSmall <- dfm_trim(dfmTrainSmall, min_docfreq = 20, min_termfreq = 20)
+
+dim(dfmTrainSmall)
+
+# run model
+polarity_SVM <- textmodel_svm(dfmTrainSmall, docvars(dfmTrainSmall, "polarity"))
+```
+
+
+Just as we needed to do above, we'll shrink down our test set to make this tractable. Then, we'll evaluate the out-of-sample prediction.
+
+```{r}
+# update test set
+dfmTestMatchedSmall <- dfm_match(dfmTest, features = featnames(dfmTrainSmall))
+
+# create a confusion matrix
+actual <- docvars(dfmTestMatchedSmall, "polarity")
+predicted <- predict(polarity_SVM, newdata = dfmTestMatchedSmall)
+confusion <- table(actual, predicted)
+
+# now calculate a number of statistics related to the confusion matrix
+confusionMatrix(confusion, mode = "everything")
+```
+
+A little bit worse, but recall that we are using *a lot fewer* features than we had previously. Note also that we've done no tuning of the `svm` classifier. 
+
+We can also check the most positive and negative features to see whether the results make sense.
+
+```{r}
+svmCoefs <- as.data.frame(t(coefficients(polarity_SVM)))
+svmCoefs <- svmCoefs %>% arrange(V1)
+head(svmCoefs, 20)
+tail(svmCoefs, 20)
+
+```
+These generally look sensible, though there's definitely something weird going on with both "positive" for negative reviews.
+
+# Random Forests
+Let's try out a Random Forest classifier. Random Forests are even more computationally intensive than SVMs; they also aren't available with `quanteda`, so we'll need to convert our DFMs to a different format for this analysis.
+
+```{r}
+#install.packages("randomForest")
+library(randomForest)
+```
+
+```{r}
+dfmTrainSmallRf <- convert(dfmTrainSmall, to = "matrix")
+dfmTestMatchedSmallRf <- convert(dfmTestMatchedSmall, to = "matrix")
+
+
+set.seed(444)
+polarity_RF <- randomForest(dfmTrainSmallRf,
+                            y = as.factor(docvars(dfmTrainSmall)$polarity),
+                            xtest = dfmTestMatchedSmallRf,
+                            ytest = as.factor(docvars(dfmTestMatchedSmall)$polarity),
+                            importance = TRUE,
+                            mtry = 20,
+                            ntree = 100)
+```
+
+
+```{r}
+# confusion matrix
+actual <- as.factor(docvars(dfmTestMatchedSmall)$polarity)
+predicted <- polarity_RF$test[['predicted']]
+confusion <- table(actual,predicted)
+confusionMatrix(confusion, mode="everything")
+```
+
+
+Right in the same zone as our SVM classifier, and again with a much smaller set of features. Let's see what words are most **informative**: that is, which can best help us predict the label, though *not which label the feature predicts*.
+
+```{r}
+varImpPlot(polarity_RF)
+```
+
+
+# Ensembles
+
+We've got three classifiers so far: `polarity_NB`, `polarity_SVM`, and `polarity_RF`. All three of our classifiers were able to classify in test sets at greater than 80% accuracy, but digging in made it evident that each had some pretty significant room for improvement.
+
+One way we might try to get at that would be to **ensemble** their classifications. That is, we could create an aggregate measure from the individual classifications to see if the wisdom of the crowd can get us a bit closer to the actual values. Let's try it first with a really simple approach: if 2 or more of the classifiers identify a case as positive, we'll use that classification.
+
+```{r}
+# create a vector of only "negative" values
+predicted_class <- rep("neg", length(actual))
+
+# create a vector that is equal to the sum of "pos" predictions for each observation
+num_predicted <- 1 * (predict(polarity_NaiveBayes, newdata = dfmTestMatched) == "pos") + 
+          1 * (predict(polarity_SVM, newdata = dfmTestMatchedSmall) == "pos") + 
+          1 * (polarity_RF$test[['predicted']] == "pos") 
+
+# update the predicted class vector 
+predicted_class[num_predicted > 1] <- "pos"
+
+# create the confusion matrix
+confusion <- table(actual, predicted_class)
+confusionMatrix(confusion, mode = "everything")
+
+
+```
+
+Hm, not doing much better than just the Naive Bayes model.
+
+# The Held-Out Set
+Now that we've gone through all of these analyses and settled on our approach, it's a useful time to remember that we set aside 20% of our data waaaay back at the start. Let's try to evaluate our conclusion -- that the Naive Bayes classifier using all of the available features works best --- holds up with that old held-out set.
+
+```{r}
+# pull the actual classifications
+actual <- docvars(dfmHeldOut)$polarity
+
+# Naive Bayes
+dfmHeldOutMatched <- dfm_match(dfmHeldOut, features = featnames(dfmTrain))
+predicted.nb <- predict(polarity_NaiveBayes, dfmHeldOutMatched)
+confusion <- table(actual, predicted.nb)
+confusionMatrix(confusion, mode = "everything")
+```
+It also shows a high accuracy!

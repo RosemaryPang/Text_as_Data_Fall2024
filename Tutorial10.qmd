@@ -1,0 +1,551 @@
+---
+title: "Tutorial10_Topic Models"
+pagetitle: Tutorial_10
+---
+
+In this tutorial we'll learn about **K-Means** and **topic models** of two different types, the regular vanilla LDA version, and structural topic models.
+
+# K-Means
+## Introduction
+K-means clustering is one of the simplest and popular unsupervised machine learning algorithms. The objective of K-means is: group similar data points together and discover underlying patterns. To achieve this objective, K-means looks for a fixed number (k) of clusters in a dataset.
+
+In this tutorial, we are going to cluster a dataset consisting of health news tweets. These short sentences belong to one of the 16 sources of news considered in the dataset. We are then facing a multi-label classifying problem, with k = 16.
+
+```{r}
+truth.K <- 16
+```
+
+## Front-end Matters
+First, let's looad the `tm` package.
+```{r}
+library(tm)
+```
+We download the data from the UCI Machine Learning Repository.
+
+```{r}
+# creating the empty dataset with the formatted columns
+dataframe <- data.frame(ID = character(),
+                        datetime = character(),
+                        content = character(),
+                        label = factor())
+source.url <- 'https://archive.ics.uci.edu/ml/machine-learning-databases/00438/Health-News-Tweets.zip'
+
+target.directory <- '/tmp/clustering-r'
+temporary.file <- tempfile()
+download.file(source.url, temporary.file)
+unzip(temporary.file, exdir = target.directory)
+
+# Reading the files
+target.directory <- paste(target.directory, 'Health-Tweets', sep="/")
+files <- list.files(path = target.directory, pattern = '.txt$')
+
+# filling the dataframe by reading the text content
+for (f in files){
+  news.filename = paste(target.directory, f, sep = "/")
+  news.label <- substr(f, 0, nchar(f) - 4) # removing the 4 last characters (.txt)
+  news.data <- read.csv(news.filename,
+                        encoding = "UTF-8",
+                        header = FALSE,
+                        quote = "",
+                        sep = "|",
+                        col.names = c("ID", "datetime", "content"))
+  
+  # Trick to ignore last part of tweets which content contains the split character "|"
+  # no satisfying solution has been found to split and merging extra-columns with the last one
+  news.data <- news.data[news.data$content != "", ]
+  news.data['label'] = news.label # we add the label of the tweet
+  
+  # only considering a little portion of data
+  # because handling sparse matrix for generic usage is a pain
+  news.data <- head(news.data, floor(nrow(news.data) * 0.05))
+  dataframe <- rbind(dataframe, news.data)
+  
+}
+# deleting the temporary directory
+unlink(target.directory, recursive = TRUE)
+```
+## Preprocessing
+Removing urls in the tweets
+
+```{r}
+sentences <- sub("http://([[:alnum:]|[:punct:]])+", '', dataframe$content)
+head(sentences)
+```
+For common preprocessing problems, we are going to use `tm` package.
+
+```{r}
+corpus <- tm::Corpus(tm::VectorSource(sentences))
+# cleaning up
+# handling utf-8 encoding problem from the dataset
+corpus.cleaned <- tm::tm_map(corpus, function(x) iconv(x, to = 'UTF-8-MAC', sub = 'byte'))
+corpus.cleaned <- tm::tm_map(corpus.cleaned, tm::removeWords, tm::stopwords('english'))
+corpus.cleaned <- tm::tm_map(corpus.cleaned, tm::stripWhitespace)
+```
+## Text Representation
+Now, we have a sequence of cleaned sentences that we can use to build our **TF-IDF matrix**. From this result, we will be able to execute every numerical processes that we want, such as **clustering**.
+
+```{r}
+# Building the feature matrices
+tfm <- tm::DocumentTermMatrix(corpus.cleaned)
+dim(tfm)
+tfm
+tfm.tfidf <- tm::weightTfIdf(tfm)
+dim(tfm.tfidf)
+tfm.tfidf
+# we remove a lot of features. 
+tfm.tfidf <- tm::removeSparseTerms(tfm.tfidf, 0.999) # (data,allowed sparsity)
+tfidf.matrix <- as.matrix(tfm.tfidf)
+dim(tfidf.matrix)
+# cosine distance matrix (useful for specific clustering algorithms)
+dist.matrix = proxy::dist(tfidf.matrix, method = "cosine")
+```
+
+
+## Running the clustering algorithms
+### K-means
+Define clusters so that the total within-cluster variation is minimized.
+
+::: callout-note
+Hartigan-Wong algorithm (Hartigan and Wong 1979) defines the total within-cluster variation as the sum of squared Euclidean distances between items and the corresponding centroid:
+
+$W(C_{k}) = \sum_{x_{i} \in C_{k}}(x_{i} - \mu_{k})^{2}$
+
+-   $x_{i}$: a data point belonging to the cluster $C_{k}$
+-   $\mu_{k}$: the mean value of the points assigned to the cluster $C_{k}$
+
+Total within-cluster variation as follows:
+
+total withinness = $\sum^{k}_{k=1}W(C_{k}) = \sum^{k}_{k=1} \sum_{x_{i} \in C_{k}} (x_{i} - \mu_{k})^{2}$
+
+The total within-cluster sum of square measures the goodness of the clustering and we want it to be as small as possible.
+:::
+
+```{r}
+clustering.kmeans <- kmeans(tfidf.matrix, truth.K)
+names(clustering.kmeans)
+```
+### Hierarchical clustering
+
+Define a clustering criterion and the pointwise distance matrix. Let's use the Ward's methods as the clustering criterion.
+
+```{r}
+clustering.hierarchical <- hclust(dist.matrix, method = "ward.D2")
+names(clustering.hierarchical)
+```
+### Plotting
+
+To plot the clustering results, as our feature spaces is highly dimensional (TF-IDF representation), we will reduce it to 2 thanks to multi-dimensional scaling. This technique is dependent of our distance metric, but in our case with TF-IDF.
+
+```{r}
+points <- cmdscale(dist.matrix, k = 2) # running the PCA 
+palette <- colorspace::diverge_hcl(truth.K) # creating a color palette
+previous.par <- par(mfrow = c(1,2))# partitioning the plot space
+
+master.cluster <- clustering.kmeans$cluster
+plot(points,
+     main = 'K-Means clustering',
+     col = as.factor(master.cluster),
+     mai = c(0, 0, 0, 0),
+     mar = c(0, 0, 0, 0),
+     xaxt = 'n', yaxt = 'n',
+     xlab = '', ylab = '')
+
+slave.hierarchical <- cutree(clustering.hierarchical, k = truth.K)
+plot(points,
+     main = 'Hierarchical clustering',
+     col = as.factor(slave.hierarchical),
+     mai = c(0, 0, 0, 0),
+     mar = c(0, 0, 0, 0),
+     xaxt = 'n', yaxt = 'n',
+     xlab = '', ylab = '')
+par(previous.par) # recovering the original plot space parameters
+```
+
+## Determining K
+In the previous example, we know sentences belong to one of the 16 sources. Then how to decide the best number of clusters (K)? 
+
+Here we use the “eblow” method. For each given number of clusters, we can calculate how much variance in the data can be explained by the clustering. Typically, this will increase with the number of clusters. However, the increase would slow down at a certain point and that’s where we choose the number of clusters.
+
+```{r}
+k <- 16
+varper <- NULL
+for(i in 1:k){
+  clustering.kmeans2 <- kmeans(tfidf.matrix, i)
+  varper <- c(varper, as.numeric(clustering.kmeans2$betweenss)/as.numeric(clustering.kmeans2$totss))
+}
+
+varper
+
+plot(1:k, varper, xlab = "# of clusters", ylab = "explained variance")
+```
+From the plot, after 3 clusters, the increase in the explained variance becomes slower - there is an elbow here. Therefore, we might use 3 clusters here.
+
+
+# Topic Models
+## Introduction
+The general idea with topic models is to identify the topics that characterize a set of documents. The background on this is interesting; a lot of the initial interest came from digital humanities and library science where you had the need to systematically organize the massive thematic content of the huge collections of texts. Importantly, LDA and STM, the two we'll discuss this week, are both **mixed-membership** models, meaning documents are characterized as arising from a distribution over topics, rather than coming from a single topic.
+
+## Latent Dirichlet Allocation
+For LDA, we will be using the `text2vec` package. It is an `R` package that provides an efficient framework for text analysis and NLP. It's a fast implementation of word embedding models (which is where it gets it's name from) but it also has really nice and **fast** functionality for LDA.
+
+Algorithms may classify topics within a text set, and [Latent Dirichlet Allocation (LDA)](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation) is one of the most popular algorithms for topic modeling. LDA uses two basic principles:
+
+1.  Each document is made up of topics.
+2.  Each word in a document can be attributed to a topic.
+
+Let's begin!
+
+### Front-end Matter
+First, let's load the `text2vec` package:
+
+```{r}
+library(text2vec)
+```
+
+**We will be using the built in movie reviews dataset that comes with the package.** It is labeled and can be called as "movie_review". Let's load it in:
+
+```{r}
+# Load in built-in dataset
+data("movie_review")
+
+# Prints first ten rows of the dtaset:
+head(movie_review, 10)
+```
+
+```{r}
+# checking dimensions of dataset
+dim(movie_review)
+```
+
+The dataset consists of 5000 movie reviews, each of which is marked as positive (1) or negative (0) in the 'sentiment' column.
+
+Now, we need to clean the data up a bit. To make our lives easier and limit the amount of processing power, let's use the first 3000 reviews. They are located in the 'review' column.
+
+### Vectorization
+Texts can take up a lot of memory themselves, but vectorized texts typically do not. To represent documents in vector space, we first have to come to create mappings from terms to term IDs. We call them terms instead of words because they can be arbitrary n-grams not just single words. We represent a set of documents as a sparse matrix, where each row corresponds to a document and each column corresponds to a term. This can be done in two ways: using the vocabulary itself or by [feature hashing](https://en.wikipedia.org/wiki/Feature_hashing).
+
+-   [Information gathered from `text2vec` creator.](https://cran.r-project.org/web/packages/text2vec/vignettes/text-vectorization.html#vectorization).
+
+Let's perform tokenization and lowercase each token:
+
+```{r}
+# creates string of combined lowercased words
+tokens <- tolower(movie_review$review[1:3000])
+
+# performs tokenization
+tokens <- word_tokenizer(tokens)
+
+# prints first two tokenized rows
+head(tokens, 2)
+```
+
+Note that `text2vec` provides a few tokenizer functions (see `?tokenizers)`. These are just simple wrappers for the `base::gsub()` function and are not very fast or flexible. If you need something smarter or faster you can use the `tokenizers` package.
+
+We can create an iterator over each token using `itoken()`. An iterator is an object that can be iterated upon, meaning that you can traverse through all the values. In our example, we'll be able to traverse through each token for each row using our newly generated iterator, `it`. The general thing to note here is that this is a way to make the approach less memory intensive, something that will turn out to be helpful.
+
+```{r}
+# iterates over each token
+it <- itoken(tokens, ids = movie_review$id[1:3000], progressbar = FALSE)
+
+# prints iterator
+it
+```
+
+### Vocabulary-based Vectorization
+As stated above, we represent our corpus as a document-feature matrix. The process for `text2vec` is much different than with `quanteda`, though the intuition is generally aligned. Effectively, the `text2vec` design is intended to be faster and more memory-efficient; the downside is that it's a little more obtuse. The first step is to create our vocabulary for the DFM. That is simple since we have already created an iterator; all we need to do is place our iterator as an argument inside `create_vocabulary()`.
+
+```{r}
+# built the vocabulary
+v <- create_vocabulary(it)
+
+# print vocabulary
+v
+```
+
+```{r}
+# checking dimensions
+dim(v)
+```
+
+We can create stop words or prune our vocabulary with `prune_vocabulary()`. We will keep the terms that occur at least 10 times.
+
+```{r}
+# prunes vocabulary
+v <- prune_vocabulary(v, term_count_min = 10, doc_proportion_max = 0.2)
+
+# check dimensions
+dim(v)
+```
+
+If we check the dimensions after pruning our vocabulary, we can see that we have less terms. We have removed the very common words so that our vocabulary can contain more high quality and meaningful words.
+
+Before we can create our DFM, we'll need to vectorize our vocabulary with `vocab_vectorizer()`.
+
+```{r}
+# creates a closure that helps transform list of tokens into vector space
+vectorizer <- vocab_vectorizer(v)
+```
+
+We now have everything we need to create a DFM. We can pass in our iterator of tokens, our vectorized vocabulary, and a type of matrix (either `dgCMatrix` or `dgTMatrix`) in `create_dtm()`.
+
+```{r}
+# creates document term matrix
+dtm <- create_dtm(it, vectorizer, type = "dgTMatrix")
+```
+
+Now we can create our topic model after we have created our DTM. We create our model using `LDA$new()`.
+
+```{r}
+# create new LDA model
+lda_model <- LDA$new(n_topics = 10, doc_topic_prior = 0.1,
+                     topic_word_prior = 0.01)
+
+# print other methods for LDA
+lda_model
+```
+
+After printing `lda_model`, we can see there are other methods we can use with the model.
+
+Note: the only accessible methods are the ones under 'Public'. Documentation for all methods and arguments are available [here](https://cran.r-project.org/web/packages/text2vec/text2vec.pdf) on page 22.
+
+### Fitting
+We can fit our model with `$fit_transform`:
+
+```{r}
+# fitting model
+doc_topic_distr <- 
+  lda_model$fit_transform(x = dtm, n_iter = 1000,
+                          convergence_tol = 0.001, n_check_convergence = 25,
+                          progressbar = FALSE)
+```
+
+The `doc_topic_distr` object is a matrix where each row is a document, each column is a topic, and the cell entry is the proportion of the document estimated to be of the topic. That is, each row is the topic attention distribution for a document.
+
+For example, here's the topic distribution for the very first document:
+
+```{r}
+barplot(doc_topic_distr[1, ], xlab = "topic",
+        ylab = "proportion", ylim = c(0,1),
+        names.arg = 1:ncol(doc_topic_distr))
+```
+
+### Describing Topics: Top Words
+We can also use `$get_top_words` as a method to get the top words for each topic.
+
+```{r}
+# get top n words for topics 1, 5, and 10
+lda_model$get_top_words(n = 10, topic_number = c(1L, 5L, 10L),
+                        lambda = 1)
+```
+
+Also top-words could be stored by "relevance" which also takes into account frequency of word in the corpus (0 \< lambda \< 1).
+
+The creator recommends setting lambda to be between 0.2 and 0.4. Here's the difference compared to a lambda of 1:
+
+```{r}
+lda_model$get_top_words(n = 10, topic_number = c(1L, 5L, 10L),
+                        lambda = 0.2)
+```
+
+### Apply Learned Model to New Data
+One thing we occasionally may be interested in doing is understanding how well our model fits the data. Therefore, we can rely on our supervised learning insights and apply the estimated model to new data. From that, we'll obtain a document-topic distribution that we can:
+
+```{r}
+# creating iterator
+it2 <- itoken(movie_review$review[3001:5000], tolower,
+              word_tokenizer, ids = movie_review$id[3001:5000])
+# creating new DFM
+new_dtm <- create_dtm(it2, vectorizer, type = "dgTMatrix")
+```
+
+We will have to use `$transform` instead of `$fit_transform` since we don't have to fit the new model (we are attempting to predict the last 2000).
+
+```{r}
+new_doc_topiic_distr = lda_model$transform(new_dtm)
+```
+
+One widely used approach for model hyper-parameter tuning is validation of per-word *perplexity* on hold-out set. This is quite easy with `text2vec`.
+
+Remember that we've fit the model on only the first 3000 reviews and predicted the last 2000. Therefore, we will calculate the held-out perplexity on these 2000 docs as follows:
+
+```{r}
+# calculates perplexity between new and old topic word distribution
+perplexity(new_dtm, topic_word_distribution = lda_model$topic_word_distribution,
+           doc_topic_distribution = new_doc_topiic_distr)
+```
+
+The lower perplexity the better. We can imagine adapting our hyperparameters and re-estimating across perplexity to try to evaluate our model performance. Still, perplexity as a measure has it's own concerns: it doesn't directly provide insight on whether or not the topics make sense, and tends to prefer bigger models than smaller ones.
+
+### Visualization
+
+Normally it would take one line to run the visualization for the LDA model, using the method `$plot()`.
+
+Let's download and load in the required library the visuals depend on:
+
+```{r}
+#install.packages('LDAvis')
+library(LDAvis)
+```
+
+```{r}
+# creating plot
+lda_model$plot()
+```
+
+## Structural Topic Model
+Imagine you are interested in the topics that are explored in political speeches, and specifically whether Republicans and Democrats focus on different topics. One approach would be to--after estimating an LDA model like above--average the topic proportions by the speaker.
+
+Of course, that seems inefficient. We might want to instead leverage the information on the speech itself **as part of the estimation of the topics**. That is, we are estimating topical prevalence, and we know that there's a different speaker, so we should be incorporating that information in estimating the topics. That's the fundamental idea with Structural Topic Models (STM).
+
+### Front-end Matters
+STM has really fantastic documentation and a host of related packages for added functionality. You can find the STM website [here](https://www.structuraltopicmodel.com/). Let's load the package. Note that this will almost certainly take a few minutes given all of the dependencies.
+
+```{r}
+#install.packages("stm")
+library(stm)
+library(quanteda)
+```
+
+### Creating the DFM
+
+We'll continue to use the movie reviews dataset. Now, we'll leverage the `sentiment` variable included in the dataset as a covariate in our estimates of topical prevalence; that is, we expect some topics to be more prevalent in positive reviews as opposed to negative reviews, and vice versa. The variable is coded \[0,1\], with 0 indicating a negative review and 1 indicating a positive review.
+
+```{r}
+table(movie_review$sentiment)
+```
+
+STM works differently than the `text2vec`, so we'll need to have our data in a different format now.
+
+```{r}
+myDfm <- dfm(tokens(movie_review$review),
+             tolower = TRUE,
+             remove = stopwords("en"),
+             remove_punct = TRUE)
+
+dim(myDfm)
+```
+
+### Correlated Topic Model
+Now that we have our corpus, we can prep for a structural topic model that incorporates covariates. Recall, however, that the STM `without covariates` reduces to a very fast implementation of Correlated Topic Models (i.e., a version of the vanilla LDA model but where the topic proportions can be positively correlated with one another).
+
+```{r}
+cor_topic_model <- stm(myDfm, K = 5,
+                       verbose = FALSE, init.type = "Spectral")
+cor_topic_model
+summary(cor_topic_model)
+```
+
+Once we've estimated the model, we'll want to take a look at the topics. Importantly, we don't get nice, neat topic names. What we do have are the words that are most frequent, probable, or that otherwise characterize a topic. STM provides handy functionality to extract those words with the `labelTopics()` function.
+
+```{r}
+labelTopics(cor_topic_model)
+```
+
+We can also look at the top documents associated with each topic using `findThoughts()`. Here, we'll look at the top document (`n=1`) for each of the 5 topics (`topics = c(1:5)`).
+
+```{r}
+findThoughts(cor_topic_model,
+             texts = movie_review$review,
+             topics = c(1:5),
+             n = 1)
+```
+
+### Structural Topic model
+Let's go ahead and estimate our structural topic model now. We'll incorporate the `sentiment` variable as a predictor on prevalence.
+
+```{r}
+# choose our number of topics
+k <- 5
+
+# specify model
+myModel <- stm(myDfm,
+               K = k,
+               prevalence = ~ sentiment,
+               data = movie_review,
+               max.em.its = 1000,
+               seed = 1234,
+               init.type = "Spectral")
+
+```
+
+Note what's significantly different from before is added the `prevalence` formula. As we discuss in lecture, you can also include variables as `content` predictors.
+
+```{r}
+labelTopics(myModel)
+```
+
+The topics again look reasonable, and are generally similar to the topics we estimated earlier. We can go a step further by plotting out the top topics (as groups of words associated with that topic) and their estimated frequency across the corpus.
+
+```{r}
+plot(myModel, type = "summary")
+```
+
+One thing we might want to do is to extract the topics and to assign them to the vector of document proportions; this is often useful if we're using those topic proportions in any sort of downstream analysis, including just a visualization. The following extracts the top words (here, by `frex`, though you can update that to any of the other three top word sets). Then it iterates through the extracted sets and collapses the strings so the tokens are separated by an underscore; this is useful as a variable name for those downstream analyses.
+
+```{r}
+# get the words
+myTopicNames <- labelTopics(myModel, n=4)$frex
+
+# set up an empty vector
+myTopicLabels <- rep(NA, k)
+
+# set up a loop to go through the topics and collapse the words to a single name
+for (i in 1:k){
+  myTopicLabels[i] <- paste(myTopicNames[i,], collapse = "_")
+}
+
+# print the names
+myTopicLabels
+```
+
+### Estimate Effect
+Recall that we included `sentiment` as a predictor variable on topical prevalence. We can extract the effect of the predictor here using the `estimateEffect()` function, which takes as arguments a formula, the stm model object, and the metadata containing the predictor variable.
+
+Once we've run the function, we can plot the estimated effects of `sentiment` on topic prevalence for each of the estimated topics. With a dichotomous predictor variable, we'll plot these out solely as the difference (`method = "difference"`) in topic prevalence across the values of the predictor. Here, our estimate indicates how much more (or less) the topic is discussed when the sentiment of the post is positive.
+
+```{r}
+# estimate effects
+modelEffects <- estimateEffect(formula = 1:k ~ sentiment,
+                               stmobj = myModel,
+                               metadata = movie_review)
+
+# plot effects
+myRows <- 2
+par(mfrow = c(myRows, 3), bty = "n", lwd = 2)
+for (i in 1:k){
+  plot.estimateEffect(modelEffects,
+                      covariate = "sentiment",
+                      xlim = c(-.25, .25),
+                      model = myModel,
+                      topics = modelEffects$topics[i],
+                      method = "difference",
+                      cov.value1 = 1,
+                      cov.value2 = 0, 
+                      main = myTopicLabels[i],
+                      printlegend = F,
+                      linecol = "grey26",
+                      labeltype = "custom",
+                      verbose.labels = F,
+                      custom.labels = c(""))
+  par(new = F)
+}
+```
+
+### Choosing K
+I'm sure you were thinking "How did she select 5 topics?" Well, the answer is that it was just a random number that I selected out of thin air. The choice of the number of topics, typically denoted K, is one of the areas where the design of topic models let's us as researchers down a bit. While some approaches have been proposed, none have really gained traction. STM includes an approach that we won't explore based on work by David Mimno that automatically identifies a topic; in reality, it normally results in far more topics than a human would be likely to choose.
+
+With all that said, there is some functionality included with STM to explore different specifications and to try to at least get some idea of how different approaches perform. `searchK()` lets you estimate a series of different models, then you can plot a series of different evaluation metrics across those choices.
+
+```{r}
+differentKs <- searchK(myDfm,
+                       K = c(5, 25, 50),
+                       prevalence = ~ sentiment,
+                       N = 250,
+                       data = movie_review,
+                       max.em.its = 1000,
+                       init.type = "Spectral")
+
+plot(differentKs)
+```
+
+The plot is a mixed bag for us. Higher values of the held-out likelihood and semantic coherence both indicate better models, while lower values of residuals indicates a better model. It's also important to note that it's artificially easy to get more semantic coherence by having fewer topics (semantic coherence is a measure based on how well the top topic words identify the topics). If it was me, I'd probably settle at the midpoint here (25 topics). But there's no magic solution. Instead, the decision is largely left up to you. That flexibility is nice, but it also means that \*you need to be able to defend your choice of K\*\*, because external audiences are going to want to know why you chose the number you did.

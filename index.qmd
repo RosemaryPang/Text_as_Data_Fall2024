@@ -8,7 +8,7 @@ This tutorial website contains the R code and output of weekly tutorials.
 
 <font size='5'><b> Weekly Tutorials </b></font>
 
-[Week 1 Introduction](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial1.html)
+[Week 1 Introduction](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial1.html)
 
 ```{=latex}
 

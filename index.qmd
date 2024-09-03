@@ -2,29 +2,31 @@
 title: "Welcome Page"
 ---
 
-Welcome to DACSS758 Text as Data. All classroom material, including recordings, slides, tutorials, and assignment descriptions, will be posted in [Google Classroom](https://classroom.google.com/u/0/w/NjIwNDIxNzAyNjg2/t/all). Be sure you are logged into your UMass Google account.
+Welcome to DACSS758 Text as Data. All classroom material, including recordings, slides, tutorials, and assignment descriptions, will be posted in [Google Classroom](https://classroom.google.com/w/NzA0NDA4NzQxNDUy/t/all). Be sure you are logged into your UMass Google account.
 
-This tutorial website contains the R code and output of weekly tutorials. 
+This tutorial website contains the R code and output of weekly tutorials.
 
 <font size='5'><b> Weekly Tutorials </b></font>
 
 [Week 1 Introduction](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial1.html)
 
-[Week 2 Text as Data](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial2.html)
+```{=latex}
 
-[Week 3 Web Scraping in R](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial3.html)
+%[Week 2 Text as Data](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial2.html)
 
-[Week 4 Natural Language Processing](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial4.html)
+%[Week 3 Web Scraping in R](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial3.html)
 
-[Week 5 Preprocessing](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial5.html)
+%[Week 4 Natural Language Processing](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial4.html)
 
-[Week 6 Text Representation I](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial6.html)
+%[Week 5 Preprocessing](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial5.html)
 
-[Week 7 Text Representation II](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial7.html)
+%[Week 6 Text Representation I](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial6.html)
 
-[Week 8 Dictionary/ Sentiment Analysis](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial8.html)
+%[Week 7 Text Representation II](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial7.html)
 
-[Week 9 Supervised Learning](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial9.html)
+%[Week 8 Dictionary/ Sentiment Analysis](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial8.html)
 
-[Week 10 Topic Models](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial10.html)
+%[Week 9 Supervised Learning](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial9.html)
 
+%[Week 10 Topic Models](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial10.html)
+```

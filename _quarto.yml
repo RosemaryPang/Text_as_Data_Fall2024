@@ -3,21 +3,13 @@ project:
   output-dir: docs
 
 website:
-  title: "DACSS758 Text as Data Fall 2023"
+  title: "DACSS758 Text as Data Fall 2024"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - Tutorial1.qmd
-      - Tutorial2.qmd
-      - Tutorial3.qmd
-      - Tutorial4.qmd
-      - Tutorial5.qmd
-      - Tutorial6.qmd
-      - Tutorial7.qmd
-      - Tutorial8.qmd
-      - Tutorial9.qmd
-      - Tutorial10.qmd
+      
 
 
 

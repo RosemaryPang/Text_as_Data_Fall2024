@@ -3,7 +3,7 @@ title: "Tutorial 1 Introduction to R"
 pagetitle: Tutorial_1
 ---
 
-In this tutorial, you'll learn about working in R, how to get your R workspace set up, how to do some basic work with data in R, and we'll introduce a quick version of some (pretty though not necessarily useful) text analysis.
+In this tutorial, you'll learn (or refresh your memory) about working in R, how to get your R workspace set up, how to do some basic work with data in R, and we'll introduce a quick version of some (pretty though not necessarily useful) text analysis.
 
 By the end of this tutorial, you should be familiar with the following:
 
@@ -15,7 +15,7 @@ By the end of this tutorial, you should be familiar with the following:
 
 4\. Look at data: str(), head(), tail()
 
-5\. Piping: %\>%
+5\. Piping: %\>% or \|\>
 
 6\. Manipulate data: group_by, summarise()
 
@@ -104,7 +104,7 @@ data %>%
   summarise(meanVotes = mean(majVotes))
 ```
 
-For folks that have worked with R and the `tidyverse` before, that should look familiar. But for others, here's the idea of what we did there. First, we take the dataset (`data`) and pass it to a function via the pipe operator (`%>%`). Then, we call a group of potential summary functions through `summarise()`, create a new variable called `meanVotes`, and set it's value equal to the `mean()` of `majVotes` via `mean(majVotes)`. We can see from R that the mean is approximately 7.1 during the entire time period under study here. We are probably more interested, though, in how divisiveness changes. For instance, has the divisiveness of the Court increased or decreased over time? We can do that by just adding another line to what we had above, as so:
+For folks that have worked with R and the `tidyverse` before, that should look familiar. But for others, here's the idea of what we did there. First, we take the dataset (`data`) and pass it to a function via the pipe operator (`%>%` or `|>`). Then, we call a group of potential summary functions through `summarise()`, create a new variable called `meanVotes`, and set it's value equal to the `mean()` of `majVotes` via `mean(majVotes)`. We can see from R that the mean is approximately 7.1 during the entire time period under study here. We are probably more interested, though, in how divisiveness changes. For instance, has the divisiveness of the Court increased or decreased over time? We can do that by just adding another line to what we had above, as so:
 
 ```{r}
 data %>% 
@@ -139,13 +139,14 @@ Let's do a quick example. We'll use the same piping command as before along with
 ```{r}
 # quanteda comes with a corpus of presidential inaugural speeches
 # this first line subsets that corpus to speeches later than 1953
-dfm_inaug <- corpus_subset(data_corpus_inaugural, Year >= 1954) %>%
+dfm_inaug <- corpus_subset(data_corpus_inaugural, Year >= 1954) |>
     # notice we are using the piping operator again.
     # this time, we pipe the corpus to DFM, which creates a document-feature matrix
     # in creating it, we remove stop words ("a", "it", "they") and punctuation
-    dfm(remove = stopwords('english'), remove_punct = TRUE) %>%
+    dfm(remove = stopwords('english'), remove_punct = TRUE) |>
     # then we trim words that appear fewer than 10 times
     dfm_trim(min_termfreq = 10, verbose = FALSE)
 
 textplot_wordcloud(dfm_inaug)
 ```
+Now you have a nice word cloud! Don't worry if you are unfamiliar with terms like `corpus`, `document-feature matrix`, and `stop words`. We will be covering and learning about these concepts throughout the semester. Here's more exciting text analysis! 

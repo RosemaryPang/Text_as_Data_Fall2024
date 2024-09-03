@@ -167,13 +167,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>In this tutorial, you’ll learn about working in R, how to get your R workspace set up, how to do some basic work with data in R, and we’ll introduce a quick version of some (pretty though not necessarily useful) text analysis.</p>
+<p>In this tutorial, you’ll learn (or refresh your memory) about working in R, how to get your R workspace set up, how to do some basic work with data in R, and we’ll introduce a quick version of some (pretty though not necessarily useful) text analysis.</p>
 <p>By the end of this tutorial, you should be familiar with the following:</p>
 <p>1. Load packages: install.packages(), library()</p>
 <p>2. Working directories: getwd(), setwd()</p>
 <p>3. Read in some data: read.csv()</p>
 <p>4. Look at data: str(), head(), tail()</p>
-<p>5. Piping: %&gt;%</p>
+<p>5. Piping: %&gt;% or |&gt;</p>
 <p>6. Manipulate data: group_by, summarise()</p>
 <section id="background" class="level1">
 <h1>Background</h1>
@@ -370,7 +370,7 @@ ICU version: 71.1</code></pre>
 1      7.10</code></pre>
 </div>
 </div>
-<p>For folks that have worked with R and the <code>tidyverse</code> before, that should look familiar. But for others, here’s the idea of what we did there. First, we take the dataset (<code>data</code>) and pass it to a function via the pipe operator (<code>%&gt;%</code>). Then, we call a group of potential summary functions through <code>summarise()</code>, create a new variable called <code>meanVotes</code>, and set it’s value equal to the <code>mean()</code> of <code>majVotes</code> via <code>mean(majVotes)</code>. We can see from R that the mean is approximately 7.1 during the entire time period under study here. We are probably more interested, though, in how divisiveness changes. For instance, has the divisiveness of the Court increased or decreased over time? We can do that by just adding another line to what we had above, as so:</p>
+<p>For folks that have worked with R and the <code>tidyverse</code> before, that should look familiar. But for others, here’s the idea of what we did there. First, we take the dataset (<code>data</code>) and pass it to a function via the pipe operator (<code>%&gt;%</code> or <code>|&gt;</code>). Then, we call a group of potential summary functions through <code>summarise()</code>, create a new variable called <code>meanVotes</code>, and set it’s value equal to the <code>mean()</code> of <code>majVotes</code> via <code>mean(majVotes)</code>. We can see from R that the mean is approximately 7.1 during the entire time period under study here. We are probably more interested, though, in how divisiveness changes. For instance, has the divisiveness of the Court increased or decreased over time? We can do that by just adding another line to what we had above, as so:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(term) <span class="sc">%&gt;%</span> </span>
@@ -422,11 +422,11 @@ ICU version: 71.1</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quanteda comes with a corpus of presidential inaugural speeches</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this first line subsets that corpus to speeches later than 1953</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>dfm_inaug <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural, Year <span class="sc">&gt;=</span> <span class="dv">1954</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>dfm_inaug <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural, Year <span class="sc">&gt;=</span> <span class="dv">1954</span>) <span class="sc">|&gt;</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># notice we are using the piping operator again.</span></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this time, we pipe the corpus to DFM, which creates a document-feature matrix</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in creating it, we remove stop words ("a", "it", "they") and punctuation</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>(<span class="at">remove =</span> <span class="fu">stopwords</span>(<span class="st">'english'</span>), <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>(<span class="at">remove =</span> <span class="fu">stopwords</span>(<span class="st">'english'</span>), <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># then we trim words that appear fewer than 10 times</span></span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm_trim</span>(<span class="at">min_termfreq =</span> <span class="dv">10</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -443,6 +443,7 @@ ICU version: 71.1</code></pre>
 <p><img src="Tutorial1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Now you have a nice word cloud! Don’t worry if you are unfamiliar with terms like <code>corpus</code>, <code>document-feature matrix</code>, and <code>stop words</code>. We will be covering and learning about these concepts throughout the semester. Here’s more exciting text analysis!</p>
 
 
 </section>

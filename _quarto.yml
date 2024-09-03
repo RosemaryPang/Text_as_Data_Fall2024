@@ -8,7 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - Tutorial1.qmd
+      - href: Tutorial1.qmd
+        text: Tutorial1
       
 
 

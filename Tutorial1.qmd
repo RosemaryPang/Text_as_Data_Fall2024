@@ -141,9 +141,12 @@ Let's do a quick example. We'll use the same piping command as before along with
 # this first line subsets that corpus to speeches later than 1953
 dfm_inaug <- corpus_subset(data_corpus_inaugural, Year >= 1954) |>
     # notice we are using the piping operator again.
-    # this time, we pipe the corpus to DFM, which creates a document-feature matrix
+    # this time, we pipe the corpus to tokens, which is a single unit of text
     # in creating it, we remove stop words ("a", "it", "they") and punctuation
-    dfm(remove = stopwords('english'), remove_punct = TRUE) |>
+  tokens(remove_punct=TRUE) |>
+    # now we pipe it to DFM, which creates a document-feature matrix
+    dfm() |>
+    dfm_remove(stopwords('english')) |>
     # then we trim words that appear fewer than 10 times
     dfm_trim(min_termfreq = 10, verbose = FALSE)
 

@@ -2,6 +2,7 @@
 title: "Tutorial 2 Text as Data"
 pagetitle: Tutorial_2
 ---
+
 This is our second tutorial for running R. In this tutorial, we'll start working with texts. As we discussed in class, there's a huge variance in what counts as a "text", running the gamut from sentences or tweets to entire novels like War & Peace.
 
 In this tutorial, you'll learn how to start working with text-as-data in R. That includes storage formats, manipulation, counting, subsetting, and editing of the texts. There's a lot we can do once we have the texts in R!
@@ -29,18 +30,32 @@ By the end of this tutorial, you should be familiar with the following:
 This week, we'll start by looking at the Harry Potter series. First things first, we need to install and load the packages for today's notebook.
 
 ```{r}
-library(devtools)
-devtools::install_github("bradleyboehmke/harrypotter")
-library(harrypotter)
 library(tidytext)
 library(plyr)
 library(tidyverse)
 library(quanteda)
 ```
 
+## Reading all files in a directory
+
+Unfortunately, the `harrypotter` package, which contains the book contents of all seven Harry Potter books, we used in previous years no longer works now (It seems R packages can disappear faster than a disarming spell!). So before we move on to text analysis, let's read in our data first. Please visit my Github [HarryPotter repository](https://github.com/RosemaryPang/HarryPotter). **Download all the .rda files, and save them under the same folder**.
+
+**Make sure to replace the folder path with the correct path on your own device.**
+
+```{r}
+# Define the folder containing the .rda files. 
+folder <- "/Users/mpang/Dropbox/Teaching Resources/DACSS_TAD/HarryPotter"
+
+# Get the list of all .rda files in the folder
+rda_files <- list.files(folder, pattern = "\\.rda$", full.names = TRUE)
+
+# Load all .rda files into the environment
+lapply(rda_files, load, .GlobalEnv)
+```
+
 ## Character Vectors
 
-The first seven books are now available in our workspace. These are:
+Now you should see the seven books our workspace/environment. These are:
 
 1\. philosophers_stone: Harry Potter and the Philosophers Stone (1997)
 
@@ -143,6 +158,7 @@ ndoc(small_corpus)
 
 # the command to reshape our corpus to the sentence level
 small_corpus_sentences <- corpus_reshape(small_corpus, to = "sentences")
+# can also be to = "sentences", "paragraphs", or "documents"
 
 #the number of documents (sentences) in our reshaped corpus
 ndoc(small_corpus_sentences)
@@ -177,18 +193,19 @@ print(philosophers_stone_tokens)
 ```{r}
 # you can also drop punctuation
 philosophers_stone_tokens <- tokens(philosophers_stone_corpus,
-                                    remove_punct = T)
+       remove_punct = T)
 print(philosophers_stone_tokens)
 ```
 
 ```{r}
 # as well as numbers
 philosophers_stone_tokens <- tokens(philosophers_stone_corpus,
-                                    remove_punct = T,
-                                    remove_numbers = T)
+       remove_punct = T,      
+       remove_numbers = T)
 print(philosophers_stone_tokens)
 
-# tokens_tolower(philosophers_stone_tokens)
+# as well as changing letters to lower cases
+tokens_tolower(philosophers_stone_tokens)
 ```
 
 When the data are tokenized, we can start to look at a more granular level at the usage of particular terms. For instance, maybe we want to know about the usage of particular terms within the corpus. We can look at that using **k**ey**w**ord-**i**n-**c**ontext (`kwic`).
@@ -196,15 +213,16 @@ When the data are tokenized, we can start to look at a more granular level at th
 ```{r}
 # check the use of "dumbledore"
 kwic_dumbledore <- kwic(philosophers_stone_tokens,
-                        pattern = c("dumbledore"))
+     pattern = c("dumbledore"))
+# window = 5 
 
 # look at the first few uses
 head(kwic_dumbledore)
 
 # now look at a broader window of terms around "dumbledore"
 kwic_dumbledore <- kwic(philosophers_stone_tokens,
-                        pattern = c("dumbledore"),
-                        window = 10)
+     pattern = c("dumbledore"),
+     window = 10)
 
 # look at the first few uses
 head(kwic_dumbledore)
@@ -221,9 +239,10 @@ The *Daily Prophet* offers a great example of a problem we might encounter with 
 
 ```{r}
 philosophers_stone_compound <- tokens_compound(philosophers_stone_tokens,
-                                               pattern = phrase("Daily Prophet"))
+                pattern = phrase("Daily Prophet"))
 
-head(kwic(philosophers_stone_compound, pattern = "Daily_Prophet"))
+head(kwic(philosophers_stone_compound,
+          pattern = "Daily_Prophet"))
 ```
 
 Of course, you may also believe that there are lots and lots of potentially meaningful n-grams (i.e., uni-, bi-, tri-, four-, etc.) that you do not want to individually specify. In those cases, you can specify that tokenization specifically include **every** possible n-gram.
@@ -241,14 +260,19 @@ As you can see, there is a pretty severe curse of dimensionality problem as you 
 
 ## Combining Corpora
 
-In the above, we've been working with just one text, broken into chapters. But occassionally we have two corpora that we need to combine. Here, for instance, the `harrypotter` package has also provided an additional 6 books that we have not, to this point, added to any of our analysis.
+In the above, we've been working with just one text, broken into chapters. But occasionally we have two corpora that we need to combine. Here, for instance, there are 6 more Harry Potter books that we have not, to this point, added to any of our analysis.
 
 Doing so with `quanteda` is easy, but getting there is hard because we have to repeat a lot of steps for seven corpora. Instead, let's do this with *loops*.
 
 ```{r}
 # list out the object (book) names that we need
-myBooks <- c("philosophers_stone", "chamber_of_secrets", "prisoner_of_azkaban", "goblet_of_fire", "order_of_the_phoenix", 
-  "half_blood_prince", "deathly_hallows")
+myBooks <- c("philosophers_stone",
+             "chamber_of_secrets",
+             "prisoner_of_azkaban",
+             "goblet_of_fire",
+             "order_of_the_phoenix",
+             "half_blood_prince",
+             "deathly_hallows")
 
 # create loop.
 for (i in 1:length(myBooks)){
@@ -283,14 +307,18 @@ for (i in 1:length(myBooks)){
 
 # once the loop finishes up, check to make sure you've created what you want
 docvars(deathly_hallows_corpus)
-
+# You can change the book name to any of the seven Harry Potter books
 ```
 
 Now that we have all of the corpora in order, we can combine then using `c()`.
 
 ```{r}
 # create combined corpora of the first 7 harry potter books.
-harry_potter_corpus <- c(philosophers_stone_corpus, chamber_of_secrets_corpus,                prisoner_of_azkaban_corpus, goblet_of_fire_corpus,                    order_of_the_phoenix_corpus, half_blood_prince_corpus,                deathly_hallows_corpus)
+harry_potter_corpus <-
+  c(philosophers_stone_corpus,                  chamber_of_secrets_corpus,                  prisoner_of_azkaban_corpus,
+    goblet_of_fire_corpus,                      order_of_the_phoenix_corpus,
+    half_blood_prince_corpus,
+    deathly_hallows_corpus)
 summary(harry_potter_corpus)
 ```
 
@@ -324,10 +352,12 @@ We see that this is a character vector that contains multiple strings. We want t
 ```{r}
 sensesensibility_test <- paste(sensesensibility, collapse = " ")
 class(sensesensibility_test)
-print(sensesensibility_test)
+#print(sensesensibility_test)
+#Output is too long, so I won't render it
+#We'll show this in class
 ```
 
-WOW, this is really long. We notice that this character vector now contains only one element, which is the whole book. And we want to separate it by chapters. 
+WOW, this is really long. We notice that this character vector now contains only one element, which is the whole book. And we want to separate it by chapters.
 
 ```{r}
 sensesensibility2 <- unlist(strsplit(sensesensibility_test, "CHAPTER [0-9]+   "))
@@ -344,47 +374,3 @@ print(sensesummary)
 ```
 
 Why are there NINE tokens in text1 (The book title)? (hint: find the answer using tokens function)
-
-
-## Reading all files in a directory
-
-```{r}
-# list.files(): to list all files in a directory
-# returns a character vector containing the names of the files in the specified directory
-# syntax: list.files(path, pattern, all.files, full.names)
-
-list.files(path="~/Documents/R Practice/Quarto/TAD23/HarryPotter", pattern = NULL,
-           all.files = FALSE, full.names = FALSE)
-
-
-list.files(path = "~/Documents/R Practice/Quarto/TAD23/HarryPotter", pattern = ".pdf", all.files = TRUE, full.names=TRUE)
-```
-
-```{r}
-require(pdftools)
-library(quanteda)
-# create a list of the files in the designated directory
-file_list <- list.files(path = "~/Documents/R Practice/Quarto/TAD23/HarryPotter", pattern = ".pdf", full.names = TRUE)
-
-file_list
-
-test <- lapply(file_list, pdf_text) # pdf_text: extracting text
-
-test[1]
-
-length(test)
-
-library(purrr)
-lapply(test, length)
-map(test, length)
-#shows the pages of each file
-
-library(tm)
-test.corpus <- Corpus(URISource(file_list),
-                      readerControl = list(reader = readPDF))
-
-test.corpus # tm corpus
-
-test.corpus.quanteda <- corpus(test.corpus)
-summary(test.corpus.quanteda)
-```

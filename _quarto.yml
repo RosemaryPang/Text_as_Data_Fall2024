@@ -10,6 +10,8 @@ website:
         text: Home
       - href: Tutorial1.qmd
         text: Tutorial1
+      - href: Tutorial2.qmd
+        text: Tutorial2
       
 
 

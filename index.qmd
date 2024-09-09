@@ -10,9 +10,9 @@ This tutorial website contains the R code and output of weekly tutorials.
 
 [Week 1 Introduction](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial1.html)
 
-```{=latex}
+[Week 2 Text as Data](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial2.html)
 
-%[Week 2 Text as Data](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial2.html)
+```{=latex}
 
 %[Week 3 Web Scraping in R](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial3.html)
 

@@ -33,11 +33,11 @@ Yeah, that's not helpful. Instead, we need to identify just the table. This is t
 
 If you are less familiar, you can use SelectorGadget, a Chrome add-on that lets you --- for whatever webpage you are visiting --- "select" the portion of a page you are interested in scraping. SelectorGadget will then highlight whatever the Selector (in the bar at the bottom) would return. Once you've identified the Selector that works for the element of interest to you, you can add that to our code and you are off and running.
 
-Note that, especially if you aren't familiar, this is going to take some time to get used to and require some patience and practice. Take a moment now to install the SelectorGadget Chrome extension, then play around with SelectorGadget on the [website](https://ourworldindata.org/famines#the-our-world-in-data-dataset-of-famines) until you can correctly identify "#tablepress-73", the CSS selector that will let us pull the table.
+Note that, especially if you aren't familiar, this is going to take some time to get used to and require some patience and practice. Take a moment now to install the SelectorGadget Chrome extension, then play around with SelectorGadget on the [website](https://ourworldindata.org/famines#the-our-world-in-data-dataset-of-famines) until you can correctly identify "table", the CSS selector that will let us pull the table.
 
 ```{r}
 # use SelectorGadget to find the info
-css_selector <- "#tablepress-73"
+css_selector <- "table"
 ```
 
 Once we have the correct selector, we still need to (1) read the full html, (2) select out the portion that we are interested in, and (3) start formatting. That third step is really particularly easy when what we are pulling is already in tabular format. So, for example, here's how we could read our table of data on famines into R.
@@ -50,7 +50,7 @@ url %>%
   html_table()
 ```
 
-And if we wanted to save that, we'd just assign the prior chunk of code to an list item object. Then, we'd be read for analysis.
+And if we wanted to save that, we'd just assign the prior chunk of code to an list item object. Then, we'd be ready for analysis.
 
 # Less Nicely Formatted Data
 
@@ -63,12 +63,20 @@ Let's try out an example. We'll look at yelp reviews for everyone's favorite bru
 url <- "https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass"
 
 # now define the field we want
-css_selector <- "li.css-1q2nwpv"
+css_selector <- "li.y-css-1jp2syp"
 
 reviews <- url %>%
   read_html() %>%
   html_nodes(css = css_selector) %>%
   html_text()
+
+reviews
+```
+
+There are 10 reviews on each page, but we find an extra empty review \[11\]. So we want to filter out empty reviews.
+
+```{r}
+reviews <- reviews[reviews != ""]
 
 reviews
 ```
@@ -130,6 +138,9 @@ for (i in 1:length(urls)){
   reviews <- c(reviews,tmpReviews)
 }
 
+#filter out empty reviews
+reviews <- reviews[reviews != ""]
+
 # look at the 12th reviews
 reviews[12]
 ```
@@ -149,20 +160,23 @@ hotel_corpus <- corpus(reviews)
 
 # create a word cloud
 hotel_dfm <- tokens(hotel_corpus, remove_punct=TRUE) %>%
-             tokens_select(pattern=stopwords("en"),
-                            selection="remove") %>%
-             dfm()
+          tokens_select(pattern=stopwords("en"),
+          selection="remove") %>%
+          dfm()
 
 textplot_wordcloud(hotel_dfm)
 ```
 
-It's hard to find a pattern, since the most common words are ''hotel'', ''rooms'', ''campus'', etc. Let's see if we can remove these words. 
+It's hard to find a pattern. Since we included the buttons "helpful", "thanks", etc. under the reviews, the most common words are "1love", "0oh". Also, since we are interested in hotel reviews, we also see common words such as "hotel", "rooms", "campus", etc. Let's see if we can remove these words.
 
 ```{r}
-hotel_dfm2 <- tokens(hotel_corpus, remove_punct=TRUE) %>%
-              tokens_select(pattern=c(stopwords("en"),
-              "hotel","rooms","umass","campus"),
-                            selection="remove") %>%
+hotel_dfm2 <- tokens(hotel_corpus,
+                     remove_punct=TRUE,
+                     remove_numbers = TRUE) %>%
+  tokens_select(pattern=c(stopwords("en"),
+          "hotel","rooms","room","umass","campus"),selection="remove") %>%
+  ## Regular expression that matches words that start with numbers followed by letters
+    tokens_select(pattern = "^\\d+\\w+$", selection = "remove", valuetype = "regex") %>%
              dfm()
 
 textplot_wordcloud(hotel_dfm2)

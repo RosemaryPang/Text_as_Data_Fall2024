@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Welcome Page",
     "section": "",
-    "text": "Welcome to DACSS758 Text as Data. All classroom material, including recordings, slides, tutorials, and assignment descriptions, will be posted in Google Classroom. Be sure you are logged into your UMass Google account.\nThis tutorial website contains the R code and output of weekly tutorials.\n Weekly Tutorials \nWeek 1 Introduction\nWeek 2 Text as Data\nWeek 3 Web Scraping in R"
+    "text": "Welcome to DACSS758 Text as Data. All classroom material, including recordings, slides, tutorials, and assignment descriptions, will be posted in Google Classroom. Be sure you are logged into your UMass Google account.\nThis tutorial website contains the R code and output of weekly tutorials.\n Weekly Tutorials \nWeek 1 Introduction\nWeek 2 Text as Data\nWeek 3 Web Scraping in R\nWeek 4 Natural Language Processing"
   },
   {
     "objectID": "about.html",
@@ -109,7 +109,7 @@
     "href": "Tutorial4.html",
     "title": "Tutorial 4 Natural Language Processing",
     "section": "",
-    "text": "In this tutorial, we’ll learn about doing standard natural language processing (NLP) tasks in R, and will be introduced to regular expressions. After completing this notebook, you should be familar with:\n# load libraries\nlibrary(cleanNLP)\nlibrary(tidytext)\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.2     ✔ purrr   1.0.1\n✔ tibble  3.2.1     ✔ dplyr   1.1.1\n✔ tidyr   1.3.0     ✔ stringr 1.5.0\n✔ readr   2.1.3     ✔ forcats 1.0.0\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(quanteda)\n\nPackage version: 3.3.1\nUnicode version: 14.0\nICU version: 70.1\nParallel computing: 4 of 4 threads used.\nSee https://quanteda.io for tutorials and examples."
+    "text": "In this tutorial, we’ll learn about doing standard natural language processing (NLP) tasks in R, and will be introduced to regular expressions. After completing this notebook, you should be familar with:\n# load libraries\nlibrary(cleanNLP)\nlibrary(tidytext)\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(quanteda)\n\nPackage version: 4.0.2\nUnicode version: 14.0\nICU version: 71.1\nParallel computing: disabled\nSee https://quanteda.io for tutorials and examples."
   },
   {
     "objectID": "Tutorial4.html#whats-in-a-string",

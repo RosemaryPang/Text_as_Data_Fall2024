@@ -31,9 +31,9 @@ library(quanteda)
 
 The standard-bearer for NLP work is Stanford's CoreNLP suite ([available here](https://stanfordnlp.github.io/CoreNLP/)). Historically, that work was available in Java, with really ineffective ports to other programming languages. Fortunately, the past few years have seen major progress in making the suite more accessible in both Python and R. We're going to leverage the best package with the best port to R --- `cleanNLP` --- for our NLP tasks.
 
-Stanford's CoreNLP, though, is just one of many NLP annotation tools available with `cleanNLP`. There are two important points to highlight related to this. First, in addition to CoreNLP, `cleanNLP` can leverage spacy, a high-powered Python library; spacy is (much) faster than CoreNLP, but with some cost in classification accuracy. Second, both CoreNLP and spacy require a Python installation on your machine. Because of that, we can't run the CoreNLP or spacy code on Colab (it's a long story). We will be able to use the universal dependencies pipe (udpipe), so that's what we'll do here.
+Stanford's CoreNLP, though, is just one of many NLP annotation tools available with `cleanNLP`. There are two important points to highlight related to this. First, in addition to CoreNLP, `cleanNLP` can leverage spacy, a high-powered Python library; spacy is (much) faster than CoreNLP, but with some cost in classification accuracy. Second, both CoreNLP and spacy require a Python installation on your machine. Because of that, we can't run the CoreNLP or spacy code in R (it's a long story). We will be able to use the universal dependencies pipe (udpipe), so that's what we'll do here.
 
-More generally, though, you'll want to have the capacity provided by CoreNLP or spacy available for your projects on your personal machine. Therefore, you need to install Python. I recommend installing Anaconda Python (available here). Once you've done that, you'll need to install the cleanNLP module within Python.
+More generally, though, you'll want to have the capacity provided by CoreNLP or spacy available for your projects on your personal machine. Therefore, you need to install Python. I recommend installing Anaconda Python ([available here](https://www.anaconda.com/download)). Once you've done that, you'll need to install the cleanNLP module within Python.
 
 # NLP in R with `cleanNLP`
 
@@ -107,10 +107,12 @@ This is interesting and potentially useful information. Length is incredibly sim
 That said, the real prize of the annotations are the details related to each individual token. The next three columns (token, token_with_ws, and lemma) all relate directly to the actual characters of the token. Take, as an example, "Citizens" (third row). The token is "Citizens", while the lemma is a headword for a group of related words; here, "citizen" is the lemma of "Citizens" as it is the non-plural version of the token. To get an idea of how else lemmatization changes the tokens, here's a comparison of the first 40 tokens in the dataset.
 
 ```{r}
-cbind(head(annoData$token,40), head(annoData$lemma,40))
+cbind(head(annoData$token,40),
+      head(annoData$lemma,40))
 ```
 
 Lemmatization can be particularly useful as a pre-processing step in some analyses; topic modeling immediately comes to mind. The general reason is that references to different forms of the same underlying token (say, "transmit", "transmitted", "transmits") all connote one related concept but are going to be treated as entirely distinct tokens if we were to say just look for the most frequent tokens in the corpus or in a speech. We'll come back to this later this semester when we discuss stemming and other related pre-processing considerations.
+
 
 # Part of Speech Tagging
 
@@ -144,6 +146,7 @@ annoData %>%
 ```
 
 You can further distinguish parts of speech using the feats field, which references more specific "features" related to the parts of speech. More information on the features can be found [here](https://universaldependencies.org/u/feat/index.html).
+
 
 # Dependency Relations
 
@@ -191,6 +194,133 @@ annoData %>%
   filter(frequency < 0.005) %>%
   select(doc_id, start, word) %$%
   sprintf("%s => %s", start, word)
+```
+
+By applying a similar method, we can investigate how adjectives describing "economy" differ in speeches by Democratic and Republican politicians. This allows us to analyze whether the two parties emphasize distinct characteristics of the same topic, potentially reflecting ideological differences. 
+
+```{r}
+# Democratic
+annoData %>%
+  left_join(
+    annotated$token,
+    c("doc_id" = "doc_id", "sid" = "sid", "tid" = "tid_source"),
+    suffix = c("", "_source")
+    ) %>%
+  filter(Party == "Democratic") %>%
+  filter(lemma == "economy") %>%
+  # Filter for adjectives (ADJ) modifying 'economy' via 'amod' relation
+  filter(relation_source == "amod" & upos_source == "ADJ") %>%
+  # Select relevant columns: doc_id, the noun ('economy'), and the adjective
+  select(doc_id = doc_id, noun = token, adj = token_source)
+```
+
+```{r}
+# Republican
+annoData %>%
+  left_join(
+    annotated$token,
+    c("doc_id" = "doc_id", "sid" = "sid", "tid" = "tid_source"),
+    suffix = c("", "_source")
+    ) %>%
+  filter(Party == "Republican") %>%
+  filter(lemma == "economy") %>%
+  # Filter for adjectives (ADJ) modifying 'economy' via 'amod' relation
+  filter(relation_source == "amod" & upos_source == "ADJ") %>%
+  # Select relevant columns: doc_id, the noun ('economy'), and the adjective
+  select(doc_id = doc_id, noun = token, adj = token_source)
+```
+
+# Visualizing Dependency Trees
+Visualizing dependency trees can help us better understand the syntactic structure of sentences and how different words relate to each other. Dependency trees show which words are the "head" of a phrase and which words are dependents, along with the types of relationships (like subject, object, etc.) between them.
+
+```{r}
+library(udpipe)
+library(rsyntax)
+```
+
+Now we can annotate text and visualize the dependency tree
+```{r}
+text1 <- "Barack Obama was the 44th President of the United States."
+text2 <- "BAGHDAD. Iraqi leaders criticized Turkey on Monday for bombing Kurdish militants in northern Iraq with airstrikes that they said had left at least one woman dead."
+
+tokens1 <- udpipe(text1,'english')
+tokens2 <- udpipe(text2,'english')
+
+#rsyntax requires the tokens to be in a certain format. The as_tokenindex() function converts a data.frame to this format. 
+
+tokens1 <- as_tokenindex(tokens1)
+tokens2 <- as_tokenindex(tokens2)
+
+#Visualization
+plot_tree(tokens1, token, lemma, upos)
+plot_tree(tokens2, token, lemma, upos)
+```
+
+Note that this function only prints one sentence a time, so if the sentence is not specified it uses the first sentence in the data.
+
+```{r}
+second_sentence <- tokens2[tokens2$sentence == 2, ]
+
+plot_tree(second_sentence, token, lemma, upos)
+```
+
+
+
+# Named Entity Recognition (NER)
+
+Named Entity Recognition (NER) is a key task in natural language processing (NLP) that involves identifying and categorizing entities in text, such as people, organizations, locations, dates, and more. While tools like udpipe excel in tasks like part-of-speech tagging and dependency parsing, they are limited in their ability to perform NER. Udpipe models do not consistently include NER capabilities, making them less suited for entity recognition tasks.
+
+In contrast, spacy is a more robust option for NER. It provides high-performance models specifically designed for recognizing named entities in text. Spacy's NER models can classify entities into a variety of categories, such as PERSON, ORG (organization), and LOC (location), making it an excellent tool for tasks that require precise entity extraction. Switching to spacy for NER ensures more accurate and reliable results, especially when working with real-world text data.
+
+Remember we mentioned at the beginning of the tutorial, spacy requires a Python environment. Make sure you have Python installed on your device, and run `pip install cleannlp` in your terminal or Python to install the `cleannlp` Python module.
+
+```{r}
+# Download the spacy model
+# cnlp_download_spacy("en_core_web_sm")
+
+# Initialize spacy backend
+cnlp_init_spacy()
+```
+
+Now we start with some easy tasks:
+
+```{r}
+text1
+text_anno1 <- cnlp_annotate(text1)
+head(text_anno1$entity)
+
+text2
+text_anno2 <- cnlp_annotate(text2)
+text_anno2$entity
+```
+
+Now let's look into the top **person** mentioned by the Democratic and Republican Party
+
+```{r}
+annotated_spacy <- cnlp_annotate(myData)
+
+annoData_spacy <- left_join(annotated_spacy$document,
+                            annotated_spacy$entity, 
+                            by ="doc_id")
+head(annoData_spacy)
+
+#Democratic
+annoData_spacy %>%
+  filter(entity_type == "PERSON")%>%
+  filter(Party == "Democratic") %>%
+  group_by(entity) %>% 
+  summarize(count = n()) %>%
+  top_n(n=10) %>%
+  arrange(desc(count))
+
+#Republican
+annoData_spacy %>%
+  filter(entity_type == "PERSON") %>%
+  filter(Party == "Republican") %>%
+  group_by(entity) %>% 
+  summarize(count = n()) %>%
+  top_n(n=10) %>%
+  arrange(desc(count))
 ```
 
 # String Operations
@@ -347,11 +477,11 @@ str_extract_all(tutone, "\\d{4,}")
 ```
 
 ## Extracting data
+
 Where regular expressions start to get really powerful for us is in automating the extraction of information from rich digital text. Consider an example where we want to identify mentions of courts from inaugural addresses. We can leverage regular expressions to do just that:
 
 ```{r}
 str_match(text, " [C|c]ourt[s]*|[J|j]udicia[\\w]+ ")
 ```
-
 
 While that isn't necessarily the most useful, consider if you were looking instead for something like the authors of each text, where the author was featured in a consistent format at the start of each text. While you could go through by hand and code each of those, it is much more straightforward to do this with regular expressions. As you start working with your corpus --- and particularly if you are in any way thinking of coding something by hand from the corpus --- take some time to think and to chat with me about whether it's something we can do with regular expressions.

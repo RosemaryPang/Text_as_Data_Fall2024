@@ -19,15 +19,25 @@ By the end of this notebook, you should be familiar with the following:
 
 # Recap: Tokenization
 
-This week, we'll return to looking at the Harry Potter series. We'll first install and load the packages for today's notebook.
+This week, we'll return to looking at the Harry Potter series. We'll first install and load the packages and data for today's notebook.
 
 ```{r}
 library(devtools)
-library(harrypotter)
 library(tidytext)
 library(plyr)
 library(tidyverse)
 library(quanteda)
+```
+
+```{r}
+# Define the folder containing the .rda files (Change to your path). 
+folder <- "/Users/mpang/Dropbox/Teaching Resources/DACSS_TAD/HarryPotter"
+
+# Get the list of all .rda files in the folder
+rda_files <- list.files(folder, pattern = "\\.rda$", full.names = TRUE)
+
+# Load all .rda files into the environment
+lapply(rda_files, load, .GlobalEnv)
 ```
 
 As a reminder, we have seven books --- each stored as a character vector where each chapter is an element in that vector --- now available in our workspace. These are:
@@ -129,6 +139,7 @@ In addition to quanteda, there are other packages containing different lists of 
 ```{r}
 tidytextstopwords <- tidytext::stop_words
 View(tidytextstopwords)
+table(tidytextstopwords$lexicon)
 
 #OR
 tidytext::get_stopwords(source = "smart")

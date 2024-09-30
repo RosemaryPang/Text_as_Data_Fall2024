@@ -16,9 +16,9 @@ This tutorial website contains the R code and output of weekly tutorials.
 
 [Week 4 Natural Language Processing](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial4.html)
 
-```{=latex}
+[Week 5 Preprocessing](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial5.html)
 
-%[Week 5 Preprocessing](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial5.html)
+```{=latex}
 
 %[Week 6 Text Representation I](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial6.html)
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tutorial_5</title>
+<title>Tutorial_5 – DACSS758 Text as Data Fall 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,8 +94,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -101,47 +109,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">DACSS758 Text as Data Fall 2023</span>
+    <span class="navbar-title">DACSS758 Text as Data Fall 2024</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial1.html" rel="" target="">
- <span class="menu-text">Tutorial 1 Introduction to R</span></a>
+    <a class="nav-link" href="./Tutorial1.html"> 
+<span class="menu-text">Tutorial1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial2.html" rel="" target="">
- <span class="menu-text">Tutorial 2 Text as Data</span></a>
+    <a class="nav-link" href="./Tutorial2.html"> 
+<span class="menu-text">Tutorial2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial3.html" rel="" target="">
- <span class="menu-text">Tutorial 3 Web Scraping in R</span></a>
+    <a class="nav-link" href="./Tutorial3.html"> 
+<span class="menu-text">Tutorial3</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial4.html" rel="" target="">
- <span class="menu-text">Tutorial 4 Natural Language Processing</span></a>
+    <a class="nav-link" href="./Tutorial4.html"> 
+<span class="menu-text">Tutorial4</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./Tutorial5.html" rel="" target="" aria-current="page">
- <span class="menu-text">Tutorial 5 Preprocessing</span></a>
+    <a class="nav-link active" href="./Tutorial5.html" aria-current="page"> 
+<span class="menu-text">Tutorial5</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -185,7 +193,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>This is our fifth tutorial for running R. In this tutorial, we’ll learn about text pre-processing. Text data is often messy and noisy, and careful preprocessing can soften the edges for downstream analyses.</p>
 <p>By the end of this notebook, you should be familiar with the following:</p>
@@ -198,26 +208,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <section id="recap-tokenization" class="level1">
 <h1>Recap: Tokenization</h1>
-<p>This week, we’ll return to looking at the Harry Potter series. We’ll first install and load the packages for today’s notebook.</p>
+<p>This week, we’ll return to looking at the Harry Potter series. We’ll first install and load the packages and data for today’s notebook.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: usethis</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(harrypotter)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2
-──</code></pre>
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>✔ ggplot2 3.4.2     ✔ purrr   1.0.1
-✔ tibble  3.2.1     ✔ dplyr   1.1.1
-✔ tidyr   1.3.0     ✔ stringr 1.5.0
-✔ readr   2.1.3     ✔ forcats 1.0.0
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::arrange()   masks plyr::arrange()
 ✖ purrr::compact()   masks plyr::compact()
 ✖ dplyr::count()     masks plyr::count()
@@ -229,15 +238,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::mutate()    masks plyr::mutate()
 ✖ dplyr::rename()    masks plyr::rename()
 ✖ dplyr::summarise() masks plyr::summarise()
-✖ dplyr::summarize() masks plyr::summarize()</code></pre>
+✖ dplyr::summarize() masks plyr::summarize()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Package version: 3.3.1
+<pre><code>Package version: 4.1.0
 Unicode version: 14.0
-ICU version: 70.1
-Parallel computing: 4 of 4 threads used.
+ICU version: 71.1
+Parallel computing: disabled
 See https://quanteda.io for tutorials and examples.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the folder containing the .rda files (Change to your path). </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>folder <span class="ot">&lt;-</span> <span class="st">"/Users/mpang/Dropbox/Teaching Resources/DACSS_TAD/HarryPotter"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the list of all .rda files in the folder</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>rda_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(folder, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.rda$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all .rda files into the environment</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(rda_files, load, .GlobalEnv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "chamber_of_secrets"
+
+[[2]]
+[1] "deathly_hallows"
+
+[[3]]
+[1] "goblet_of_fire"
+
+[[4]]
+[1] "half_blood_prince"
+
+[[5]]
+[1] "order_of_the_phoenix"
+
+[[6]]
+[1] "philosophers_stone"
+
+[[7]]
+[1] "prisoner_of_azkaban"</code></pre>
 </div>
 </div>
 <p>As a reminder, we have seven books — each stored as a character vector where each chapter is an element in that vector — now available in our workspace. These are:</p>
@@ -252,228 +294,228 @@ See https://quanteda.io for tutorials and examples.</code></pre>
 </ol>
 <p>As you’ll recall, we want to convert these to corpus objects that are easier to work with.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(philosophers_stone)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(philosophers_stone_corpus) </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(philosophers_stone)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(philosophers_stone_corpus) </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Corpus consisting of 17 documents, showing 17 documents:
 
    Text Types Tokens Sentences
-  text1  1274   5643       349
-  text2  1067   4128       237
-  text3  1226   4630       297
-  text4  1199   4759       321
-  text5  1822   8371       563
-  text6  1568   7949       566
-  text7  1379   5445       351
-  text8  1096   3594       198
-  text9  1428   6130       410
- text10  1294   5207       334
- text11  1114   4152       276
- text12  1511   6729       447
- text13  1079   3929       261
- text14  1113   4354       308
- text15  1386   6437       459
- text16  1582   8277       591
- text17  1491   7101       506</code></pre>
+  text1  1271   5693       350
+  text2  1066   4154       237
+  text3  1226   4656       297
+  text4  1193   4832       322
+  text5  1818   8446       563
+  text6  1563   8016       566
+  text7  1374   5487       351
+  text8  1095   3608       198
+  text9  1422   6195       411
+ text10  1293   5237       334
+ text11  1110   4215       277
+ text12  1509   6790       447
+ text13  1076   3953       262
+ text14  1110   4394       308
+ text15  1385   6486       459
+ text16  1581   8357       591
+ text17  1489   7172       506</code></pre>
 </div>
 </div>
 <p>We then add indicators for books and chapters, and create the metadata. This will be useful later when we add all the books together into a single corpus.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>book <span class="ot">&lt;-</span> <span class="st">"Philosopher's Stone"</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a chapter indicator</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(philosophers_stone_summary<span class="sc">$</span>Text, <span class="st">"[0-9]+"</span>))</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add the metadata</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(philosophers_stone_corpus) <span class="ot">&lt;-</span> philosophers_stone_summary</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>book <span class="ot">&lt;-</span> <span class="st">"Philosopher's Stone"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a chapter indicator</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(philosophers_stone_summary<span class="sc">$</span>Text, <span class="st">"[0-9]+"</span>))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add the metadata</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(philosophers_stone_corpus) <span class="ot">&lt;-</span> philosophers_stone_summary</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Corpus consisting of 17 documents, showing 17 documents:
 
    Text Types Tokens Sentences                book chapter
-  text1  1274   5643       349 Philosopher's Stone       1
-  text2  1067   4128       237 Philosopher's Stone       2
-  text3  1226   4630       297 Philosopher's Stone       3
-  text4  1199   4759       321 Philosopher's Stone       4
-  text5  1822   8371       563 Philosopher's Stone       5
-  text6  1568   7949       566 Philosopher's Stone       6
-  text7  1379   5445       351 Philosopher's Stone       7
-  text8  1096   3594       198 Philosopher's Stone       8
-  text9  1428   6130       410 Philosopher's Stone       9
- text10  1294   5207       334 Philosopher's Stone      10
- text11  1114   4152       276 Philosopher's Stone      11
- text12  1511   6729       447 Philosopher's Stone      12
- text13  1079   3929       261 Philosopher's Stone      13
- text14  1113   4354       308 Philosopher's Stone      14
- text15  1386   6437       459 Philosopher's Stone      15
- text16  1582   8277       591 Philosopher's Stone      16
- text17  1491   7101       506 Philosopher's Stone      17</code></pre>
+  text1  1271   5693       350 Philosopher's Stone       1
+  text2  1066   4154       237 Philosopher's Stone       2
+  text3  1226   4656       297 Philosopher's Stone       3
+  text4  1193   4832       322 Philosopher's Stone       4
+  text5  1818   8446       563 Philosopher's Stone       5
+  text6  1563   8016       566 Philosopher's Stone       6
+  text7  1374   5487       351 Philosopher's Stone       7
+  text8  1095   3608       198 Philosopher's Stone       8
+  text9  1422   6195       411 Philosopher's Stone       9
+ text10  1293   5237       334 Philosopher's Stone      10
+ text11  1110   4215       277 Philosopher's Stone      11
+ text12  1509   6790       447 Philosopher's Stone      12
+ text13  1076   3953       262 Philosopher's Stone      13
+ text14  1110   4394       308 Philosopher's Stone      14
+ text15  1385   6486       459 Philosopher's Stone      15
+ text16  1581   8357       591 Philosopher's Stone      16
+ text17  1489   7172       506 Philosopher's Stone      17</code></pre>
 </div>
 </div>
 <p>Next, we move to tokenization. The default breaks on white space.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 17 documents and 6 docvars.
 text1 :
  [1] "THE"     "BOY"     "WHO"     "LIVED"   "Mr"      "."       "and"    
  [8] "Mrs"     "."       "Dursley" ","       "of"     
-[ ... and 5,631 more ]
+[ ... and 5,681 more ]
 
 text2 :
  [1] "THE"       "VANISHING" "GLASS"     "Nearly"    "ten"       "years"    
  [7] "had"       "passed"    "since"     "the"       "Dursleys"  "had"      
-[ ... and 4,116 more ]
+[ ... and 4,142 more ]
 
 text3 :
  [1] "THE"         "LETTERS"     "FROM"        "NO"          "ONE"        
  [6] "The"         "escape"      "of"          "the"         "Brazilian"  
 [11] "boa"         "constrictor"
-[ ... and 4,618 more ]
+[ ... and 4,644 more ]
 
 text4 :
  [1] "THE"     "KEEPER"  "OF"      "THE"     "KEYS"    "BOOM"    "."      
  [8] "They"    "knocked" "again"   "."       "Dudley" 
-[ ... and 4,747 more ]
+[ ... and 4,820 more ]
 
 text5 :
  [1] "DIAGON"   "ALLEY"    "Harry"    "woke"     "early"    "the"     
  [7] "next"     "morning"  "."        "Although" "he"       "could"   
-[ ... and 8,359 more ]
+[ ... and 8,434 more ]
 
 text6 :
  [1] "THE"            "JOURNEY"        "FROM"           "PLATFORM"      
  [5] "NINE"           "AND"            "THREE-QUARTERS" "Harry's"       
  [9] "last"           "month"          "with"           "the"           
-[ ... and 7,937 more ]
+[ ... and 8,004 more ]
 
 [ reached max_ndoc ... 11 more documents ]</code></pre>
 </div>
 </div>
 <p>You’ll recall that — in Week 2 — we covered a couple of options from here about what we can do next with our texts. A few dynamics are quickly evident from the text above: punctuation and numbers are still present. Those are straightforward to remove when you tokenize.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also drop punctuation</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus, </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_punct =</span> T)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also drop punctuation</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_punct =</span> T)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 17 documents and 6 docvars.
 text1 :
  [1] "THE"     "BOY"     "WHO"     "LIVED"   "Mr"      "and"     "Mrs"    
  [8] "Dursley" "of"      "number"  "four"    "Privet" 
-[ ... and 4,626 more ]
+[ ... and 4,784 more ]
 
 text2 :
  [1] "THE"       "VANISHING" "GLASS"     "Nearly"    "ten"       "years"    
  [7] "had"       "passed"    "since"     "the"       "Dursleys"  "had"      
-[ ... and 3,456 more ]
+[ ... and 3,556 more ]
 
 text3 :
  [1] "THE"         "LETTERS"     "FROM"        "NO"          "ONE"        
  [6] "The"         "escape"      "of"          "the"         "Brazilian"  
 [11] "boa"         "constrictor"
-[ ... and 3,856 more ]
+[ ... and 3,984 more ]
 
 text4 :
  [1] "THE"     "KEEPER"  "OF"      "THE"     "KEYS"    "BOOM"    "They"   
  [8] "knocked" "again"   "Dudley"  "jerked"  "awake"  
-[ ... and 3,738 more ]
+[ ... and 3,910 more ]
 
 text5 :
  [1] "DIAGON"   "ALLEY"    "Harry"    "woke"     "early"    "the"     
  [7] "next"     "morning"  "Although" "he"       "could"    "tell"    
-[ ... and 6,619 more ]
+[ ... and 6,998 more ]
 
 text6 :
  [1] "THE"            "JOURNEY"        "FROM"           "PLATFORM"      
  [5] "NINE"           "AND"            "THREE-QUARTERS" "Harry's"       
  [9] "last"           "month"          "with"           "the"           
-[ ... and 6,330 more ]
+[ ... and 6,750 more ]
 
 [ reached max_ndoc ... 11 more documents ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as numbers</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus, </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_punct =</span> T,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_numbers =</span> T)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as numbers</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_punct =</span> T,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_numbers =</span> T)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 17 documents and 6 docvars.
 text1 :
  [1] "THE"     "BOY"     "WHO"     "LIVED"   "Mr"      "and"     "Mrs"    
  [8] "Dursley" "of"      "number"  "four"    "Privet" 
-[ ... and 4,626 more ]
+[ ... and 4,784 more ]
 
 text2 :
  [1] "THE"       "VANISHING" "GLASS"     "Nearly"    "ten"       "years"    
  [7] "had"       "passed"    "since"     "the"       "Dursleys"  "had"      
-[ ... and 3,456 more ]
+[ ... and 3,556 more ]
 
 text3 :
  [1] "THE"         "LETTERS"     "FROM"        "NO"          "ONE"        
  [6] "The"         "escape"      "of"          "the"         "Brazilian"  
 [11] "boa"         "constrictor"
-[ ... and 3,853 more ]
+[ ... and 3,981 more ]
 
 text4 :
  [1] "THE"     "KEEPER"  "OF"      "THE"     "KEYS"    "BOOM"    "They"   
  [8] "knocked" "again"   "Dudley"  "jerked"  "awake"  
-[ ... and 3,735 more ]
+[ ... and 3,907 more ]
 
 text5 :
  [1] "DIAGON"   "ALLEY"    "Harry"    "woke"     "early"    "the"     
  [7] "next"     "morning"  "Although" "he"       "could"    "tell"    
-[ ... and 6,610 more ]
+[ ... and 6,989 more ]
 
 text6 :
  [1] "THE"            "JOURNEY"        "FROM"           "PLATFORM"      
  [5] "NINE"           "AND"            "THREE-QUARTERS" "Harry's"       
  [9] "last"           "month"          "with"           "the"           
-[ ... and 6,329 more ]
+[ ... and 6,749 more ]
 
 [ reached max_ndoc ... 11 more documents ]</code></pre>
 </div>
 </div>
 <p>Often capitalization is not something that we want to retain. Here, we’ll change everything to lower case. Note that, though I have not run into any instance of someone actually doing this, you could also convert to all upper-case tokens by <code>tokens_toupper()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens_tolower</span>(philosophers_stone_tokens)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens_tolower</span>(philosophers_stone_tokens)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 17 documents and 6 docvars.
 text1 :
  [1] "the"     "boy"     "who"     "lived"   "mr"      "and"     "mrs"    
  [8] "dursley" "of"      "number"  "four"    "privet" 
-[ ... and 4,626 more ]
+[ ... and 4,784 more ]
 
 text2 :
  [1] "the"       "vanishing" "glass"     "nearly"    "ten"       "years"    
  [7] "had"       "passed"    "since"     "the"       "dursleys"  "had"      
-[ ... and 3,456 more ]
+[ ... and 3,556 more ]
 
 text3 :
  [1] "the"         "letters"     "from"        "no"          "one"        
  [6] "the"         "escape"      "of"          "the"         "brazilian"  
 [11] "boa"         "constrictor"
-[ ... and 3,853 more ]
+[ ... and 3,981 more ]
 
 text4 :
  [1] "the"     "keeper"  "of"      "the"     "keys"    "boom"    "they"   
  [8] "knocked" "again"   "dudley"  "jerked"  "awake"  
-[ ... and 3,735 more ]
+[ ... and 3,907 more ]
 
 text5 :
  [1] "diagon"   "alley"    "harry"    "woke"     "early"    "the"     
  [7] "next"     "morning"  "although" "he"       "could"    "tell"    
-[ ... and 6,610 more ]
+[ ... and 6,989 more ]
 
 text6 :
  [1] "the"            "journey"        "from"           "platform"      
  [5] "nine"           "and"            "three-quarters" "harry's"       
  [9] "last"           "month"          "with"           "the"           
-[ ... and 6,329 more ]
+[ ... and 6,749 more ]
 
 [ reached max_ndoc ... 11 more documents ]</code></pre>
 </div>
@@ -486,7 +528,7 @@ text6 :
 <h2 class="anchored" data-anchor-id="quanteda-package">Quanteda package</h2>
 <p>With quanteda, we can remove stopwords using any of few pre-defined lists that come shipped with the package. Here, we can print that list out first, then remove the tokens:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">print</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">print</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] "i"          "me"         "my"         "myself"     "we"        
   [6] "our"        "ours"       "ourselves"  "you"        "your"      
@@ -527,8 +569,8 @@ text6 :
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 175</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Available for other languages as well</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">stopwords</span>(<span class="st">"zh"</span>, <span class="at">source=</span><span class="st">"misc"</span>),<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Available for other languages as well</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">stopwords</span>(<span class="st">"zh"</span>, <span class="at">source=</span><span class="st">"misc"</span>),<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "按"     "按照"   "俺"     "们"     "阿"     "别"     "别人"   "别处"  
  [9] "是"     "别的"   "别管"   "说"     "不"     "不仅"   "不但"   "不光"  
@@ -540,49 +582,49 @@ text6 :
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove stopwords from our tokens object</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens1 <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(philosophers_stone_tokens, </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(philosophers_stone_tokens1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove stopwords from our tokens object</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens1 <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(philosophers_stone_tokens, </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(philosophers_stone_tokens1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 17</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 17 documents and 6 docvars.
 text1 :
  [1] "boy"       "lived"     "mr"        "mrs"       "dursley"   "number"   
  [7] "four"      "privet"    "drive"     "proud"     "say"       "perfectly"
-[ ... and 2,350 more ]
+[ ... and 2,507 more ]
 
 text2 :
  [1] "vanishing" "glass"     "nearly"    "ten"       "years"     "passed"   
  [7] "since"     "dursleys"  "woken"     "find"      "nephew"    "front"    
-[ ... and 1,806 more ]
+[ ... and 1,906 more ]
 
 text3 :
  [1] "letters"      "one"          "escape"       "brazilian"    "boa"         
  [6] "constrictor"  "earned"       "harry"        "longest-ever" "punishment"  
 [11] "time"         "allowed"     
-[ ... and 2,085 more ]
+[ ... and 2,213 more ]
 
 text4 :
  [1] "keeper"   "keys"     "boom"     "knocked"  "dudley"   "jerked"  
- [7] "awake"    "cannon"   "said"     "stupidly" "crash"    "behind"  
-[ ... and 2,033 more ]
+ [7] "awake"    "`"        "cannon"   "`"        "said"     "stupidly"
+[ ... and 2,201 more ]
 
 text5 :
  [1] "diagon"   "alley"    "harry"    "woke"     "early"    "next"    
  [7] "morning"  "although" "tell"     "daylight" "kept"     "eyes"    
-[ ... and 3,765 more ]
+[ ... and 4,141 more ]
 
 text6 :
  [1] "journey"        "platform"       "nine"           "three-quarters"
  [5] "harry's"        "last"           "month"          "dursleys"      
  [9] "fun"            "true"           "dudley"         "now"           
-[ ... and 3,340 more ]
+[ ... and 3,759 more ]
 
 [ reached max_ndoc ... 11 more documents ]</code></pre>
 </div>
@@ -592,11 +634,16 @@ text6 :
 <h2 class="anchored" data-anchor-id="tidytext-package">Tidytext package</h2>
 <p>In addition to quanteda, there are other packages containing different lists of stopwords, for example, <code>tidytext</code>. Tidytext provides various lexicons for English stop words. Sources of the stopwords are: snowball, SMART, or onix.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tidytextstopwords <span class="ot">&lt;-</span> tidytext<span class="sc">::</span>stop_words</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(tidytextstopwords)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#OR</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>tidytext<span class="sc">::</span><span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"smart"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>tidytextstopwords <span class="ot">&lt;-</span> tidytext<span class="sc">::</span>stop_words</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(tidytextstopwords)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tidytextstopwords<span class="sc">$</span>lexicon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    onix    SMART snowball 
+     404      571      174 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#OR</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>tidytext<span class="sc">::</span><span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"smart"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 571 × 2
    word        lexicon
@@ -613,7 +660,7 @@ text6 :
 10 after       smart  
 # ℹ 561 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>tidytext<span class="sc">::</span><span class="fu">get_stopwords</span>(<span class="at">language =</span> <span class="st">"de"</span>) <span class="co"># change language</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tidytext<span class="sc">::</span><span class="fu">get_stopwords</span>(<span class="at">language =</span> <span class="st">"de"</span>) <span class="co"># change language</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 231 × 2
    word  lexicon 
@@ -633,50 +680,50 @@ text6 :
 </div>
 <p>Remove stop words using tidytext stopwords. And we see find the number of tokens after removing stopwords is different as we use different packages.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>tidystop <span class="ot">&lt;-</span> <span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"smart"</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens2 <span class="ot">&lt;-</span>     <span class="fu">tokens_select</span>(philosophers_stone_tokens, </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> tidystop<span class="sc">$</span>word,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(philosophers_stone_tokens2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>tidystop <span class="ot">&lt;-</span> <span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"smart"</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens2 <span class="ot">&lt;-</span>     <span class="fu">tokens_select</span>(philosophers_stone_tokens, </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> tidystop<span class="sc">$</span>word,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(philosophers_stone_tokens2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 17</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(philosophers_stone_tokens2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 17 documents and 6 docvars.
 text1 :
  [1] "boy"       "lived"     "mr"        "mrs"       "dursley"   "number"   
  [7] "privet"    "drive"     "proud"     "perfectly" "normal"    "people"   
-[ ... and 1,832 more ]
+[ ... and 1,989 more ]
 
 text2 :
  [1] "vanishing" "glass"     "ten"       "years"     "passed"    "dursleys" 
  [7] "woken"     "find"      "nephew"    "front"     "step"      "privet"   
-[ ... and 1,433 more ]
+[ ... and 1,533 more ]
 
 text3 :
  [1] "letters"      "escape"       "brazilian"    "boa"          "constrictor" 
  [6] "earned"       "harry"        "longest-ever" "punishment"   "time"        
 [11] "allowed"      "cupboard"    
-[ ... and 1,686 more ]
+[ ... and 1,814 more ]
 
 text4 :
  [1] "keeper"   "keys"     "boom"     "knocked"  "dudley"   "jerked"  
- [7] "awake"    "cannon"   "stupidly" "crash"    "uncle"    "vernon"  
-[ ... and 1,592 more ]
+ [7] "awake"    "`"        "cannon"   "`"        "stupidly" "crash"   
+[ ... and 1,760 more ]
 
 text5 :
  [1] "diagon"   "alley"    "harry"    "woke"     "early"    "morning" 
- [7] "daylight" "eyes"     "shut"     "tight"    "dream"    "told"    
-[ ... and 2,940 more ]
+ [7] "daylight" "eyes"     "shut"     "tight"    "`"        "dream"   
+[ ... and 3,315 more ]
 
 text6 :
  [1] "journey"        "platform"       "three-quarters" "harry's"       
  [5] "month"          "dursleys"       "fun"            "true"          
  [9] "dudley"         "scared"         "harry"          "stay"          
-[ ... and 2,481 more ]
+[ ... and 2,898 more ]
 
 [ reached max_ndoc ... 11 more documents ]</code></pre>
 </div>
@@ -687,42 +734,42 @@ text6 :
 <h1>Stemming</h1>
 <p>Now, we turn to stemming. Of the pre-processing options, stemming is perhaps the most controversial. The underlying idea is to collapse multiple tokens that are of the same general form into a single token (the word stem). For example, consider “tackle”, which could take a multitude of different forms: “tackle”, “tackling”, “tackled”, or “tackles”. Without stemming, each of these is treated as a unique token. That’s potentially undesirable, particularly when the central concept (or stem) is likely to be the real point of substantive interest. Therefore, we can stem the tokens in our vocabulary, yielding a new set of tokens. In the above example, this would yield “tackl”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we use the tokens after removing stopwords using quanteda</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens_wordstem</span>(philosophers_stone_tokens1)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we use the tokens after removing stopwords using quanteda</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens <span class="ot">&lt;-</span> <span class="fu">tokens_wordstem</span>(philosophers_stone_tokens1)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 17 documents and 6 docvars.
 text1 :
  [1] "boy"     "live"    "mr"      "mrs"     "dursley" "number"  "four"   
  [8] "privet"  "drive"   "proud"   "say"     "perfect"
-[ ... and 2,350 more ]
+[ ... and 2,507 more ]
 
 text2 :
  [1] "vanish"  "glass"   "near"    "ten"     "year"    "pass"    "sinc"   
  [8] "dursley" "woken"   "find"    "nephew"  "front"  
-[ ... and 1,806 more ]
+[ ... and 1,906 more ]
 
 text3 :
  [1] "letter"      "one"         "escap"       "brazilian"   "boa"        
  [6] "constrictor" "earn"        "harri"       "longest-ev"  "punish"     
 [11] "time"        "allow"      
-[ ... and 2,085 more ]
+[ ... and 2,213 more ]
 
 text4 :
- [1] "keeper" "key"    "boom"   "knock"  "dudley" "jerk"   "awak"   "cannon"
- [9] "said"   "stupid" "crash"  "behind"
-[ ... and 2,033 more ]
+ [1] "keeper" "key"    "boom"   "knock"  "dudley" "jerk"   "awak"   "`"     
+ [9] "cannon" "`"      "said"   "stupid"
+[ ... and 2,201 more ]
 
 text5 :
  [1] "diagon"   "alley"    "harri"    "woke"     "earli"    "next"    
  [7] "morn"     "although" "tell"     "daylight" "kept"     "eye"     
-[ ... and 3,765 more ]
+[ ... and 4,141 more ]
 
 text6 :
  [1] "journey"     "platform"    "nine"        "three-quart" "harri"      
  [6] "last"        "month"       "dursley"     "fun"         "true"       
 [11] "dudley"      "now"        
-[ ... and 3,340 more ]
+[ ... and 3,759 more ]
 
 [ reached max_ndoc ... 11 more documents ]</code></pre>
 </div>
@@ -732,20 +779,20 @@ text6 :
 <p>Now let’s experience the difference:</p>
 <p>We have an example sentence. Then we preprocess that data: tokenization, remove punctuation and stop words.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="st">"This location does not have good service. When through drive-through and they forgot our drinks and our sides. While they were preparing what they forgot, we could see another girl who had her back to us and it was obvious that she was on the phone. ANy other KFC would be better."</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>example_ready <span class="ot">&lt;-</span> <span class="fu">tokens</span>(example,</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">remove_punct=</span>T)</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>example_ready <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(example_ready,</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern=</span><span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">select =</span> <span class="st">"remove"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="st">"This location does not have good service. When through drive-through and they forgot our drinks and our sides. While they were preparing what they forgot, we could see another girl who had her back to us and it was obvious that she was on the phone. ANy other KFC would be better."</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>example_ready <span class="ot">&lt;-</span> <span class="fu">tokens</span>(example,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">remove_punct=</span>T)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>example_ready <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(example_ready,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern=</span><span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">select =</span> <span class="st">"remove"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we compare stemming and lemmatization. Note that we can also lemmatize tokens using <code>cleanNLP</code> package. Please check Tutorial 4 for more details.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stemming</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>stemming <span class="ot">&lt;-</span> <span class="fu">tokens_wordstem</span>(example_ready)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(stemming)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stemming</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>stemming <span class="ot">&lt;-</span> <span class="fu">tokens_wordstem</span>(example_ready)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(stemming)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "locat"         "good"          "servic"        "drive-through"
  [5] "forgot"        "drink"         "side"          "prepar"       
@@ -753,12 +800,12 @@ text6 :
 [13] "back"          "us"            "obvious"       "phone"        
 [17] "KFC"           "better"       </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lemmatization</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>lemmitized <span class="ot">&lt;-</span> <span class="fu">tokens_replace</span>(example_ready,</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">pattern =</span> lexicon<span class="sc">::</span> hash_lemmas<span class="sc">$</span>token,</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">replacement =</span> lexicon<span class="sc">::</span> hash_lemmas<span class="sc">$</span>lemma)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(lemmitized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lemmatization</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>lemmitized <span class="ot">&lt;-</span> <span class="fu">tokens_replace</span>(example_ready,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">pattern =</span> lexicon<span class="sc">::</span> hash_lemmas<span class="sc">$</span>token,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">replacement =</span> lexicon<span class="sc">::</span> hash_lemmas<span class="sc">$</span>lemma)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(lemmitized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "location"      "good"          "service"       "drive-through"
  [5] "forget"        "drink"         "side"          "prepare"      
@@ -766,10 +813,12 @@ text6 :
 [13] "back"          "us"            "obvious"       "phone"        
 [17] "KFC"           "good"         </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What's lexicon package's hash_lemmas?</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lexicon<span class="sc">::</span>hash_lemmas,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What's lexicon package's hash_lemmas?</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lexicon<span class="sc">::</span>hash_lemmas,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>              token         lemma
+<pre><code>Key: &lt;token&gt;
+              token         lemma
+             &lt;char&gt;        &lt;char&gt;
   1:         'cause       because
   2:             'd         would
   3:            'em          them
@@ -883,8 +932,8 @@ text6 :
 <p>A final way of approaching this is more systematic, and is proposed by <a href="https://www.mjdenny.com/">Matt Denny</a> — a former UMass (and Penn State University) student! — and Art Spirling in their <a href="https://www.cambridge.org/core/journals/political-analysis/article/abs/text-preprocessing-for-unsupervised-learning-why-it-matters-when-it-misleads-and-what-to-do-about-it/AA7D4DE0AA6AB208502515AE3EC6989E">paper</a>. They’ve written an R package to execute the recommendations from their paper, which you can download directly from github. Note that there are a ton of dependencies associated with the package. You can see a vignette describing the use of <code>preText</code> <a href="http://www.mjdenny.com/getting_started_with_preText.html">here</a>.</p>
 <p>Install the package first</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("matthewjdenny/preText")</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(preText)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("matthewjdenny/preText")</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(preText)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>preText: Diagnostics to Assess the Effects of Text Preprocessing Decisions
 Version 0.7.2 created on 2021-07-25.
@@ -896,11 +945,11 @@ Development website: https://github.com/matthewjdenny/preText</code></pre>
 </div>
 <p>We use the U.S. presidential inaugural speeches from Quanteda example data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> data_corpus_inaugural</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use first 10 documents for example</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>documents <span class="ot">&lt;-</span> corp[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># take a look at the document names</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">names</span>(documents))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> data_corpus_inaugural</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use first 10 documents for example</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>documents <span class="ot">&lt;-</span> corp[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># take a look at the document names</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">names</span>(documents))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "1789-Washington" "1793-Washington" "1797-Adams"      "1801-Jefferson" 
  [5] "1805-Jefferson"  "1809-Madison"    "1813-Madison"    "1817-Monroe"    
@@ -909,22 +958,22 @@ Development website: https://github.com/matthewjdenny/preText</code></pre>
 </div>
 <p>Having loaded in some data, we can now make use of the <code>factorial_preprocessing()</code> function, which will preprocess the data 64 or 128 different ways (depending on whether n-grams are included). In this example, we are going to preprocess the documents all 128 different ways. This should take between 5 and 10 minutes on most modern laptops. Longer documents and larger numbers of documents will significantly increase run time and memory usage.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>preprocessed_documents <span class="ot">&lt;-</span> <span class="fu">factorial_preprocessing</span>(</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    documents,</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_ngrams =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">infrequent_term_threshold =</span> <span class="fl">0.2</span>,</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>preprocessed_documents <span class="ot">&lt;-</span> <span class="fu">factorial_preprocessing</span>(</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    documents,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_ngrams =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">infrequent_term_threshold =</span> <span class="fl">0.2</span>,</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Preprocessing 10 documents 128 different ways...</code></pre>
 </div>
 </div>
 <p>This function will output a list object with three fields. The first of these is <code>$choices</code>, a data.frame containing indicators for each of the preprocessing steps used. The second is <code>$dfm_list</code>, which is a list with 64 or 128 entries, each of which contains a <code>quanteda::dfm</code> object preprocessed according to the specification in the corresponding row in <code>choices</code>. Each DFM in this list will be labeled to match the row names in choices, but you can also access these labels from the <code>$labels</code> field. We can look at the first few rows of <code>choices</code> below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(preprocessed_documents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(preprocessed_documents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "choices"  "dfm_list" "labels"  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(preprocessed_documents<span class="sc">$</span>choices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(preprocessed_documents<span class="sc">$</span>choices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              removePunctuation removeNumbers lowercase stem removeStopwords
 P-N-L-S-W-I-3              TRUE          TRUE      TRUE TRUE            TRUE
@@ -944,12 +993,12 @@ N-S-W-I-3                 TRUE       TRUE</code></pre>
 </div>
 <p>Now that we have our preprocessed documents, we can perform the preText procedure on the factorial preprocessed corpus using the <code>preText()</code> function. It will be useful now to give a name to our data set using the <code>dataset_name</code> argument, as this will show up in some of the plots we generate with the output.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>preText_results <span class="ot">&lt;-</span> <span class="fu">preText</span>(</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    preprocessed_documents,</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">dataset_name =</span> <span class="st">"Inaugural Speeches"</span>,</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">distance_method =</span> <span class="st">"cosine"</span>,</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">num_comparisons =</span> <span class="dv">20</span>,</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>preText_results <span class="ot">&lt;-</span> <span class="fu">preText</span>(</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    preprocessed_documents,</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">dataset_name =</span> <span class="st">"Inaugural Speeches"</span>,</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">distance_method =</span> <span class="st">"cosine"</span>,</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">num_comparisons =</span> <span class="dv">20</span>,</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Generating document distances...
 Generating preText Scores...
@@ -965,7 +1014,7 @@ Regression results (negative coefficients imply less risk):
 6        Remove Stopwords      -0.036 0.004
 7 Remove Infrequent Terms      -0.008 0.004
 8              Use NGrams      -0.027 0.004
-Complete in: 11.339 seconds...</code></pre>
+Complete in: 8.181 seconds...</code></pre>
 </div>
 </div>
 <p>The <code>preText()</code> function returns a list of result with four fields:</p>
@@ -977,25 +1026,33 @@ Complete in: 11.339 seconds...</code></pre>
 </ol>
 <p>We can now feed these results to two functions that will help us make better sense of them. <code>preText_score_plot()</code> creates a dot plot of scores for each preprocessing specification:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">preText_score_plot</span>(preText_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">preText_score_plot</span>(preText_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in ggplot2::geom_point(ggplot2::aes(x = Variable, y = Coefficient), :
 Ignoring unknown parameters: `linewidth`</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="Tutorial5_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial5_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Here, the least risky specifications have the lowest preText score and are displayed at the top of the plot. We can also see the conditional effects of each preprocessing step on the mean preText score for each specification that included that step. Here again, a negative coefficient indicates that a step tends to reduce the unusualness of the results, while a positive coefficient indicates that applying the step is likely to produce more unusual results for that corpus.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">regression_coefficient_plot</span>(preText_results,</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">remove_intercept =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">regression_coefficient_plot</span>(preText_results,</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">remove_intercept =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in ggplot2::geom_point(ggplot2::aes(y = Variable, x = Coefficient), :
 Ignoring unknown parameters: `linewidth`</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="Tutorial5_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial5_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>In this particular toy example, we see that including n-grams and removing stop words tends to produce more “normal” results, while removing punctuation tends to produce more unusual results.</p>
@@ -1004,9 +1061,9 @@ Ignoring unknown parameters: `linewidth`</code></pre>
 <h1>N-grams and <code>phrasemachine</code></h1>
 <p>Like mentioned in the lecture, curse of dimensionality means we get lots of meaningless bigrams, trigrams (e.g.&nbsp;“is”, “is of”, “is of the”). What if we want to find substantively meaningful n-grams? The solution is <code>phrasemachine</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("slanglab/phrasemachine/R/phrasemachine")</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phrasemachine)                      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("slanglab/phrasemachine/R/phrasemachine")</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phrasemachine)                      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>phrasemachine: Simple Phrase Extraction
 Version 1.2.0 created on 2017-05-29.
@@ -1018,10 +1075,10 @@ Development website: https://github.com/slanglab/phrasemachine</code></pre>
 </div>
 <p>We load in the U.S. presidential inaugural speeches from Quanteda example data, and use the first 5 documents for example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">corpus</span>(quanteda<span class="sc">::</span>data_corpus_inaugural)</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>documents <span class="ot">&lt;-</span> <span class="fu">as.character</span>(corp)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">names</span>(documents))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">corpus</span>(quanteda<span class="sc">::</span>data_corpus_inaugural)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>documents <span class="ot">&lt;-</span> <span class="fu">as.character</span>(corp)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">names</span>(documents))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1789-Washington" "1793-Washington" "1797-Adams"      "1801-Jefferson" 
 [5] "1805-Jefferson" </code></pre>
@@ -1029,11 +1086,11 @@ Development website: https://github.com/slanglab/phrasemachine</code></pre>
 </div>
 <p>Phrasemachine provides one main function: <code>phrasemachine()</code>, which takes as input a vector of strings (one string per document), or a <code>quanteda</code> corpus object. This function returns phrases extracted from the input documents in one of two forms. Find more information <a href="https://www.mjdenny.com/getting_started_with_phrasemachine.html">here</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>phrases <span class="ot">&lt;-</span> <span class="fu">phrasemachine</span>(documents,</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">minimum_ngram_length =</span> <span class="dv">2</span>,</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">maximum_ngram_length =</span> <span class="dv">8</span>,</span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">return_phrase_vectors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">return_tag_sequences =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>phrases <span class="ot">&lt;-</span> <span class="fu">phrasemachine</span>(documents,</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">minimum_ngram_length =</span> <span class="dv">2</span>,</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">maximum_ngram_length =</span> <span class="dv">8</span>,</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">return_phrase_vectors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">return_tag_sequences =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Currently tagging document 1 of 5 
 Currently tagging document 2 of 5 
@@ -1046,8 +1103,8 @@ Extracting phrases from document 3 of 5
 Extracting phrases from document 4 of 5 
 Extracting phrases from document 5 of 5 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at some example phrases</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(phrases[[<span class="dv">1</span>]]<span class="sc">$</span>phrases[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at some example phrases</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(phrases[[<span class="dv">1</span>]]<span class="sc">$</span>phrases[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Fellow-Citizens_of_the_Senate" "House_of_Representatives"     
  [3] "vicissitudes_incident"         "vicissitudes_incident_to_life"
@@ -1062,76 +1119,84 @@ Extracting phrases from document 5 of 5 </code></pre>
 <p>While we’ve covered some pre-processing above, we’re going to take a detour now before we head into representing texts next week. One form of analysis that can occassionally be interesting, though with limitations, is the readability of a text. The general idea here is that some forms of composition are easier to understand, while others may take more scrutiny. Interestingly, most of these are based on transformations around some basic aspects of text: the length of words or sentences, for instance.</p>
 <p>There are loads of actual measures for readability; fortunately, nearly all are included with the quanteda. For the full list, check out the reference page <a href="https://quanteda.io/reference/textstat_readability.html">here</a>. Here, we’ll play around and check out the readability of Philosopher’s Stone by chapter, to see how the book progresses.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate readability</span></span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>readability <span class="ot">&lt;-</span> <span class="fu">textstat_readability</span>(philosophers_stone_corpus, </span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measure =</span> <span class="fu">c</span>(<span class="st">"Flesch.Kincaid"</span>)) </span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add in a chapter number</span></span>
-<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>readability<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(readability))</span>
-<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the dataset</span></span>
-<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(readability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate readability</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>readability <span class="ot">&lt;-</span> <span class="fu">textstat_readability</span>(philosophers_stone_corpus, </span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measure =</span> <span class="fu">c</span>(<span class="st">"Flesch.Kincaid"</span>)) </span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add in a chapter number</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>readability<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(readability))</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the dataset</span></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(readability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  document Flesch.Kincaid chapter
-1    text1       5.681909       1
-2    text2       6.127471       2
-3    text3       5.545426       3
-4    text4       4.466180       4
-5    text5       5.066278       5
-6    text6       4.148612       6</code></pre>
+1    text1       5.727817       1
+2    text2       6.184489       2
+3    text3       5.583587       3
+4    text4       4.526660       4
+5    text5       5.105107       5
+6    text6       4.225491       6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot results</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(readability, <span class="fu">aes</span>(<span class="at">x =</span> chapter, <span class="at">y =</span> Flesch.Kincaid)) <span class="sc">+</span></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot results</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(readability, <span class="fu">aes</span>(<span class="at">x =</span> chapter, <span class="at">y =</span> Flesch.Kincaid)) <span class="sc">+</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="Tutorial5_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial5_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That’s interesting, but as I noted, we have lots of options. Lets take a look at a couple of others.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>readability <span class="ot">&lt;-</span> <span class="fu">textstat_readability</span>(philosophers_stone_corpus, </span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measure =</span> <span class="fu">c</span>(<span class="st">"Flesch.Kincaid"</span>, <span class="st">"FOG"</span>, <span class="st">"Coleman.Liau.grade"</span>)) </span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add in a chapter number</span></span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>readability<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(readability))</span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the dataset</span></span>
-<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(readability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>readability <span class="ot">&lt;-</span> <span class="fu">textstat_readability</span>(philosophers_stone_corpus, </span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">measure =</span> <span class="fu">c</span>(<span class="st">"Flesch.Kincaid"</span>, <span class="st">"FOG"</span>, <span class="st">"Coleman.Liau.grade"</span>)) </span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add in a chapter number</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>readability<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(readability))</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the dataset</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(readability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  document Flesch.Kincaid      FOG Coleman.Liau.grade chapter
-1    text1       5.681909 7.824466           7.463970       1
-2    text2       6.127471 7.835226           7.498145       2
-3    text3       5.545426 7.143473           7.450994       3
-4    text4       4.466180 6.451429           6.035503       4
-5    text5       5.066278 6.785200           7.323824       5
-6    text6       4.148612 6.209827           6.379894       6</code></pre>
+1    text1       5.727817 7.951456           6.729091       1
+2    text2       6.184489 7.974007           6.899500       2
+3    text3       5.583587 7.275985           6.783842       3
+4    text4       4.526660 6.632315           5.094981       4
+5    text5       5.105107 6.970226           6.234268       5
+6    text6       4.225491 6.424974           5.230121       6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot results</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(readability, <span class="fu">aes</span>(<span class="at">x =</span> chapter)) <span class="sc">+</span></span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Flesch.Kincaid), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> FOG), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Coleman.Liau.grade), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> </span>
-<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot results</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(readability, <span class="fu">aes</span>(<span class="at">x =</span> chapter)) <span class="sc">+</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Flesch.Kincaid), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> FOG), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Coleman.Liau.grade), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> </span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Tutorial5_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial5_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The shapes are all pretty close. Let’s look at some correlations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(readability<span class="sc">$</span>Flesch.Kincaid, readability<span class="sc">$</span>FOG, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(readability<span class="sc">$</span>Flesch.Kincaid, readability<span class="sc">$</span>FOG, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9339215</code></pre>
+<pre><code>[1] 0.9338218</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(readability<span class="sc">$</span>Coleman.Liau.grade, readability<span class="sc">$</span>FOG, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(readability<span class="sc">$</span>Coleman.Liau.grade, readability<span class="sc">$</span>FOG, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8295903</code></pre>
+<pre><code>[1] 0.9130903</code></pre>
 </div>
 </div>
 <p>This is a little bit of the story and is pretty straightforward. Remember how all of these are just “magic number” transformations of the same underlying measures (syllables, word counts, sentence length, etc.)? Because of that, they are generally really highly correlated. That’s a good thing.</p>
@@ -1176,18 +1241,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1219,11 +1273,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1233,8 +1326,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1246,7 +1348,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1290,6 +1515,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1315,6 +1541,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1375,6 +1627,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

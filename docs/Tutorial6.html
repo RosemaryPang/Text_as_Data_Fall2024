@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tutorial_6</title>
+<title>Tutorial_6 – DACSS758 Text as Data Fall 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,8 +94,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -101,51 +109,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">DACSS758 Text as Data Fall 2023</span>
+    <span class="navbar-title">DACSS758 Text as Data Fall 2024</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial1.html" rel="" target="">
- <span class="menu-text">Tutorial 1 Introduction to R</span></a>
+    <a class="nav-link" href="./Tutorial1.html"> 
+<span class="menu-text">Tutorial1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial2.html" rel="" target="">
- <span class="menu-text">Tutorial 2 Text as Data</span></a>
+    <a class="nav-link" href="./Tutorial2.html"> 
+<span class="menu-text">Tutorial2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial3.html" rel="" target="">
- <span class="menu-text">Tutorial 3 Web Scraping in R</span></a>
+    <a class="nav-link" href="./Tutorial3.html"> 
+<span class="menu-text">Tutorial3</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial4.html" rel="" target="">
- <span class="menu-text">Tutorial 4 Natural Language Processing</span></a>
+    <a class="nav-link" href="./Tutorial4.html"> 
+<span class="menu-text">Tutorial4</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial5.html" rel="" target="">
- <span class="menu-text">Tutorial 5 Preprocessing</span></a>
+    <a class="nav-link" href="./Tutorial5.html"> 
+<span class="menu-text">Tutorial5</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./Tutorial6.html" rel="" target="" aria-current="page">
- <span class="menu-text">Tutorial 6 Text Representation I</span></a>
+    <a class="nav-link active" href="./Tutorial6.html" aria-current="page"> 
+<span class="menu-text">Tutorial6</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -185,7 +193,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>In this tutorial, we’ll learn about <strong>representing texts</strong>. This week, we’ll continue looking at the Harry Potter series. We’ll first install and load the packages for today’s notebook.</p>
 <div class="cell">
@@ -193,21 +203,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: usethis</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("bradleyboehmke/harrypotter")</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(harrypotter)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2
-──</code></pre>
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>✔ ggplot2 3.4.2     ✔ purrr   1.0.1
-✔ tibble  3.2.1     ✔ dplyr   1.1.1
-✔ tidyr   1.3.0     ✔ stringr 1.5.0
-✔ readr   2.1.3     ✔ forcats 1.0.0
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::arrange()   masks plyr::arrange()
 ✖ purrr::compact()   masks plyr::compact()
 ✖ dplyr::count()     masks plyr::count()
@@ -219,17 +227,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::mutate()    masks plyr::mutate()
 ✖ dplyr::rename()    masks plyr::rename()
 ✖ dplyr::summarise() masks plyr::summarise()
-✖ dplyr::summarize() masks plyr::summarize()</code></pre>
+✖ dplyr::summarize() masks plyr::summarize()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Package version: 3.3.1
+<pre><code>Package version: 4.1.0
 Unicode version: 14.0
-ICU version: 70.1
-Parallel computing: 4 of 4 threads used.
+ICU version: 71.1
+Parallel computing: disabled
 See https://quanteda.io for tutorials and examples.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>First load all the Harry Potter books.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the folder containing the .rda files (Change to your path). </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>folder <span class="ot">&lt;-</span> <span class="st">"/Users/mpang/Dropbox/Teaching Resources/DACSS_TAD/HarryPotter"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the list of all .rda files in the folder</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>rda_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(folder, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.rda$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all .rda files into the environment</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(rda_files, load, .GlobalEnv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "chamber_of_secrets"
+
+[[2]]
+[1] "deathly_hallows"
+
+[[3]]
+[1] "goblet_of_fire"
+
+[[4]]
+[1] "half_blood_prince"
+
+[[5]]
+[1] "order_of_the_phoenix"
+
+[[6]]
+[1] "philosophers_stone"
+
+[[7]]
+[1] "prisoner_of_azkaban"</code></pre>
+</div>
 </div>
 <p>As a reminder, we have seven books — each stored as a character vector where each chapter is an element in that vector — now available in our workspace. These are:</p>
 <ul>
@@ -243,78 +285,78 @@ See https://quanteda.io for tutorials and examples.</code></pre>
 </ul>
 <p>As you’ll recall, we want to convert these to corpus objects that are easier to work with.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(philosophers_stone)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(philosophers_stone_corpus) </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(philosophers_stone)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(philosophers_stone_corpus) </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Corpus consisting of 17 documents, showing 17 documents:
 
    Text Types Tokens Sentences
-  text1  1274   5643       349
-  text2  1067   4128       237
-  text3  1226   4630       297
-  text4  1199   4759       321
-  text5  1822   8371       563
-  text6  1568   7949       566
-  text7  1379   5445       351
-  text8  1096   3594       198
-  text9  1428   6130       410
- text10  1294   5207       334
- text11  1114   4152       276
- text12  1511   6729       447
- text13  1079   3929       261
- text14  1113   4354       308
- text15  1386   6437       459
- text16  1582   8277       591
- text17  1491   7101       506</code></pre>
+  text1  1271   5693       350
+  text2  1066   4154       237
+  text3  1226   4656       297
+  text4  1193   4832       322
+  text5  1818   8446       563
+  text6  1563   8016       566
+  text7  1374   5487       351
+  text8  1095   3608       198
+  text9  1422   6195       411
+ text10  1293   5237       334
+ text11  1110   4215       277
+ text12  1509   6790       447
+ text13  1076   3953       262
+ text14  1110   4394       308
+ text15  1385   6486       459
+ text16  1581   8357       591
+ text17  1489   7172       506</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add an indicator for the book; this will be useful later when we add all the books together into a single corpus</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>book <span class="ot">&lt;-</span> <span class="st">"Philosopher's Stone"</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a chapter indicator</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(philosophers_stone_summary<span class="sc">$</span>Text, <span class="st">"[0-9]+"</span>))</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add the metadata</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(philosophers_stone_corpus) <span class="ot">&lt;-</span> philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add an indicator for the book; this will be useful later when we add all the books together into a single corpus</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>book <span class="ot">&lt;-</span> <span class="st">"Philosopher's Stone"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a chapter indicator</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>philosophers_stone_summary<span class="sc">$</span>chapter <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(philosophers_stone_summary<span class="sc">$</span>Text, <span class="st">"[0-9]+"</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add the metadata</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(philosophers_stone_corpus) <span class="ot">&lt;-</span> philosophers_stone_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="document-feature-matrix" class="level1">
 <h1>Document-Feature Matrix</h1>
 <p>A common first-step in text analysis is converting texts from their written format (“The dog runs down the hall.”) to a numerical representation of that language. The basic approach for representing a sentence is the <em>document-feature matrix</em>, sometimes also call the <em>document-term matrix</em>. Here, we are creating a matrix where the rows indicate documents, the columns indicate words, and the value of each cell in the matrix is the count of the word (column) for the document (row).</p>
 <p>We can use quanteda’s <code>dfm</code> command to generate the document-feature matrix directly from the corpus object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the dfm</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(<span class="fu">tokens</span>(philosophers_stone_corpus))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># find out a quick summary of the dfm</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the dfm</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(<span class="fu">tokens</span>(philosophers_stone_corpus))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># find out a quick summary of the dfm</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Document-feature matrix of: 17 documents, 6,161 features (80.18% sparse) and 6 docvars.
+<pre><code>Document-feature matrix of: 17 documents, 6,116 features (80.08% sparse) and 6 docvars.
        features
 docs    the boy who lived mr   . and mrs dursley   ,
   text1 204   9   9     2 30 417 102  21      45 290
   text2 181   6   7     3  3 253  84   5       3 235
   text3 222   1   6     0  4 306 112   3       0 230
   text4 126   5  11     2  2 289  74   0       6 289
-  text5 274  14  10     0 26 569 154   0       0 526
+  text5 274  14  10     0 26 569 155   0       0 526
   text6 282  26  18     0  0 489 185   0       0 500
-[ reached max_ndoc ... 11 more documents, reached max_nfeat ... 6,151 more features ]</code></pre>
+[ reached max_ndoc ... 11 more documents, reached max_nfeat ... 6,106 more features ]</code></pre>
 </div>
 </div>
-<p>The summary of the document-feature matrix provides a few interesting notes for us. We have the number of documents (17 chapters) and the number of features (6,161). We also get a note about sparsity. This refers to the number of 0 entries in our matrix; here, 80.18% of our matrix is 0. The high sparsity of text data is a well-recognized trait and something we will regularly return to.</p>
+<p>The summary of the document-feature matrix provides a few interesting notes for us. We have the number of documents (17 chapters) and the number of features (6,116). We also get a note about sparsity. This refers to the number of 0 entries in our matrix; here, 80.08% of our matrix is 0. The high sparsity of text data is a well-recognized trait and something we will regularly return to.</p>
 <p>Below the summary statement, we can see the first few rows and columns of our document-feature matrix. The first entry in the matrix, for instance, indicates that “the” appears 204 times in the first chapter (text1) of “The Philosopher’s Stone”. This reminds us that we did not preprocess our corpus. Fortunately, the <code>dfm()</code> function explicitly includes the ability to preprocess when you are creating your matrix. Indeed, that’s why the text is lower-cased above; the function defaults to removing capitalization. We can be a bit more heavy-handed with our preprocessing as follows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the dfm</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">dfm</span>(<span class="at">tolower=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">dfm_remove</span>(<span class="fu">stopwords</span>(<span class="st">'english'</span>))</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># find out a quick summary of the dfm</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the dfm</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">dfm</span>(<span class="at">tolower=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">dfm_remove</span>(<span class="fu">stopwords</span>(<span class="st">'english'</span>))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># find out a quick summary of the dfm</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Document-feature matrix of: 17 documents, 5,962 features (82.01% sparse) and 6 docvars.
+<pre><code>Document-feature matrix of: 17 documents, 5,918 features (81.91% sparse) and 6 docvars.
        features
 docs    boy lived mr mrs dursley number four privet drive proud
   text1   9     2 30  21      45      7    5      8     9     1
@@ -323,7 +365,7 @@ docs    boy lived mr mrs dursley number four privet drive proud
   text4   5     2  2   0       6      0    0      0     0     2
   text5  14     0 26   0       0      0    2      0     0     2
   text6  26     0  0   0       0      4    4      0     1     0
-[ reached max_ndoc ... 11 more documents, reached max_nfeat ... 5,952 more features ]</code></pre>
+[ reached max_ndoc ... 11 more documents, reached max_nfeat ... 5,908 more features ]</code></pre>
 </div>
 </div>
 </section>
@@ -331,20 +373,34 @@ docs    boy lived mr mrs dursley number four privet drive proud
 <h1>Working with DFMs</h1>
 <p>Once we have our document-feature matrix, and have made some preprocessing decisions, we can turn to thinking about what we can learn with this new representation. Let’s start with some basics. It’s really easy to see the most frequent terms (features) now.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">topfeatures</span>(philosophers_stone_dfm, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">topfeatures</span>(philosophers_stone_dfm, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     harry       said         --        ron     hagrid       back   hermione 
-      1212        794        783        410        336        261        257 
+<pre><code>         `      harry       said        ron     hagrid       back   hermione 
+      4757       1213        794        410        336        261        257 
        one        got       like        get       know       just        see 
        254        198        194        194        188        180        180 
- professor     looked        now      snape     around dumbledore 
-       180        169        166        145        142        142 </code></pre>
+ professor     looked        now      snape dumbledore     around 
+       180        169        166        145        143        142 </code></pre>
+</div>
+</div>
+<p>We see the symbol “`” as the top 1 feature (which is annoying). Even though we removed punctuation, some special characters might not have been treated as punctuation by default. Let’s remove this symbol before moving on.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>philosophers_stone_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_remove</span>(philosophers_stone_dfm, <span class="at">pattern =</span> <span class="st">"`"</span>, <span class="at">valuetype =</span> <span class="st">"fixed"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">topfeatures</span>(philosophers_stone_dfm, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     harry       said        ron     hagrid       back   hermione        one 
+      1213        794        410        336        261        257        254 
+       got       like        get       know       just        see  professor 
+       198        194        194        188        180        180        180 
+    looked        now      snape dumbledore     around      going 
+       169        166        145        143        142        135 </code></pre>
 </div>
 </div>
 <p>Perhaps you’d also like to know something like which words were only used within a particular text. We can look, for instance, at the final chapter to see what words were uniquely used there.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>final_chapter_words <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">colSums</span>(philosophers_stone_dfm) <span class="sc">==</span> philosophers_stone_dfm[<span class="st">"text17"</span>,])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(philosophers_stone_dfm)[final_chapter_words]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>final_chapter_words <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">colSums</span>(philosophers_stone_dfm) <span class="sc">==</span> philosophers_stone_dfm[<span class="st">"text17"</span>,])</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(philosophers_stone_dfm)[final_chapter_words]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] "treble"          "type"            "overgrown"       "suspect"        
   [5] "p-p-poor"        "st-stuttering"   "p-professor"     "unpopular"      
@@ -352,47 +408,46 @@ docs    boy lived mr mrs dursley number four privet drive proud
  [13] "idly"            "frighten"        "presenting"      "binding"        
  [17] "loathed"         "spasm"           "master's"        "instructions"   
  [21] "traveled"        "served"          "faithfully"      "mistakes"       
- [25] "displeased"      "trailed"         "-how"            "myseff"         
- [29] "blood-red"       "incredibly"      "rooting"         "muscle"         
- [33] "slits"           "mere"            "vapor"           "another's"      
- [37] "willing"         "strengthened"    "faithful"        "create"         
- [41] "surged"          "begging"         "liar"            "value"          
- [45] "courageous"      "vain"            "flame"           "seize"          
- [49] "needle-sharp"    "seared"          "lessened"        "blistering"     
- [53] "lunged"          "agony"           "pinning"         "palms"          
- [57] "raw"             "perform"         "deadly"          "instinct"       
- [61] "aaaargh"         "yells"           "grasp"           "blackness"      
- [65] "swam"            "linen"           "tokens"          "admirers"       
- [69] "naturally"       "misters"         "responsible"     "hygienic"       
- [73] "confiscated"     "distracted"      "prevent"         "blankly"        
- [77] "stored"          "affairs"         "well-organized"  "beings"         
- [81] "precisely"       "increases"       "truly"           "nevertheless"   
- [85] "delayed"         "merely"          "therefore"       "treated"        
- [89] "beg"             "alas"            "loved"           "hatred"         
- [93] "marked"          "bird"            "sheet"           "twinkled"       
- [97] "detest"          "unlike"          "dreamily"        "debt"           
-[101] "hating"          "otherwise"       "unfortunate"     "youth"          
-[105] "vomitflavored"   "toffee"          "golden-brown"    "nurse"          
-[109] "pleaded"         "resting"         "fling"           "audience"       
-[113] "rocker"          "stopping"        "accident"        "end-of-year"    
-[117] "steamrollered"   "food'll"         "bustled"         "stiffily"       
-[121] "risky"           "indoors"         "chucked"         "grief"          
-[125] "remorse"         "leaking"         "sandwich"        "chuckle"        
-[129] "fix"             "shoulda"         "leather-covered" "pomfrey's"      
-[133] "fussing"         "insisting"       "checkup"         "decked"         
-[137] "slytherin's"     "serpent"         "hush"            "fortunately"    
-[141] "waffle"          "fuller"          "awarding"        "thus"           
-[145] "fifty-two"       "twenty-six"      "seventy-"        "stamping"       
-[149] "account"         "ahem"            "dish"            "radish"         
-[153] "sunburn"         "best-played"     "award"           "din"            
-[157] "seventy-two"     "gradually"       "kinds"           "takes"          
-[161] "explosion"       "nudged"          "downfall"        "jot"            
-[165] "grades"          "scraped"         "abysmal"         "wardrobes"      
-[169] "toilets"         "boarding"        "greener"         "tidier"         
-[173] "towns"           "wizened"         "gate"            "twos"           
-[177] "threes"          "alarming"        "gateway"         "squealed"       
-[181] "purple-faced"    "mustached"       "manner"          "holiday"        
-[185] "spreading"      </code></pre>
+ [25] "displeased"      "trailed"         "myseff"          "blood-red"      
+ [29] "incredibly"      "rooting"         "muscle"          "slits"          
+ [33] "mere"            "vapor"           "another's"       "willing"        
+ [37] "strengthened"    "faithful"        "create"          "surged"         
+ [41] "begging"         "liar"            "value"           "courageous"     
+ [45] "vain"            "flame"           "seize"           "needle-sharp"   
+ [49] "seared"          "lessened"        "blistering"      "lunged"         
+ [53] "agony"           "pinning"         "palms"           "raw"            
+ [57] "perform"         "deadly"          "instinct"        "aaaargh"        
+ [61] "yells"           "grasp"           "blackness"       "swam"           
+ [65] "linen"           "tokens"          "admirers"        "naturally"      
+ [69] "misters"         "responsible"     "hygienic"        "confiscated"    
+ [73] "distracted"      "prevent"         "blankly"         "stored"         
+ [77] "affairs"         "well-organized"  "beings"          "precisely"      
+ [81] "increases"       "truly"           "nevertheless"    "delayed"        
+ [85] "merely"          "therefore"       "treated"         "beg"            
+ [89] "alas"            "loved"           "hatred"          "marked"         
+ [93] "bird"            "sheet"           "twinkled"        "detest"         
+ [97] "unlike"          "dreamily"        "debt"            "hating"         
+[101] "otherwise"       "unfortunate"     "youth"           "vomitflavored"  
+[105] "toffee"          "golden-brown"    "nurse"           "pleaded"        
+[109] "resting"         "fling"           "audience"        "rocker"         
+[113] "stopping"        "accident"        "end-of-year"     "steamrollered"  
+[117] "food'll"         "bustled"         "stiffily"        "risky"          
+[121] "indoors"         "chucked"         "grief"           "remorse"        
+[125] "leaking"         "sandwich"        "chuckle"         "fix"            
+[129] "shoulda"         "leather-covered" "pomfrey's"       "fussing"        
+[133] "insisting"       "checkup"         "decked"          "slytherin's"    
+[137] "serpent"         "hush"            "fortunately"     "waffle"         
+[141] "fuller"          "awarding"        "thus"            "fifty-two"      
+[145] "twenty-six"      "stamping"        "account"         "ahem"           
+[149] "dish"            "radish"          "sunburn"         "best-played"    
+[153] "award"           "din"             "seventy-two"     "gradually"      
+[157] "kinds"           "takes"           "explosion"       "nudged"         
+[161] "downfall"        "jot"             "grades"          "scraped"        
+[165] "abysmal"         "wardrobes"       "toilets"         "boarding"       
+[169] "greener"         "tidier"          "towns"           "wizened"        
+[173] "gate"            "twos"            "threes"          "alarming"       
+[177] "gateway"         "squealed"        "purple-faced"    "mustached"      
+[181] "manner"          "holiday"         "spreading"      </code></pre>
 </div>
 </div>
 </section>
@@ -401,25 +456,33 @@ docs    boy lived mr mrs dursley number four privet drive proud
 <p>We started out earlier this semester by making those fancy little word clouds. We haven’t done much of that since, as we’ve been busy getting our hands on data, getting it into R, and thinking about some of the more NLP-centric types of approaches one might take. Now that we’re moving to representing texts, though, we can quickly return to word clouds.</p>
 <p>The general idea here is that the size of the word corresponds to the frequency of the term in the corpus. That is, we are characterizing the most frequent terms in a corpus. Importantly, that means the axes don’t really mean anything in these clouds, nor does the orientation of the term. For that reason, though these are pretty, they aren’t terribly useful.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># programs often work with random initializations, yielding different outcomes.</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we can set a standard starting point though to ensure the same output.</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># draw the wordcloud</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(philosophers_stone_dfm, <span class="at">min_count =</span> <span class="dv">50</span>, <span class="at">random_order =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># programs often work with random initialization, yielding different outcomes.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we can set a standard starting point though to ensure the same output.</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># draw the wordcloud</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(philosophers_stone_dfm, <span class="at">min_count =</span> <span class="dv">50</span>, <span class="at">random_order =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Tutorial6_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial6_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>One way to get a <em>bit</em> more utility is to use the comparison option within the function to plot a comparison of wordclouds across two different documents. Here’s an example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># narrow to first and last chapters</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>smallDfm <span class="ot">&lt;-</span> philosophers_stone_dfm[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">17</span>),]</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># draw the wordcloud</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(smallDfm, <span class="at">comparison =</span> <span class="cn">TRUE</span>, <span class="at">min_count =</span> <span class="dv">10</span>, <span class="at">random_order =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># narrow to first and last chapters</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>smallDfm <span class="ot">&lt;-</span> philosophers_stone_dfm[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">17</span>),]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># draw the wordcloud</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(smallDfm, <span class="at">comparison =</span> <span class="cn">TRUE</span>, <span class="at">min_count =</span> <span class="dv">10</span>, <span class="at">random_order =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Tutorial6_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial6_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -427,29 +490,42 @@ docs    boy lived mr mrs dursley number four privet drive proud
 <h1>Zipf’s Law</h1>
 <p>Now that our data are nicely formatted, we can also look at one of the statistical regularities that characterizes language, <em>Zipf’s Law</em>. Word frequencies are distributed according to Zipf’s law. What does that mean? Let’s take a look at the distribution of word frequencies.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first, we need to create a word frequency variable and the rankings</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>word_counts <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">sort</span>(<span class="fu">colSums</span>(philosophers_stone_dfm),<span class="at">dec=</span>T))</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(word_counts) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Frequency"</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>word_counts<span class="sc">$</span>Rank <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(philosophers_stone_dfm))</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(word_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first, we need to create a word frequency variable and the rankings</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>word_counts <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">sort</span>(<span class="fu">colSums</span>(philosophers_stone_dfm),<span class="at">dec=</span>T))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(word_counts) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Frequency"</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>word_counts<span class="sc">$</span>Rank <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(philosophers_stone_dfm))</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>word_counts<span class="sc">$</span>Word <span class="ot">&lt;-</span> <span class="fu">rownames</span>(word_counts)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(word_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       Frequency Rank
-harry       1212    1
-said         794    2
---           783    3
-ron          410    4
-hagrid       336    5
-back         261    6</code></pre>
+<pre><code>         Frequency Rank     Word
+harry         1213    1    harry
+said           794    2     said
+ron            410    3      ron
+hagrid         336    4   hagrid
+back           261    5     back
+hermione       257    6 hermione</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can plot this</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(word_counts, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Rank, <span class="at">y =</span> Frequency)) <span class="sc">+</span> </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Zipf's Law"</span>, <span class="at">x =</span> <span class="st">"Rank"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) <span class="sc">+</span> </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We only want to label top 10 words</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>word_counts<span class="sc">$</span>Label <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(word_counts<span class="sc">$</span>Rank <span class="sc">&lt;=</span> <span class="dv">10</span>, word_counts<span class="sc">$</span>Word, <span class="cn">NA</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can plot this</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(word_counts, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Rank, <span class="at">y =</span> Frequency)) <span class="sc">+</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Label),<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Zipf's Law"</span>, <span class="at">x =</span> <span class="st">"Rank"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) <span class="sc">+</span> </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 5907 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
 <div class="cell-output-display">
-<p><img src="Tutorial6_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial6_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -457,15 +533,15 @@ back         261    6</code></pre>
 <h1>Updating our DFMs</h1>
 <p>Having seen what we are working with here, we might start to think that our matrix still contains too many uninformative or very rare terms. We can trim our DFM in two different ways related to feature frequencies using <code>dfm_trim()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trim based on the overall frequency (i.e., the word counts)</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>smaller_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(philosophers_stone_dfm, <span class="at">min_termfreq =</span> <span class="dv">10</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># trim based on the proportion of documents that the feature appears in; here, the feature needs to appear in more than 10% of documents (chapters)</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>smaller_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(smaller_dfm, <span class="at">min_docfreq =</span> <span class="fl">0.1</span>, <span class="at">docfreq_type =</span> <span class="st">"prop"</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>smaller_dfm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trim based on the overall frequency (i.e., the word counts)</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>smaller_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(philosophers_stone_dfm, <span class="at">min_termfreq =</span> <span class="dv">10</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># trim based on the proportion of documents that the feature appears in; here, the feature needs to appear in more than 10% of documents (chapters)</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>smaller_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(smaller_dfm, <span class="at">min_docfreq =</span> <span class="fl">0.1</span>, <span class="at">docfreq_type =</span> <span class="st">"prop"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>smaller_dfm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Document-feature matrix of: 17 documents, 884 features (42.22% sparse) and 6 docvars.
+<pre><code>Document-feature matrix of: 17 documents, 885 features (42.28% sparse) and 6 docvars.
        features
 docs    boy mr mrs dursley number four privet drive say normal
   text1   9 30  21      45      7    5      8     9   7      5
@@ -474,24 +550,28 @@ docs    boy mr mrs dursley number four privet drive say normal
   text4   5  2   0       6      0    0      0     0   7      1
   text5  14 26   0       0      0    2      0     0  12      0
   text6  26  0   0       0      4    4      0     1   5      0
-[ reached max_ndoc ... 11 more documents, reached max_nfeat ... 874 more features ]</code></pre>
+[ reached max_ndoc ... 11 more documents, reached max_nfeat ... 875 more features ]</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(smaller_dfm, <span class="at">min_count =</span> <span class="dv">50</span>,</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random_order =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(smaller_dfm, <span class="at">min_count =</span> <span class="dv">50</span>,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random_order =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Tutorial6_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial6_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Note that our sparsity is now significantly decreased. We can also do this in the opposite direction as a way of avoiding features that appear frequently in our corpus and thus are perhaps more uninformative in the particular setting but that would not be caught by a standard stop-word list. As an example, we may want to drop the feature “harry” from the analysis of Harry Potter books, since every.single.reference. to Harry increases that count.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>smaller_dfm2 <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(philosophers_stone_dfm, <span class="at">max_termfreq =</span> <span class="dv">250</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>smaller_dfm2 <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(smaller_dfm2, <span class="at">max_docfreq =</span> .<span class="dv">5</span>, <span class="at">docfreq_type =</span> <span class="st">"prop"</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>smaller_dfm2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>smaller_dfm2 <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(philosophers_stone_dfm, <span class="at">max_termfreq =</span> <span class="dv">250</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>smaller_dfm2 <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(smaller_dfm2, <span class="at">max_docfreq =</span> .<span class="dv">5</span>, <span class="at">docfreq_type =</span> <span class="st">"prop"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>smaller_dfm2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Document-feature matrix of: 17 documents, 5,447 features (87.23% sparse) and 6 docvars.
+<pre><code>Document-feature matrix of: 17 documents, 5,402 features (87.18% sparse) and 6 docvars.
        features
 docs    lived mrs dursley number privet drive proud perfectly normal thank
   text1     2  21      45      7      8     9     1         2      5     2
@@ -500,19 +580,23 @@ docs    lived mrs dursley number privet drive proud perfectly normal thank
   text4     2   0       6      0      0     0     2         0      1     1
   text5     0   0       0      0      0     0     2         1      0     0
   text6     0   0       0      4      0     1     0         0      0     1
-[ reached max_ndoc ... 11 more documents, reached max_nfeat ... 5,437 more features ]</code></pre>
+[ reached max_ndoc ... 11 more documents, reached max_nfeat ... 5,392 more features ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># when you are doing the quiz, you might want to leverage this chunk of code </span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.vector</span>(smaller_dfm2[,<span class="fu">which</span>(<span class="fu">colnames</span>(smaller_dfm2) <span class="sc">==</span> <span class="st">"voldemort"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># when you are doing the quiz, you might want to leverage this chunk of code </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.vector</span>(smaller_dfm2[,<span class="fu">which</span>(<span class="fu">colnames</span>(smaller_dfm2) <span class="sc">==</span> <span class="st">"voldemort"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  4  0  0  1  0  2  0  0  0  0  0  0  0  0  4  6 14</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(smaller_dfm2, <span class="at">min_count =</span> <span class="dv">20</span>,</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random_order =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(smaller_dfm2, <span class="at">min_count =</span> <span class="dv">20</span>,</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random_order =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Tutorial6_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial6_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -520,78 +604,87 @@ docs    lived mrs dursley number privet drive proud perfectly normal thank
 <h1>Feature Co-occurrence matrix</h1>
 <p>Representing text-as-data as a document-feature matrix allows us to learn both about document-level characteristics and about corpus-level characteristics. However, it tells us less about how words within the corpus relate to one another. For this, we can turn to the feature co-occurrence matrix. The idea here is to construct a matrix that — instead of presenting the times a word appears within a document — presents the *number of times word{a} appears in the same document as word{b}. As before creating the feature co-occurrence matrix is straight-forward.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's create a nicer dfm by limiting to words that appear frequently and are in more than 30% of chapters</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>smaller_dfm3 <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(philosophers_stone_dfm, <span class="at">min_termfreq =</span> <span class="dv">10</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>smaller_dfm3 <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(smaller_dfm3, <span class="at">min_docfreq =</span> .<span class="dv">3</span>, <span class="at">docfreq_type =</span> <span class="st">"prop"</span>)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create fcm from dfm</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>smaller_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(smaller_dfm3)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check the dimensions (i.e., the number of rows and the number of columnns) of the matrix we created</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(smaller_fcm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's create a nicer dfm by limiting to words that appear frequently and are in more than 30% of chapters</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>smaller_dfm3 <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(philosophers_stone_dfm, <span class="at">min_termfreq =</span> <span class="dv">10</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>smaller_dfm3 <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(smaller_dfm3, <span class="at">min_docfreq =</span> .<span class="dv">3</span>, <span class="at">docfreq_type =</span> <span class="st">"prop"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create fcm from dfm</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>smaller_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(smaller_dfm3)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check the dimensions (i.e., the number of rows and the number of columnns) of the matrix we created</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(smaller_fcm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 774 774</code></pre>
+<pre><code>[1] 775 775</code></pre>
 </div>
 </div>
 <p>Notice that the number of rows and columns are the same; that’s because they are each the vocabulary, with the entry being the number of times the row word and column word co-occur (with the diagonal elements undefined). Later on this semester, we’ll leverage these word co-occurrence matrices to estimate word embedding models.</p>
 <p>For now, let’s use what we’ve got to try to learn a bit more about what features co-occur, and how, within our book. To do, we’ll visualize a semantic network using <code>textplot_network()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the top features</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>myFeatures <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(smaller_fcm, <span class="dv">30</span>))</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># retain only those top features as part of our matrix</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>even_smaller_fcm <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(smaller_fcm, <span class="at">pattern =</span> myFeatures, <span class="at">selection =</span> <span class="st">"keep"</span>)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check dimensions</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(even_smaller_fcm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the top features</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>myFeatures <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">colSums</span>(smaller_fcm), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>])</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># retain only those top features as part of our matrix</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>even_smaller_fcm <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(smaller_fcm, <span class="at">pattern =</span> myFeatures, <span class="at">selection =</span> <span class="st">"keep"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check dimensions</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(even_smaller_fcm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30 30</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute size weight for vertices in network</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>size <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">colSums</span>(even_smaller_fcm))</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(even_smaller_fcm, <span class="at">vertex_size =</span> size<span class="sc">/</span> <span class="fu">max</span>(size) <span class="sc">*</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute size weight for vertices in network</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>size <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">colSums</span>(even_smaller_fcm))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(even_smaller_fcm, <span class="at">vertex_size =</span> size<span class="sc">/</span> <span class="fu">max</span>(size) <span class="sc">*</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Tutorial6_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial6_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>The graph above is build on dfm, so it does not show which words are closer in a sentence. If we make fcm using the original documents, and set up a window, then we can have more information abot which words are more likely to appear together.</p>
+</div>
+<p>The graph above is build on dfm, so it does not show which words are closer in a sentence. If we make fcm using the original documents, and set up a window, then we can have more information about which words are more likely to appear together.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>book1_token <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus,</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>book1_token <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(book1_token,</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>try_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(book1_token,<span class="at">context =</span> <span class="st">"window"</span>, <span class="at">window=</span><span class="dv">2</span>)</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>try_fcm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>book1_token <span class="ot">&lt;-</span> <span class="fu">tokens</span>(philosophers_stone_corpus,</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_tolower</span>()</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>book1_token <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(book1_token,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pattern =</span> <span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>),<span class="st">"`"</span>),</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">selection =</span> <span class="st">"remove"</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>try_fcm <span class="ot">&lt;-</span> <span class="fu">fcm</span>(book1_token,<span class="at">context =</span> <span class="st">"window"</span>, <span class="at">window=</span><span class="dv">2</span>)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>try_fcm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Feature co-occurrence matrix of: 6,667 by 6,667 features.
+<pre><code>Feature co-occurrence matrix of: 5,917 by 5,917 features.
          features
-features  BOY LIVED Mr Mrs Dursley number four Privet Drive proud
-  BOY       0     1  1   0       0      0    0      0     0     0
-  LIVED     0     0  1   1       0      0    0      0     0     0
-  Mr        0     0  0   3      32      0    0      0     0     1
-  Mrs       0     0  0   4      17      1    0      0     0     0
-  Dursley   0     0  0   0       0      1    1      0     0     0
-  number    0     0  0   0       0      0    7      1     0     0
+features  boy lived mr mrs dursley number four privet drive proud
+  boy       4     3  1   0       0      0    0      0     0     0
+  lived     0     0  1   1       0      0    0      0     0     0
+  mr        0     0  0   3      33      0    0      0     0     1
+  mrs       0     0  0   4      17      1    0      0     0     0
+  dursley   0     0  0   0       0      1    1      0     0     0
+  number    0     0  0   0       0      0    7      1     1     0
   four      0     0  0   0       0      0    0      1     1     0
-  Privet    0     0  0   0       0      0    0      0    16     1
-  Drive     0     0  0   0       0      0    0      0     0     1
+  privet    0     0  0   0       0      0    0      0    16     1
+  drive     0     0  0   0       0      0    0      0     0     1
   proud     0     0  0   0       0      0    0      0     0     0
-[ reached max_feat ... 6,657 more features, reached max_nfeat ... 6,657 more features ]</code></pre>
+[ reached max_feat ... 5,907 more features, reached max_nfeat ... 5,907 more features ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>book1_Features <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(try_fcm, <span class="dv">30</span>))</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>book1_small_fcm <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(try_fcm, <span class="at">pattern =</span> book1_Features, <span class="at">selection =</span> <span class="st">"keep"</span>)</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(book1_small_fcm, <span class="at">vertex_size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>book1_Features <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">colSums</span>(try_fcm), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>])</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>book1_small_fcm <span class="ot">&lt;-</span> <span class="fu">fcm_select</span>(try_fcm, <span class="at">pattern =</span> book1_Features, <span class="at">selection =</span> <span class="st">"keep"</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_network</span>(book1_small_fcm, <span class="at">vertex_size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Tutorial6_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial6_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We observe in the graph that “Uncle Vernon”, and “Professor McGonagall” often appear together. Of course, Harry, Ron, and Hermione also appear together.</p>
@@ -635,18 +728,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -678,11 +760,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -692,8 +813,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -705,7 +835,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -749,6 +1002,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -774,6 +1028,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -834,6 +1114,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

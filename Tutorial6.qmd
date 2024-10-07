@@ -7,13 +7,24 @@ In this tutorial, we'll learn about **representing texts**. This week, we'll con
 
 ```{r}
 library(devtools)
-#devtools::install_github("bradleyboehmke/harrypotter")
-library(harrypotter)
 library(tidytext)
 library(plyr)
 library(tidyverse)
 library(quanteda)
 library(quanteda.textplots)
+```
+
+First load all the Harry Potter books.
+
+```{r}
+# Define the folder containing the .rda files (Change to your path). 
+folder <- "/Users/mpang/Dropbox/Teaching Resources/DACSS_TAD/HarryPotter"
+
+# Get the list of all .rda files in the folder
+rda_files <- list.files(folder, pattern = "\\.rda$", full.names = TRUE)
+
+# Load all .rda files into the environment
+lapply(rda_files, load, .GlobalEnv)
 ```
 
 As a reminder, we have seven books --- each stored as a character vector where each chapter is an element in that vector --- now available in our workspace. These are:
@@ -59,7 +70,7 @@ philosophers_stone_dfm <- dfm(tokens(philosophers_stone_corpus))
 philosophers_stone_dfm
 ```
 
-The summary of the document-feature matrix provides a few interesting notes for us. We have the number of documents (17 chapters) and the number of features (6,161). We also get a note about sparsity. This refers to the number of 0 entries in our matrix; here, 80.18% of our matrix is 0. The high sparsity of text data is a well-recognized trait and something we will regularly return to.
+The summary of the document-feature matrix provides a few interesting notes for us. We have the number of documents (17 chapters) and the number of features (6,116). We also get a note about sparsity. This refers to the number of 0 entries in our matrix; here, 80.08% of our matrix is 0. The high sparsity of text data is a well-recognized trait and something we will regularly return to.
 
 Below the summary statement, we can see the first few rows and columns of our document-feature matrix. The first entry in the matrix, for instance, indicates that "the" appears 204 times in the first chapter (text1) of "The Philosopher's Stone". This reminds us that we did not preprocess our corpus. Fortunately, the `dfm()` function explicitly includes the ability to preprocess when you are creating your matrix. Indeed, that's why the text is lower-cased above; the function defaults to removing capitalization. We can be a bit more heavy-handed with our preprocessing as follows.
 
@@ -82,6 +93,15 @@ Once we have our document-feature matrix, and have made some preprocessing decis
 topfeatures(philosophers_stone_dfm, 20)
 ```
 
+We see the symbol "`" as the top 1 feature (which is annoying). Even though we removed punctuation, some special characters might not have been treated as punctuation by default. Let's remove this symbol before moving on. 
+
+```{r}
+philosophers_stone_dfm <- dfm_remove(philosophers_stone_dfm, pattern = "`", valuetype = "fixed")
+
+topfeatures(philosophers_stone_dfm, 20)
+```
+
+
 Perhaps you'd also like to know something like which words were only used within a particular text. We can look, for instance, at the final chapter to see what words were uniquely used there.
 
 ```{r}
@@ -96,7 +116,7 @@ We started out earlier this semester by making those fancy little word clouds. W
 The general idea here is that the size of the word corresponds to the frequency of the term in the corpus. That is, we are characterizing the most frequent terms in a corpus. Importantly, that means the axes don't really mean anything in these clouds, nor does the orientation of the term. For that reason, though these are pretty, they aren't terribly useful.
 
 ```{r}
-# programs often work with random initializations, yielding different outcomes.
+# programs often work with random initialization, yielding different outcomes.
 # we can set a standard starting point though to ensure the same output.
 set.seed(1234)
 
@@ -123,13 +143,18 @@ Now that our data are nicely formatted, we can also look at one of the statistic
 word_counts <- as.data.frame(sort(colSums(philosophers_stone_dfm),dec=T))
 colnames(word_counts) <- c("Frequency")
 word_counts$Rank <- c(1:ncol(philosophers_stone_dfm))
+word_counts$Word <- rownames(word_counts)
 head(word_counts)
 ```
 
 ```{r}
+# We only want to label top 10 words
+word_counts$Label <- ifelse(word_counts$Rank <= 10, word_counts$Word, NA)
+
 # now we can plot this
 ggplot(word_counts, mapping = aes(x = Rank, y = Frequency)) + 
   geom_point() +
+  geom_text(aes(label = Label),vjust = -0.5, hjust = 0.5, size = 3) +
   labs(title = "Zipf's Law", x = "Rank", y = "Frequency") + 
   theme_bw()
 ```
@@ -163,7 +188,6 @@ smaller_dfm2
 
 # when you are doing the quiz, you might want to leverage this chunk of code 
 as.vector(smaller_dfm2[,which(colnames(smaller_dfm2) == "voldemort")])
-
 ```
 
 ```{r}
@@ -193,7 +217,7 @@ For now, let's use what we've got to try to learn a bit more about what features
 
 ```{r}
 # pull the top features
-myFeatures <- names(topfeatures(smaller_fcm, 30))
+myFeatures <- names(sort(colSums(smaller_fcm), decreasing = TRUE)[1:30])
 
 # retain only those top features as part of our matrix
 even_smaller_fcm <- fcm_select(smaller_fcm, pattern = myFeatures, selection = "keep")
@@ -208,22 +232,23 @@ size <- log(colSums(even_smaller_fcm))
 textplot_network(even_smaller_fcm, vertex_size = size/ max(size) * 3)
 ```
 
-The graph above is build on dfm, so it does not show which words are closer in a sentence. If we make fcm using the original documents, and set up a window, then we can have more information abot which words are more likely to appear together. 
+The graph above is build on dfm, so it does not show which words are closer in a sentence. If we make fcm using the original documents, and set up a window, then we can have more information about which words are more likely to appear together. 
 
 ```{r}
 book1_token <- tokens(philosophers_stone_corpus,
                     remove_punct = TRUE,
-                    remove_numbers = TRUE)
+                    remove_numbers = TRUE) %>%
+  tokens_tolower()
 
 book1_token <- tokens_select(book1_token,
-                     pattern = stopwords("en"),
+                     pattern = c(stopwords("en"),"`"),
                      selection = "remove")
 
 try_fcm <- fcm(book1_token,context = "window", window=2)
 
 try_fcm
 
-book1_Features <- names(topfeatures(try_fcm, 30))
+book1_Features <- names(sort(colSums(try_fcm), decreasing = TRUE)[1:30])
 
 book1_small_fcm <- fcm_select(try_fcm, pattern = book1_Features, selection = "keep")
 

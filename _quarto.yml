@@ -20,6 +20,8 @@ website:
         text: Tutorial5 
       - href: Tutorial6.qmd
         text: Tutorial6 
+      - href: Tutorial7.qmd
+        text: Tutorial7         
 
 
 format:

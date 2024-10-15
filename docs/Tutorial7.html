@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tutorial_7</title>
+<title>Tutorial_7 – DACSS758 Text as Data Fall 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,8 +94,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -101,55 +109,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">DACSS758 Text as Data Fall 2023</span>
+    <span class="navbar-title">DACSS758 Text as Data Fall 2024</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial1.html" rel="" target="">
- <span class="menu-text">Tutorial 1 Introduction to R</span></a>
+    <a class="nav-link" href="./Tutorial1.html"> 
+<span class="menu-text">Tutorial1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial2.html" rel="" target="">
- <span class="menu-text">Tutorial 2 Text as Data</span></a>
+    <a class="nav-link" href="./Tutorial2.html"> 
+<span class="menu-text">Tutorial2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial3.html" rel="" target="">
- <span class="menu-text">Tutorial 3 Web Scraping in R</span></a>
+    <a class="nav-link" href="./Tutorial3.html"> 
+<span class="menu-text">Tutorial3</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial4.html" rel="" target="">
- <span class="menu-text">Tutorial 4 Natural Language Processing</span></a>
+    <a class="nav-link" href="./Tutorial4.html"> 
+<span class="menu-text">Tutorial4</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial5.html" rel="" target="">
- <span class="menu-text">Tutorial 5 Preprocessing</span></a>
+    <a class="nav-link" href="./Tutorial5.html"> 
+<span class="menu-text">Tutorial5</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial6.html" rel="" target="">
- <span class="menu-text">Tutorial 6 Text Representation I</span></a>
+    <a class="nav-link" href="./Tutorial6.html"> 
+<span class="menu-text">Tutorial6</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./Tutorial7.html" rel="" target="" aria-current="page">
- <span class="menu-text">Tutorial7_WordEmbeddings/Text Representation II</span></a>
+    <a class="nav-link active" href="./Tutorial7.html" aria-current="page"> 
+<span class="menu-text">Tutorial7</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -175,6 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#parent-example" id="toc-parent-example" class="nav-link" data-scroll-target="#parent-example">Parent example</a></li>
   <li><a href="#king-and-queen-example" id="toc-king-and-queen-example" class="nav-link" data-scroll-target="#king-and-queen-example">King and queen example</a></li>
   </ul></li>
+  <li><a href="#word2vec" id="toc-word2vec" class="nav-link" data-scroll-target="#word2vec">Word2Vec</a></li>
   </ul>
 </nav>
     </div>
@@ -196,7 +205,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="word-embeddings" class="level1">
 <h1>Word Embeddings</h1>
@@ -370,6 +381,7 @@ Note
 ngram_min = 1; ngram_max = 1 
 Vocabulary: 
           term term_count doc_count
+        &lt;char&gt;      &lt;int&gt;     &lt;int&gt;
     1:    0000          1         1
     2: 0000000          1         1
     3: 0000001          1         1
@@ -407,7 +419,7 @@ Vocabulary:
 <p>Moving on, we can create out term-co-occurence matrix (TCM). We can achieve different results by experimenting with the <code>skip_grams_window</code> and other parameters. The definition of whether two words occur together is arbitrary, so we definitely want to play around with the parameters to see the different results.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use window of 5 for context words</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tcm <span class="ot">&lt;-</span> <span class="fu">create_tcm</span>(it, vectorizer, <span class="at">skip_grams_window =</span> 5L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tcm <span class="ot">&lt;-</span> <span class="fu">create_tcm</span>(it, vectorizer, <span class="at">skip_grams_window =</span> <span class="dv">5</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="creating-and-fitting-the-glove-model" class="level1">
@@ -453,16 +465,16 @@ Vocabulary:
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">convergence_tol =</span> <span class="fl">0.01</span>,</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">n_threads =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [13:25:28.736] epoch 1, loss 0.1916
-INFO  [13:25:32.383] epoch 2, loss 0.1290
-INFO  [13:25:36.013] epoch 3, loss 0.1118
-INFO  [13:25:39.640] epoch 4, loss 0.1011
-INFO  [13:25:43.302] epoch 5, loss 0.0937
-INFO  [13:25:46.900] epoch 6, loss 0.0883
-INFO  [13:25:50.459] epoch 7, loss 0.0843
-INFO  [13:25:54.229] epoch 8, loss 0.0811
-INFO  [13:25:57.833] epoch 9, loss 0.0785
-INFO  [13:26:01.516] epoch 10, loss 0.0764</code></pre>
+<pre><code>INFO  [02:20:12.613] epoch 1, loss 0.1913
+INFO  [02:20:16.817] epoch 2, loss 0.1289
+INFO  [02:20:22.045] epoch 3, loss 0.1119
+INFO  [02:20:27.743] epoch 4, loss 0.1014
+INFO  [02:20:33.429] epoch 5, loss 0.0940
+INFO  [02:20:37.936] epoch 6, loss 0.0887
+INFO  [02:20:42.584] epoch 7, loss 0.0846
+INFO  [02:20:47.430] epoch 8, loss 0.0814
+INFO  [02:20:51.527] epoch 9, loss 0.0788
+INFO  [02:20:56.268] epoch 10, loss 0.0767</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -492,13 +504,13 @@ INFO  [13:26:01.516] epoch 10, loss 0.0764</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>word_vectors[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            [,1]        [,2]        [,3]        [,4]       [,5]        [,6]
-1837  0.04517645 -0.28666180  0.40401689  0.30614881  0.5127633 -0.56553552
-1841 -0.28710643 -0.48091927  0.74153012  0.17633699  0.4550122 -0.29851067
-1881 -0.13368742  0.36169375 -0.04082482  0.04540700 -0.3577053 -0.19733959
-2005 -0.77480473 -0.09591058 -0.31780528  0.49908921 -0.7781627  0.08876551
-36   -0.33893810  0.23180553  0.64480213  0.03419768 -0.2916895 -0.07991617
-38   -0.26858585 -0.48943996  0.63325512 -0.31352754  0.1633754 -0.12409298</code></pre>
+<pre><code>           [,1]       [,2]       [,3]         [,4]        [,5]        [,6]
+1837 -0.7464714 -0.2082231 -0.5006124  0.575800759 -0.03168027  0.54752450
+1841  0.2525869  0.0848835 -0.8302922 -0.353517968 -0.39597546  0.63783851
+1881 -0.5111642 -0.9554886 -1.0237731 -0.269656556  0.20018792  0.05834109
+2005  0.2649430  0.3443983 -1.1939082 -0.003956094 -0.49498342  0.10145352
+36   -0.7666594 -0.4914592 -0.2732698 -0.687117778 -0.39090583 -0.62563318
+38   -0.9471597  0.2083783  0.1531758  0.048511827 -0.56120735 -1.03102522</code></pre>
 </div>
 </div>
 </section>
@@ -517,32 +529,66 @@ INFO  [13:26:01.516] epoch 10, loss 0.0764</code></pre>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(school_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   school       fun      work      time       day      cool     today        go 
-1.0000000 0.6931877 0.6679507 0.6618867 0.6495852 0.6456139 0.6174673 0.6165279 
-       to       all 
-0.6117772 0.6101692 </code></pre>
+<pre><code>   school       fun     today      work      home      time       day     class 
+1.0000000 0.7419605 0.7162850 0.6896554 0.6698857 0.6665340 0.6532286 0.6456534 
+      get        to 
+0.6448730 0.6371606 </code></pre>
 </div>
 </div>
-<p>Obviously, school is the most similar to school. Bawed on the poems that the children wrote, we can also see words like ‘work’, ‘fun’, and ‘class’ as most similar to ‘school.’</p>
+<p>Obviously, school is the most similar to school. Based on the poems that the children wrote, we can also see words like ‘work’, ‘fun’, and ‘class’ as most similar to ‘school.’</p>
+<p>We can also calculate the cosine similarity between ‘school’ and ‘study’.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Word vector for homework</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>study <span class="ot">&lt;-</span> word_vectors[<span class="st">"study"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cosine similarity</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sim2</span>(<span class="at">x =</span> school, <span class="at">y =</span> study, </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           study
+school 0.2997516</code></pre>
+</div>
+</div>
+<p>In practice, you can write a loop to find the similarity between the keyword and a list of words. For example, calculating the similarity between ‘school’ and ‘study’, ‘learn’, ‘homework’, ‘lunch’, ‘fun’, ‘friends’.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of words to compare</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"study"</span>, <span class="st">"learn"</span>,<span class="st">"homework"</span>, <span class="st">"lunch"</span>, <span class="st">"fun"</span>, <span class="st">"friends"</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each word and calculate cosine similarity</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> words) {</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  list_vector <span class="ot">&lt;-</span> word_vectors[i, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  similarity <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> school, <span class="at">y =</span> list_vector, </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Cosine similarity between 'school' and"</span>, i, <span class="st">":"</span>, <span class="fu">round</span>(similarity, <span class="dv">3</span>)))</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Cosine similarity between 'school' and study : 0.3"
+[1] "Cosine similarity between 'school' and learn : 0.576"
+[1] "Cosine similarity between 'school' and homework : 0.571"
+[1] "Cosine similarity between 'school' and lunch : 0.534"
+[1] "Cosine similarity between 'school' and fun : 0.742"
+[1] "Cosine similarity between 'school' and friends : 0.537"</code></pre>
+</div>
+</div>
 </section>
 <section id="pet-example" class="level2">
 <h2 class="anchored" data-anchor-id="pet-example">Pet example</h2>
 <p>Let’s try our pet example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cat - meow + bark should equal dog</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dog <span class="ot">&lt;-</span> word_vectors[<span class="st">"cat"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span> </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"meow"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"bark"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculates pairwise similarities between the rows of two matrices</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>dog_cos_sim <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> dog,</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(dog_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cat - meow + bark should equal dog</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>dog <span class="ot">&lt;-</span> word_vectors[<span class="st">"cat"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"meow"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"bark"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculates pairwise similarities between the rows of two matrices</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>dog_cos_sim <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> dog,</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(dog_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      dog       cat       big     small       his 
-0.8087565 0.8026895 0.6945863 0.6699371 0.6476813 </code></pre>
+<pre><code>      dog       cat        he       fat     small 
+0.7848847 0.7563225 0.6984845 0.6597557 0.6459102 </code></pre>
 </div>
 </div>
 <p>Success - Our predicted result was correct! We get ‘dog’ as the highest predicted result after the one we used (cat). We can think of this scenario as cats say meow and dogs say bark.</p>
@@ -551,20 +597,20 @@ INFO  [13:26:01.516] epoch 10, loss 0.0764</code></pre>
 <h2 class="anchored" data-anchor-id="parent-example">Parent example</h2>
 <p>Let’s move on to the parent example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mom - girl + boy should equal dad</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>dad <span class="ot">&lt;-</span> word_vectors[<span class="st">"mom"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"girl"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"boy"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculates pairwise similarities between the rows of two matrices</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>dad_cos_sim <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> dad,</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(dad_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mom - girl + boy should equal dad</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>dad <span class="ot">&lt;-</span> word_vectors[<span class="st">"mom"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"girl"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"boy"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculates pairwise similarities between the rows of two matrices</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>dad_cos_sim <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> dad,</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(dad_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      mom       dad      says   brother      said 
-0.8479007 0.8065054 0.7150675 0.7076835 0.6855733 </code></pre>
+<pre><code>      mom       dad   brother      said        my 
+0.8582012 0.8006066 0.7208358 0.6569252 0.6191766 </code></pre>
 </div>
 </div>
 <p>‘Dad’ wasn’t a top result. Finally, let’s try the infamous king and queen example.</p>
@@ -572,43 +618,90 @@ INFO  [13:26:01.516] epoch 10, loss 0.0764</code></pre>
 <section id="king-and-queen-example" class="level2">
 <h2 class="anchored" data-anchor-id="king-and-queen-example">King and queen example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># king - man + woman should equal queen</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>queen <span class="ot">&lt;-</span> word_vectors[<span class="st">"king"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"man"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"woman"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pairwise similarities</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>queen_cos_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> queen, <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(queen_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># king - man + woman should equal queen</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>queen <span class="ot">&lt;-</span> word_vectors[<span class="st">"king"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"man"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"woman"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pairwise similarities</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>queen_cos_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> queen, <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(queen_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     king      kong   natural  dinasaur    martin 
-0.7251078 0.6366864 0.6133684 0.5437246 0.5224198 </code></pre>
+<pre><code>     king      kong    martin    luther        jr 
+0.7792882 0.6638567 0.6130658 0.6078372 0.5452142 </code></pre>
 </div>
 </div>
 <p>Unfortunately, we did not get queen as a top result. Let’s try changing <strong>man</strong> and <strong>woman</strong> to <strong>boy</strong> and <strong>girl</strong> to account for the kid’s writing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># king - boy + girl should equal queen</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>queen <span class="ot">&lt;-</span> word_vectors[<span class="st">"king"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"boy"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"girl"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pairwise similarities</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>queen_cos_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> queen, <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(queen_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># king - boy + girl should equal queen</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>queen <span class="ot">&lt;-</span> word_vectors[<span class="st">"king"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"boy"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  word_vectors[<span class="st">"girl"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pairwise similarities</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>queen_cos_sim <span class="ot">=</span> <span class="fu">sim2</span>(<span class="at">x =</span> word_vectors, <span class="at">y =</span> queen, <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(queen_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     king     queen     child      girl  princess 
-0.8119764 0.5533746 0.5464525 0.5095002 0.5058019 </code></pre>
+<pre><code>     king     queen    valley    luther  american 
+0.8217269 0.6072339 0.5400702 0.5378605 0.5050342 </code></pre>
 </div>
 </div>
 <p>It worked!</p>
 <p><strong>As we can see through, outcomes are highly dependent on the data and settings you select, so bear in mind the context when trying this out.</strong></p>
-
-
 </section>
+</section>
+<section id="word2vec" class="level1">
+<h1>Word2Vec</h1>
+<p><strong>Word2Vec</strong> and <strong>GloVe</strong> are both popular word embedding models, but they differ in how they learn word relationships: <strong>Word2Vec</strong> is a predictive model that uses local context (through Skip-Gram or CBOW) to generate embeddings. It works well for smaller datasets and captures relationships from local word co-occurrences. <strong>GloVe</strong> is a count-based model that relies on global word co-occurrence statistics, which typically requires larger datasets to perform well.</p>
+<p>In this section, I’ve applied Word2Vec to a 20% sample of the poem dataset, as it tends to perform better on smaller datasets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(word2vec)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>poem_small <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(poem, <span class="at">prop =</span> <span class="fl">0.2</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>tokens_small <span class="ot">&lt;-</span> <span class="fu">word_tokenizer</span>(poem_small<span class="sc">$</span>text)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>word2vec_model <span class="ot">&lt;-</span> <span class="fu">word2vec</span>(tokens_small, <span class="at">type =</span> <span class="st">"skip-gram"</span>, <span class="at">dim =</span> <span class="dv">50</span>, <span class="at">window =</span> <span class="dv">10</span>, <span class="at">iter =</span> <span class="dv">10</span>, <span class="at">min_count =</span> <span class="dv">1</span>)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>word2vec_vectors <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(word2vec_model)</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Word vector for school</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>school_word2vec <span class="ot">&lt;-</span> word2vec_vectors[<span class="st">"school"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Cosine similarity</span></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>school_cos_sim2 <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word2vec_vectors, <span class="at">y =</span> school_word2vec,<span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(school_cos_sim2[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   school     helth    dueled   quenton    resses    intail      pool    funist 
+1.0000000 0.8039209 0.7939959 0.7938038 0.7924688 0.7827830 0.7780189 0.7505028 
+ schooler    backto 
+0.7501878 0.7494234 </code></pre>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -647,18 +740,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -690,11 +772,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -704,8 +825,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -717,7 +847,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -761,6 +1014,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -786,6 +1040,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -846,6 +1126,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

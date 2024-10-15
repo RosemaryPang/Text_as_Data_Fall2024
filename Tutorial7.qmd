@@ -194,7 +194,32 @@ school_cos_sim <- sim2(x = word_vectors, y = school,
 head(sort(school_cos_sim[,1], decreasing = TRUE), 10)
 ```
 
-Obviously, school is the most similar to school. Bawed on the poems that the children wrote, we can also see words like 'work', 'fun', and 'class' as most similar to 'school.'
+Obviously, school is the most similar to school. Based on the poems that the children wrote, we can also see words like 'work', 'fun', and 'class' as most similar to 'school.'
+
+We can also calculate the cosine similarity between 'school' and 'study'. 
+
+```{r}
+# Word vector for homework
+study <- word_vectors["study", , drop = FALSE]
+
+# Cosine similarity
+sim2(x = school, y = study, 
+      method = "cosine", norm = "l2")
+```
+In practice, you can write a loop to find the similarity between the keyword and a list of words. For example, calculating the similarity between 'school' and 'study', 'learn', 'homework', 'lunch', 'fun', 'friends'.
+
+```{r}
+# List of words to compare
+words <- c("study", "learn","homework", "lunch", "fun", "friends")
+
+# Loop through each word and calculate cosine similarity
+for (i in words) {
+  list_vector <- word_vectors[i, , drop = FALSE]
+  similarity <- sim2(x = school, y = list_vector, 
+                     method = "cosine", norm = "l2")
+  print(paste("Cosine similarity between 'school' and", i, ":", round(similarity, 3)))
+}
+```
 
 ## Pet example
 
@@ -269,3 +294,32 @@ head(sort(queen_cos_sim[,1], decreasing = TRUE), 5)
 It worked!
 
 **As we can see through, outcomes are highly dependent on the data and settings you select, so bear in mind the context when trying this out.**
+
+# Word2Vec
+
+**Word2Vec** and **GloVe** are both popular word embedding models, but they differ in how they learn word relationships: **Word2Vec** is a predictive model that uses local context (through Skip-Gram or CBOW) to generate embeddings. It works well for smaller datasets and captures relationships from local word co-occurrences. **GloVe** is a count-based model that relies on global word co-occurrence statistics, which typically requires larger datasets to perform well.
+
+In this section, I’ve applied Word2Vec to a 20% sample of the poem dataset, as it tends to perform better on smaller datasets.
+
+```{r}
+library(dplyr)
+library(word2vec)
+
+set.seed(1234)
+poem_small <- slice_sample(poem, prop = 0.2)
+
+tokens_small <- word_tokenizer(poem_small$text)
+
+
+word2vec_model <- word2vec(tokens_small, type = "skip-gram", dim = 50, window = 10, iter = 10, min_count = 1)
+
+word2vec_vectors <- as.matrix(word2vec_model)
+
+# Word vector for school
+school_word2vec <- word2vec_vectors["school", , drop = FALSE]
+
+# Cosine similarity
+school_cos_sim2 <- sim2(x = word2vec_vectors, y = school_word2vec,method = "cosine", norm = "l2")
+
+head(sort(school_cos_sim2[,1], decreasing = TRUE), 10)
+```

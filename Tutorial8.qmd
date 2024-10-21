@@ -42,7 +42,7 @@ convert(data_corpus_LMRD[1],to="data.frame")
 
 # Dictionary Analysis
 
-The basic idea with a dictionary analysis is to identify a set of words that connect to a certain concept, and to count the frequency of that set of words within a document. The set of words is the dictionary; as you might quickly realize, a more appropriate name is probably theasurus.
+The basic idea with a dictionary analysis is to identify a set of words that connect to a certain concept, and to count the frequency of that set of words within a document. The set of words is the dictionary; as you might quickly realize, a more appropriate name is probably thesaurus.
 
 ```         
 liwcalike()

@@ -154,6 +154,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="./Tutorial7.html" aria-current="page"> 
 <span class="menu-text">Tutorial7</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial8.html"> 
+<span class="menu-text">Tutorial8</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -458,23 +462,23 @@ Vocabulary:
     x_max: 10</code></pre>
 </div>
 </div>
-<p>You’ll be able to access the public methods. We can fit our modelusing <code>$fit_transform</code> to our <code>glove</code> variable. This may take several minutes to fit.</p>
+<p>You’ll be able to access the public methods. We can fit our model using <code>$fit_transform</code> to our <code>glove</code> variable. This may take several minutes to fit.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting model</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>wv_main <span class="ot">&lt;-</span> glove<span class="sc">$</span><span class="fu">fit_transform</span>(tcm, <span class="at">n_iter=</span> <span class="dv">10</span>, </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">convergence_tol =</span> <span class="fl">0.01</span>,</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">n_threads =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [02:20:12.613] epoch 1, loss 0.1913
-INFO  [02:20:16.817] epoch 2, loss 0.1289
-INFO  [02:20:22.045] epoch 3, loss 0.1119
-INFO  [02:20:27.743] epoch 4, loss 0.1014
-INFO  [02:20:33.429] epoch 5, loss 0.0940
-INFO  [02:20:37.936] epoch 6, loss 0.0887
-INFO  [02:20:42.584] epoch 7, loss 0.0846
-INFO  [02:20:47.430] epoch 8, loss 0.0814
-INFO  [02:20:51.527] epoch 9, loss 0.0788
-INFO  [02:20:56.268] epoch 10, loss 0.0767</code></pre>
+<pre><code>INFO  [01:41:04.460] epoch 1, loss 0.1926
+INFO  [01:41:08.345] epoch 2, loss 0.1286
+INFO  [01:41:12.114] epoch 3, loss 0.1115
+INFO  [01:41:15.906] epoch 4, loss 0.1010
+INFO  [01:41:19.629] epoch 5, loss 0.0937
+INFO  [01:41:23.312] epoch 6, loss 0.0883
+INFO  [01:41:26.946] epoch 7, loss 0.0843
+INFO  [01:41:30.659] epoch 8, loss 0.0811
+INFO  [01:41:34.250] epoch 9, loss 0.0786
+INFO  [01:41:37.928] epoch 10, loss 0.0765</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -504,13 +508,13 @@ INFO  [02:20:56.268] epoch 10, loss 0.0767</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>word_vectors[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           [,1]       [,2]       [,3]         [,4]        [,5]        [,6]
-1837 -0.7464714 -0.2082231 -0.5006124  0.575800759 -0.03168027  0.54752450
-1841  0.2525869  0.0848835 -0.8302922 -0.353517968 -0.39597546  0.63783851
-1881 -0.5111642 -0.9554886 -1.0237731 -0.269656556  0.20018792  0.05834109
-2005  0.2649430  0.3443983 -1.1939082 -0.003956094 -0.49498342  0.10145352
-36   -0.7666594 -0.4914592 -0.2732698 -0.687117778 -0.39090583 -0.62563318
-38   -0.9471597  0.2083783  0.1531758  0.048511827 -0.56120735 -1.03102522</code></pre>
+<pre><code>            [,1]       [,2]       [,3]         [,4]        [,5]        [,6]
+1837  0.43907892 -0.1872493 -0.5214302  0.281306138  0.54493457  0.07442340
+1841  0.78713256  0.1654886  0.5445842 -0.115891594  0.48654030 -0.40464814
+1881 -0.11485630  0.0799278  0.2563614 -0.408114871  0.04040807 -0.44825113
+2005 -0.00553796  0.4716572  0.1298125 -0.001526793 -0.66258253  0.32161776
+36    0.19366583 -0.2620511 -0.3671042  0.587645557  0.22950087 -0.03482799
+38    0.46699611  0.1000720 -0.8211754  0.485239607 -0.60822053 -0.65862959</code></pre>
 </div>
 </div>
 </section>
@@ -529,16 +533,16 @@ INFO  [02:20:56.268] epoch 10, loss 0.0767</code></pre>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(school_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   school       fun     today      work      home      time       day     class 
-1.0000000 0.7419605 0.7162850 0.6896554 0.6698857 0.6665340 0.6532286 0.6456534 
-      get        to 
-0.6448730 0.6371606 </code></pre>
+<pre><code>   school      home      time      work     after       fun     today      late 
+1.0000000 0.7197087 0.7155737 0.6953649 0.6785728 0.6769731 0.6765467 0.6705443 
+     when       get 
+0.6428421 0.6428196 </code></pre>
 </div>
 </div>
 <p>Obviously, school is the most similar to school. Based on the poems that the children wrote, we can also see words like ‘work’, ‘fun’, and ‘class’ as most similar to ‘school.’</p>
 <p>We can also calculate the cosine similarity between ‘school’ and ‘study’.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Word vector for homework</span></span>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Word vector for study</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>study <span class="ot">&lt;-</span> word_vectors[<span class="st">"study"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cosine similarity</span></span>
@@ -546,7 +550,7 @@ INFO  [02:20:56.268] epoch 10, loss 0.0767</code></pre>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           study
-school 0.2997516</code></pre>
+school 0.2301332</code></pre>
 </div>
 </div>
 <p>In practice, you can write a loop to find the similarity between the keyword and a list of words. For example, calculating the similarity between ‘school’ and ‘study’, ‘learn’, ‘homework’, ‘lunch’, ‘fun’, ‘friends’.</p>
@@ -562,12 +566,12 @@ school 0.2997516</code></pre>
 <span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Cosine similarity between 'school' and"</span>, i, <span class="st">":"</span>, <span class="fu">round</span>(similarity, <span class="dv">3</span>)))</span>
 <span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Cosine similarity between 'school' and study : 0.3"
-[1] "Cosine similarity between 'school' and learn : 0.576"
-[1] "Cosine similarity between 'school' and homework : 0.571"
-[1] "Cosine similarity between 'school' and lunch : 0.534"
-[1] "Cosine similarity between 'school' and fun : 0.742"
-[1] "Cosine similarity between 'school' and friends : 0.537"</code></pre>
+<pre><code>[1] "Cosine similarity between 'school' and study : 0.23"
+[1] "Cosine similarity between 'school' and learn : 0.594"
+[1] "Cosine similarity between 'school' and homework : 0.533"
+[1] "Cosine similarity between 'school' and lunch : 0.573"
+[1] "Cosine similarity between 'school' and fun : 0.677"
+[1] "Cosine similarity between 'school' and friends : 0.514"</code></pre>
 </div>
 </div>
 </section>
@@ -587,8 +591,8 @@ school 0.2997516</code></pre>
 <span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
 <span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(dog_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      dog       cat        he       fat     small 
-0.7848847 0.7563225 0.6984845 0.6597557 0.6459102 </code></pre>
+<pre><code>      cat       dog       fat       big        he 
+0.8117645 0.7786891 0.7102236 0.7061164 0.6906470 </code></pre>
 </div>
 </div>
 <p>Success - Our predicted result was correct! We get ‘dog’ as the highest predicted result after the one we used (cat). We can think of this scenario as cats say meow and dogs say bark.</p>
@@ -609,8 +613,8 @@ school 0.2997516</code></pre>
 <span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
 <span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(dad_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      mom       dad   brother      said        my 
-0.8582012 0.8006066 0.7208358 0.6569252 0.6191766 </code></pre>
+<pre><code>      mom       dad   brother    sister      says 
+0.8817681 0.8105545 0.6831259 0.6511331 0.6464033 </code></pre>
 </div>
 </div>
 <p>‘Dad’ wasn’t a top result. Finally, let’s try the infamous king and queen example.</p>
@@ -629,8 +633,8 @@ school 0.2997516</code></pre>
 <span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
 <span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(queen_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     king      kong    martin    luther        jr 
-0.7792882 0.6638567 0.6130658 0.6078372 0.5452142 </code></pre>
+<pre><code>     king      kong      maid    martin     queen 
+0.8026007 0.6838580 0.6251205 0.5827649 0.5764399 </code></pre>
 </div>
 </div>
 <p>Unfortunately, we did not get queen as a top result. Let’s try changing <strong>man</strong> and <strong>woman</strong> to <strong>boy</strong> and <strong>girl</strong> to account for the kid’s writing.</p>
@@ -646,8 +650,8 @@ school 0.2997516</code></pre>
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top five predictions</span></span>
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(queen_cos_sim[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     king     queen    valley    luther  american 
-0.8217269 0.6072339 0.5400702 0.5378605 0.5050342 </code></pre>
+<pre><code>     king     queen    castle      kong      girl 
+0.8678330 0.6258649 0.5963708 0.5585626 0.5140303 </code></pre>
 </div>
 </div>
 <p>It worked!</p>
@@ -681,23 +685,22 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>tokens_small <span class="ot">&lt;-</span> <span class="fu">word_tokenizer</span>(poem_small<span class="sc">$</span>text)</span>
 <span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>word2vec_model <span class="ot">&lt;-</span> <span class="fu">word2vec</span>(tokens_small, <span class="at">type =</span> <span class="st">"skip-gram"</span>, <span class="at">dim =</span> <span class="dv">50</span>, <span class="at">window =</span> <span class="dv">10</span>, <span class="at">iter =</span> <span class="dv">10</span>, <span class="at">min_count =</span> <span class="dv">1</span>)</span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>word2vec_vectors <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(word2vec_model)</span>
-<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Word vector for school</span></span>
-<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>school_word2vec <span class="ot">&lt;-</span> word2vec_vectors[<span class="st">"school"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Cosine similarity</span></span>
-<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>school_cos_sim2 <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word2vec_vectors, <span class="at">y =</span> school_word2vec,<span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
-<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(school_cos_sim2[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>word2vec_model <span class="ot">&lt;-</span> <span class="fu">word2vec</span>(tokens_small, <span class="at">type =</span> <span class="st">"skip-gram"</span>, <span class="at">dim =</span> <span class="dv">50</span>, <span class="at">window =</span> <span class="dv">5</span>, <span class="at">iter =</span> <span class="dv">10</span>, <span class="at">min_count =</span> <span class="dv">5</span>)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>word2vec_vectors <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(word2vec_model)</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Word vector for school</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>school_word2vec <span class="ot">&lt;-</span> word2vec_vectors[<span class="st">"school"</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Cosine similarity</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>school_cos_sim2 <span class="ot">&lt;-</span> <span class="fu">sim2</span>(<span class="at">x =</span> word2vec_vectors, <span class="at">y =</span> school_word2vec,<span class="at">method =</span> <span class="st">"cosine"</span>, <span class="at">norm =</span> <span class="st">"l2"</span>)</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(school_cos_sim2[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   school     helth    dueled   quenton    resses    intail      pool    funist 
-1.0000000 0.8039209 0.7939959 0.7938038 0.7924688 0.7827830 0.7780189 0.7505028 
- schooler    backto 
-0.7501878 0.7494234 </code></pre>
+<pre><code>   school detention      pool      camp   studies     class   anyways    monday 
+1.0000000 0.7648640 0.7295435 0.7286105 0.6899808 0.6821124 0.6772132 0.6745307 
+   office  vacation 
+0.6632186 0.6611257 </code></pre>
 </div>
 </div>
 

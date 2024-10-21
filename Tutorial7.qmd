@@ -144,7 +144,7 @@ glove <- GlobalVectors$new(rank = 50, x_max = 10)
 glove
 ```
 
-You'll be able to access the public methods. We can fit our modelusing `$fit_transform` to our `glove` variable. This may take several minutes to fit.
+You'll be able to access the public methods. We can fit our model using `$fit_transform` to our `glove` variable. This may take several minutes to fit.
 
 ```{r}
 # Fitting model
@@ -199,7 +199,7 @@ Obviously, school is the most similar to school. Based on the poems that the chi
 We can also calculate the cosine similarity between 'school' and 'study'. 
 
 ```{r}
-# Word vector for homework
+# Word vector for study
 study <- word_vectors["study", , drop = FALSE]
 
 # Cosine similarity
@@ -310,8 +310,7 @@ poem_small <- slice_sample(poem, prop = 0.2)
 
 tokens_small <- word_tokenizer(poem_small$text)
 
-
-word2vec_model <- word2vec(tokens_small, type = "skip-gram", dim = 50, window = 10, iter = 10, min_count = 1)
+word2vec_model <- word2vec(tokens_small, type = "skip-gram", dim = 50, window = 5, iter = 10, min_count = 5)
 
 word2vec_vectors <- as.matrix(word2vec_model)
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tutorial_9</title>
+<title>Tutorial_9 – DACSS758 Text as Data Fall 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,8 +94,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -101,63 +109,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">DACSS758 Text as Data Fall 2023</span>
+    <span class="navbar-title">DACSS758 Text as Data Fall 2024</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial1.html" rel="" target="">
- <span class="menu-text">Tutorial 1 Introduction to R</span></a>
+    <a class="nav-link" href="./Tutorial1.html"> 
+<span class="menu-text">Tutorial1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial2.html" rel="" target="">
- <span class="menu-text">Tutorial 2 Text as Data</span></a>
+    <a class="nav-link" href="./Tutorial2.html"> 
+<span class="menu-text">Tutorial2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial3.html" rel="" target="">
- <span class="menu-text">Tutorial 3 Web Scraping in R</span></a>
+    <a class="nav-link" href="./Tutorial3.html"> 
+<span class="menu-text">Tutorial3</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial4.html" rel="" target="">
- <span class="menu-text">Tutorial 4 Natural Language Processing</span></a>
+    <a class="nav-link" href="./Tutorial4.html"> 
+<span class="menu-text">Tutorial4</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial5.html" rel="" target="">
- <span class="menu-text">Tutorial 5 Preprocessing</span></a>
+    <a class="nav-link" href="./Tutorial5.html"> 
+<span class="menu-text">Tutorial5</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial6.html" rel="" target="">
- <span class="menu-text">Tutorial 6 Text Representation I</span></a>
+    <a class="nav-link" href="./Tutorial6.html"> 
+<span class="menu-text">Tutorial6</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial7.html" rel="" target="">
- <span class="menu-text">Tutorial7_WordEmbeddings/Text Representation II</span></a>
+    <a class="nav-link" href="./Tutorial7.html"> 
+<span class="menu-text">Tutorial7</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial8.html" rel="" target="">
- <span class="menu-text">Tutorial8_Dictionary/Sentiment Analysis</span></a>
+    <a class="nav-link" href="./Tutorial8.html"> 
+<span class="menu-text">Tutorial8</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./Tutorial9.html" rel="" target="" aria-current="page">
- <span class="menu-text">Tutorial9_Supervised Learning</span></a>
+    <a class="nav-link active" href="./Tutorial9.html" aria-current="page"> 
+<span class="menu-text">Tutorial9</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -199,7 +207,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>In this notebook, we’ll learn about <strong>supervised learning models</strong>.</p>
 <section id="front-end-matters" class="level1">
@@ -217,11 +227,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ ggplot2 3.4.2     ✔ purrr   1.0.1
-✔ tibble  3.2.1     ✔ dplyr   1.1.1
-✔ tidyr   1.3.0     ✔ stringr 1.5.0
-✔ readr   2.1.3     ✔ forcats 1.0.0
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::arrange()   masks plyr::arrange()
 ✖ purrr::compact()   masks plyr::compact()
@@ -234,14 +245,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::mutate()    masks plyr::mutate()
 ✖ dplyr::rename()    masks plyr::rename()
 ✖ dplyr::summarise() masks plyr::summarise()
-✖ dplyr::summarize() masks plyr::summarize()</code></pre>
+✖ dplyr::summarize() masks plyr::summarize()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Package version: 3.3.1
+<pre><code>Package version: 4.1.0
 Unicode version: 14.0
-ICU version: 70.1
-Parallel computing: 4 of 4 threads used.
+ICU version: 71.1
+Parallel computing: disabled
 See https://quanteda.io for tutorials and examples.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textmodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -341,17 +353,17 @@ neg pos
 
 Estimated Feature Scores:
        once  again      mr      .   costner    has  dragged    out      a
-neg 0.07127 0.1210 0.03317 0.9961 0.0008675 0.3834 0.006473 0.4337 0.9653
-pos 0.08869 0.1318 0.03975 0.9956 0.0007324 0.4171 0.003396 0.4036 0.9644
+neg 0.07140 0.1214 0.03317 0.9961 0.0008675 0.3835 0.006473 0.4338 0.9653
+pos 0.08875 0.1319 0.03982 0.9956 0.0007324 0.4172 0.003396 0.4038 0.9644
      movie    for     far  longer   than necessary   aside   from    the
-neg 0.6583 0.7116 0.11205 0.01788 0.2952  0.009877 0.02022 0.4619 0.9914
-pos 0.5526 0.7046 0.08729 0.01944 0.2611  0.013316 0.01658 0.4643 0.9897
+neg 0.6585 0.7116 0.11211 0.01788 0.2952  0.009877 0.02022 0.4619 0.9914
+pos 0.5532 0.7046 0.08749 0.01944 0.2611  0.013316 0.01658 0.4646 0.9897
     terrific      sea   rescue sequences      ,     of  which  there    are
-neg 0.006139 0.009476 0.009142   0.02496 0.9651 0.9483 0.2974 0.4208 0.5524
-pos 0.023970 0.009188 0.006725   0.02390 0.9572 0.9508 0.2951 0.3476 0.5566
+neg 0.006139 0.009476 0.009142   0.02516 0.9651 0.9483 0.2984 0.4213 0.5526
+pos 0.024036 0.009188 0.006725   0.02397 0.9572 0.9508 0.2959 0.3480 0.5568
       very    few      i
-neg 0.3025 0.1397 0.7953
-pos 0.3886 0.1266 0.7371</code></pre>
+neg 0.3026 0.1397 0.7955
+pos 0.3886 0.1266 0.7373</code></pre>
 </div>
 </div>
 <p>Now we want to know how well the trained classifier performed. To do so, we need to retain only the words in our testing data that also appear in the training data. To do that, we can use the <code>dfm_match()</code> function from quanteda, which only retains terms that appear in both corpora.</p>
@@ -377,29 +389,29 @@ pos 0.3886 0.1266 0.7371</code></pre>
 
          actual
 predicted  neg  pos
-      neg 4351  714
-      pos  658 4277
+      neg 4349  715
+      pos  660 4276
                                           
-               Accuracy : 0.8628          
-                 95% CI : (0.8559, 0.8695)
+               Accuracy : 0.8625          
+                 95% CI : (0.8556, 0.8692)
     No Information Rate : 0.5009          
     P-Value [Acc &gt; NIR] : &lt;2e-16          
                                           
-                  Kappa : 0.7256          
+                  Kappa : 0.725           
                                           
- Mcnemar's Test P-Value : 0.1376          
+ Mcnemar's Test P-Value : 0.1453          
                                           
-            Sensitivity : 0.8686          
-            Specificity : 0.8569          
-         Pos Pred Value : 0.8590          
-         Neg Pred Value : 0.8667          
-              Precision : 0.8590          
-                 Recall : 0.8686          
-                     F1 : 0.8638          
+            Sensitivity : 0.8682          
+            Specificity : 0.8567          
+         Pos Pred Value : 0.8588          
+         Neg Pred Value : 0.8663          
+              Precision : 0.8588          
+                 Recall : 0.8682          
+                     F1 : 0.8635          
              Prevalence : 0.5009          
-         Detection Rate : 0.4351          
-   Detection Prevalence : 0.5065          
-      Balanced Accuracy : 0.8628          
+         Detection Rate : 0.4349          
+   Detection Prevalence : 0.5064          
+      Balanced Accuracy : 0.8625          
                                           
        'Positive' Class : neg             
                                           </code></pre>
@@ -412,22 +424,23 @@ predicted  neg  pos
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">type =</span> <span class="st">"probability"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predicted_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                              neg          pos
-test/neg/10002_3.txt 9.999997e-01 2.973793e-07
-test/neg/10003_3.txt 1.223449e-07 9.999999e-01
-test/neg/10004_2.txt 9.999903e-01 9.691954e-06
-test/neg/10007_4.txt 9.991544e-01 8.456109e-04
-test/neg/1000_3.txt  9.865396e-01 1.346043e-02
-test/neg/10025_2.txt 1.000000e+00 2.369531e-22</code></pre>
+<pre><code>                      
+docs                            neg          pos
+  test/neg/10002_3.txt 9.999997e-01 2.933202e-07
+  test/neg/10003_3.txt 1.132404e-07 9.999999e-01
+  test/neg/10004_2.txt 9.999899e-01 1.009220e-05
+  test/neg/10007_4.txt 9.887999e-01 1.120008e-02
+  test/neg/1000_3.txt  9.866639e-01 1.333610e-02
+  test/neg/10025_2.txt 1.000000e+00 2.497807e-22</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(predicted_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      neg                 pos           
  Min.   :0.0000000   Min.   :0.0000000  
- 1st Qu.:0.0000303   1st Qu.:0.0000063  
- Median :0.5783196   Median :0.4216804  
- Mean   :0.5065766   Mean   :0.4934234  
- 3rd Qu.:0.9999937   3rd Qu.:0.9999697  
+ 1st Qu.:0.0000294   1st Qu.:0.0000064  
+ Median :0.5809768   Median :0.4190232  
+ Mean   :0.5065319   Mean   :0.4934681  
+ 3rd Qu.:0.9999936   3rd Qu.:0.9999706  
  Max.   :1.0000000   Max.   :1.0000000  </code></pre>
 </div>
 </div>
@@ -435,12 +448,7 @@ test/neg/10025_2.txt 1.000000e+00 2.369531e-22</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The most positive review</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>mostPos <span class="ot">&lt;-</span> <span class="fu">sort.list</span>(predicted_prob[,<span class="dv">1</span>], <span class="at">dec =</span> F)[<span class="dv">1</span>]</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">texts</span>(<span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> testIndex))[mostPos]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 'texts.corpus' is deprecated.
-Use 'as.character' instead.
-See help("Deprecated")</code></pre>
-</div>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(<span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> testIndex))[mostPos]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         train/pos/3683_9.txt 
 "18 directors had the same task: tell stories of love set in Paris. Naturally, some of them turned out better than others, but the whole mosaic is pretty charming - besides, wouldn't it be boring if all of them had the same vision of love? Here's how I rank the segments (that might change on a second viewing):\n\n1. \"Quartier Latin\", by Gérard Depardieu\n\nOne of the greatest French actors ever directed my favourite segment, featuring the always stunning Gena Rowlands and Ben Gazzara. Witty and delightful.\n\n2. \"Tour Eiffel\", by Sylvain Chomet\n\nCute, visually stunning (thanks to the director of \"The Triplets of Belleville\") story of a little boy whose parents are mimes;\n\n3. \"Tuileries\", by Ethan and Joel Coen\n\nThe Coen Brothers + Steve Buscemi = Hilarious\n\n4. \"Parc Monceau\", by Alfonso Cuarón (\"Y Tu Mamá También\", \"Children of Men\"), feat. Nick Nolte and Ludivine Sagnier (funny);\n\n5. \"Place des Fêtes\", by Oliver Schmitz, feat. Seydou Boro and Aissa Maiga (touching);\n\n6. \"14th Arrondissement\", Alexander Payne's (\"Election\", \"About Schmidt\") wonderful look for the pathetic side of life is present here, feat. the underrated character actress Margo Martindale (Hilary Swank's mother in \"Million Dollar Baby\") as a lonely, middle-aged American woman on vacation;\n\n7. \"Faubourg Saint-Denis\", Tom Tykwer's (\"Run Lola Run\") frantic style works in the story of a young actress (Natalie Portman) and a blind guy (Melchior Beslon) who fall in love;\n\n8. \"Père-Lachaise\", by Wes Craven, feat. Emily Mortimer and Rufus Sewell (plus a curious cameo by Alexander Payne as...Oscar Wilde!);\n\n9. \"Loin du 16ème\", by Walter Salles and Daniela Thomas (simple but moving story from the talented Brazilian directors, feat. Catalina Sandino Moreno);\n\n10. \"Quartier des Enfants Rouges\", by Olivier Assayas (\"Clean\"), a sad story feat. the always fantastic Maggie Gyllenhaal;\n\n11. \"Le Marais\", by Gus Van Sant, feat. Gaspard Ulliel, Elias McConnell and Marianne Faithful (simple, but funny);\n\n12. \"Quartier de la Madeleine\", by Vincenzo Natali, feat. Elijah Wood and Olga Kurylenko;\n\n13. \"Quais de Seine\", by Gurinder Chadha;\n\n14. \"Place des Victoires\", by Nobuhiro Suwa, feat. Juliette Binoche and Willem Dafoe;\n\n15. \"Bastille\", by Isabel Coixet (fabulous director of the underrated \"My Life Without Me\"), feat. Miranda Richardson, Sergio Castellitto, Javier Cámara and Leonor Watling;\n\n16. \"Pigalle\", by Richard LaGravenese, feat. Bob Hoskins and Fanny Ardant;\n\n17. \"Montmartre\", by and with Bruno Podalydès;\n\n18. \"Porte de Choisy\", by Christopher Doyle, with Barbet Schroeder (mostly known as the director of \"Barfly\", \"Reversal of Fortune\" and \"Single White Female\").\n\nI could classify some segments as brilliant and others as average (or even slightly boring), but not a single of them is plain bad. On the whole, I give \"Paris, Je t'Aime\" an 8.5/10 and recommend it for what it is: a lovely mosaic about love and other things in between." </code></pre>
@@ -448,14 +456,9 @@ See help("Deprecated")</code></pre>
 </div>
 <p>That’s definitely positive, but the <strong>most</strong> positive? I mean, they end with a 8.5/10. Why is it getting bumped up so high? Well, notice how long it is. If you have positive words used many times, then it increases the confidence of the Naive Bayes classifier. Let’s see if that’s true in the other direction too.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the most negative review</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>mostNeg <span class="ot">&lt;-</span> <span class="fu">sort.list</span>(predicted_prob[,<span class="dv">1</span>], <span class="at">dec =</span> T)[<span class="dv">1</span>]</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">texts</span>(<span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> testIndex))[mostNeg]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 'texts.corpus' is deprecated.
-Use 'as.character' instead.
-See help("Deprecated")</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the most negative review</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mostNeg <span class="ot">&lt;-</span> <span class="fu">sort.list</span>(predicted_prob[,<span class="dv">1</span>], <span class="at">dec =</span> T)[<span class="dv">1</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(<span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> testIndex))[mostNeg]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            test/neg/10025_2.txt 
 "Oh yeah, this one is definitely a strong contender to win the questionable award of \"worst 80's slasher ever made\". \"The Prey\" has got everything you usually want to avoid in a horror flick: a routine, derivative plot that you've seen a thousand times before (and better), insufferable characters and terrible performances, a complete lack of gore and suspense, fuzzy photography and unoriginal locations and \u0096 most irritating of all \u0096 the largest amount of pointless padding footage you've ever encountered in your life (and that's not an exaggeration but a guarantee!). Apart from the seemingly endless amount of National Geographic stock footage, which I'll expand upon later, this film is shameless enough to include a complete banjo interlude (!) and two occasions where characters tell dillydally jokes that aren't even remotely funny! The set-up is as rudimentary as it gets, with the intro showing images of a devastating forest fire with OTT voice-over human screams. Fast forward nearly forty years later, when an elderly couple out camping in that same area get axe-whacked by something that breathes heavily off-screen. This ought to be enough information for you to derive that someone survived the fire all these years ago and remained prowling around ever since. Enter three intolerable twenty something couples heading up to the danger zone with exclusively sex on their minds, unaware of course they are sitting ducks for the stalking and panting killer. \"The Prey\" is an irredeemable boring film. Apparently it was shot in 1978 already, but nobody wanted to distribute it up until 1984 and it isn't too hard to see why. In case you would filter out all the content that is actually relevant, this would only be a short movie with a running time of 30 minutes; possibly even less. There's an unimaginably large of nature and wildlife footage, sometimes of animals that I think don't even live in that type of area, and they seem to go on forever. The only thing missing, in fact, is the typical National Geographic narration providing educational information regarding the animals' habits. Animals in their own natural biotope are undeniably nice to look at, but not in a supposedly vile and cheesy 80's slasher movie, for crying out loud. The last fifteen minutes are finally somewhat worthwhile, with some potent killing sequences and fine make-up effects on the monster (who turns out to be Lurch from \"The Addams Family\" movies), but still silliness overrules \u0096 the scene with the vultures is too stupid \u0096 and the final shot is just laugh-out-loud retarded. As mentioned above, \"The Prey\" easily makes my own personal list of worst 80's slashers, alongside \"Appointment with Fear\", \"Berserker\", \"Deadly Games\", \"Don't Go in the Woods\", \"Hollow Gate\", \"The Stay Awake\" and \"Curfew\"." </code></pre>
@@ -463,40 +466,30 @@ See help("Deprecated")</code></pre>
 </div>
 <p>Holy toledo, that is a bad review. It’s pretty long as well, which again makes clear that the more words we have the more evidence the classifier has to put something in one (or the other) bin. That’s good, but perhaps we should also have a lot of confidence if the review just had three words: “Terrible, Horrible, Bad.” Anyhow, as a final inspection, let’s look at where the model is confused.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mixed in tone</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>mixed <span class="ot">&lt;-</span> <span class="fu">sort.list</span>(<span class="fu">abs</span>(predicted_prob[,<span class="dv">1</span>] <span class="sc">-</span> .<span class="dv">5</span>), <span class="at">dec =</span> F)[<span class="dv">1</span>]</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>predicted_prob[mixed,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mixed in tone</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>mixed <span class="ot">&lt;-</span> <span class="fu">sort.list</span>(<span class="fu">abs</span>(predicted_prob[,<span class="dv">1</span>] <span class="sc">-</span> .<span class="dv">5</span>), <span class="at">dec =</span> F)[<span class="dv">1</span>]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>predicted_prob[mixed,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      neg       pos 
-0.5001356 0.4998644 </code></pre>
+0.5002227 0.4997773 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">texts</span>(<span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> testIndex))[mixed]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 'texts.corpus' is deprecated.
-Use 'as.character' instead.
-See help("Deprecated")</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(<span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> testIndex))[mixed]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       train/neg/11019_4.txt 
-"Fred Olen Ray is a lousy director, even as far as B movie directors go, but 'Haunting Fear' is probably one of his better films. Yes, it does butcher the great Poe story 'Premature Burial' and yes, it is badly paced and uneven throughout, but it is also pretty entertaining. Scream Queen Brinke Stevens is better than usual as a pretty, fragile housewife whose worthless husband (Jay Richardson) is plotting to do away with her because he needs money to pay off a gangster (played by Robert Quarry). Delia Sheppard, a veteran of many early 90s soft-core movies, actually gives the best performance in the film as a slutty mistress. You will also enjoy small roles played by Karen Black as a psychic, Robert Clarke as a doctor and Michael Berryman in a nice cameo in one of the better scenes. The ending didn't make much sense!" </code></pre>
+<pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 train/neg/11645_2.txt 
+"This is a review of 'Freddy Mercury The Untold Story,' theatrical release, Chicago Int. Film Festival, 2007 One of the phoniest, uninspired and most tedious biographical documentaries I have seen. If the film I saw in a movie theater was originally released on TV, I would plead with its producers and distributors to not fool a paying audience with the false promise of a cinematically worthy documentary feature. Even as a made-for-TV documentary, the sentimental piano solos accompanying interviewees sitting in front of flower arrangements in hotel rooms and the pompous, pseudo-literary narration rang more true of a sleepapedic bed Infomercial. The only redeeming aspects of this \"The Untold Story of Freddy Mercury\" -- or, uhm, was it \"The Untold Story of Princess Diana\" are the original concert, video and TV footage -- unabridged Freddy Mercury and Queen. Testimonial interviews with irrelevant eye witnesses with insights, such as: \"He was a free spirit,\" (really.. I thought Freddy Mercury was a company man...) belittle those Freddy testimonials, by Brian May or Montserrat Caballe that shed new and affectionate light into Mercury's complex life and character. And... what up with the Harry Potter-like boarding school segments? How did the interview with the first girl-crush (\"...who now works in a travel agency\") and members of Freddy's first school band contribute to what I really want to know about Mercury? Vital milestones of his personal life, his sexuality, his artistic style and growth, Queen, the band remain unexplored. These filmmakers don't ask a single, provocative question, nor do they engage in independent or visionary research of their subject, instead delivering a tedious montage of politely clean and vastly empty comments about an enigmatic and brilliant rock legend, who doesn't deserve to be remembered by this History Channel biography your grandparents can doze off to on a Sunday night." </code></pre>
 </div>
 </div>
 <p>This is a great example of how these models can struggle. A lot of the words here relate to the dark content of the film, but could as easily be used to describe a bad film. Likewise, descriptions of the director literally mix positive and negative elements (a lousy director doing good work). But while we can read this and see clearly that this relates to content, the classifier can’t make that distinction.</p>
 <p>Finally, let’s look at a review the classifier got very wrong.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find a review with high confidence</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>veryPos <span class="ot">&lt;-</span> <span class="fu">sort.list</span>(predicted_prob[<span class="dv">1</span><span class="sc">:</span><span class="dv">2500</span>, <span class="dv">1</span>], <span class="at">dec =</span> F)[<span class="dv">1</span>]</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>predicted_prob[veryPos,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find a review with high confidence</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>veryPos <span class="ot">&lt;-</span> <span class="fu">sort.list</span>(predicted_prob[<span class="dv">1</span><span class="sc">:</span><span class="dv">2500</span>, <span class="dv">1</span>], <span class="at">dec =</span> F)[<span class="dv">1</span>]</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>predicted_prob[veryPos,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         neg          pos 
-3.597661e-19 1.000000e+00 </code></pre>
+2.776932e-19 1.000000e+00 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">texts</span>(<span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> testIndex))[veryPos]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 'texts.corpus' is deprecated.
-Use 'as.character' instead.
-See help("Deprecated")</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(<span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> testIndex))[veryPos]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              test/neg/9244_4.txt 
 "Korine's established himself, by now, as a talented and impressive image-maker. The promotional posters for Mister Lonely all include the film's most impressive compositions (though there's one in particular I've yet to see in promo material: that of a blue-clad nun teasing a dog with a stick, surrounded by green forest with torrential rain pouring down). The opening images of this film, of Michael Jackson lookalike (Diego Luna) riding a small motorbike round a track, is strangely compelling and beautiful: Roy Orbison's \"Mister Lonely\" plays on the soundtrack, and the images unfold in slow-motion. There's also a funny and terrific sequence in which the same character mimes a dance, without music (though a radio sits like a silent dog next to him), in the middle of a Paris street; Korine splices in sound effects and jump-cuts that evoke both a feeling of futility and dogged liberation in the character's dance routine.\n\nThe first instance of the segment dealing with the nuns is also strangely poignant; Father Umbrillo (Werner Herzog) is an autocratic priest about to fly with some nuns over, and drop food into, impoverished areas nearby. In a scene that is both light-hearted and affecting, Herzog must deal with a stubbornly enthusiastic local who wishes to make the plane trip with them in order to see his wife in San Francisco. As the exchange develops, Herzog draws out of the man a confession: he has sinned, and his frequent infidelity is the cause of his wife having left him in the first place. This scene, short and sweet, gains particular weight after one learns its improvised origins: the sinner is played by a non-actor who was on set when Korine and co. were filming - and his adulterous ways had given him, in real life, a lasting, overwhelming guilt.\n\nHenceforth, the film is hit-and-miss; a succession of intrinsically interesting moments that add to a frivolous, muddled narrative. Whereas Gummo and Julien Donkey-Boy maintain their aesthetic and emotional weight via coherent structural frameworks, Mister Lonely feels like a victim of editing room ruthlessness. A few scenes were cut from the film, which would have otherwise painted fuller pictures of certain characters, due to continuity errors in costume - a result, no doubt, due to the absence of a shooting script and Korine's tendency for improvisation. One deleted scene in particular - in which 'Charlie Chaplin' (Denis Lavant) and 'Madonna' (Melita Morgan) have sex - would have added much more emotional conflict to a scene later on in the film (I won't spoil it, but it's there to deflate any feeling of warmth or celebration, and, as it is, only half-succeeds).\n\nThe two strands of the narrative, unconnected literally, are best approached as two entirely different stories with the same allegorical meaning; one compliments the other and vice versa. (It's something to do with the conflict between one's ambitions and the reality of the current situation.) But there's not enough of the Herzog scenes to merit their place in the film, and so any connection between these two allegorically-connected threads is inevitably strained - and the inclusion is, in retrospect, tedious.\n\nThis is an ambitious step forward from Julien Donkey-Boy that suffers mostly, at least in the lookalike segments, from having far too many characters for the film's running length, a flaw that would have been even worse had big star names played everyone (as was originally planned).\n\nWith many of the imagery's self-contained beauty, and moments of real, genuine connection with the soundtrack, this feels like it'd be much more suited to an art installation or photo exhibition. As an exploration of mimesis and the nature of impersonation, it'd lose none of its power - indeed, for me, it would perhaps be more impressive. The loneliness attached to iconic performativity (such as that encountered by both the icons themselves and those who aspire to be like them) is well-captured in images such as that wherein 'Marilyn Monroe' (a gorgeous Samantha Morton) seduces the camera with a Seven Year Itch pose in the middle of a forest, or when 'Sammy Davis, Jr.' (Jason Pennycooke) settles, post-dance rehearsal, with his back to the camera overlooking an incredible, tranquil lake.\n\nAs it is, moments like these, and all those where the titles of randomly-chosen Michael Jackson songs crawl across the scene, are married to one another in a film narrative far less affecting than it should be.\n\n(For those who see it, I lost all faith during the egg-singing scene, late on. You'll know which scene I mean because it sticks out like a sore thumb, as some sort of gimmicky attempt at the new cinematic language for which Korine has previously been hailed.)" </code></pre>
@@ -508,68 +501,68 @@ See help("Deprecated")</code></pre>
 <h1>Support Vector Machines</h1>
 <p>Let’s try out a different approach. Support Vector Machines (or SVMs) offers a more robust approach. However, it’s also much more computationally expensive. To make it tractable, we’re going to shrink the size of our training set down to a much smaller set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">919919</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sample smaller set of training data</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>newTrainIndex <span class="ot">&lt;-</span> trainIndex[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(trainIndex), <span class="dv">2000</span>)]</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create small DFM</span></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>dfmTrainSmall <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> newTrainIndex) <span class="sc">%&gt;%</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_select</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>), <span class="at">selection =</span> <span class="st">"remove"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="co"># trim the dfm down to frequent terms</span></span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>dfmTrainSmall <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(dfmTrainSmall, <span class="at">min_docfreq =</span> <span class="dv">20</span>, <span class="at">min_termfreq =</span> <span class="dv">20</span>)</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dfmTrainSmall)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">919919</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sample smaller set of training data</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>newTrainIndex <span class="ot">&lt;-</span> trainIndex[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(trainIndex), <span class="dv">2000</span>)]</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create small DFM</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>dfmTrainSmall <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_LMRD, id <span class="sc">%in%</span> newTrainIndex) <span class="sc">%&gt;%</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_select</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>), <span class="at">selection =</span> <span class="st">"remove"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># trim the dfm down to frequent terms</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>dfmTrainSmall <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(dfmTrainSmall, <span class="at">min_docfreq =</span> <span class="dv">20</span>, <span class="at">min_termfreq =</span> <span class="dv">20</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dfmTrainSmall)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2000 1786</code></pre>
+<pre><code>[1] 2000 1785</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run model</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>polarity_SVM <span class="ot">&lt;-</span> <span class="fu">textmodel_svm</span>(dfmTrainSmall, <span class="fu">docvars</span>(dfmTrainSmall, <span class="st">"polarity"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run model</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>polarity_SVM <span class="ot">&lt;-</span> <span class="fu">textmodel_svm</span>(dfmTrainSmall, <span class="fu">docvars</span>(dfmTrainSmall, <span class="st">"polarity"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Just as we needed to do above, we’ll shrink down our test set to make this tractable. Then, we’ll evaluate the out-of-sample prediction.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update test set</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>dfmTestMatchedSmall <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfmTest, <span class="at">features =</span> <span class="fu">featnames</span>(dfmTrainSmall))</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a confusion matrix</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">docvars</span>(dfmTestMatchedSmall, <span class="st">"polarity"</span>)</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(polarity_SVM, <span class="at">newdata =</span> dfmTestMatchedSmall)</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted,actual)</span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now calculate a number of statistics related to the confusion matrix</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update test set</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>dfmTestMatchedSmall <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfmTest, <span class="at">features =</span> <span class="fu">featnames</span>(dfmTrainSmall))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a confusion matrix</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">docvars</span>(dfmTestMatchedSmall, <span class="st">"polarity"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(polarity_SVM, <span class="at">newdata =</span> dfmTestMatchedSmall)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted,actual)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now calculate a number of statistics related to the confusion matrix</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
          actual
 predicted  neg  pos
-      neg 3886  906
-      pos 1123 4085
+      neg 3878  920
+      pos 1131 4071
                                           
-               Accuracy : 0.7971          
-                 95% CI : (0.7891, 0.8049)
+               Accuracy : 0.7949          
+                 95% CI : (0.7869, 0.8028)
     No Information Rate : 0.5009          
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
-                  Kappa : 0.5942          
+                  Kappa : 0.5898          
                                           
- Mcnemar's Test P-Value : 1.625e-06       
+ Mcnemar's Test P-Value : 3.535e-06       
                                           
-            Sensitivity : 0.7758          
-            Specificity : 0.8185          
-         Pos Pred Value : 0.8109          
-         Neg Pred Value : 0.7844          
-              Precision : 0.8109          
-                 Recall : 0.7758          
-                     F1 : 0.7930          
+            Sensitivity : 0.7742          
+            Specificity : 0.8157          
+         Pos Pred Value : 0.8083          
+         Neg Pred Value : 0.7826          
+              Precision : 0.8083          
+                 Recall : 0.7742          
+                     F1 : 0.7909          
              Prevalence : 0.5009          
-         Detection Rate : 0.3886          
-   Detection Prevalence : 0.4792          
-      Balanced Accuracy : 0.7971          
+         Detection Rate : 0.3878          
+   Detection Prevalence : 0.4798          
+      Balanced Accuracy : 0.7949          
                                           
        'Positive' Class : neg             
                                           </code></pre>
@@ -578,55 +571,55 @@ predicted  neg  pos
 <p>A little bit worse, but recall that we are using <em>a lot fewer</em> features than we had previously. Note also that we’ve done no tuning of the <code>svm</code> classifier.</p>
 <p>We can also check the most positive and negative features to see whether the results make sense.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>svmCoefs <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">coefficients</span>(polarity_SVM)))</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>svmCoefs <span class="ot">&lt;-</span> svmCoefs <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(V1)</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(svmCoefs, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>svmCoefs <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">coefficients</span>(polarity_SVM)))</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>svmCoefs <span class="ot">&lt;-</span> svmCoefs <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(V1)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(svmCoefs, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                    V1
-funniest    -0.6397358
-journey     -0.5721073
-greatest    -0.5708527
-excellent   -0.5700547
-viewing     -0.5285494
-wind        -0.5238649
-loved       -0.5217147
-enjoyed     -0.5206025
-tells       -0.5172011
-role        -0.4941843
-agree       -0.4941304
-drugs       -0.4893199
-superb      -0.4708421
-best        -0.4627656
-fantastic   -0.4556445
-references  -0.4525804
-power       -0.4448412
-fascinating -0.4386401
-favorite    -0.4380767
-putting     -0.4303005</code></pre>
+funniest    -0.6249086
+greatest    -0.5809132
+excellent   -0.5736694
+journey     -0.5736523
+tells       -0.5248157
+enjoyed     -0.5236454
+viewing     -0.5194830
+wind        -0.5165474
+loved       -0.5123572
+agree       -0.4862085
+drugs       -0.4833175
+superb      -0.4820102
+role        -0.4814783
+favorite    -0.4735078
+best        -0.4594484
+references  -0.4499120
+fantastic   -0.4457827
+power       -0.4417192
+putting     -0.4341408
+fascinating -0.4269823</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(svmCoefs, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(svmCoefs, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     V1
-hours         0.3957591
-becoming      0.3974458
-$             0.3976305
-effort        0.4017995
-speaking      0.4039423
-dull          0.4115639
-turkey        0.4135784
-turned        0.4314134
-focus         0.4407301
-terrible      0.4648218
-awful         0.4664541
-theater       0.4758042
-loves         0.4822824
-neither       0.4830725
-disappointing 0.5117394
-minutes       0.5193968
-stupid        0.5298348
-peter         0.5621249
-worst         0.6325081
-fails         0.6445418</code></pre>
+positive      0.3975021
+$             0.3981302
+speaking      0.4039018
+dull          0.4049412
+effort        0.4086615
+turned        0.4118973
+oh            0.4189003
+turkey        0.4372782
+focus         0.4436260
+terrible      0.4555569
+theater       0.4652437
+neither       0.4795101
+loves         0.4824549
+awful         0.4875710
+disappointing 0.5101875
+minutes       0.5211189
+peter         0.5410186
+stupid        0.5554799
+worst         0.6323740
+fails         0.6395452</code></pre>
 </div>
 </div>
 <p>These generally look sensible, though there’s definitely something weird going on with both “positive” for negative reviews.</p>
@@ -635,10 +628,10 @@ fails         0.6445418</code></pre>
 <h1>Random Forests</h1>
 <p>Let’s try out a Random Forest classifier. Random Forests are even more computationally intensive than SVMs; they also aren’t available with <code>quanteda</code>, so we’ll need to convert our DFMs to a different format for this analysis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("randomForest")</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("randomForest")</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>randomForest 4.7-1.1</code></pre>
+<pre><code>randomForest 4.7-1.2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Type rfNews() to see new features/changes/bug fixes.</code></pre>
@@ -659,63 +652,67 @@ Attaching package: 'randomForest'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>dfmTrainSmallRf <span class="ot">&lt;-</span> <span class="fu">convert</span>(dfmTrainSmall, <span class="at">to =</span> <span class="st">"matrix"</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>dfmTestMatchedSmallRf <span class="ot">&lt;-</span> <span class="fu">convert</span>(dfmTestMatchedSmall, <span class="at">to =</span> <span class="st">"matrix"</span>)</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">444</span>)</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>polarity_RF <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(dfmTrainSmallRf,</span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y =</span> <span class="fu">as.factor</span>(<span class="fu">docvars</span>(dfmTrainSmall)<span class="sc">$</span>polarity),</span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">xtest =</span> dfmTestMatchedSmallRf,</span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ytest =</span> <span class="fu">as.factor</span>(<span class="fu">docvars</span>(dfmTestMatchedSmall)<span class="sc">$</span>polarity),</span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>                            <span class="at">importance =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>                            <span class="at">mtry =</span> <span class="dv">20</span>,</span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ntree =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>dfmTrainSmallRf <span class="ot">&lt;-</span> <span class="fu">convert</span>(dfmTrainSmall, <span class="at">to =</span> <span class="st">"matrix"</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>dfmTestMatchedSmallRf <span class="ot">&lt;-</span> <span class="fu">convert</span>(dfmTestMatchedSmall, <span class="at">to =</span> <span class="st">"matrix"</span>)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">444</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>polarity_RF <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(dfmTrainSmallRf,</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y =</span> <span class="fu">as.factor</span>(<span class="fu">docvars</span>(dfmTrainSmall)<span class="sc">$</span>polarity),</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">xtest =</span> dfmTestMatchedSmallRf,</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ytest =</span> <span class="fu">as.factor</span>(<span class="fu">docvars</span>(dfmTestMatchedSmall)<span class="sc">$</span>polarity),</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>                            <span class="at">importance =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>                            <span class="at">mtry =</span> <span class="dv">20</span>,</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ntree =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># confusion matrix</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">docvars</span>(dfmTestMatchedSmall)<span class="sc">$</span>polarity)</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> polarity_RF<span class="sc">$</span>test[[<span class="st">'predicted'</span>]]</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted,actual)</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode=</span><span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># confusion matrix</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">docvars</span>(dfmTestMatchedSmall)<span class="sc">$</span>polarity)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> polarity_RF<span class="sc">$</span>test[[<span class="st">'predicted'</span>]]</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted,actual)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode=</span><span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
          actual
 predicted  neg  pos
-      neg 3997  703
-      pos 1012 4288
-                                         
-               Accuracy : 0.8285         
-                 95% CI : (0.821, 0.8358)
-    No Information Rate : 0.5009         
-    P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
-                                         
-                  Kappa : 0.657          
-                                         
- Mcnemar's Test P-Value : 1.027e-13      
-                                         
-            Sensitivity : 0.7980         
-            Specificity : 0.8591         
-         Pos Pred Value : 0.8504         
-         Neg Pred Value : 0.8091         
-              Precision : 0.8504         
-                 Recall : 0.7980         
-                     F1 : 0.8234         
-             Prevalence : 0.5009         
-         Detection Rate : 0.3997         
-   Detection Prevalence : 0.4700         
-      Balanced Accuracy : 0.8286         
-                                         
-       'Positive' Class : neg            
-                                         </code></pre>
+      neg 4091  769
+      pos  918 4222
+                                          
+               Accuracy : 0.8313          
+                 95% CI : (0.8238, 0.8386)
+    No Information Rate : 0.5009          
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+                                          
+                  Kappa : 0.6626          
+                                          
+ Mcnemar's Test P-Value : 0.0003142       
+                                          
+            Sensitivity : 0.8167          
+            Specificity : 0.8459          
+         Pos Pred Value : 0.8418          
+         Neg Pred Value : 0.8214          
+              Precision : 0.8418          
+                 Recall : 0.8167          
+                     F1 : 0.8291          
+             Prevalence : 0.5009          
+         Detection Rate : 0.4091          
+   Detection Prevalence : 0.4860          
+      Balanced Accuracy : 0.8313          
+                                          
+       'Positive' Class : neg             
+                                          </code></pre>
 </div>
 </div>
 <p>Right in the same zone as our SVM classifier, and again with a much smaller set of features. Let’s see what words are most <strong>informative</strong>: that is, which can best help us predict the label, though <em>not which label the feature predicts</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(polarity_RF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(polarity_RF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Tutorial9_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Tutorial9_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -724,48 +721,48 @@ predicted  neg  pos
 <p>We’ve got three classifiers so far: <code>polarity_NB</code>, <code>polarity_SVM</code>, and <code>polarity_RF</code>. All three of our classifiers were able to classify in test sets at greater than 80% accuracy, but digging in made it evident that each had some pretty significant room for improvement.</p>
 <p>One way we might try to get at that would be to <strong>ensemble</strong> their classifications. That is, we could create an aggregate measure from the individual classifications to see if the wisdom of the crowd can get us a bit closer to the actual values. Let’s try it first with a really simple approach: if 2 or more of the classifiers identify a case as positive, we’ll use that classification.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector of only "negative" values</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>predicted_class <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"neg"</span>, <span class="fu">length</span>(actual))</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector that is equal to the sum of "pos" predictions for each observation</span></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>num_predicted <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (<span class="fu">predict</span>(polarity_NaiveBayes, <span class="at">newdata =</span> dfmTestMatched) <span class="sc">==</span> <span class="st">"pos"</span>) <span class="sc">+</span> </span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1</span> <span class="sc">*</span> (<span class="fu">predict</span>(polarity_SVM, <span class="at">newdata =</span> dfmTestMatchedSmall) <span class="sc">==</span> <span class="st">"pos"</span>) <span class="sc">+</span> </span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1</span> <span class="sc">*</span> (polarity_RF<span class="sc">$</span>test[[<span class="st">'predicted'</span>]] <span class="sc">==</span> <span class="st">"pos"</span>) </span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co"># update the predicted class vector </span></span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>predicted_class[num_predicted <span class="sc">&gt;</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"pos"</span></span>
-<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create the confusion matrix</span></span>
-<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted_class, actual)</span>
-<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector of only "negative" values</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>predicted_class <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"neg"</span>, <span class="fu">length</span>(actual))</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector that is equal to the sum of "pos" predictions for each observation</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>num_predicted <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (<span class="fu">predict</span>(polarity_NaiveBayes, <span class="at">newdata =</span> dfmTestMatched) <span class="sc">==</span> <span class="st">"pos"</span>) <span class="sc">+</span> </span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1</span> <span class="sc">*</span> (<span class="fu">predict</span>(polarity_SVM, <span class="at">newdata =</span> dfmTestMatchedSmall) <span class="sc">==</span> <span class="st">"pos"</span>) <span class="sc">+</span> </span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1</span> <span class="sc">*</span> (polarity_RF<span class="sc">$</span>test[[<span class="st">'predicted'</span>]] <span class="sc">==</span> <span class="st">"pos"</span>) </span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co"># update the predicted class vector </span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>predicted_class[num_predicted <span class="sc">&gt;</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"pos"</span></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create the confusion matrix</span></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted_class, actual)</span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
                actual
 predicted_class  neg  pos
-            neg 4216  626
-            pos  793 4365
+            neg 4252  649
+            pos  757 4342
                                           
-               Accuracy : 0.8581          
-                 95% CI : (0.8511, 0.8649)
+               Accuracy : 0.8594          
+                 95% CI : (0.8524, 0.8662)
     No Information Rate : 0.5009          
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
-                  Kappa : 0.7162          
+                  Kappa : 0.7188          
                                           
- Mcnemar's Test P-Value : 1.049e-05       
+ Mcnemar's Test P-Value : 0.004323        
                                           
-            Sensitivity : 0.8417          
-            Specificity : 0.8746          
-         Pos Pred Value : 0.8707          
-         Neg Pred Value : 0.8463          
-              Precision : 0.8707          
-                 Recall : 0.8417          
-                     F1 : 0.8560          
+            Sensitivity : 0.8489          
+            Specificity : 0.8700          
+         Pos Pred Value : 0.8676          
+         Neg Pred Value : 0.8515          
+              Precision : 0.8676          
+                 Recall : 0.8489          
+                     F1 : 0.8581          
              Prevalence : 0.5009          
-         Detection Rate : 0.4216          
-   Detection Prevalence : 0.4842          
-      Balanced Accuracy : 0.8581          
+         Detection Rate : 0.4252          
+   Detection Prevalence : 0.4901          
+      Balanced Accuracy : 0.8594          
                                           
        'Positive' Class : neg             
                                           </code></pre>
@@ -777,42 +774,42 @@ predicted_class  neg  pos
 <h1>The Held-Out Set</h1>
 <p>Now that we’ve gone through all of these analyses and settled on our approach, it’s a useful time to remember that we set aside 20% of our data waaaay back at the start. Let’s try to evaluate our conclusion – that the Naive Bayes classifier using all of the available features works best — holds up with that old held-out set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the actual classifications</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">docvars</span>(dfmHeldOut)<span class="sc">$</span>polarity</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Naive Bayes</span></span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>dfmHeldOutMatched <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfmHeldOut, <span class="at">features =</span> <span class="fu">featnames</span>(dfmTrain))</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>predicted.nb <span class="ot">&lt;-</span> <span class="fu">predict</span>(polarity_NaiveBayes, dfmHeldOutMatched)</span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted.nb, actual)</span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the actual classifications</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">docvars</span>(dfmHeldOut)<span class="sc">$</span>polarity</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Naive Bayes</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>dfmHeldOutMatched <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfmHeldOut, <span class="at">features =</span> <span class="fu">featnames</span>(dfmTrain))</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>predicted.nb <span class="ot">&lt;-</span> <span class="fu">predict</span>(polarity_NaiveBayes, dfmHeldOutMatched)</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>confusion <span class="ot">&lt;-</span> <span class="fu">table</span>(predicted.nb, actual)</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(confusion, <span class="at">mode =</span> <span class="st">"everything"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
             actual
 predicted.nb  neg  pos
-         neg 5686  443
-         pos  569 3302
+         neg 5680  446
+         pos  575 3299
                                           
-               Accuracy : 0.8988          
-                 95% CI : (0.8927, 0.9046)
+               Accuracy : 0.8979          
+                 95% CI : (0.8918, 0.9038)
     No Information Rate : 0.6255          
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
-                  Kappa : 0.7854          
+                  Kappa : 0.7836          
                                           
- Mcnemar's Test P-Value : 8.518e-05       
+ Mcnemar's Test P-Value : 6.179e-05       
                                           
-            Sensitivity : 0.9090          
-            Specificity : 0.8817          
-         Pos Pred Value : 0.9277          
-         Neg Pred Value : 0.8530          
-              Precision : 0.9277          
-                 Recall : 0.9090          
-                     F1 : 0.9183          
+            Sensitivity : 0.9081          
+            Specificity : 0.8809          
+         Pos Pred Value : 0.9272          
+         Neg Pred Value : 0.8516          
+              Precision : 0.9272          
+                 Recall : 0.9081          
+                     F1 : 0.9175          
              Prevalence : 0.6255          
-         Detection Rate : 0.5686          
-   Detection Prevalence : 0.6129          
-      Balanced Accuracy : 0.8954          
+         Detection Rate : 0.5680          
+   Detection Prevalence : 0.6126          
+      Balanced Accuracy : 0.8945          
                                           
        'Positive' Class : neg             
                                           </code></pre>
@@ -859,18 +856,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -902,11 +888,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -916,8 +941,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -929,7 +963,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -973,6 +1130,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -998,6 +1156,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1058,6 +1242,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

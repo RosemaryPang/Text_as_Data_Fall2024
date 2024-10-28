@@ -56,7 +56,7 @@ For supervised learning models, the critical first step is splitting our data in
 
 The big thing to remember as you set about doing this is to ensure you set the random seed. Otherwise, you won't be able to replicate the random splits of the data that you are about to create.
 
-````{r}
+```{r}
 # set seed
 set.seed(12345)
 
@@ -133,7 +133,7 @@ You might be able to notice that the classifier is *really* confident most of th
 ```{r}
 # The most positive review
 mostPos <- sort.list(predicted_prob[,1], dec = F)[1]
-texts(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mostPos]
+as.character(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mostPos]
 ```
 
 That's definitely positive, but the **most** positive? I mean, they end with a 8.5/10. Why is it getting bumped up so high? Well, notice how long it is. If you have positive words used many times, then it increases the confidence of the Naive Bayes classifier. Let's see if that's true in the other direction too.
@@ -141,7 +141,7 @@ That's definitely positive, but the **most** positive? I mean, they end with a 8
 ```{r}
 # the most negative review
 mostNeg <- sort.list(predicted_prob[,1], dec = T)[1]
-texts(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mostNeg]
+as.character(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mostNeg]
 ```
 
 Holy toledo, that is a bad review. It's pretty long as well, which again makes clear that the more words we have the more evidence the classifier has to put something in one (or the other) bin. That's good, but perhaps we should also have a lot of confidence if the review just had three words: "Terrible, Horrible, Bad." Anyhow, as a final inspection, let's look at where the model is confused.
@@ -150,7 +150,7 @@ Holy toledo, that is a bad review. It's pretty long as well, which again makes c
 # mixed in tone
 mixed <- sort.list(abs(predicted_prob[,1] - .5), dec = F)[1]
 predicted_prob[mixed,]
-texts(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mixed]
+as.character(corpus_subset(data_corpus_LMRD, id %in% testIndex))[mixed]
 ```
 
 This is a great example of how these models can struggle. A lot of the words here relate to the dark content of the film, but could as easily be used to describe a bad film. Likewise, descriptions of the director literally mix positive and negative elements (a lousy director doing good work). But while we can read this and see clearly that this relates to content, the classifier can't make that distinction.
@@ -162,7 +162,7 @@ Finally, let's look at a review the classifier got very wrong.
 # find a review with high confidence
 veryPos <- sort.list(predicted_prob[1:2500, 1], dec = F)[1]
 predicted_prob[veryPos,]
-texts(corpus_subset(data_corpus_LMRD, id %in% testIndex))[veryPos]
+as.character(corpus_subset(data_corpus_LMRD, id %in% testIndex))[veryPos]
 ```
 
 Ah, brutal. Long, with all of the concomitant problems, and then a mix of descriptions about things the person really liked and criticism.

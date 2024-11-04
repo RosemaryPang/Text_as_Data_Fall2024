@@ -26,7 +26,4 @@ This tutorial website contains the R code and output of weekly tutorials.
 
 [Week 9 Supervised Learning](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial9.html)
 
-```{=latex}
-
-%[Week 10 Topic Models](https://rosemarypang.com/Text_as_Data_Fall2023/Tutorial10.html)
-```
+[Week 10 Topic Models](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial10.html)

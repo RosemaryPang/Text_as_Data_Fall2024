@@ -16,7 +16,7 @@ truth.K <- 16
 ```
 
 ## Front-end Matters
-First, let's looad the `tm` package.
+First, let's load the `tm` package.
 ```{r}
 library(tm)
 ```
@@ -68,6 +68,8 @@ unlink(target.directory, recursive = TRUE)
 Removing urls in the tweets
 
 ```{r}
+dataframe$content <- iconv(dataframe$content, from = "latin1", to = "UTF-8", sub = "")
+
 sentences <- sub("http://([[:alnum:]|[:punct:]])+", '', dataframe$content)
 head(sentences)
 ```
@@ -417,10 +419,11 @@ table(movie_review$sentiment)
 STM works differently than the `text2vec`, so we'll need to have our data in a different format now.
 
 ```{r}
-myDfm <- dfm(tokens(movie_review$review),
-             tolower = TRUE,
-             remove = stopwords("en"),
-             remove_punct = TRUE)
+myTokens <- tokens(movie_review$review,
+                   remove_punct = TRUE) %>%
+             tokens_remove(stopwords("en"))
+
+myDfm <- dfm(myTokens, tolower = TRUE)
 
 dim(myDfm)
 ```

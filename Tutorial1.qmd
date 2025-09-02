@@ -21,7 +21,7 @@ By the end of this tutorial, you should be familiar with the following:
 
 # Background
 
-Each week, the tutorial will include all of the code to demonstrate some of the fundamental aspects of the work we are doing. The tutorials on the website include R code and output. If you would like to execute & edit the code, please download the .qmd file from Google Classroom, and execute & edit the code in RStudio.
+Each week, the tutorial will include all of the code to demonstrate some of the fundamental aspects of the work we are doing. The tutorials on the website include R code and output. If you would like to execute & edit the code, please download the .qmd file from Canvas, and execute & edit the code in RStudio.
 
 You'll do code inside of `cells` that look like this:
 

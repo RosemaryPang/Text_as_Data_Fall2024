@@ -12,9 +12,11 @@ This tutorial website contains the R code and output of weekly tutorials.
 
 [Week 2 Text as Data](https://rosemarypang.com/Text_as_Data_Fall2025/Tutorial2.html)
 
+[Week 3 Web Scraping in R](https://rosemarypang.com/Text_as_Data_Fall2025/Tutorial3.html)
+
 <!-- 
 
-[Week 3 Web Scraping in R](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial3.html)
+
 
 [Week 4 Natural Language Processing](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial4.html)
 

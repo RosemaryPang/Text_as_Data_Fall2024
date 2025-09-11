@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tutorial_3</title>
+<title>Tutorial_3 – DACSS758 Text as Data Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -69,10 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,11 +113,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">DACSS758 Text as Data Fall 2024</span>
+    <span class="navbar-title">DACSS758 Text as Data Fall 2025</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -192,9 +192,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter()         masks stats::filter()
 ✖ readr::guess_encoding() masks rvest::guess_encoding()
@@ -204,11 +204,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="nicely-formatted-data" class="level1">
 <h1>Nicely Formatted Data</h1>
-<p>Let’s start with a simple example; we’ll use the work from the Stanford Data Challenge Lab prepared by Sara Altman and Bill Behrman. Specifically, let’s say you are interested in the study of famines and come across <a href="https://ourworldindata.org/famines#the-our-world-in-data-dataset-of-famines">this website</a>. Wonderful! But how can we get this into a format for analysis? Time to waste a lot of hours on manually entering the data or maybe we have some spare funds to hire an undergrad…</p>
+<p>Let’s start with a simple example. Let’s say you are interested in top 2024 movies at the Worldwide Box Office on <a href="https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024">this website</a>. But how can we get this into a format for analysis? Time to waste a lot of hours on manually entering the data or maybe we have some spare funds to hire an undergrad…</p>
 <p>Fortunately, that’s not true. With <code>rvest</code> this is arbitrarily easy. First, we can tell R the webpage we are looking at.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identify the url</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://ourworldindata.org/famines#the-our-world-in-data-dataset-of-famines"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Of course, we can’t just read that webpage in because webpages are filled with all variety of — from our perspective — junk.</p>
 <div class="cell">
@@ -216,182 +216,250 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_html</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{html_document}
-&lt;html class="js-disabled"&gt;
-[1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
-[2] &lt;body&gt;\n&lt;header class="site-header"&gt;&lt;div class="site-navigation-root"&gt;&lt;di ...</code></pre>
+&lt;html xmlns:og="https://ogp.me/ns#"&gt;
+[1] &lt;head&gt;\n&lt;link rel="icon" href="https://www.the-numbers.com/images/logo_20 ...
+[2] &lt;body&gt;\n\r\n&lt;!--SERVER:oak2.the-numbers.com, REQUEST_URI: /box-office-rec ...</code></pre>
 </div>
 </div>
 <p>Yeah, that’s not helpful. Instead, we need to identify just the table. This is the hardest part, but it’s not really too difficult. If you are familiar with HTML / CSS, then you might be able to just inspect the HTML to identify the correct selector. If you are in a Chrome browser, for instance, you can right click then select “Inspect”.</p>
-<p>If you are less familiar, you can use SelectorGadget, a Chrome add-on that lets you — for whatever webpage you are visiting — “select” the portion of a page you are interested in scraping. SelectorGadget will then highlight whatever the Selector (in the bar at the bottom) would return. Once you’ve identified the Selector that works for the element of interest to you, you can add that to our code and you are off and running.</p>
-<p>Note that, especially if you aren’t familiar, this is going to take some time to get used to and require some patience and practice. Take a moment now to install the SelectorGadget Chrome extension, then play around with SelectorGadget on the <a href="https://ourworldindata.org/famines#the-our-world-in-data-dataset-of-famines">website</a> until you can correctly identify “table”, the CSS selector that will let us pull the table.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use SelectorGadget to find the info</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>css_selector <span class="ot">&lt;-</span> <span class="st">"table"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>css_selector <span class="ot">&lt;-</span> <span class="st">"table"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Once we have the correct selector, we still need to (1) read the full html, (2) select out the portion that we are interested in, and (3) start formatting. That third step is really particularly easy when what we are pulling is already in tabular format. So, for example, here’s how we could read our table of data on famines into R.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the table</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>url <span class="sc">%&gt;%</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_node</span>(<span class="at">css =</span> css_selector) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> css_selector) <span class="sc">%&gt;%</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 77 × 6
-   Year      Country           Excess Mortality midpoin…¹ Excess Mortality low…²
-   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;                      &lt;chr&gt;                 
- 1 1846–52   Ireland           1,000,000                  1,000,000             
- 2 1860-1    India             2,000,000                  2,000,000             
- 3 1863-67   Cape Verde        30,000                     30,000                
- 4 1866-7    India             961,043                    961,043               
- 5 1868      Finland           100,000                    100,000               
- 6 1868-70   India             1,500,000                  1,500,000             
- 7 1870–1871 Persia (now Iran) 1,000,000                  500,000               
- 8 1876–79   Brazil            750,000                    500,000               
- 9 1876–79   India             7,176,346                  6,135,000             
-10 1877–79   China             11,000,000                 9,000,000             
-# ℹ 67 more rows
-# ℹ abbreviated names: ¹​`Excess Mortality midpoint`, ²​`Excess Mortality lower`
-# ℹ 2 more variables: `Excess Mortality upper` &lt;chr&gt;, Source &lt;chr&gt;</code></pre>
+<pre><code>[[1]]
+# A tibble: 1 × 3
+  X1                  X2    X3                 
+  &lt;chr&gt;               &lt;lgl&gt; &lt;chr&gt;              
+1 ←Top 2023 Worldwide NA    Top 2025 Worldwide→
+
+[[2]]
+# A tibble: 100 × 6
+    Rank Movie                      `Worldwide Box Office` `Domestic Box Office`
+   &lt;int&gt; &lt;chr&gt;                      &lt;chr&gt;                  &lt;chr&gt;                
+ 1     1 Inside Out 2               $1,698,831,782         $652,980,194         
+ 2     2 Deadpool &amp; Wolverine       $1,338,071,348         $636,745,858         
+ 3     3 Moana 2                    $1,059,135,998         $460,405,297         
+ 4     4 Despicable Me 4            $972,022,286           $361,004,205         
+ 5     5 Wicked                     $755,518,299           $473,231,120         
+ 6     6 Mufasa: The Lion King      $722,618,595           $254,567,693         
+ 7     7 Dune: Part Two             $715,409,065           $282,709,065         
+ 8     8 Godzilla x Kong: The New … $572,505,338           $196,805,338         
+ 9     9 Kung Fu Panda 4            $547,947,278           $193,590,620         
+10    10 Sonic the Hedgehog 3       $489,639,902           $236,115,100         
+# ℹ 90 more rows
+# ℹ 2 more variables: `International Box Office` &lt;chr&gt;, DomesticShare &lt;chr&gt;</code></pre>
 </div>
 </div>
-<p>And if we wanted to save that, we’d just assign the prior chunk of code to an list item object. Then, we’d be ready for analysis.</p>
+<p>The output returns ALL table format data on the webpage. Of course we can select the tibble using</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>alltables <span class="ot">&lt;-</span> url <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> css_selector) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>topmovie <span class="ot">&lt;-</span> alltables[[<span class="dv">2</span>]]  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you are less familiar, you can use SelectorGadget, a Chrome add-on that lets you — for whatever webpage you are visiting — “select” the portion of a page you are interested in scraping. SelectorGadget will then highlight whatever the Selector (in the bar at the bottom) would return. Once you’ve identified the Selector that works for the element of interest to you, you can add that to our code and you are off and running.</p>
+<p>Note that, especially if you aren’t familiar, this is going to take some time to get used to and require some patience and practice. Take a moment now to install the SelectorGadget Chrome extension, then play around with SelectorGadget on the <a href="https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024">website</a> until you can correctly identify the CSS selector for the table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use SelectorGadget to find the info</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>css_selector <span class="ot">&lt;-</span> <span class="st">"#page_filling_chart td , th"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the table</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>url <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_node</span>(<span class="at">css =</span> css_selector) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_node</span>(<span class="at">xpath =</span> <span class="st">"ancestor::table"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 100 × 6
+    Rank Movie                      `Worldwide Box Office` `Domestic Box Office`
+   &lt;int&gt; &lt;chr&gt;                      &lt;chr&gt;                  &lt;chr&gt;                
+ 1     1 Inside Out 2               $1,698,831,782         $652,980,194         
+ 2     2 Deadpool &amp; Wolverine       $1,338,071,348         $636,745,858         
+ 3     3 Moana 2                    $1,059,135,998         $460,405,297         
+ 4     4 Despicable Me 4            $972,022,286           $361,004,205         
+ 5     5 Wicked                     $755,518,299           $473,231,120         
+ 6     6 Mufasa: The Lion King      $722,618,595           $254,567,693         
+ 7     7 Dune: Part Two             $715,409,065           $282,709,065         
+ 8     8 Godzilla x Kong: The New … $572,505,338           $196,805,338         
+ 9     9 Kung Fu Panda 4            $547,947,278           $193,590,620         
+10    10 Sonic the Hedgehog 3       $489,639,902           $236,115,100         
+# ℹ 90 more rows
+# ℹ 2 more variables: `International Box Office` &lt;chr&gt;, DomesticShare &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>That’s great, but as you can see it only pulls the first 100 movies. We’d ideally like to have all 216 top movies. To do so, we need to iterate through the pages. This takes some understanding of how the website is set up. Here’s the URL we were using</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024"</code></pre>
+</div>
+</div>
+<p>How might we get the second page? The easiest way would be if we could identify some standard language that the website is using that we can then leverage to “loop” through each page (that is, run the same operation as above for each page). To see how the website lays everything out, click through to the second page of movies. Here’s the URL for that page, and a comparison of the two URLs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>new_url <span class="ot">&lt;-</span> <span class="st">"https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024/101"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print these next to each other</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>new_url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024/101"</code></pre>
+</div>
+</div>
+<p>Aha! That shows us how they are indexing the pages, with a little statement :“/101”. The indexing here is kind of weird but if you click on the next set, you’ll see that 101 jumps up to 201. So they are counting by 100 and creating a new page each time. We can use that to set up a loop. Ostensibly, you could identify the total number of pages is 3 pages. The first page is — as we just saw — unnumbered, and then each thereafter is indexed by 101. Because the first is unnumbered, we’ll subtract one from our number of pages to loop through.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the indices</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>pageNumber <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get an idea of what we just created</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pageNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 101 201</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(pageNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set up a new vector to store the urls</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>urls <span class="ot">&lt;-</span> url</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through the page numbers and create the new urls</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(pageNumber)){</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  urls <span class="ot">&lt;-</span> <span class="fu">c</span>(urls, <span class="fu">paste</span>(<span class="st">"https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024/"</span>,pageNumber[i], <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(urls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024"    
+[2] "https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024/101"
+[3] "https://www.the-numbers.com/box-office-records/worldwide/all-movies/cumulative/released-in-2024/201"</code></pre>
+</div>
+</div>
+<p>Now that we have all of the urls, we can loop through each pulling the table from each page. To do so, we need to create a new list that will store all of the reviews; otherwise, we’ll just be overwriting our object in each loop.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set up an empty vector to store tables</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>movies <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through urls</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(urls)){</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># extract table for this url</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  movies_single <span class="ot">&lt;-</span> urls[i] <span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_node</span>(<span class="at">css =</span> css_selector) <span class="sc">%&gt;%</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_node</span>(<span class="at">xpath =</span> <span class="st">"ancestor::table"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># store each tibble in the list</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  movies[[i]] <span class="ot">&lt;-</span> movies_single</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co"># combine all tables into one tibble</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>movies_all <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(movies)</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>movies_all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 216 × 6
+    Rank Movie                      `Worldwide Box Office` `Domestic Box Office`
+   &lt;int&gt; &lt;chr&gt;                      &lt;chr&gt;                  &lt;chr&gt;                
+ 1     1 Inside Out 2               $1,698,831,782         $652,980,194         
+ 2     2 Deadpool &amp; Wolverine       $1,338,071,348         $636,745,858         
+ 3     3 Moana 2                    $1,059,135,998         $460,405,297         
+ 4     4 Despicable Me 4            $972,022,286           $361,004,205         
+ 5     5 Wicked                     $755,518,299           $473,231,120         
+ 6     6 Mufasa: The Lion King      $722,618,595           $254,567,693         
+ 7     7 Dune: Part Two             $715,409,065           $282,709,065         
+ 8     8 Godzilla x Kong: The New … $572,505,338           $196,805,338         
+ 9     9 Kung Fu Panda 4            $547,947,278           $193,590,620         
+10    10 Sonic the Hedgehog 3       $489,639,902           $236,115,100         
+# ℹ 206 more rows
+# ℹ 2 more variables: `International Box Office` &lt;chr&gt;, DomesticShare &lt;chr&gt;</code></pre>
+</div>
+</div>
 </section>
 <section id="less-nicely-formatted-data" class="level1">
 <h1>Less Nicely Formatted Data</h1>
 <p>Of course, more likely than not we will be encountering data that aren’t so nice and tidy. This is particularly true for web scraping when the item of interest is text data, which rarely appear in tables like the one above.</p>
-<p>Let’s try out an example. We’ll look at yelp reviews for everyone’s favorite brutalist building: Hotel UMass.</p>
+<p>In previous years, we used to scrape Yelp reviews for practice. But we have to stop doing that. Because we want to be polite web scrapers, and Yelp no longer allows web scraping. How did we know?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start by defining the url we want</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass"</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># now define the field we want</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>css_selector <span class="ot">&lt;-</span> <span class="st">"li.y-css-1jp2syp"</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>reviews <span class="ot">&lt;-</span> url <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> css_selector) <span class="sc">%&gt;%</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>reviews</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("polite")</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(polite)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(<span class="st">"https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Tara H.Newport, RI7096Nov 25, 2018I booked this place after I decided we should stay overnight after Thanksgiving dinner with family in the area.  I am UMass alumni and was feeling nostalgic so when I started looking for rooms and came across the hotel (which I had forgotten was even there) I got excited about the prospect of being on the campus again.The good:  it really is a decent hotel.  Nice and modern and updated and comfortable.  They have water bottles in the room that can be used to get spring water downstairs for the duration of your stay.  I thought that this was a very nice touch since when I need a drink at night I usually end up using a plastic cup to get water out of the tap.  They also have a limited continental breakfast that does the job for some.  Would have been fine for me but left something to be desired for my kids.  The gentleman checking us in at the front desk was friendly and helpful.  We were only staying for one night during Thanksgiving so the campus was pretty much deserted but I would definitely come back and stay for longer.  The location in the center of campus in the student center with access to tons of food options and amenities is awesome.  Perfect spot from which to access and explore the entire campus.The not so good:  Hardly anything.  You only get one parking space in the garage.  Not usually an issue but because my mother was staying with us she had to pay the $20 parking fee.  Not a huge deal but I like open access to parking.  The bathroom was so teeny you can barely even turn around in there!  It does have a nice large stand-up shower which again was fine for me but my 8-year-old son lamented that he couldn't take a bath which he really wanted to do.   I would definitely recommend staying here if your main focus is seeing the campus.  You cannot beat the location and it's a pretty decent place.  Don't let the fact that it's a college hotel scare you!Helpful 1Helpful 2Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                              
- [2] "Joe M.Dartmouth, MA0245Sep 18, 20211 photoWhat a disaster!! What kind of hotel has only one clerk on during a rush period? After a long day and Football game we went to check in an there was a line of at least 20 people waiting to check in. Ya think they might actually have some staff on to handle the anticipated crowd trying to check inA long line of people being forced to wait for over an hour to simply check in!Helpful 1Helpful 2Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
- [3] "Greg H.Wethersfield, CT04Jul 10, 2022They claim to have no rooms available during the summer but I have a hard time believing that.Helpful 1Helpful 2Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
- [4] "Mike D.Elite 24Ridgefield, CT34248363May 9, 2019The great: location, location, location,they've got it and you want it. So they make you pay for it. Also great covered garage parking, restaurants, pub, and nice managers reception at night and all food is great.The good, decent room, comfortable beds, in room keurig The bad, noisy, especially if near elevator, small bathroom. Pillows aren't very good, we bring ours.not very many outlets and no usb chargingThe ugly, no mini fridge for your stuff like a white wine, weird.  No safe. 3 night minimum at peak times like graduation so $900 for a stay 3x300=900SummaryWe keep coming back, so we think it's worth itHelpful 1Helpful 2Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
- [5] "Kim S.Coos, NH617Sep 18, 2021We book our stay over a month in advance. We were traveling to see our son and take in a show. Check in time was 3:00pm. We arrived at 3:15. There were several people in the lobby who all looked unhappy. The was a sign on the front desk that said due to staffing shortages the desk was closed and would open at 6. We left to take our son to dinner and a show. We call all the numbers for the hotel to no avail. We then called Umass police. They said many people had called. They did not know why it was not ope either. Now we are driving to Framingham to the closest hotel with availability. Do not stay there. Ruined a nice weekend.Helpful 3Helpful 4Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
- [6] "Howie B.Elite 24Needham, MA45135568Jun 23, 2016It was wonderful to be back at my Alma Mater! Stayed two nights in connection with my son's New Student Orientation. It was a terrific stay and it is wonderfully convenient to be situated right on campus. Having attended in the '80s, the hotel always felt aesthetically cold - both inside and out (lots of poured concrete will do that. Housed in the university's Campus Center, one of the New Student Program tour guides referred to the hotel's exterior as looking like a \"waffle iron.\" I had never heard that before, yet it is indeed true.) However, as new buildings continue to rise up around it, the Campus Center building seems to have become more charming over the years.Inside the hotel they have professionalized their operation and \"warmed-up\" the public spaces, redecorated their rooms and offer amenities like a substantial continental breakfast and free wifi (there was no wifi back in the '80s :-) There are amazing food options in the new Blue Wall on the Campus Center concourse level. Previously an aged bar on campus, this has been totally redesigned as a state-of-the-art \"food court\" with eye-popping selections (a bakery, gelateria, Mexican and Asian stations, sushi, deli, pizza, salad bar, and much more (UMASS's food service is among the most-awarded for colleges and universities in the US!)We stayed in a \"pond view\" room which offered a stunning (at least it was to me) view of the center of campus. The room was very clean, updated and well-appointed. The bed was among the most comfortable I've ever slept in. The bathroom, which was on the small side making it difficult to close the door once inside, was updated and was serviceable. One small gripe is that they don't provide bar soap in the shower, instead providing a tiny tube of body wash. I actually ran into the Hotel Manager, Rachelle Allen, during my stay (she could not have been more personable and lovely) and noted this to her. She indicated that this is done in an effort to economize and avoid waste. However, she said she would be happy to send up bar soap if requested.This was a wonderful and very pleasant stay and it was great to be back on campus. I look forward to many more stays over the next four years!Helpful 2Helpful 3Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"
- [7] "Kat Y.Elite 24Newport, RI37206277Mar 9, 2019Clean, easy, convenient. Bring your own conditioner, they do not produce any. This was a major problem for my textured hair. This is the best place to say if you have business at the Flagship UMass campus.Helpful 3Helpful 4Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
- [8] "Chris K.Elite 24Bloomfield Township, MI118851149Feb 17, 2019I admit I wasn't sure what to expect on arrival, viewing the exterior - which I later learned was a brutalist architectural style. Staff were very friendly on check-in and quickly got me settled in my quiet room with good views of the surrounding campus. The two-queen room was spacious and very clean. My only cons would be the wireless internet (good speed, reliable) seemed to kick you off a few times per day and force you to re-enter the password each time, and it was very quiet - nice to have at least a fan on the AC unit that can create a little white noise for sleeping at night. Breakfast buffet in the morning, cookies on the check-in counter, lots of nice touches. Was overall very happy here, and would happily stay again!Helpful 1Helpful 2Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
- [9] "Roy A.Elite 24Alexandria, VA3574525829Apr 3, 2018The five stars is based on basic services and the desire to be located in the center of UMass Amherst while doing a tour. Being on campus is the bonus, the room was small but very clean, room service was prompt and no issues. The price is very reasonable and I highly recommend the hotel. It has no high end feature so if your looking for luxuries you may need to look elsewhere. Unlimited access to parking in the connected garage and multiple dining options also a plus.Helpful 1Helpful 2Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-[10] "Kevin J.Philadelphia, PA195642126Mar 24, 2011I much prefer staying here than the newer-built hotels up in the town of Amherst.  The central campus location of UMass Hotel Campus Center is not only the most convenient, it's actually picturesque. They offer a view of the little pond and the trees in late autumn are particularly breathtaking - the entrance plaza stairs could even be called artistic.  UMass offers a reduced rate specific for students and their guests. They offer the most convenient location for walking to campus events at the Mullins Center and other facilities. They offer indoor swimming pool access. Would stay here again in a heartbeat.  Although simple accommodations, it still makes for a very comfortable setting.  Qualifies for my Best of the A10 list... no other hotel in Amherst or Springfield comes close to providing the same convenience or at-home feeling.Helpful 2Helpful 3Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-[11] ""                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </code></pre>
+<pre><code>&lt;polite session&gt; https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass
+    User-agent: polite R package
+    robots.txt: 188 rules are defined for 19 bots
+   Crawl delay: 5 sec
+  The path is not scrapable for this user-agent</code></pre>
 </div>
 </div>
-<p>There are 10 reviews on each page, but we find an extra empty review [11]. So we want to filter out empty reviews.</p>
+<p>Let’s try out another website that allows scraping: Rotten Tomatoes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>reviews <span class="ot">&lt;-</span> reviews[reviews <span class="sc">!=</span> <span class="st">""</span>]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>reviews</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(<span class="st">"https://www.rottentomatoes.com/m/inside_out_2/reviews"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Tara H.Newport, RI7096Nov 25, 2018I booked this place after I decided we should stay overnight after Thanksgiving dinner with family in the area.  I am UMass alumni and was feeling nostalgic so when I started looking for rooms and came across the hotel (which I had forgotten was even there) I got excited about the prospect of being on the campus again.The good:  it really is a decent hotel.  Nice and modern and updated and comfortable.  They have water bottles in the room that can be used to get spring water downstairs for the duration of your stay.  I thought that this was a very nice touch since when I need a drink at night I usually end up using a plastic cup to get water out of the tap.  They also have a limited continental breakfast that does the job for some.  Would have been fine for me but left something to be desired for my kids.  The gentleman checking us in at the front desk was friendly and helpful.  We were only staying for one night during Thanksgiving so the campus was pretty much deserted but I would definitely come back and stay for longer.  The location in the center of campus in the student center with access to tons of food options and amenities is awesome.  Perfect spot from which to access and explore the entire campus.The not so good:  Hardly anything.  You only get one parking space in the garage.  Not usually an issue but because my mother was staying with us she had to pay the $20 parking fee.  Not a huge deal but I like open access to parking.  The bathroom was so teeny you can barely even turn around in there!  It does have a nice large stand-up shower which again was fine for me but my 8-year-old son lamented that he couldn't take a bath which he really wanted to do.   I would definitely recommend staying here if your main focus is seeing the campus.  You cannot beat the location and it's a pretty decent place.  Don't let the fact that it's a college hotel scare you!Helpful 1Helpful 2Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                              
- [2] "Joe M.Dartmouth, MA0245Sep 18, 20211 photoWhat a disaster!! What kind of hotel has only one clerk on during a rush period? After a long day and Football game we went to check in an there was a line of at least 20 people waiting to check in. Ya think they might actually have some staff on to handle the anticipated crowd trying to check inA long line of people being forced to wait for over an hour to simply check in!Helpful 1Helpful 2Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
- [3] "Greg H.Wethersfield, CT04Jul 10, 2022They claim to have no rooms available during the summer but I have a hard time believing that.Helpful 1Helpful 2Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
- [4] "Mike D.Elite 24Ridgefield, CT34248363May 9, 2019The great: location, location, location,they've got it and you want it. So they make you pay for it. Also great covered garage parking, restaurants, pub, and nice managers reception at night and all food is great.The good, decent room, comfortable beds, in room keurig The bad, noisy, especially if near elevator, small bathroom. Pillows aren't very good, we bring ours.not very many outlets and no usb chargingThe ugly, no mini fridge for your stuff like a white wine, weird.  No safe. 3 night minimum at peak times like graduation so $900 for a stay 3x300=900SummaryWe keep coming back, so we think it's worth itHelpful 1Helpful 2Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
- [5] "Kim S.Coos, NH617Sep 18, 2021We book our stay over a month in advance. We were traveling to see our son and take in a show. Check in time was 3:00pm. We arrived at 3:15. There were several people in the lobby who all looked unhappy. The was a sign on the front desk that said due to staffing shortages the desk was closed and would open at 6. We left to take our son to dinner and a show. We call all the numbers for the hotel to no avail. We then called Umass police. They said many people had called. They did not know why it was not ope either. Now we are driving to Framingham to the closest hotel with availability. Do not stay there. Ruined a nice weekend.Helpful 3Helpful 4Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
- [6] "Howie B.Elite 24Needham, MA45135568Jun 23, 2016It was wonderful to be back at my Alma Mater! Stayed two nights in connection with my son's New Student Orientation. It was a terrific stay and it is wonderfully convenient to be situated right on campus. Having attended in the '80s, the hotel always felt aesthetically cold - both inside and out (lots of poured concrete will do that. Housed in the university's Campus Center, one of the New Student Program tour guides referred to the hotel's exterior as looking like a \"waffle iron.\" I had never heard that before, yet it is indeed true.) However, as new buildings continue to rise up around it, the Campus Center building seems to have become more charming over the years.Inside the hotel they have professionalized their operation and \"warmed-up\" the public spaces, redecorated their rooms and offer amenities like a substantial continental breakfast and free wifi (there was no wifi back in the '80s :-) There are amazing food options in the new Blue Wall on the Campus Center concourse level. Previously an aged bar on campus, this has been totally redesigned as a state-of-the-art \"food court\" with eye-popping selections (a bakery, gelateria, Mexican and Asian stations, sushi, deli, pizza, salad bar, and much more (UMASS's food service is among the most-awarded for colleges and universities in the US!)We stayed in a \"pond view\" room which offered a stunning (at least it was to me) view of the center of campus. The room was very clean, updated and well-appointed. The bed was among the most comfortable I've ever slept in. The bathroom, which was on the small side making it difficult to close the door once inside, was updated and was serviceable. One small gripe is that they don't provide bar soap in the shower, instead providing a tiny tube of body wash. I actually ran into the Hotel Manager, Rachelle Allen, during my stay (she could not have been more personable and lovely) and noted this to her. She indicated that this is done in an effort to economize and avoid waste. However, she said she would be happy to send up bar soap if requested.This was a wonderful and very pleasant stay and it was great to be back on campus. I look forward to many more stays over the next four years!Helpful 2Helpful 3Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"
- [7] "Kat Y.Elite 24Newport, RI37206277Mar 9, 2019Clean, easy, convenient. Bring your own conditioner, they do not produce any. This was a major problem for my textured hair. This is the best place to say if you have business at the Flagship UMass campus.Helpful 3Helpful 4Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
- [8] "Chris K.Elite 24Bloomfield Township, MI118851149Feb 17, 2019I admit I wasn't sure what to expect on arrival, viewing the exterior - which I later learned was a brutalist architectural style. Staff were very friendly on check-in and quickly got me settled in my quiet room with good views of the surrounding campus. The two-queen room was spacious and very clean. My only cons would be the wireless internet (good speed, reliable) seemed to kick you off a few times per day and force you to re-enter the password each time, and it was very quiet - nice to have at least a fan on the AC unit that can create a little white noise for sleeping at night. Breakfast buffet in the morning, cookies on the check-in counter, lots of nice touches. Was overall very happy here, and would happily stay again!Helpful 1Helpful 2Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
- [9] "Roy A.Elite 24Alexandria, VA3574525829Apr 3, 2018The five stars is based on basic services and the desire to be located in the center of UMass Amherst while doing a tour. Being on campus is the bonus, the room was small but very clean, room service was prompt and no issues. The price is very reasonable and I highly recommend the hotel. It has no high end feature so if your looking for luxuries you may need to look elsewhere. Unlimited access to parking in the connected garage and multiple dining options also a plus.Helpful 1Helpful 2Thanks 0Thanks 1Love this 1Love this 2Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-[10] "Kevin J.Philadelphia, PA195642126Mar 24, 2011I much prefer staying here than the newer-built hotels up in the town of Amherst.  The central campus location of UMass Hotel Campus Center is not only the most convenient, it's actually picturesque. They offer a view of the little pond and the trees in late autumn are particularly breathtaking - the entrance plaza stairs could even be called artistic.  UMass offers a reduced rate specific for students and their guests. They offer the most convenient location for walking to campus events at the Mullins Center and other facilities. They offer indoor swimming pool access. Would stay here again in a heartbeat.  Although simple accommodations, it still makes for a very comfortable setting.  Qualifies for my Best of the A10 list... no other hotel in Amherst or Springfield comes close to providing the same convenience or at-home feeling.Helpful 2Helpful 3Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </code></pre>
+<pre><code>&lt;polite session&gt; https://www.rottentomatoes.com/m/inside_out_2/reviews
+    User-agent: polite R package
+    robots.txt: 10 rules are defined for 9 bots
+   Crawl delay: 5 sec
+  The path is scrapable for this user-agent</code></pre>
 </div>
 </div>
-<p>That’s great, but as you can see it only pulls the first 10 reviews. We’d ideally like to have them all. To do so, we need to iterate through the pages. This takes some understanding of how Yelp sets up their website. Here’s the URL we were using</p>
+<p>We’ll look at reviews for Inside Out 2 (where Anxiety, Sadness, and Anger all control our brain whenever web scraping refuses to cooperate).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start by defining the url we want</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.rottentomatoes.com/m/inside_out_2/reviews"</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># now define the field we want</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>css_selector <span class="ot">&lt;-</span> <span class="st">".review-text"</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>reviews <span class="ot">&lt;-</span> url <span class="sc">%&gt;%</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> css_selector) <span class="sc">%&gt;%</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>reviews</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass"</code></pre>
+<pre><code> [1] "Inside Out 2 is ultimately successful, in large part because, like in the first film, the embrace of a harmony and balance among the emotions is emphasized above all else."                                                                                    
+ [2] "Inside Out 2 is chock full of charm and intelligence, with witty new wordplay that makes our heroes float down a Stream of Consciousness before they face a sarcasm Chasm. "                                                                                    
+ [3] "Pixar again manages to bring heart and humor in a creative and unique way you don’t see coming. "                                                                                                                                                               
+ [4] "Inside Out 2 comes close enough to success that it is going to make billions worldwide, but does not quite cross over into “we will be thinking about this film six months from now”."                                                                          
+ [5] "While the first film was undeniably charming, Inside Out 2 takes the concept to new heights. It’s a perfect example of how a sequel can not only meet expectations but far exceed them. "                                                                       
+ [6] "It’s a reminder to everyone watching, no matter their age, to seek out community when problems arise, to strengthen bonds of support rather than shun them."                                                                                                    
+ [7] "Inside Out 2 is full of emotional stakes and consequently plays into the character traits of its human figure. Despite being hefty in minutiae, the film can be quite overwhelming in the thesis argument it seeks to convey."                                  
+ [8] "This sequel manages to address much more complex emotions that appear over time and visualize problems that many children and not so young people are going through today, from a more comical and playful perspective. [Full Review in Spanish]"               
+ [9] "Inside Out 2 is a hell of a return to form for Pixar, building upon the foundations of its previous installment with insightful and creative world-building, richly developed characters, and no shortage of wonder and self-reflection."                       
+[10] "One of the reasons the “Toy Story” sequels were so effective was their sense of continuity, which simply doesn’t register here. On the other hand, a few of the new additions beyond Anxiety are inspired."                                                     
+[11] "It was well made, it was well thought out as an expansion, continuation, and growth of what the previous one was. I just personally will never watch it again, because I can't handle cringe."                                                                  
+[12] "Inside Out 2 is the best PIXAR sequel ever. It deftly taps into the universal experience of young adults with new emotions, coming of age experiences and moral quandaries to navigate while also being a moving commentary on the importance of mental health."
+[13] "A fine sequel during which Riley copes with some new emotions, including Anxiety."                                                                                                                                                                              
+[14] "It's a fascinating shift of focus as a result. Where Riley needed her emotions to lead in Inside Out, her salvation in Inside Out 2 lies in stopping them from driving the car into a wall."                                                                    
+[15] "Even with its flaws, it’s still one of the year’s most gorgeous and heartfelt films."                                                                                                                                                                           
+[16] "Feels like a natural progression of the story established in the original movie. "                                                                                                                                                                              
+[17] "[Inside Out 2] is a natural progression in terms of Riley’s narrative, exploring the onset of transition from childhood to adulthood. "                                                                                                                         
+[18] "A sequel that, from the start, promises new emotions and adventures inside the human mind, but unfortunately fails to capture the spark and depth of the original. [Full review in Spanish]"                                                                    
+[19] "The turbulent tale of teenage emotions is moving, lovable and wildly creative."                                                                                                                                                                                 
+[20] "Inside Out 2 is too nuanced and deeply felt to be called impersonal. It takes Riley's ambivalence and crushing self-esteem issues seriously, while still mining laughs from the awkwardness she finds herself unable to shake off. "                            </code></pre>
 </div>
 </div>
-<p>If you head to that webpage, you’ll notice that only the first set of reviews is actually present. How might we get the second set? The easiest way would be if we could identify some standard language that Yelp is using that we can then leverage to “loop” through each page (that is, run the same operation as above for each page). To see how Yelp lays everything out, click through to the second page of reviews. Here’s the URL for that page, and a comparison of the two URLs.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>new_url <span class="ot">&lt;-</span> <span class="st">"https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass&amp;start=10"</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print these next to each other</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>new_url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass&amp;start=10"</code></pre>
-</div>
-</div>
-<p>Aha! That shows us how they are indexing the pages, with a little statement :“&amp;start=10”. The indexing here is kind of weird but if you click on the next set, you’ll see that 10 jumps up to 20. So they are counting by 10 and creating a new page each time. We can use that to set up a loop. Ostensibly, you could identify the total number of pages is 4 pages. The first page is — as we just saw — unnumbered, and then each thereafter is indexed by 10. Because the first is unnumbered, we’ll subtract one from our number of pages to loop through.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the indices</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pageNumber <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get an idea of what we just created</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pageNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10 20 30</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(pageNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set up a new vector to store the urls</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>urls <span class="ot">&lt;-</span> url</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through the page numbers and create the new urls</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(pageNumber)){</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  urls <span class="ot">&lt;-</span> <span class="fu">c</span>(urls, <span class="fu">paste</span>(<span class="st">"https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass&amp;start="</span>,pageNumber[i], <span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(urls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass"         
-[2] "https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass&amp;start=10"
-[3] "https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass&amp;start=20"
-[4] "https://www.yelp.com/biz/hotel-umass-amherst?osq=hotel+umass&amp;start=30"</code></pre>
-</div>
-</div>
-<p>Now that we have all of the urls, we can loop through each pulling the reviews from each page. To do so, we need to create a new vector that will store all of the reviews; otherwise, we’ll just be overwriting our review object in each loop.</p>
-<p>Note that this will take a couple of minutes; we’re iterating through 4 pages after all.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set up an empty vector to store reviews</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>reviews <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through urls</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(urls)){</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># extract reviews for this url</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  tmpReviews <span class="ot">&lt;-</span> urls[i] <span class="sc">%&gt;%</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> css_selector) <span class="sc">%&gt;%</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add them to the set of reviews</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  reviews <span class="ot">&lt;-</span> <span class="fu">c</span>(reviews,tmpReviews)</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">#filter out empty reviews</span></span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>reviews <span class="ot">&lt;-</span> reviews[reviews <span class="sc">!=</span> <span class="st">""</span>]</span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the 12th reviews</span></span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>reviews[<span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Song R.Chevy Chase Village, MD0326Feb 1, 2019What happened? Used to be a great hotel. Now it feels old and in serious need of a renovation. I'm sitting in my room right now, smelling some kind of old cooking oil smell that also seems so be permeating throughout the campus center. Yuck. Everything looks and feels rundown.Helpful 0Helpful 1Thanks 0Thanks 1Love this 0Love this 1Oh no 0Oh no 1"</code></pre>
-</div>
-</div>
-<p>There’s a few things we’d want to do from here. We could expand the extraction to identify all sorts of other aspects of each review — the name, location, and prior reviews by a reviewer; the overall rating as well as the rating across different categories; and so on — and add those extractions to each stage of our loop. We’ll leave those steps to future analyses.</p>
+<p>There are 20 reviews on each page. Unlike the example earlier, where we can click other pages, Rotten Tomatoes has a “LOAD MORE” button. How can we scrape more reviews? Let’s go to “RSelenium_RT.r” for more information.</p>
 </section>
 <section id="a-quick-analysis" class="level1">
 <h1>A Quick Analysis</h1>
-<p>With the text scraped from the site, we can use a bit of what we’ve done in past tutorials (and will continue to do going forward) to take a look at what folks are saying about Hotel UMass.</p>
+<p>With the text scraped from the site, we can use a bit of what we’ve done in past tutorials (and will continue to do going forward) to take a look at what folks are saying about Inside Out 2.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Package version: 4.0.2
+<pre><code>Package version: 4.3.1
 Unicode version: 14.0
 ICU version: 71.1</code></pre>
 </div>
@@ -401,51 +469,61 @@ ICU version: 71.1</code></pre>
 <div class="cell-output cell-output-stderr">
 <pre><code>See https://quanteda.io for tutorials and examples.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to corpus</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>hotel_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(reviews)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create a word cloud</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>hotel_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(hotel_corpus, <span class="at">remove_punct=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">tokens_select</span>(<span class="at">pattern=</span><span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">selection=</span><span class="st">"remove"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">dfm</span>()</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(hotel_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to corpus</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>review <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"reviews.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 220 Columns: 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): text
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>review_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(review<span class="sc">$</span>text)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a word cloud</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>review_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(review_corpus, <span class="at">remove_punct=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">tokens_select</span>(<span class="at">pattern=</span><span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">selection=</span><span class="st">"remove"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>          <span class="fu">dfm</span>()</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(review_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tutorial3_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tutorial3_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>It’s hard to find a pattern. Since we included the buttons “helpful”, “thanks”, etc. under the reviews, the most common words are “1love”, “0oh”. Also, since we are interested in hotel reviews, we also see common words such as “hotel”, “rooms”, “campus”, etc. Let’s see if we can remove these words.</p>
+<p>It’s hard to find a pattern. Since this is a review about Inside out 2, we find “inside”, “new”, “2” at the center. We also see common words such as “film”, “pixar”, “takes”, etc. Let’s see if we can remove these words.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>hotel_dfm2 <span class="ot">&lt;-</span> <span class="fu">tokens</span>(hotel_corpus,</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">remove_punct=</span><span class="cn">TRUE</span>,</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_select</span>(<span class="at">pattern=</span><span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">"hotel"</span>,<span class="st">"rooms"</span>,<span class="st">"room"</span>,<span class="st">"umass"</span>,<span class="st">"campus"</span>),<span class="at">selection=</span><span class="st">"remove"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Regular expression that matches words that start with numbers followed by letters</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_select</span>(<span class="at">pattern =</span> <span class="st">"^</span><span class="sc">\\</span><span class="st">d+</span><span class="sc">\\</span><span class="st">w+$"</span>, <span class="at">selection =</span> <span class="st">"remove"</span>, <span class="at">valuetype =</span> <span class="st">"regex"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>             <span class="fu">dfm</span>()</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(hotel_dfm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>review_dfm2 <span class="ot">&lt;-</span> <span class="fu">tokens</span>(review_corpus,</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">remove_punct=</span><span class="cn">TRUE</span>,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_select</span>(<span class="at">pattern=</span><span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">"inside"</span>,<span class="st">"out"</span>,<span class="st">"new"</span>,<span class="st">"sequel"</span>,<span class="st">"film"</span>, <span class="st">"takes"</span>, <span class="st">"pixar"</span>, <span class="st">"can"</span>, <span class="st">"review"</span>),<span class="at">selection=</span><span class="st">"remove"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">dfm</span>()</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(review_dfm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tutorial3_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tutorial3_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Now the reviews are pretty obvious! Good job Hotel UMass!</p>
+<p>Now the reviews are pretty obvious!</p>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
-<p>Everything here worked well. But what if we have a website that doesn’t follow the same nice URL nomenclature / pattern that we found above? In that case, we’ll need to resort to RSelenium. We’ll leave that for another tutorial.</p>
+<p>Everything here worked well. We’ll leave more complicated RSelenium application and using API for another tutorial.</p>
 
 
 </section>
@@ -486,18 +564,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -529,7 +596,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -537,7 +624,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -634,7 +721,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

@@ -3,7 +3,7 @@ title: "Tutorial 4 Natural Language Processing"
 pagetitle: Tutorial_4
 ---
 
-In this tutorial, we'll learn about doing standard natural language processing (NLP) tasks in R, and will be introduced to regular expressions. After completing this notebook, you should be familar with:
+In this tutorial, we'll learn about doing standard natural language processing (NLP) tasks in R, and will be introduced to regular expressions. After completing this notebook, you should be familiar with:
 
 1.  Annotators: udpipe, spacy, and CoreNLP
 
@@ -120,7 +120,7 @@ Now we are into the heart of the annotations. Let's highlight a chunk of the dat
 
 ```{r}
 # First tokens from Trump's speech
-head(annoData[which(annoData$Year == 2017),9:15],28)
+head(annoData[which(annoData$Year == 2021),9:15],28)
 ```
 
 Next, *upos* stands for the universal part of speech tag while *xpos* stands for the treebank-specific part of speech. You can find descriptions of each *upos* classification tag [here](https://universaldependencies.org/u/pos/index.html). Knowing the parts of speech, we could --- at a really basic level --- just look to see what nouns are most frequently used in presidential addresses overall, and in the most recent era (i.e., post 2000).
@@ -163,14 +163,14 @@ We could also, however, be more directly interested in using the dependency rela
 ```{r}
 library(magrittr)
 
-# Trump 2017
+# Biden 2021
 annoData %>%
   left_join(
     annotated$token,
     c("doc_id"="doc_id", "sid"="sid", "tid"="tid_source"),
     suffix=c("", "_source")
   ) %>%
-  filter(Year == 2017) %>%
+  filter(Year == 2021) %>%
   filter(relation == "obj") %>%
   select(doc_id = doc_id, start = token, word = token_source) %>%
   left_join(word_frequency, by="word") %>%
@@ -180,14 +180,14 @@ annoData %>%
 ```
 
 ```{r}
-# Biden 2021
+# Trump 2025
 annoData %>%
   left_join(
     annotated$token,
     c("doc_id"="doc_id", "sid"="sid", "tid"="tid_source"),
     suffix=c("", "_source")
   ) %>%
-  filter(Year == 2021) %>%
+  filter(Year == 2025) %>%
   filter(relation == "obj") %>%
   select(doc_id = doc_id, start = token, word = token_source) %>%
   left_join(word_frequency, by="word") %>%
@@ -276,9 +276,11 @@ Remember we mentioned at the beginning of the tutorial, spacy requires a Python 
 
 ```{r}
 # Download the spacy model
-# cnlp_download_spacy("en_core_web_sm")
+#reticulate::py_install("spacy")
+cnlp_download_spacy("en_core_web_sm")
 
 # Initialize spacy backend
+#reticulate::py_install("cleannlp")
 cnlp_init_spacy()
 ```
 

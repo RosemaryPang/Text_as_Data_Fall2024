@@ -144,6 +144,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="./Tutorial4.html" aria-current="page"> 
 <span class="menu-text">Tutorial4</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Tutorial5.html"> 
+<span class="menu-text">Tutorial5</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -433,7 +437,7 @@ Processed document 60 of 60</code></pre>
 <h1>Part of Speech Tagging</h1>
 <p>Now we are into the heart of the annotations. Let’s highlight a chunk of the data to use as illustrations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First tokens from Trump's speech</span></span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First tokens from Biden's speech</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(annoData[<span class="fu">which</span>(annoData<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2021</span>),<span class="dv">9</span><span class="sc">:</span><span class="dv">15</span>],<span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        token_with_ws         lemma  upos xpos

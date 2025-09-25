@@ -138,7 +138,7 @@ In addition to quanteda, there are other packages containing different lists of 
 
 ```{r}
 tidytextstopwords <- tidytext::stop_words
-View(tidytextstopwords)
+#View(tidytextstopwords)
 table(tidytextstopwords$lexicon)
 
 #OR

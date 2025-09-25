@@ -119,7 +119,7 @@ Lemmatization can be particularly useful as a pre-processing step in some analys
 Now we are into the heart of the annotations. Let's highlight a chunk of the data to use as illustrations.
 
 ```{r}
-# First tokens from Trump's speech
+# First tokens from Biden's speech
 head(annoData[which(annoData$Year == 2021),9:15],28)
 ```
 

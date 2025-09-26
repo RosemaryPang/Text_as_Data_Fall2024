@@ -18,8 +18,8 @@ website:
         text: Tutorial4      
       - href: Tutorial5.qmd
         text: Tutorial5 
-#      - href: Tutorial6.qmd
-#        text: Tutorial6 
+      - href: Tutorial6.qmd
+        text: Tutorial6 
 #      - href: Tutorial7.qmd
 #        text: Tutorial7  
 #      - href: Tutorial8.qmd

@@ -1,0 +1,33 @@
+---
+title: "Welcome Page"
+---
+
+Welcome to DACSS758 Text as Data. All classroom material, including slides, tutorials, and assignment descriptions, will be posted on Canvas.
+
+This tutorial website contains the R code and output of weekly tutorials.
+
+<font size='5'><b> Weekly Tutorials </b></font>
+
+[Week 1 Introduction](https://rosemarypang.com/Text_as_Data_Fall2025/Tutorial1.html)
+
+[Week 2 Text as Data](https://rosemarypang.com/Text_as_Data_Fall2025/Tutorial2.html)
+
+[Week 3 Web Scraping in R](https://rosemarypang.com/Text_as_Data_Fall2025/Tutorial3.html)
+
+[Week 4 Natural Language Processing](https://rosemarypang.com/Text_as_Data_Fall2025/Tutorial4.html)
+
+[Week 5 Preprocessing](https://rosemarypang.com/Text_as_Data_Fall2025/Tutorial5.html)
+
+[Week 6 Text Representation I](https://rosemarypang.com/Text_as_Data_Fall2025/Tutorial6.html)
+
+<!-- 
+
+
+[Week 7 Text Representation II](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial7.html)
+
+[Week 8 Dictionary/ Sentiment Analysis](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial8.html)
+
+[Week 9 Supervised Learning](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial9.html)
+
+[Week 10 Topic Models](https://rosemarypang.com/Text_as_Data_Fall2024/Tutorial10.html)
+SOME NOTES -->

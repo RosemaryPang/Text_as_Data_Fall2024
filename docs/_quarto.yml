@@ -1,0 +1,39 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "DACSS758 Text as Data Fall 2025"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: Tutorial1.qmd
+        text: Tutorial1
+      - href: Tutorial2.qmd
+        text: Tutorial2
+      - href: Tutorial3.qmd
+        text: Tutorial3
+      - href: Tutorial4.qmd
+        text: Tutorial4      
+      - href: Tutorial5.qmd
+        text: Tutorial5 
+      - href: Tutorial6.qmd
+        text: Tutorial6 
+#      - href: Tutorial7.qmd
+#        text: Tutorial7  
+#      - href: Tutorial8.qmd
+#        text: Tutorial8 
+#      - href: Tutorial9.qmd
+#        text: Tutorial9 
+#      - href: Tutorial10.qmd
+#        text: Tutorial10 
+        
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

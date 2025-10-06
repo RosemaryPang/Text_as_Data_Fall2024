@@ -194,7 +194,7 @@ school_cos_sim <- sim2(x = word_vectors, y = school,
 head(sort(school_cos_sim[,1], decreasing = TRUE), 10)
 ```
 
-Obviously, school is the most similar to school. Based on the poems that the children wrote, we can also see words like 'work', 'fun', and 'class' as most similar to 'school.'
+Obviously, school is the most similar to school. Based on the poems that the children wrote, we can also see words like 'work', 'learn', and 'class' as most similar to 'school.'
 
 We can also calculate the cosine similarity between 'school' and 'study'. 
 
@@ -239,7 +239,7 @@ dog_cos_sim <- sim2(x = word_vectors, y = dog,
 head(sort(dog_cos_sim[,1], decreasing = TRUE), 5)
 ```
 
-Success - Our predicted result was correct! We get 'dog' as the highest predicted result after the one we used (cat). We can think of this scenario as cats say meow and dogs say bark.
+Success - Our predicted result was correct! We get 'dog' as the highest predicted result. We can think of this scenario as cats say meow and dogs say bark.
 
 ## Parent example
 
